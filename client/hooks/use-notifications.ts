@@ -86,6 +86,13 @@ export const useNotifications = () => {
         type: "success",
       }),
 
+    articleCreated: (articleName: string) =>
+      showNotification({
+        title: "Article créé avec succès",
+        description: `${articleName} a été ajouté au catalogue`,
+        type: "success",
+      }),
+
     // Quantités
     quantityUpdated: (articleName: string, quantity: number) =>
       showNotification({
