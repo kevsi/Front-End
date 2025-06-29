@@ -1,5 +1,5 @@
 import React from "react";
-import { LayoutDashboard, ShoppingCart, Package, Box } from "lucide-react";
+import { LayoutDashboard, ShoppingCart, Box } from "lucide-react";
 import { ManagerHeader } from "../components/manager/ManagerHeader";
 import { StatisticsChart } from "../components/manager/StatisticsChart";
 import { StatsCards } from "../components/manager/StatsCards";
@@ -30,11 +30,6 @@ const navItems: NavItem[] = [
     href: "/manager-orders",
     icon: ShoppingCart,
     label: "Commandes",
-  },
-  {
-    href: "#",
-    icon: Package,
-    label: "Stocks",
   },
   {
     href: "#",
