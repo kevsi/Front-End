@@ -11,6 +11,7 @@ import {
   TrendingUp,
   Settings,
   Zap,
+  ShoppingCart,
 } from "lucide-react";
 
 interface ActionCardProps {
