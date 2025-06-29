@@ -1,8 +1,29 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ResponsiveLayout } from "../components/ui/responsive-layout";
+import { NavItem } from "../components/ui/responsive-sidebar";
+import { LayoutDashboard, ShoppingCart, Box } from "lucide-react";
 import ManagerHeader from "../components/manager/ManagerHeader";
 import ManagerProductDetailsModal from "../components/manager/ManagerProductDetailsModal";
+
+const navItems: NavItem[] = [
+  {
+    href: "/manager-dashboard",
+    icon: LayoutDashboard,
+    label: "Dashboard",
+  },
+  {
+    href: "/manager-orders",
+    icon: ShoppingCart,
+    label: "Commandes",
+  },
+  {
+    href: "/manager-articles",
+    icon: Box,
+    label: "Articles",
+    isActive: true,
+  },
+];
 
 // Mock product data - in real app this would come from API
 const mockProducts = {
@@ -59,90 +80,12 @@ export default function ManagerProductDetails() {
   }
 
   return (
-    <ResponsiveLayout
-      sidebar={
-        <nav>
-          <ul className="space-y-1">
-            <li>
-              <a
-                href="/manager-dashboard"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <rect width="7" height="9" x="3" y="3" rx="1" />
-                  <rect width="7" height="5" x="14" y="3" rx="1" />
-                  <rect width="7" height="9" x="14" y="12" rx="1" />
-                  <rect width="7" height="5" x="3" y="16" rx="1" />
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a
-                href="/manager-orders"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <circle cx="8" cy="21" r="1" />
-                  <circle cx="19" cy="21" r="1" />
-                  <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a
-                href="/manager-articles"
-                className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
-                  <path d="m3.3 7 8.7 5 8.7-5" />
-                  <path d="M12 22V12" />
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      }
-    >
-      <div className="flex flex-col">
-        <ManagerHeader />
-
-        <ManagerProductDetailsModal
-          isOpen={true}
-          onClose={handleClose}
-          product={product}
-        />
-      </div>
+    <ResponsiveLayout navItems={navItems} header={<ManagerHeader />}>
+      <ManagerProductDetailsModal
+        isOpen={true}
+        onClose={handleClose}
+        product={product}
+      />
     </ResponsiveLayout>
   );
 }
