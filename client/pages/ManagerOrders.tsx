@@ -130,7 +130,51 @@ const ManagerOrders: React.FC = () => {
 
     const matchesStatus = statusFilter === "" || order.status === statusFilter;
 
-    return matchesSearch && matchesStatus;
+    const matchesTime = () => {
+      if (timeFilter === "") return true;
+
+      const orderDate = new Date(order.createdAt);
+      const hour = orderDate.getHours();
+
+      switch (timeFilter) {
+        case "morning":
+          return hour >= 6 && hour < 12;
+        case "afternoon":
+          return hour >= 12 && hour < 18;
+        case "evening":
+          return hour >= 18 && hour < 24;
+        case "night":
+          return hour >= 0 && hour < 6;
+        default:
+          return true;
+      }
+    };
+
+    const matchesDate = () => {
+      if (dateFilter === "") return true;
+
+      const orderDate = new Date(order.createdAt);
+      const today = new Date();
+      const orderDateStr = orderDate.toDateString();
+      const todayStr = today.toDateString();
+
+      switch (dateFilter) {
+        case "today":
+          return orderDateStr === todayStr;
+        case "yesterday":
+          const yesterday = new Date(today);
+          yesterday.setDate(yesterday.getDate() - 1);
+          return orderDateStr === yesterday.toDateString();
+        case "week":
+          const weekAgo = new Date(today);
+          weekAgo.setDate(weekAgo.getDate() - 7);
+          return orderDate >= weekAgo;
+        default:
+          return true;
+      }
+    };
+
+    return matchesSearch && matchesStatus && matchesTime() && matchesDate();
   });
 
   return (
