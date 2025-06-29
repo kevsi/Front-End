@@ -1,9 +1,11 @@
 import React from "react";
-import { ManagerSidebar } from "../components/manager/ManagerSidebar";
+import { LayoutDashboard, ShoppingCart, Box } from "lucide-react";
 import { ManagerHeader } from "../components/manager/ManagerHeader";
 import { StatisticsChart } from "../components/manager/StatisticsChart";
 import { StatsCards } from "../components/manager/StatsCards";
 import { ManagerOrdersTable } from "../components/manager/ManagerOrdersTable";
+import { ResponsiveLayout } from "@/components/ui/responsive-layout";
+import { NavItem } from "@/components/ui/responsive-sidebar";
 
 export interface ManagerOrder {
   id: string;
@@ -16,6 +18,25 @@ export interface ManagerOrder {
   serverAvatar: string;
   createdAt: string;
 }
+
+const navItems: NavItem[] = [
+  {
+    href: "/manager-dashboard",
+    icon: LayoutDashboard,
+    label: "Dashboard",
+    isActive: true,
+  },
+  {
+    href: "/manager-orders",
+    icon: ShoppingCart,
+    label: "Commandes",
+  },
+  {
+    href: "/manager-articles",
+    icon: Box,
+    label: "Articles",
+  },
+];
 
 const sampleManagerOrders: ManagerOrder[] = [
   {
@@ -58,37 +79,29 @@ const sampleManagerOrders: ManagerOrder[] = [
 
 const ManagerDashboard: React.FC = () => {
   return (
-    <div className="min-h-screen bg-dashboard-gray">
-      <div className="flex">
-        <ManagerSidebar />
+    <ResponsiveLayout navItems={navItems} header={<ManagerHeader />}>
+      <div className="p-4 lg:p-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 mb-6 lg:mb-8">
+          {/* Statistics Chart */}
+          <div className="lg:col-span-2 order-2 lg:order-1">
+            <StatisticsChart />
+          </div>
 
-        <div className="flex-1 flex flex-col">
-          <ManagerHeader />
+          {/* Stats Cards */}
+          <div className="space-y-4 order-1 lg:order-2">
+            <StatsCards />
+          </div>
+        </div>
 
-          <main className="flex-1 p-6">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-              {/* Statistics Chart */}
-              <div className="lg:col-span-2">
-                <StatisticsChart />
-              </div>
-
-              {/* Stats Cards */}
-              <div className="space-y-4">
-                <StatsCards />
-              </div>
-            </div>
-
-            {/* Recent Orders Section */}
-            <div className="mb-6">
-              <h2 className="text-2xl font-bold text-dashboard-dark font-poppins mb-6">
-                Commandes récentes
-              </h2>
-              <ManagerOrdersTable orders={sampleManagerOrders} />
-            </div>
-          </main>
+        {/* Recent Orders Section */}
+        <div className="mb-6">
+          <h2 className="text-xl lg:text-2xl font-bold text-dashboard-dark font-poppins mb-4 lg:mb-6">
+            Commandes récentes
+          </h2>
+          <ManagerOrdersTable orders={sampleManagerOrders} />
         </div>
       </div>
-    </div>
+    </ResponsiveLayout>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ChevronDown, Calendar, Filter, Search } from "lucide-react";
 
-interface OrdersFiltersProps {
+interface ManagerOrdersFiltersProps {
   searchQuery: string;
   onSearchChange: (value: string) => void;
   timeFilter: string;
@@ -12,7 +12,7 @@ interface OrdersFiltersProps {
   onStatusFilterChange: (value: string) => void;
 }
 
-export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
+export const ManagerOrdersFilters: React.FC<ManagerOrdersFiltersProps> = ({
   searchQuery,
   onSearchChange,
   timeFilter,
@@ -35,10 +35,10 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
 
   const statusOptions = [
     { value: "", label: "Tous les statuts" },
-    { value: "pending", label: "En attente" },
-    { value: "validated", label: "Validée" },
-    { value: "served", label: "Servie" },
-    { value: "cancelled", label: "Annulée" },
+    { value: "nouvelle", label: "Nouvelle" },
+    { value: "validee", label: "Validée" },
+    { value: "servie", label: "Servie" },
+    { value: "annulee", label: "Annulée" },
   ];
 
   const getCurrentTimeLabel = () => {
@@ -148,7 +148,7 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
             <Search className="w-4 h-4 lg:w-5 lg:h-5 text-black mr-2 lg:mr-3 flex-shrink-0" />
             <input
               type="text"
-              placeholder="Rechercher par numéro, table, article"
+              placeholder="Rechercher par numéro de commande, table, article, serveur"
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
               className="flex-1 outline-none text-black font-inter text-sm"
@@ -159,7 +159,9 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
         {/* Advanced Search - Hide on small screens */}
         <div className="hidden lg:flex items-center min-w-0 lg:max-w-md">
           <div className="bg-gray-300 rounded-lg px-4 py-3 font-inter text-sm flex-1 min-w-0">
-            <span className="truncate">Recherche efficace</span>
+            <span className="truncate">
+              Entrez juste une phrase pour une recherche efficace
+            </span>
           </div>
           <button className="ml-2 bg-gray-100 border border-gray-300 rounded-lg p-3 shadow-sm hover:bg-gray-200 transition-colors">
             <Search className="w-5 h-5 text-black" />

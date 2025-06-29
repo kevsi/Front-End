@@ -22,19 +22,27 @@ function StatCard({
 }: StatCardProps) {
   return (
     <Card className={`${bgGradient} border-0 shadow-lg font-inter`}>
-      <CardContent className="p-6">
-        <div className="flex items-start justify-between mb-6">
-          <div className="space-y-1">
-            <p className="text-sm font-medium opacity-70 leading-5 tracking-wide">
+      <CardContent className="p-4 lg:p-6">
+        <div className="flex items-start justify-between mb-4 lg:mb-6">
+          <div className="space-y-1 min-w-0 flex-1">
+            <p className="text-xs lg:text-sm font-medium opacity-70 leading-4 lg:leading-5 tracking-wide truncate">
               {title}
             </p>
-            <p className="text-3xl font-bold leading-8">{value}</p>
+            <p className="text-xl lg:text-3xl font-bold leading-6 lg:leading-8">
+              {value}
+            </p>
           </div>
-          <div className={`p-3.5 rounded-xl ${iconBg} shadow-lg`}>{icon}</div>
+          <div
+            className={`p-2.5 lg:p-3.5 rounded-xl ${iconBg} shadow-lg flex-shrink-0`}
+          >
+            {icon}
+          </div>
         </div>
         <div className="flex items-center gap-2">
           <div className={`w-2 h-2 rounded-full ${trendColor}`}></div>
-          <span className="text-xs font-medium leading-4">{trend}</span>
+          <span className="text-xs font-medium leading-4 truncate">
+            {trend}
+          </span>
         </div>
       </CardContent>
     </Card>
@@ -91,7 +99,7 @@ export function StatsCards() {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 lg:gap-6">
       {stats.map((stat, index) => (
         <StatCard key={index} {...stat} />
       ))}

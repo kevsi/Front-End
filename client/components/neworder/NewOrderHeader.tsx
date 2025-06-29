@@ -5,18 +5,23 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 interface NewOrderHeaderProps {
   tableNumber: string;
   onTableNumberChange: (tableNumber: string) => void;
+  leftAction?: React.ReactNode;
 }
 
 export function NewOrderHeader({
   tableNumber,
   onTableNumberChange,
+  leftAction,
 }: NewOrderHeaderProps) {
   return (
     <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-0 lg:justify-between p-4 lg:p-6 bg-dashboard-gray">
-      {/* Greeting */}
-      <h1 className="text-2xl lg:text-3xl font-bold text-dashboard-dark font-poppins">
-        Hello, serveur 1
-      </h1>
+      {/* Mobile layout: Toggle + Greeting */}
+      <div className="flex items-center gap-4 lg:gap-0 w-full lg:w-auto">
+        {leftAction}
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-dashboard-dark font-poppins">
+          Hello, serveur 1
+        </h1>
+      </div>
 
       {/* Search Bar */}
       <div className="flex-1 w-full lg:max-w-2xl lg:mx-8">
