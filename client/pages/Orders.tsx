@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNotifications } from "@/hooks/use-notifications";
 import { LayoutDashboard, Plus, ShoppingCart } from "lucide-react";
 import { OrdersHeader } from "../components/orders/OrdersHeader";
 import { OrdersFilters } from "../components/orders/OrdersFilters";
@@ -94,6 +95,7 @@ const sampleOrders: Order[] = [
 ];
 
 const Orders: React.FC = () => {
+  const { notifications } = useNotifications();
   const [orders, setOrders] = useState<Order[]>(sampleOrders);
   const [searchQuery, setSearchQuery] = useState("");
   const [timeFilter, setTimeFilter] = useState("");
@@ -119,14 +121,23 @@ const Orders: React.FC = () => {
             <h2 className="text-xl lg:text-2xl font-bold text-dashboard-dark font-poppins">
               Mes commandes
             </h2>
-            <button className="bg-dashboard-yellow text-white px-4 py-2 rounded-lg font-inter text-sm font-medium hover:bg-dashboard-yellow/90 transition-colors whitespace-nowrap">
+            <button
+              onClick={() => notifications.dataExported("commandes")}
+              className="bg-dashboard-yellow text-white px-4 py-2 rounded-lg font-inter text-sm font-medium hover:bg-dashboard-yellow/90 transition-colors whitespace-nowrap"
+            >
               📊 Exporter
             </button>
           </div>
 
           <OrdersFilters
             searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
+            onSearchChange={(query) => {
+              setSearchQuery(query);
+              if (query.length > 2) {
+                const results = filteredOrders.length;
+                notifications.searchPerformed(query, results);
+              }
+            }}
             timeFilter={timeFilter}
             onTimeFilterChange={setTimeFilter}
             dateFilter={dateFilter}

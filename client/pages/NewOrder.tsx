@@ -7,6 +7,7 @@ import { OrderSuccessModal } from "@/components/neworder/OrderSuccessModal";
 import { ResponsiveLayout } from "@/components/ui/responsive-layout";
 import { NavItem } from "@/components/ui/responsive-sidebar";
 import { useState } from "react";
+import { useNotifications } from "@/hooks/use-notifications";
 
 export interface MenuItem {
   id: string;
@@ -40,6 +41,7 @@ const navItems: NavItem[] = [
 ];
 
 export default function NewOrder() {
+  const { notifications } = useNotifications();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [tableNumber, setTableNumber] = useState("T12");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -50,20 +52,29 @@ export default function NewOrder() {
     setCartItems((prev) => {
       const existingItem = prev.find((cartItem) => cartItem.id === item.id);
       if (existingItem) {
+        notifications.quantityUpdated(item.name, existingItem.quantity + 1);
         return prev.map((cartItem) =>
           cartItem.id === item.id
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem,
         );
       }
+      notifications.articleAdded(item.name);
       return [...prev, { ...item, quantity: 1 }];
     });
   };
 
   const updateQuantity = (id: string, quantity: number) => {
+    const item = cartItems.find((item) => item.id === id);
     if (quantity <= 0) {
+      if (item) {
+        notifications.articleRemoved(item.name);
+      }
       setCartItems((prev) => prev.filter((item) => item.id !== id));
     } else {
+      if (item) {
+        notifications.quantityUpdated(item.name, quantity);
+      }
       setCartItems((prev) =>
         prev.map((item) => (item.id === id ? { ...item, quantity } : item)),
       );
@@ -86,14 +97,22 @@ export default function NewOrder() {
   };
 
   const handleSaveOrder = () => {
-    console.log("Saving order:", {
-      tableNumber,
-      items: cartItems,
-      subtotal: calculateSubtotal(),
-      tip: calculateTip(),
-      total: calculateTotal(),
-    });
-    setShowSuccessModal(true);
+    try {
+      console.log("Saving order:", {
+        tableNumber,
+        items: cartItems,
+        subtotal: calculateSubtotal(),
+        tip: calculateTip(),
+        total: calculateTotal(),
+      });
+
+      // Générer un numéro de commande
+      const orderNumber = `C${Date.now().toString().slice(-3)}`;
+      notifications.orderCreated(orderNumber);
+      setShowSuccessModal(true);
+    } catch (error) {
+      notifications.actionError("Création de la commande");
+    }
   };
 
   const handleCloseModal = () => {
@@ -109,7 +128,12 @@ export default function NewOrder() {
         header={
           <NewOrderHeader
             tableNumber={tableNumber}
-            onTableNumberChange={setTableNumber}
+            onTableNumberChange={(newTableNumber) => {
+              if (newTableNumber !== tableNumber) {
+                notifications.tableNumberChanged(tableNumber, newTableNumber);
+              }
+              setTableNumber(newTableNumber);
+            }}
           />
         }
       >

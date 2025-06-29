@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNotifications } from "@/hooks/use-notifications";
 import { LayoutDashboard, ShoppingCart, Box } from "lucide-react";
 import { ResponsiveLayout } from "@/components/ui/responsive-layout";
 import { NavItem } from "@/components/ui/responsive-sidebar";
@@ -113,6 +114,7 @@ const sampleManagerOrders: ManagerOrder[] = [
 ];
 
 const ManagerOrders: React.FC = () => {
+  const { notifications } = useNotifications();
   const [orders, setOrders] = useState<ManagerOrder[]>(sampleManagerOrders);
   const [searchQuery, setSearchQuery] = useState("");
   const [timeFilter, setTimeFilter] = useState("");
@@ -140,7 +142,13 @@ const ManagerOrders: React.FC = () => {
 
         <ManagerOrdersFilters
           searchQuery={searchQuery}
-          onSearchChange={setSearchQuery}
+          onSearchChange={(query) => {
+            setSearchQuery(query);
+            if (query.length > 2) {
+              const results = filteredOrders.length;
+              notifications.searchPerformed(query, results);
+            }
+          }}
           timeFilter={timeFilter}
           onTimeFilterChange={setTimeFilter}
           dateFilter={dateFilter}

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNotifications } from "@/hooks/use-notifications";
 import { LayoutDashboard, ShoppingCart, Box } from "lucide-react";
 import { ResponsiveLayout } from "@/components/ui/responsive-layout";
 import { NavItem } from "@/components/ui/responsive-sidebar";
@@ -93,6 +94,7 @@ const sampleArticles: Article[] = [
 ];
 
 const ManagerArticles: React.FC = () => {
+  const { notifications } = useNotifications();
   const [articles, setArticles] = useState<Article[]>(sampleArticles);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -110,8 +112,16 @@ const ManagerArticles: React.FC = () => {
   });
 
   const handleAddToMenu = (articleId: string) => {
-    console.log("Adding article to menu:", articleId);
-    // Logique pour ajouter l'article au menu
+    try {
+      const article = articles.find((a) => a.id === articleId);
+      if (article) {
+        console.log("Adding article to menu:", articleId);
+        notifications.articleAddedToMenu(article.name);
+        // Logique pour ajouter l'article au menu
+      }
+    } catch (error) {
+      notifications.actionError("Ajout de l'article au menu");
+    }
   };
 
   return (
@@ -123,7 +133,13 @@ const ManagerArticles: React.FC = () => {
 
         <ManagerArticlesFilters
           searchQuery={searchQuery}
-          onSearchChange={setSearchQuery}
+          onSearchChange={(query) => {
+            setSearchQuery(query);
+            if (query.length > 2) {
+              const results = filteredArticles.length;
+              notifications.searchPerformed(query, results);
+            }
+          }}
           selectedCategory={selectedCategory}
           onCategoryChange={setSelectedCategory}
           priceFilter={priceFilter}

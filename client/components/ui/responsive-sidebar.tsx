@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { X, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useBreakpoint } from "@/hooks/use-mobile";
+import { useNotifications } from "@/hooks/use-notifications";
 
 export interface NavItem {
   href: string;
@@ -26,8 +27,14 @@ export function ResponsiveSidebar({
   onToggle,
   className,
 }: ResponsiveSidebarProps) {
+  const { notifications } = useNotifications();
   const breakpoint = useBreakpoint();
   const location = useLocation();
+
+  const handleToggle = () => {
+    notifications.sidebarToggled(!isOpen);
+    onToggle();
+  };
 
   // Auto-close sidebar on mobile when navigating
   React.useEffect(() => {
@@ -51,7 +58,7 @@ export function ResponsiveSidebar({
           </h1>
           {breakpoint === "mobile" && (
             <button
-              onClick={onToggle}
+              onClick={handleToggle}
               className="p-2 hover:bg-gray-100 rounded-lg transition-colors lg:hidden"
               aria-label="Close sidebar"
             >
@@ -106,7 +113,7 @@ export function ResponsiveSidebar({
         {isOpen && (
           <div
             className="fixed inset-0 z-40 bg-black bg-opacity-50 lg:hidden"
-            onClick={onToggle}
+            onClick={handleToggle}
           />
         )}
 
@@ -139,7 +146,7 @@ export function ResponsiveSidebar({
             {/* Collapsed header */}
             <div className="p-4 text-center border-b border-gray-100">
               <button
-                onClick={onToggle}
+                onClick={handleToggle}
                 className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
                 aria-label="Open sidebar"
               >
@@ -189,9 +196,16 @@ export function SidebarToggle({
   onToggle: () => void;
   className?: string;
 }) {
+  const { notifications } = useNotifications();
+
+  const handleToggle = () => {
+    notifications.sidebarToggled(true);
+    onToggle();
+  };
+
   return (
     <button
-      onClick={onToggle}
+      onClick={handleToggle}
       className={cn(
         "p-2 hover:bg-gray-100 rounded-lg transition-colors",
         className,
