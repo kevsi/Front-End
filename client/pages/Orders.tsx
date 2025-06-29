@@ -112,13 +112,9 @@ const Orders: React.FC = () => {
   });
 
   return (
-    <div className="flex h-screen bg-dashboard-gray">
-      <ResponsiveLayout
-        navItems={navItems}
-        header={<OrdersHeader />}
-        sidebarFooter={<OrdersHistorySidebar />}
-      >
-        <div className="p-4 lg:p-6">
+    <ResponsiveLayout navItems={navItems} header={<OrdersHeader />}>
+      <div className="flex flex-1 overflow-hidden">
+        <div className="flex-1 p-4 lg:p-6 overflow-auto">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
             <h2 className="text-xl lg:text-2xl font-bold text-dashboard-dark font-poppins">
               Mes commandes
@@ -143,8 +139,13 @@ const Orders: React.FC = () => {
             <OrdersTable orders={filteredOrders} />
           </div>
         </div>
-      </ResponsiveLayout>
-    </div>
+
+        {/* History Sidebar for desktop */}
+        <div className="hidden xl:block xl:w-80 flex-shrink-0">
+          <OrdersHistorySidebar />
+        </div>
+      </div>
+    </ResponsiveLayout>
   );
 };
 
