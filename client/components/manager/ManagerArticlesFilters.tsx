@@ -8,6 +8,7 @@ interface ManagerArticlesFiltersProps {
   onCategoryChange: (value: string) => void;
   priceFilter: string;
   onPriceFilterChange: (value: string) => void;
+  onNewArticleClick: () => void;
 }
 
 export const ManagerArticlesFilters: React.FC<ManagerArticlesFiltersProps> = ({
@@ -17,6 +18,7 @@ export const ManagerArticlesFilters: React.FC<ManagerArticlesFiltersProps> = ({
   onCategoryChange,
   priceFilter,
   onPriceFilterChange,
+  onNewArticleClick,
 }) => {
   return (
     <div className="bg-gray-50 rounded-xl border border-gray-200 p-4 lg:p-6">
@@ -58,10 +60,18 @@ export const ManagerArticlesFilters: React.FC<ManagerArticlesFiltersProps> = ({
           </div>
         </div>
 
-        {/* Add to Menu Button */}
-        <button className="bg-dashboard-yellow text-white px-6 py-3 rounded-lg font-inter text-sm font-medium hover:bg-dashboard-yellow/90 transition-colors whitespace-nowrap">
-          Sélections pour ajouter au menu
-        </button>
+        {/* Buttons Row */}
+        <div className="flex items-center gap-3">
+          <button className="bg-gray-300 text-black px-6 py-3 rounded-lg font-inter text-sm font-medium hover:bg-gray-400 transition-colors whitespace-nowrap">
+            Selectionner pour ajouter au menu
+          </button>
+          <button
+            onClick={onNewArticleClick}
+            className="bg-[#F8B602] text-white px-6 py-3 rounded-lg font-inter text-sm font-medium hover:bg-[#F8B602]/90 transition-colors whitespace-nowrap"
+          >
+            Nouvelle article
+          </button>
+        </div>
       </div>
     </div>
   );

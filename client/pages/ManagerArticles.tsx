@@ -6,6 +6,7 @@ import { NavItem } from "@/components/ui/responsive-sidebar";
 import { ManagerOrdersHeader } from "@/components/manager/ManagerOrdersHeader";
 import { ManagerArticlesFilters } from "@/components/manager/ManagerArticlesFilters";
 import { ManagerArticlesGrid } from "@/components/manager/ManagerArticlesGrid";
+import { NewArticleModal } from "@/components/manager/NewArticleModal";
 
 export interface Article {
   id: string;
@@ -99,6 +100,7 @@ const ManagerArticles: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [priceFilter, setPriceFilter] = useState("");
+  const [isNewArticleModalOpen, setIsNewArticleModalOpen] = useState(false);
 
   const filteredArticles = articles.filter((article) => {
     const matchesSearch =
@@ -124,6 +126,33 @@ const ManagerArticles: React.FC = () => {
     }
   };
 
+  const handleCreateArticle = (articleData: {
+    name: string;
+    category: string;
+    price: number;
+    quantity: number;
+    description: string;
+    image?: File;
+  }) => {
+    try {
+      const newArticle: Article = {
+        id: Date.now().toString(),
+        name: articleData.name,
+        price: articleData.price,
+        image: articleData.image
+          ? URL.createObjectURL(articleData.image)
+          : "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
+        category: articleData.category.toLowerCase(),
+      };
+
+      setArticles((prev) => [newArticle, ...prev]);
+      notifications.articleCreated(articleData.name);
+      setIsNewArticleModalOpen(false);
+    } catch (error) {
+      notifications.actionError("Création de l'article");
+    }
+  };
+
   return (
     <ResponsiveLayout navItems={navItems} header={<ManagerOrdersHeader />}>
       <div className="p-4 lg:p-6">
@@ -144,6 +173,7 @@ const ManagerArticles: React.FC = () => {
           onCategoryChange={setSelectedCategory}
           priceFilter={priceFilter}
           onPriceFilterChange={setPriceFilter}
+          onNewArticleClick={() => setIsNewArticleModalOpen(true)}
         />
 
         <div className="mt-6">
@@ -152,6 +182,12 @@ const ManagerArticles: React.FC = () => {
             onAddToMenu={handleAddToMenu}
           />
         </div>
+
+        <NewArticleModal
+          isOpen={isNewArticleModalOpen}
+          onClose={() => setIsNewArticleModalOpen(false)}
+          onSubmit={handleCreateArticle}
+        />
       </div>
     </ResponsiveLayout>
   );
