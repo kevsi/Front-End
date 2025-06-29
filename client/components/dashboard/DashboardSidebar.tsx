@@ -5,7 +5,7 @@ export function DashboardSidebar() {
     <div className="w-80 bg-white h-screen flex flex-col">
       {/* Logo/Brand */}
       <div className="p-6 text-center">
-        <h1 className="text-dashboard-dark text-3xl font-normal font-[Leckerli One]">
+        <h1 className="text-dashboard-dark text-3xl font-normal font-leckerli">
           Lounge Bar Le Cuivre
         </h1>
       </div>
