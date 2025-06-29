@@ -157,7 +157,7 @@ const ManagerArticles: React.FC = () => {
     <ResponsiveLayout navItems={navItems} header={<ManagerOrdersHeader />}>
       <div className="p-4 lg:p-6">
         <h2 className="text-xl lg:text-2xl font-bold text-dashboard-dark font-poppins mb-6">
-          Commandes
+          Articles
         </h2>
 
         <ManagerArticlesFilters
