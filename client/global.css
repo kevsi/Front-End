@@ -39,6 +39,12 @@
 
     --radius: 0.5rem;
 
+    /* Dashboard custom colors */
+    --dashboard-gray: 216 17% 96%;
+    --dashboard-yellow: 39 98% 49%;
+    --dashboard-dark: 0 0% 18%;
+    --dashboard-muted: 264 6% 63%;
+
     --sidebar-background: 0 0% 98%;
 
     --sidebar-foreground: 240 5.3% 26.1%;
