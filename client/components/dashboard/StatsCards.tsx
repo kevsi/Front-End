@@ -21,18 +21,20 @@ function StatCard({
   iconBg,
 }: StatCardProps) {
   return (
-    <Card className={`${bgGradient} border-0 shadow-lg`}>
+    <Card className={`${bgGradient} border-0 shadow-lg font-inter`}>
       <CardContent className="p-6">
         <div className="flex items-start justify-between mb-6">
           <div className="space-y-1">
-            <p className="text-sm font-medium text-opacity-80">{title}</p>
-            <p className="text-2xl font-bold">{value}</p>
+            <p className="text-sm font-medium opacity-70 leading-5 tracking-wide">
+              {title}
+            </p>
+            <p className="text-3xl font-bold leading-8">{value}</p>
           </div>
-          <div className={`p-3 rounded-xl ${iconBg} shadow-lg`}>{icon}</div>
+          <div className={`p-3.5 rounded-xl ${iconBg} shadow-lg`}>{icon}</div>
         </div>
         <div className="flex items-center gap-2">
           <div className={`w-2 h-2 rounded-full ${trendColor}`}></div>
-          <span className="text-xs font-medium">{trend}</span>
+          <span className="text-xs font-medium leading-4">{trend}</span>
         </div>
       </CardContent>
     </Card>
