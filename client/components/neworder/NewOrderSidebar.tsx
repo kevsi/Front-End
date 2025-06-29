@@ -1,4 +1,5 @@
 import { Grid3x3, Plus, ShoppingCart } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function NewOrderSidebar() {
   return (
