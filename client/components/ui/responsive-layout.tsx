@@ -1,0 +1,64 @@
+import React, { useState } from "react";
+import {
+  ResponsiveSidebar,
+  NavItem,
+  SidebarToggle,
+} from "./responsive-sidebar";
+import { useBreakpoint } from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
+
+interface ResponsiveLayoutProps {
+  children: React.ReactNode;
+  navItems: NavItem[];
+  header?: React.ReactNode;
+  sidebarFooter?: React.ReactNode;
+  className?: string;
+}
+
+export function ResponsiveLayout({
+  children,
+  navItems,
+  header,
+  sidebarFooter,
+  className,
+}: ResponsiveLayoutProps) {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const breakpoint = useBreakpoint();
+
+  const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
+
+  return (
+    <div className={cn("min-h-screen bg-dashboard-gray", className)}>
+      <div className="flex h-screen">
+        {/* Sidebar */}
+        <ResponsiveSidebar
+          navItems={navItems}
+          isOpen={sidebarOpen}
+          onToggle={toggleSidebar}
+        >
+          {sidebarFooter}
+        </ResponsiveSidebar>
+
+        {/* Main Content */}
+        <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+          {/* Header with mobile toggle */}
+          {header && (
+            <div className="flex-shrink-0">
+              {React.cloneElement(header as React.ReactElement, {
+                leftAction: breakpoint !== "desktop" && (
+                  <SidebarToggle
+                    onToggle={toggleSidebar}
+                    className="lg:hidden"
+                  />
+                ),
+              })}
+            </div>
+          )}
+
+          {/* Main content area */}
+          <main className="flex-1 overflow-auto">{children}</main>
+        </div>
+      </div>
+    </div>
+  );
+}
