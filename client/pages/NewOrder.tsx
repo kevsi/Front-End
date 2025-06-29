@@ -1,9 +1,11 @@
-import { NewOrderSidebar } from "@/components/neworder/NewOrderSidebar";
+import { Grid3x3, Plus, ShoppingCart } from "lucide-react";
 import { NewOrderHeader } from "@/components/neworder/NewOrderHeader";
 import { MenuFilters } from "@/components/neworder/MenuFilters";
 import { MenuGrid } from "@/components/neworder/MenuGrid";
 import { OrderCart } from "@/components/neworder/OrderCart";
 import { OrderSuccessModal } from "@/components/neworder/OrderSuccessModal";
+import { ResponsiveLayout } from "@/components/ui/responsive-layout";
+import { NavItem } from "@/components/ui/responsive-sidebar";
 import { useState } from "react";
 
 export interface MenuItem {
@@ -17,6 +19,25 @@ export interface MenuItem {
 export interface CartItem extends MenuItem {
   quantity: number;
 }
+
+const navItems: NavItem[] = [
+  {
+    href: "/dashboard",
+    icon: Grid3x3,
+    label: "Dashboard",
+  },
+  {
+    href: "/new-order",
+    icon: Plus,
+    label: "Nouveau",
+    isActive: true,
+  },
+  {
+    href: "/orders",
+    icon: ShoppingCart,
+    label: "Commandes",
+  },
+];
 
 export default function NewOrder() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -82,20 +103,16 @@ export default function NewOrder() {
   };
 
   return (
-    <div className="min-h-screen bg-dashboard-gray flex flex-col lg:flex-row">
-      {/* Sidebar */}
-      <div className="hidden lg:block">
-        <NewOrderSidebar />
-      </div>
-
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col">
-        {/* Header */}
-        <NewOrderHeader
-          tableNumber={tableNumber}
-          onTableNumberChange={setTableNumber}
-        />
-
+    <>
+      <ResponsiveLayout
+        navItems={navItems}
+        header={
+          <NewOrderHeader
+            tableNumber={tableNumber}
+            onTableNumberChange={setTableNumber}
+          />
+        }
+      >
         {/* Filters */}
         <div className="px-4 lg:px-6 py-4">
           <MenuFilters
@@ -108,10 +125,10 @@ export default function NewOrder() {
 
         {/* Content Area */}
         <div className="flex-1 px-4 lg:px-6 pb-6">
-          <div className="flex flex-col xl:flex-row gap-6 h-full">
+          <div className="flex flex-col xl:flex-row gap-4 lg:gap-6 h-full">
             {/* Menu Grid */}
-            <div className="flex-1">
-              <h2 className="text-xl lg:text-2xl font-bold text-dashboard-dark mb-6 font-poppins">
+            <div className="flex-1 min-w-0">
+              <h2 className="text-xl lg:text-2xl font-bold text-dashboard-dark mb-4 lg:mb-6 font-poppins">
                 Liste des articles
               </h2>
               <MenuGrid
@@ -134,10 +151,10 @@ export default function NewOrder() {
             </div>
           </div>
         </div>
-      </div>
+      </ResponsiveLayout>
 
       {/* Success Modal */}
       {showSuccessModal && <OrderSuccessModal onClose={handleCloseModal} />}
-    </div>
+    </>
   );
 }
