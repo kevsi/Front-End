@@ -38,7 +38,7 @@ export function NewOrderSidebar() {
 
           {/* Commandes */}
           <li>
-            <Link to="/dashboard">
+            <Link to="/orders">
               <div className="flex items-center gap-6 px-6 py-4 rounded-2xl hover:bg-gray-50 transition-colors">
                 <ShoppingCart className="w-10 h-10 text-dashboard-muted" />
                 <span className="text-dashboard-muted text-lg font-medium">
