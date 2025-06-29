@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import ResponsiveLayout from "../components/ui/responsive-layout";
+import { ResponsiveLayout } from "../components/ui/responsive-layout";
 import ManagerHeader from "../components/manager/ManagerHeader";
 import ManagerProductDetailsModal from "../components/manager/ManagerProductDetailsModal";
 
