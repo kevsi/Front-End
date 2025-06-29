@@ -106,13 +106,39 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
           </div>
 
           {/* Status Filter */}
-          <div className="flex items-center">
-            <div className="bg-gray-300 rounded-lg px-3 py-2 lg:px-4 lg:py-3 font-inter text-xs lg:text-sm">
-              Statut
+          <div className="relative">
+            <div className="flex items-center">
+              <div className="bg-gray-300 rounded-lg px-3 py-2 lg:px-4 lg:py-3 font-inter text-xs lg:text-sm">
+                {getCurrentStatusLabel()}
+              </div>
+              <button
+                onClick={() => setShowStatusDropdown(!showStatusDropdown)}
+                className="ml-2 bg-gray-100 border border-gray-300 rounded-lg p-2 lg:p-3 shadow-sm hover:bg-gray-200 transition-colors"
+              >
+                <Filter className="w-4 h-4 lg:w-5 lg:h-5 text-black" />
+              </button>
             </div>
-            <button className="ml-2 bg-gray-100 border border-gray-300 rounded-lg p-2 lg:p-3 shadow-sm hover:bg-gray-200 transition-colors">
-              <Filter className="w-4 h-4 lg:w-5 lg:h-5 text-black" />
-            </button>
+
+            {showStatusDropdown && (
+              <div className="absolute top-full left-0 mt-1 w-48 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+                {statusOptions.map((option) => (
+                  <button
+                    key={option.value}
+                    onClick={() => {
+                      onStatusFilterChange(option.value);
+                      setShowStatusDropdown(false);
+                    }}
+                    className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-100 transition-colors first:rounded-t-lg last:rounded-b-lg ${
+                      statusFilter === option.value
+                        ? "bg-blue-50 text-blue-600"
+                        : "text-gray-700"
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
