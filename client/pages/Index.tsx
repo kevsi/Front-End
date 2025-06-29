@@ -35,17 +35,28 @@ export default function Index() {
         </div>
 
         <div className="space-y-4">
-          <Link to="/dashboard">
-            <Button
-              size="lg"
-              className="bg-dashboard-yellow hover:bg-dashboard-yellow/90 text-white font-semibold px-8 py-3 rounded-lg"
-            >
-              View Dashboard
-            </Button>
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link to="/dashboard">
+              <Button
+                size="lg"
+                className="bg-dashboard-yellow hover:bg-dashboard-yellow/90 text-white font-semibold px-8 py-3 rounded-lg"
+              >
+                View Dashboard
+              </Button>
+            </Link>
+            <Link to="/new-order">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-dashboard-yellow text-dashboard-yellow hover:bg-dashboard-yellow hover:text-white font-semibold px-8 py-3 rounded-lg"
+              >
+                New Order
+              </Button>
+            </Link>
+          </div>
           <p className="text-sm text-slate-500">
-            Navigate to the restaurant dashboard to manage orders and view
-            analytics
+            Navigate to the restaurant dashboard to manage orders or create new
+            orders
           </p>
         </div>
       </div>
