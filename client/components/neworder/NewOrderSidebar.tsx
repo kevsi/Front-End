@@ -16,30 +16,36 @@ export function NewOrderSidebar() {
         <ul className="space-y-4">
           {/* Dashboard */}
           <li>
-            <div className="flex items-center gap-6 px-6 py-4 rounded-2xl hover:bg-gray-50 transition-colors">
-              <Grid3x3 className="w-10 h-10 text-dashboard-muted" />
-              <span className="text-dashboard-muted text-lg font-medium">
-                Dashboard
-              </span>
-            </div>
+            <Link to="/dashboard">
+              <div className="flex items-center gap-6 px-6 py-4 rounded-2xl hover:bg-gray-50 transition-colors">
+                <Grid3x3 className="w-10 h-10 text-dashboard-muted" />
+                <span className="text-dashboard-muted text-lg font-medium">
+                  Dashboard
+                </span>
+              </div>
+            </Link>
           </li>
 
           {/* Nouveau - Active */}
           <li>
-            <div className="flex items-center gap-6 px-6 py-4 bg-dashboard-yellow rounded-2xl shadow-sm">
-              <Plus className="w-10 h-10 text-white" />
-              <span className="text-white text-lg font-medium">Nouveau</span>
-            </div>
+            <Link to="/new-order">
+              <div className="flex items-center gap-6 px-6 py-4 bg-dashboard-yellow rounded-2xl shadow-sm">
+                <Plus className="w-10 h-10 text-white" />
+                <span className="text-white text-lg font-medium">Nouveau</span>
+              </div>
+            </Link>
           </li>
 
           {/* Commandes */}
           <li>
-            <div className="flex items-center gap-6 px-6 py-4 rounded-2xl hover:bg-gray-50 transition-colors">
-              <ShoppingCart className="w-10 h-10 text-dashboard-muted" />
-              <span className="text-dashboard-muted text-lg font-medium">
-                Commandes
-              </span>
-            </div>
+            <Link to="/dashboard">
+              <div className="flex items-center gap-6 px-6 py-4 rounded-2xl hover:bg-gray-50 transition-colors">
+                <ShoppingCart className="w-10 h-10 text-dashboard-muted" />
+                <span className="text-dashboard-muted text-lg font-medium">
+                  Commandes
+                </span>
+              </div>
+            </Link>
           </li>
         </ul>
       </nav>
