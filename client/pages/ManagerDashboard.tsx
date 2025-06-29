@@ -32,7 +32,7 @@ const navItems: NavItem[] = [
     label: "Commandes",
   },
   {
-    href: "#",
+    href: "/manager-articles",
     icon: Box,
     label: "Articles",
   },

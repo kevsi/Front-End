@@ -31,7 +31,7 @@ const navItems: NavItem[] = [
     isActive: true,
   },
   {
-    href: "#",
+    href: "/manager-articles",
     icon: Box,
     label: "Articles",
   },
