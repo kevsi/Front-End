@@ -49,23 +49,26 @@ export default function NewOrder() {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   const addToCart = (item: MenuItem) => {
-    setCartItems((prev) => {
-      const existingItem = prev.find((cartItem) => cartItem.id === item.id);
-      if (existingItem) {
-        notifications.quantityUpdated(item.name, existingItem.quantity + 1);
-        return prev.map((cartItem) =>
+    const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
+
+    if (existingItem) {
+      notifications.quantityUpdated(item.name, existingItem.quantity + 1);
+      setCartItems((prev) =>
+        prev.map((cartItem) =>
           cartItem.id === item.id
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem,
-        );
-      }
+        ),
+      );
+    } else {
       notifications.articleAdded(item.name);
-      return [...prev, { ...item, quantity: 1 }];
-    });
+      setCartItems((prev) => [...prev, { ...item, quantity: 1 }]);
+    }
   };
 
   const updateQuantity = (id: string, quantity: number) => {
     const item = cartItems.find((item) => item.id === id);
+
     if (quantity <= 0) {
       if (item) {
         notifications.articleRemoved(item.name);
