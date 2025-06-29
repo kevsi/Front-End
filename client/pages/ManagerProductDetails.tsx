@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { ResponsiveLayout } from "../components/ui/responsive-layout";
 import { NavItem } from "../components/ui/responsive-sidebar";
 import { LayoutDashboard, ShoppingCart, Box } from "lucide-react";
-import ManagerHeader from "../components/manager/ManagerHeader";
+import { ManagerHeader } from "../components/manager/ManagerHeader";
 import ManagerProductDetailsModal from "../components/manager/ManagerProductDetailsModal";
 
 const navItems: NavItem[] = [
