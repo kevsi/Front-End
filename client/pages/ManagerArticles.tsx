@@ -110,7 +110,25 @@ const ManagerArticles: React.FC = () => {
     const matchesCategory =
       selectedCategory === "" || article.category === selectedCategory;
 
-    return matchesSearch && matchesCategory;
+    const matchesPrice = () => {
+      if (priceFilter === "") return true;
+
+      const price = article.price;
+      switch (priceFilter) {
+        case "0-1000":
+          return price >= 0 && price <= 1000;
+        case "1000-3000":
+          return price > 1000 && price <= 3000;
+        case "3000-5000":
+          return price > 3000 && price <= 5000;
+        case "5000+":
+          return price > 5000;
+        default:
+          return true;
+      }
+    };
+
+    return matchesSearch && matchesCategory && matchesPrice();
   });
 
   const handleAddToMenu = (articleId: string) => {
