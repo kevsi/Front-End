@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Plus } from "lucide-react";
 import { ProductDetailsModal } from "./product-details-modal";
+import { useNotifications } from "@/hooks/use-notifications";
 
 interface MenuItemCardProps {
   item: {
@@ -23,7 +24,13 @@ export const MobileMenuItemCard: React.FC<MenuItemCardProps> = ({
   onNext,
   onPrevious,
 }) => {
+  const { notifications } = useNotifications();
   const [showDetails, setShowDetails] = useState(false);
+
+  const handleShowDetails = () => {
+    setShowDetails(true);
+    notifications.actionSuccess(`Affichage des détails de ${item.name}`);
+  };
 
   const productWithDescription = {
     ...item,
@@ -35,7 +42,7 @@ export const MobileMenuItemCard: React.FC<MenuItemCardProps> = ({
   return (
     <>
       <div
-        onClick={() => setShowDetails(true)}
+        onClick={handleShowDetails}
         className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
       >
         {/* Article Image */}

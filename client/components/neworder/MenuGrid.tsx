@@ -1,5 +1,7 @@
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { MobileMenuItemCard } from "@/components/ui/mobile-menu-item-card";
+import { useBreakpoint } from "@/hooks/use-mobile";
 import type { MenuItem } from "@/pages/NewOrder";
 
 interface MenuGridProps {
@@ -9,154 +11,85 @@ interface MenuGridProps {
 }
 
 // Sample menu data - in a real app this would come from an API
-const menuItems: MenuItem[] = [
-  {
-    id: "1",
-    name: "Mojito",
-    price: 4000,
-    image: "/placeholder.svg",
-    category: "cocktails",
-  },
-  {
-    id: "2",
-    name: "Daiquiri",
-    price: 4000,
-    image: "/placeholder.svg",
-    category: "cocktails",
-  },
-  {
-    id: "3",
-    name: "Mojito",
-    price: 4000,
-    image: "/placeholder.svg",
-    category: "cocktails",
-  },
-  {
-    id: "4",
-    name: "Mojito",
-    price: 4000,
-    image: "/placeholder.svg",
-    category: "cocktails",
-  },
-  {
-    id: "5",
-    name: "Mojito",
-    price: 4000,
-    image: "/placeholder.svg",
-    category: "cocktails",
-  },
-  {
-    id: "6",
-    name: "Mojito",
-    price: 4000,
-    image: "/placeholder.svg",
-    category: "cocktails",
-  },
-  {
-    id: "7",
-    name: "Daiquiri",
-    price: 4000,
-    image: "/placeholder.svg",
-    category: "cocktails",
-  },
-  {
-    id: "8",
-    name: "Mojito",
-    price: 4000,
-    image: "/placeholder.svg",
-    category: "cocktails",
-  },
-  {
-    id: "9",
-    name: "Mojito",
-    price: 4000,
-    image: "/placeholder.svg",
-    category: "cocktails",
-  },
-  {
-    id: "10",
-    name: "Mojito",
-    price: 4000,
-    image: "/placeholder.svg",
-    category: "cocktails",
-  },
-  {
-    id: "11",
-    name: "Mojito",
-    price: 4000,
-    image: "/placeholder.svg",
-    category: "cocktails",
-  },
-  {
-    id: "12",
-    name: "Daiquiri",
-    price: 4000,
-    image: "/placeholder.svg",
-    category: "cocktails",
-  },
-  {
-    id: "13",
-    name: "Mojito",
-    price: 4000,
-    image: "/placeholder.svg",
-    category: "cocktails",
-  },
-  {
-    id: "14",
-    name: "Mojito",
-    price: 4000,
-    image: "/placeholder.svg",
-    category: "cocktails",
-  },
-  {
-    id: "15",
-    name: "Mojito",
-    price: 4000,
-    image: "/placeholder.svg",
-    category: "cocktails",
-  },
-  {
-    id: "16",
-    name: "Mojito",
-    price: 4000,
-    image: "/placeholder.svg",
-    category: "cocktails",
-  },
-  {
-    id: "17",
-    name: "Daiquiri",
-    price: 4000,
-    image: "/placeholder.svg",
-    category: "cocktails",
-  },
-  {
-    id: "18",
-    name: "Mojito",
-    price: 4000,
-    image: "/placeholder.svg",
-    category: "cocktails",
-  },
-  {
-    id: "19",
-    name: "Mojito",
-    price: 4000,
-    image: "/placeholder.svg",
-    category: "cocktails",
-  },
-  {
-    id: "20",
-    name: "Mojito",
-    price: 4000,
-    image: "/placeholder.svg",
-    category: "cocktails",
-  },
-];
+const menuItems: (MenuItem & { isPopular?: boolean; description?: string })[] =
+  [
+    {
+      id: "1",
+      name: "Kir Royale",
+      price: 20000,
+      image:
+        "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F3c639019e64345d6b4f2b67b537ac1c3?format=webp&width=800",
+      category: "champagne",
+      isPopular: true,
+      description:
+        "Nulla occaecat velit laborum exercitation ullamco. Elit labore eu aute elit nostrud culpa velit excepteur deserunt sunt. Velit non est cillum consequat cupidatat ex Lorem laboris labore aliqua ad duis eu laborum.",
+    },
+    {
+      id: "2",
+      name: "Mojito",
+      price: 4000,
+      image:
+        "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
+      category: "cocktails",
+      isPopular: true,
+    },
+    {
+      id: "3",
+      name: "Daiquiri",
+      price: 4000,
+      image:
+        "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
+      category: "cocktails",
+    },
+    {
+      id: "4",
+      name: "Mojito",
+      price: 4000,
+      image:
+        "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
+      category: "cocktails",
+    },
+    {
+      id: "5",
+      name: "Margarita",
+      price: 4500,
+      image:
+        "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
+      category: "cocktails",
+    },
+    {
+      id: "6",
+      name: "Mojito",
+      price: 4000,
+      image:
+        "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
+      category: "cocktails",
+    },
+    {
+      id: "7",
+      name: "Daiquiri",
+      price: 4000,
+      image:
+        "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
+      category: "cocktails",
+    },
+    {
+      id: "8",
+      name: "Cuba Libre",
+      price: 3500,
+      image:
+        "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
+      category: "cocktails",
+    },
+  ];
 
 export function MenuGrid({
   searchQuery,
   selectedCategory,
   onAddToCart,
 }: MenuGridProps) {
+  const breakpoint = useBreakpoint();
+
   const filteredItems = menuItems.filter((item) => {
     const matchesSearch = item.name
       .toLowerCase()
@@ -166,6 +99,24 @@ export function MenuGrid({
     return matchesSearch && matchesCategory;
   });
 
+  // Mobile layout with details modal
+  if (breakpoint === "mobile") {
+    return (
+      <div className="grid grid-cols-2 gap-4">
+        {filteredItems.map((item, index) => (
+          <MobileMenuItemCard
+            key={item.id}
+            item={item}
+            onAddToCart={onAddToCart}
+            onNext={index < filteredItems.length - 1 ? () => {} : undefined}
+            onPrevious={index > 0 ? () => {} : undefined}
+          />
+        ))}
+      </div>
+    );
+  }
+
+  // Desktop layout (existing)
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
       {filteredItems.map((item) => (
@@ -190,7 +141,7 @@ export function MenuGrid({
               {item.name}
             </h3>
             <p className="text-dashboard-yellow font-bold text-lg font-poppins">
-              ${item.price}
+              {item.price}F
             </p>
           </div>
 
