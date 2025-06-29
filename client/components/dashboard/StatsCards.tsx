@@ -49,7 +49,7 @@ export function StatsCards() {
       icon: <ClipboardList className="w-5 h-5 text-white" />,
       trend: "+12% ce mois",
       trendColor: "bg-green-500",
-      bgGradient: "bg-white",
+      bgGradient: "bg-white text-blue-900",
       iconBg: "bg-blue-500",
     },
     {
@@ -58,7 +58,7 @@ export function StatsCards() {
       icon: <DollarSign className="w-5 h-5 text-white" />,
       trend: "+8.2% ce mois",
       trendColor: "bg-green-500",
-      bgGradient: "bg-gradient-to-r from-green-50 to-emerald-50",
+      bgGradient: "bg-gradient-to-r from-green-50 to-emerald-50 text-green-800",
       iconBg: "bg-green-500",
     },
     {
@@ -67,7 +67,7 @@ export function StatsCards() {
       icon: <Clock className="w-5 h-5 text-white" />,
       trend: "Urgent",
       trendColor: "bg-red-500",
-      bgGradient: "bg-gradient-to-r from-red-50 to-rose-50",
+      bgGradient: "bg-gradient-to-r from-red-50 to-rose-50 text-red-900",
       iconBg: "bg-red-500",
     },
     {
@@ -76,7 +76,7 @@ export function StatsCards() {
       icon: <CheckCircle className="w-5 h-5 text-white" />,
       trend: "100% complétées",
       trendColor: "bg-green-500",
-      bgGradient: "bg-gradient-to-r from-yellow-50 to-amber-50",
+      bgGradient: "bg-gradient-to-r from-yellow-50 to-amber-50 text-yellow-900",
       iconBg: "bg-yellow-500",
     },
     {
@@ -85,7 +85,7 @@ export function StatsCards() {
       icon: <Clock className="w-5 h-5 text-white" />,
       trend: "En cours",
       trendColor: "bg-green-500",
-      bgGradient: "bg-gradient-to-r from-blue-50 to-cyan-50",
+      bgGradient: "bg-gradient-to-r from-blue-50 to-cyan-50 text-blue-900",
       iconBg: "bg-blue-400",
     },
   ];
