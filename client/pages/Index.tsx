@@ -1,5 +1,7 @@
 import { DemoResponse } from "@shared/api";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export default function Index() {
   const [messageFromServer, setMessageFromServer] = useState("");
