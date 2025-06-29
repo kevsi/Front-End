@@ -72,7 +72,7 @@ const sampleOrders: Order[] = [
   },
 ];
 
-export const Orders: React.FC = () => {
+const Orders: React.FC = () => {
   const [orders, setOrders] = useState<Order[]>(sampleOrders);
   const [searchQuery, setSearchQuery] = useState("");
   const [timeFilter, setTimeFilter] = useState("");
