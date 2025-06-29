@@ -208,6 +208,14 @@ export default function Index() {
           />
 
           <ActionCard
+            title="Commandes Manager"
+            description="Gérer toutes les commandes en tant que responsable."
+            icon={<ShoppingCart className="w-6 h-6 lg:w-8 lg:h-8" />}
+            href="/manager-orders"
+            color="purple"
+          />
+
+          <ActionCard
             title="Statistiques"
             description="Analysez les performances et les tendances de vente."
             icon={<TrendingUp className="w-6 h-6 lg:w-8 lg:h-8" />}

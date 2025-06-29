@@ -27,7 +27,7 @@ const navItems: NavItem[] = [
     isActive: true,
   },
   {
-    href: "/orders",
+    href: "/manager-orders",
     icon: ShoppingCart,
     label: "Commandes",
   },
