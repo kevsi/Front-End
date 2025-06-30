@@ -28,7 +28,13 @@ export function ResponsiveLayout({
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
   return (
-    <div className={cn("min-h-screen bg-dashboard-gray text-sm", className)}>
+    <div
+      className={cn(
+        "min-h-screen bg-dashboard-gray text-xs leading-tight",
+        className,
+      )}
+      style={{ fontSize: "11px" }}
+    >
       <div className="flex h-screen">
         {/* Sidebar */}
         <ResponsiveSidebar
@@ -56,7 +62,12 @@ export function ResponsiveLayout({
           )}
 
           {/* Main content area */}
-          <main className="flex-1 overflow-auto text-sm">{children}</main>
+          <main
+            className="flex-1 overflow-auto text-xs leading-tight"
+            style={{ fontSize: "11px" }}
+          >
+            {children}
+          </main>
         </div>
       </div>
     </div>

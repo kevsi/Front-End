@@ -9,6 +9,9 @@
    * A different format will require also updating the theme in tailwind.config.ts.
   */
   :root {
+    /* Ultra-compact base size like Builder.io */
+    font-size: 12px;
+
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
