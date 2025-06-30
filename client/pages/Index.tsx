@@ -83,14 +83,14 @@ interface FeatureCardProps {
 
 function FeatureCard({ title, description, icon }: FeatureCardProps) {
   return (
-    <div className="text-center p-3 lg:p-4 bg-white rounded-lg shadow-sm border border-gray-100">
-      <div className="inline-flex items-center justify-center w-8 h-8 lg:w-10 lg:h-10 bg-dashboard-yellow rounded-md mb-2 lg:mb-3 text-white">
+    <div className="text-center p-2 sm:p-3 lg:p-4 bg-white rounded-lg shadow-sm border border-gray-100">
+      <div className="inline-flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 bg-dashboard-yellow rounded-md mb-1.5 sm:mb-2 lg:mb-3 text-white">
         {icon}
       </div>
-      <h3 className="text-base lg:text-lg font-semibold text-dashboard-dark mb-1 lg:mb-2 font-poppins">
+      <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-dashboard-dark mb-0.5 sm:mb-1 lg:mb-2 font-poppins">
         {title}
       </h3>
-      <p className="text-xs lg:text-sm text-dashboard-muted font-inter">
+      <p className="text-xs sm:text-xs lg:text-sm text-dashboard-muted font-inter">
         {description}
       </p>
     </div>
