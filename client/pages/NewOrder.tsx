@@ -141,7 +141,7 @@ export default function NewOrder() {
         }
       >
         {/* Filters */}
-        <div className="px-4 lg:px-6 py-4">
+        <div className="px-4 lg:px-6 py-3">
           <MenuFilters
             searchQuery={searchQuery}
             onSearchChange={setSearchQuery}
@@ -151,11 +151,11 @@ export default function NewOrder() {
         </div>
 
         {/* Content Area */}
-        <div className="flex-1 px-4 lg:px-6 pb-6">
-          <div className="flex flex-col xl:flex-row gap-4 lg:gap-6 h-full">
+        <div className="flex-1 px-4 lg:px-6 pb-4">
+          <div className="flex flex-col xl:flex-row gap-3 lg:gap-4 h-full">
             {/* Menu Grid */}
             <div className="flex-1 min-w-0">
-              <h2 className="text-xl lg:text-2xl font-bold text-dashboard-dark mb-4 lg:mb-6 font-poppins">
+              <h2 className="text-lg lg:text-xl font-semibold text-dashboard-dark mb-3 lg:mb-4 font-poppins">
                 Liste des articles
               </h2>
               <MenuGrid
@@ -166,7 +166,7 @@ export default function NewOrder() {
             </div>
 
             {/* Order Cart */}
-            <div className="w-full xl:w-96 flex-shrink-0">
+            <div className="w-full xl:w-80 flex-shrink-0">
               <OrderCart
                 items={cartItems}
                 onUpdateQuantity={updateQuantity}

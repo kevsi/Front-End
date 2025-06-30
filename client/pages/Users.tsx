@@ -139,8 +139,8 @@ export default function Users() {
       <main className="flex-1 flex flex-col">
         <UsersHeader />
 
-        <div className="flex-1 px-6 py-8">
-          <h1 className="text-2xl font-bold text-dashboard-dark mb-8 font-poppins">
+        <div className="flex-1 px-4 lg:px-6 py-4 lg:py-6">
+          <h1 className="text-lg lg:text-xl font-semibold text-dashboard-dark mb-4 lg:mb-6 font-poppins">
             Utilisateurs
           </h1>
 
@@ -155,7 +155,7 @@ export default function Users() {
             onNewUser={handleNewUser}
           />
 
-          <div className="mt-8">
+          <div className="mt-4 lg:mt-6">
             <UsersTable users={filteredUsers} onUserAction={handleUserAction} />
           </div>
         </div>

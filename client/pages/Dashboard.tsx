@@ -30,21 +30,21 @@ export default function Dashboard() {
   return (
     <ResponsiveLayout navItems={navItems} header={<DashboardHeader />}>
       {/* Stats Cards */}
-      <div className="px-4 lg:px-6 py-4">
+      <div className="px-4 lg:px-6 py-3">
         <StatsCards />
       </div>
 
       {/* Promo Banners */}
-      <div className="px-4 lg:px-6 py-4">
+      <div className="px-4 lg:px-6 py-2">
         <PromoBanner />
       </div>
 
       {/* Orders Section */}
-      <div className="flex-1 px-4 lg:px-6 pb-6">
-        <div className="flex flex-col xl:flex-row gap-4 lg:gap-6 h-full">
+      <div className="flex-1 px-4 lg:px-6 pb-4">
+        <div className="flex flex-col xl:flex-row gap-3 lg:gap-4 h-full">
           {/* Orders Table */}
           <div className="flex-1 min-w-0">
-            <h2 className="text-xl lg:text-2xl font-bold text-dashboard-dark mb-4 lg:mb-6 font-poppins">
+            <h2 className="text-lg lg:text-xl font-semibold text-dashboard-dark mb-3 lg:mb-4 font-poppins">
               Commandes récentes
             </h2>
             <OrderTable />
