@@ -30,10 +30,10 @@ export function ResponsiveLayout({
   return (
     <div
       className={cn(
-        "min-h-screen bg-dashboard-gray text-xs leading-tight",
+        "min-h-screen bg-dashboard-gray text-sm leading-normal",
         className,
       )}
-      style={{ fontSize: "11px" }}
+      style={{ fontSize: "13px" }}
     >
       <div className="flex h-screen">
         {/* Sidebar */}
@@ -63,8 +63,8 @@ export function ResponsiveLayout({
 
           {/* Main content area */}
           <main
-            className="flex-1 overflow-auto text-xs leading-tight"
-            style={{ fontSize: "11px" }}
+            className="flex-1 overflow-auto text-sm leading-normal"
+            style={{ fontSize: "13px" }}
           >
             {children}
           </main>
