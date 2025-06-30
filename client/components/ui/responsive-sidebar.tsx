@@ -120,7 +120,7 @@ export function ResponsiveSidebar({
         {/* Mobile sidebar */}
         <div
           className={cn(
-            "fixed inset-y-0 left-0 z-50 w-80 transform transition-transform duration-300 ease-in-out lg:hidden",
+            "fixed inset-y-0 left-0 z-50 w-64 sm:w-72 lg:w-80 transform transition-transform duration-300 ease-in-out lg:hidden",
             isOpen ? "translate-x-0" : "-translate-x-full",
           )}
         >
@@ -136,7 +136,7 @@ export function ResponsiveSidebar({
       <div
         className={cn(
           "transition-all duration-300 ease-in-out bg-white border-r border-gray-200",
-          isOpen ? "w-80" : "w-20",
+          isOpen ? "w-64 sm:w-72" : "w-16 sm:w-20",
         )}
       >
         {isOpen ? (
@@ -186,7 +186,11 @@ export function ResponsiveSidebar({
   }
 
   // Desktop: Always open
-  return <div className="w-80 flex-shrink-0">{sidebarContent}</div>;
+  return (
+    <div className="w-56 sm:w-64 lg:w-72 xl:w-80 flex-shrink-0">
+      {sidebarContent}
+    </div>
+  );
 }
 
 export function SidebarToggle({
