@@ -54,19 +54,19 @@ function ActionCard({
   return (
     <Link
       to={href}
-      className={`block p-3 lg:p-4 rounded-lg border transition-all duration-200 hover:shadow-md hover:scale-[1.02] ${colorClasses[color]}`}
+      className={`block p-2 sm:p-3 lg:p-4 rounded-lg border transition-all duration-200 hover:shadow-md hover:scale-[1.02] ${colorClasses[color]}`}
     >
-      <div className="flex items-start gap-2 lg:gap-3">
+      <div className="flex items-start gap-2 sm:gap-2.5 lg:gap-3">
         <div
-          className={`p-1.5 lg:p-2 rounded-md bg-white shadow-sm ${iconColorClasses[color]} flex-shrink-0`}
+          className={`p-1 sm:p-1.5 lg:p-2 rounded-md bg-white shadow-sm ${iconColorClasses[color]} flex-shrink-0`}
         >
           {icon}
         </div>
         <div className="flex-1 min-w-0">
-          <h3 className="text-base lg:text-lg font-semibold text-dashboard-dark mb-1 font-poppins">
+          <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-dashboard-dark mb-0.5 sm:mb-1 font-poppins">
             {title}
           </h3>
-          <p className="text-xs lg:text-sm text-dashboard-muted font-inter">
+          <p className="text-xs sm:text-xs lg:text-sm text-dashboard-muted font-inter">
             {description}
           </p>
         </div>
