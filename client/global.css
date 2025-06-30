@@ -164,82 +164,154 @@
     display: none;
   }
 
-  /* Global size reductions - force smaller sizes across all components */
+  /* Builder.io-style ultra-compact sizes - extremely small like mobile */
 
-  /* Reduce all large text */
-  .text-3xl,
+  /* Force body to be smaller */
+  body {
+    @apply text-xs;
+  }
+
+  /* Ultra-compact text sizes */
+  .text-5xl,
   .text-4xl,
-  .text-5xl {
-    @apply text-lg sm:text-xl lg:text-2xl;
+  .text-3xl {
+    @apply text-sm lg:text-base;
   }
 
   .text-2xl {
-    @apply text-base sm:text-lg lg:text-xl;
+    @apply text-xs lg:text-sm;
   }
 
   .text-xl {
-    @apply text-sm sm:text-base lg:text-lg;
+    @apply text-xs;
   }
 
-  /* Reduce large padding */
+  .text-lg {
+    @apply text-xs;
+  }
+
+  .text-base {
+    @apply text-xs;
+  }
+
+  /* Ultra-compact padding */
+  .p-8,
   .p-6,
-  .p-8 {
-    @apply p-2 sm:p-3 lg:p-4;
+  .p-5,
+  .p-4 {
+    @apply p-1 lg:p-2;
   }
 
+  .px-8,
   .px-6,
-  .px-8 {
-    @apply px-2 sm:px-3 lg:px-4;
+  .px-5,
+  .px-4 {
+    @apply px-1 lg:px-2;
   }
 
+  .py-8,
   .py-6,
-  .py-8 {
-    @apply py-2 sm:py-3 lg:py-4;
+  .py-5,
+  .py-4 {
+    @apply py-1 lg:py-2;
   }
 
-  /* Reduce large gaps */
+  .p-3 {
+    @apply p-1;
+  }
+
+  /* Ultra-compact gaps */
+  .gap-8,
   .gap-6,
-  .gap-8 {
-    @apply gap-2 sm:gap-3 lg:gap-4;
+  .gap-5,
+  .gap-4 {
+    @apply gap-1 lg:gap-2;
   }
 
-  /* Reduce large margins */
+  .gap-3 {
+    @apply gap-1;
+  }
+
+  /* Ultra-compact margins */
+  .mb-8,
   .mb-6,
-  .mb-8 {
-    @apply mb-2 sm:mb-3 lg:mb-4;
+  .mb-5,
+  .mb-4 {
+    @apply mb-1 lg:mb-2;
   }
 
+  .mt-8,
   .mt-6,
-  .mt-8 {
-    @apply mt-2 sm:mt-3 lg:mt-4;
+  .mt-5,
+  .mt-4 {
+    @apply mt-1 lg:mt-2;
   }
 
-  /* Reduce large heights */
-  .h-12,
+  .mb-3 {
+    @apply mb-1;
+  }
+
+  .mt-3 {
+    @apply mt-1;
+  }
+
+  /* Ultra-compact heights */
+  .h-16,
   .h-14,
-  .h-16 {
-    @apply h-8 sm:h-9 lg:h-10;
+  .h-12,
+  .h-10 {
+    @apply h-6 lg:h-7;
   }
 
-  /* Reduce large widths */
-  .w-12,
+  .h-8 {
+    @apply h-5 lg:h-6;
+  }
+
+  /* Ultra-compact widths */
+  .w-16,
   .w-14,
-  .w-16 {
-    @apply w-8 sm:w-9 lg:w-10;
+  .w-12,
+  .w-10 {
+    @apply w-6 lg:w-7;
   }
 
-  /* Force smaller icons */
+  .w-8 {
+    @apply w-5 lg:w-6;
+  }
+
+  /* Force tiny icons like Builder.io */
   svg {
-    @apply w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6;
+    @apply w-3 h-3 lg:w-4 lg:h-4 !important;
   }
 
-  /* Reduce button sizes */
+  /* Ultra-compact buttons */
   button {
-    @apply text-sm;
+    @apply text-xs py-0.5 px-1 lg:py-1 lg:px-2;
   }
 
-  /* Reduce card padding */
-  .rounded-2xl {
-    @apply rounded-lg lg:rounded-xl;
+  /* Minimal border radius */
+  .rounded-2xl,
+  .rounded-xl {
+    @apply rounded lg:rounded-md;
+  }
+
+  /* Compact cards */
+  .shadow-lg {
+    @apply shadow-sm;
+  }
+
+  /* Force minimal line heights */
+  * {
+    line-height: 1.2;
+  }
+
+  /* Ultra-compact headers */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-xs lg:text-sm leading-tight;
   }
 }
