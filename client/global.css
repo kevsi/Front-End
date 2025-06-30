@@ -163,4 +163,83 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  /* Global size reductions - force smaller sizes across all components */
+
+  /* Reduce all large text */
+  .text-3xl,
+  .text-4xl,
+  .text-5xl {
+    @apply text-lg sm:text-xl lg:text-2xl;
+  }
+
+  .text-2xl {
+    @apply text-base sm:text-lg lg:text-xl;
+  }
+
+  .text-xl {
+    @apply text-sm sm:text-base lg:text-lg;
+  }
+
+  /* Reduce large padding */
+  .p-6,
+  .p-8 {
+    @apply p-2 sm:p-3 lg:p-4;
+  }
+
+  .px-6,
+  .px-8 {
+    @apply px-2 sm:px-3 lg:px-4;
+  }
+
+  .py-6,
+  .py-8 {
+    @apply py-2 sm:py-3 lg:py-4;
+  }
+
+  /* Reduce large gaps */
+  .gap-6,
+  .gap-8 {
+    @apply gap-2 sm:gap-3 lg:gap-4;
+  }
+
+  /* Reduce large margins */
+  .mb-6,
+  .mb-8 {
+    @apply mb-2 sm:mb-3 lg:mb-4;
+  }
+
+  .mt-6,
+  .mt-8 {
+    @apply mt-2 sm:mt-3 lg:mt-4;
+  }
+
+  /* Reduce large heights */
+  .h-12,
+  .h-14,
+  .h-16 {
+    @apply h-8 sm:h-9 lg:h-10;
+  }
+
+  /* Reduce large widths */
+  .w-12,
+  .w-14,
+  .w-16 {
+    @apply w-8 sm:w-9 lg:w-10;
+  }
+
+  /* Force smaller icons */
+  svg {
+    @apply w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6;
+  }
+
+  /* Reduce button sizes */
+  button {
+    @apply text-sm;
+  }
+
+  /* Reduce card padding */
+  .rounded-2xl {
+    @apply rounded-lg lg:rounded-xl;
+  }
 }
