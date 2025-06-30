@@ -9,6 +9,9 @@
    * A different format will require also updating the theme in tailwind.config.ts.
   */
   :root {
+    /* Compact but readable base size */
+    font-size: 14px;
+
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -162,5 +165,156 @@
 
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Builder.io-style ultra-compact sizes - extremely small like mobile */
+
+  /* Force body to be compact but readable */
+  body {
+    @apply text-sm;
+  }
+
+  /* Compact text sizes */
+  .text-5xl,
+  .text-4xl,
+  .text-3xl {
+    @apply text-base lg:text-lg;
+  }
+
+  .text-2xl {
+    @apply text-sm lg:text-base;
+  }
+
+  .text-xl {
+    @apply text-sm;
+  }
+
+  .text-lg {
+    @apply text-sm;
+  }
+
+  .text-base {
+    @apply text-sm;
+  }
+
+  /* Compact padding */
+  .p-8,
+  .p-6,
+  .p-5,
+  .p-4 {
+    @apply p-2 lg:p-3;
+  }
+
+  .px-8,
+  .px-6,
+  .px-5,
+  .px-4 {
+    @apply px-2 lg:px-3;
+  }
+
+  .py-8,
+  .py-6,
+  .py-5,
+  .py-4 {
+    @apply py-2 lg:py-3;
+  }
+
+  .p-3 {
+    @apply p-1.5;
+  }
+
+  /* Compact gaps */
+  .gap-8,
+  .gap-6,
+  .gap-5,
+  .gap-4 {
+    @apply gap-2 lg:gap-3;
+  }
+
+  .gap-3 {
+    @apply gap-1.5;
+  }
+
+  /* Compact margins */
+  .mb-8,
+  .mb-6,
+  .mb-5,
+  .mb-4 {
+    @apply mb-2 lg:mb-3;
+  }
+
+  .mt-8,
+  .mt-6,
+  .mt-5,
+  .mt-4 {
+    @apply mt-2 lg:mt-3;
+  }
+
+  .mb-3 {
+    @apply mb-1.5;
+  }
+
+  .mt-3 {
+    @apply mt-1.5;
+  }
+
+  /* Compact heights */
+  .h-16,
+  .h-14,
+  .h-12,
+  .h-10 {
+    @apply h-7 lg:h-8;
+  }
+
+  .h-8 {
+    @apply h-6 lg:h-7;
+  }
+
+  /* Compact widths */
+  .w-16,
+  .w-14,
+  .w-12,
+  .w-10 {
+    @apply w-7 lg:w-8;
+  }
+
+  .w-8 {
+    @apply w-6 lg:w-7;
+  }
+
+  /* Compact but visible icons */
+  svg {
+    @apply w-4 h-4 lg:w-5 lg:h-5 !important;
+  }
+
+  /* Compact buttons */
+  button {
+    @apply text-sm py-1 px-2 lg:py-1.5 lg:px-3;
+  }
+
+  /* Minimal border radius */
+  .rounded-2xl,
+  .rounded-xl {
+    @apply rounded lg:rounded-md;
+  }
+
+  /* Compact cards */
+  .shadow-lg {
+    @apply shadow-sm;
+  }
+
+  /* Readable line heights */
+  * {
+    line-height: 1.4;
+  }
+
+  /* Compact headers */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-sm lg:text-base leading-snug;
   }
 }

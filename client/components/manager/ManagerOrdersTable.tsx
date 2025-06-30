@@ -40,73 +40,73 @@ export const ManagerOrdersTable: React.FC<ManagerOrdersTableProps> = ({
   orders,
 }) => {
   return (
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+    <div className="bg-white rounded-lg lg:rounded-xl shadow-sm lg:shadow-lg overflow-hidden">
       {/* Desktop Table Header - Hidden on mobile */}
-      <div className="hidden lg:block p-4 lg:p-6">
-        <div className="grid grid-cols-7 gap-4">
-          <div className="text-center font-poppins font-bold text-sm lg:text-base text-black">
+      <div className="hidden lg:block p-2 sm:p-3 lg:p-4 xl:p-6">
+        <div className="grid grid-cols-7 gap-2 sm:gap-3 lg:gap-4">
+          <div className="text-center font-poppins font-bold text-xs sm:text-sm lg:text-base text-black">
             N° de commande
           </div>
-          <div className="text-center font-poppins font-bold text-sm lg:text-base text-black">
+          <div className="text-center font-poppins font-bold text-xs sm:text-sm lg:text-base text-black">
             N° de table
           </div>
-          <div className="text-center font-poppins font-bold text-sm lg:text-base text-black">
+          <div className="text-center font-poppins font-bold text-xs sm:text-sm lg:text-base text-black">
             Nombres d'articles
           </div>
-          <div className="text-center font-poppins font-bold text-sm lg:text-base text-black">
+          <div className="text-center font-poppins font-bold text-xs sm:text-sm lg:text-base text-black">
             Prix total
           </div>
-          <div className="text-center font-poppins font-bold text-sm lg:text-base text-black">
+          <div className="text-center font-poppins font-bold text-xs sm:text-sm lg:text-base text-black">
             Statut
           </div>
-          <div className="text-center font-poppins font-bold text-sm lg:text-base text-black">
+          <div className="text-center font-poppins font-bold text-xs sm:text-sm lg:text-base text-black">
             Serveur
           </div>
-          <div className="text-center font-poppins font-bold text-sm lg:text-base text-black">
+          <div className="text-center font-poppins font-bold text-xs sm:text-sm lg:text-base text-black">
             Actions
           </div>
         </div>
       </div>
 
       {/* Table Body */}
-      <div className="bg-gray-50 p-3 lg:p-4 space-y-3">
+      <div className="bg-gray-50 p-2 sm:p-3 lg:p-4 space-y-2 sm:space-y-3">
         {orders.map((order, index) => (
           <div
             key={order.id}
-            className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm hover:shadow-md transition-shadow"
+            className="bg-white rounded-lg lg:rounded-xl border border-gray-200 p-2 sm:p-3 lg:p-4 shadow-sm hover:shadow-md transition-shadow"
           >
             {/* Mobile Layout */}
-            <div className="lg:hidden space-y-4">
+            <div className="lg:hidden space-y-2 sm:space-y-3 lg:space-y-4">
               {/* Header Row */}
               <div className="flex justify-between items-start">
-                <div className="flex items-center gap-3">
-                  <div className="bg-gray-100 border border-gray-200 rounded-lg px-3 py-1">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="bg-gray-100 border border-gray-200 rounded-lg px-2 py-0.5 sm:px-3 sm:py-1">
                     <span className="text-gray-700 font-poppins font-bold text-xs">
                       N°{index + 1}
                     </span>
                   </div>
-                  <span className="text-gray-700 font-poppins font-bold text-sm">
+                  <span className="text-gray-700 font-poppins font-bold text-xs sm:text-sm">
                     {order.orderNumber}
                   </span>
                 </div>
                 <span
-                  className={`px-2 py-1 rounded-lg text-xs font-poppins font-bold ${getStatusColor(order.status)}`}
+                  className={`px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-lg text-xs font-poppins font-bold ${getStatusColor(order.status)}`}
                 >
                   {getStatusText(order.status)}
                 </span>
               </div>
 
               {/* Info Row */}
-              <div className="grid grid-cols-2 gap-4 text-sm">
+              <div className="grid grid-cols-2 gap-2 sm:gap-4 text-xs sm:text-sm">
                 <div>
                   <span className="text-gray-500">Table:</span>
-                  <span className="ml-2 font-bold text-gray-700">
+                  <span className="ml-1 sm:ml-2 font-bold text-gray-700">
                     {order.tableNumber}
                   </span>
                 </div>
                 <div>
                   <span className="text-gray-500">Articles:</span>
-                  <span className="ml-2 font-bold text-gray-700">
+                  <span className="ml-1 sm:ml-2 font-bold text-gray-700">
                     {order.articleCount}
                   </span>
                 </div>
@@ -114,74 +114,74 @@ export const ManagerOrdersTable: React.FC<ManagerOrdersTableProps> = ({
 
               {/* Server and Price Row */}
               <div className="flex justify-between items-center">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5 sm:gap-2">
                   <img
                     src={order.serverAvatar}
                     alt={order.serverName}
-                    className="w-8 h-8 rounded-2xl"
+                    className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg lg:rounded-2xl"
                   />
-                  <span className="text-sm font-bold text-gray-700">
+                  <span className="text-xs sm:text-sm font-bold text-gray-700">
                     {order.serverName}
                   </span>
                 </div>
-                <div className="text-lg font-bold text-gray-700">
+                <div className="text-sm sm:text-base lg:text-lg font-bold text-gray-700">
                   {order.totalPrice}F
                 </div>
               </div>
 
               {/* Actions Row */}
               <div className="flex justify-between items-center">
-                <button className="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm font-poppins font-bold hover:bg-blue-200 transition-colors">
+                <button className="bg-blue-100 text-blue-600 px-2 py-0.5 sm:px-3 sm:py-1 rounded-lg text-xs sm:text-sm font-poppins font-bold hover:bg-blue-200 transition-colors">
                   Voir
                 </button>
-                <div className="flex items-center gap-2">
-                  <button className="bg-blue-100 text-blue-600 p-2 rounded-lg hover:bg-blue-200 transition-colors">
-                    <Eye size={16} />
+                <div className="flex items-center gap-1 sm:gap-2">
+                  <button className="bg-blue-100 text-blue-600 p-1 sm:p-1.5 lg:p-2 rounded-lg hover:bg-blue-200 transition-colors">
+                    <Eye size={12} className="sm:w-4 sm:h-4 lg:w-4 lg:h-4" />
                   </button>
-                  <button className="bg-yellow-100 text-yellow-600 p-2 rounded-lg hover:bg-yellow-200 transition-colors">
-                    <Edit size={16} />
+                  <button className="bg-yellow-100 text-yellow-600 p-1 sm:p-1.5 lg:p-2 rounded-lg hover:bg-yellow-200 transition-colors">
+                    <Edit size={12} className="sm:w-4 sm:h-4 lg:w-4 lg:h-4" />
                   </button>
-                  <button className="bg-red-100 text-red-600 p-2 rounded-lg hover:bg-red-200 transition-colors">
-                    <Trash2 size={16} />
+                  <button className="bg-red-100 text-red-600 p-1 sm:p-1.5 lg:p-2 rounded-lg hover:bg-red-200 transition-colors">
+                    <Trash2 size={12} className="sm:w-4 sm:h-4 lg:w-4 lg:h-4" />
                   </button>
                 </div>
               </div>
             </div>
 
             {/* Desktop Layout */}
-            <div className="hidden lg:grid lg:grid-cols-7 gap-4 items-center">
+            <div className="hidden lg:grid lg:grid-cols-7 gap-2 sm:gap-3 lg:gap-4 items-center">
               {/* Order Number */}
-              <div className="flex items-center gap-3">
-                <div className="bg-white border border-gray-200 rounded-lg px-3 py-2">
-                  <span className="text-gray-700 font-poppins font-bold text-sm">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="bg-white border border-gray-200 rounded-lg px-2 py-1 sm:px-3 sm:py-2">
+                  <span className="text-gray-700 font-poppins font-bold text-xs sm:text-sm">
                     N°{index + 1}
                   </span>
                 </div>
-                <span className="text-gray-700 font-poppins font-bold">
+                <span className="text-gray-700 font-poppins font-bold text-xs sm:text-sm">
                   {order.orderNumber}
                 </span>
               </div>
 
               {/* Table Number */}
               <div className="text-center">
-                <span className="text-gray-700 font-poppins font-bold">
+                <span className="text-gray-700 font-poppins font-bold text-xs sm:text-sm">
                   {order.tableNumber}
                 </span>
               </div>
 
               {/* Article Count */}
-              <div className="flex flex-col items-center gap-2">
-                <span className="text-gray-700 font-poppins font-bold">
+              <div className="flex flex-col items-center gap-1 sm:gap-2">
+                <span className="text-gray-700 font-poppins font-bold text-xs sm:text-sm">
                   {order.articleCount} articles
                 </span>
-                <button className="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm font-poppins font-bold hover:bg-blue-200 transition-colors">
+                <button className="bg-blue-100 text-blue-600 px-2 py-0.5 sm:px-3 sm:py-1 rounded-lg text-xs sm:text-sm font-poppins font-bold hover:bg-blue-200 transition-colors">
                   Voir
                 </button>
               </div>
 
               {/* Total Price */}
               <div className="text-center">
-                <span className="text-gray-700 font-poppins font-bold">
+                <span className="text-gray-700 font-poppins font-bold text-xs sm:text-sm">
                   {order.totalPrice}F
                 </span>
               </div>
@@ -189,34 +189,34 @@ export const ManagerOrdersTable: React.FC<ManagerOrdersTableProps> = ({
               {/* Status */}
               <div className="text-center">
                 <span
-                  className={`px-3 py-1 rounded-lg text-sm font-poppins font-bold ${getStatusColor(order.status)}`}
+                  className={`px-2 py-0.5 sm:px-3 sm:py-1 rounded-lg text-xs sm:text-sm font-poppins font-bold ${getStatusColor(order.status)}`}
                 >
                   {getStatusText(order.status)}
                 </span>
               </div>
 
               {/* Server */}
-              <div className="flex items-center justify-center gap-2">
+              <div className="flex items-center justify-center gap-1 sm:gap-2">
                 <img
                   src={order.serverAvatar}
                   alt={order.serverName}
-                  className="w-12 h-12 rounded-2xl"
+                  className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12 rounded-lg lg:rounded-2xl"
                 />
-                <span className="text-sm font-bold text-gray-700">
+                <span className="text-xs sm:text-sm font-bold text-gray-700">
                   {order.serverName}
                 </span>
               </div>
 
               {/* Actions */}
-              <div className="flex items-center gap-3 justify-center">
-                <button className="bg-blue-100 text-blue-600 p-2 rounded-lg hover:bg-blue-200 transition-colors">
-                  <Eye size={20} />
+              <div className="flex items-center gap-1 sm:gap-2 lg:gap-3 justify-center">
+                <button className="bg-blue-100 text-blue-600 p-1 sm:p-1.5 lg:p-2 rounded-lg hover:bg-blue-200 transition-colors">
+                  <Eye size={12} className="sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
                 </button>
-                <button className="bg-yellow-100 text-yellow-600 p-2 rounded-lg hover:bg-yellow-200 transition-colors">
-                  <Edit size={20} />
+                <button className="bg-yellow-100 text-yellow-600 p-1 sm:p-1.5 lg:p-2 rounded-lg hover:bg-yellow-200 transition-colors">
+                  <Edit size={12} className="sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
                 </button>
-                <button className="bg-red-100 text-red-600 p-2 rounded-lg hover:bg-red-200 transition-colors">
-                  <Trash2 size={20} />
+                <button className="bg-red-100 text-red-600 p-1 sm:p-1.5 lg:p-2 rounded-lg hover:bg-red-200 transition-colors">
+                  <Trash2 size={12} className="sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
                 </button>
               </div>
             </div>

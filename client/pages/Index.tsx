@@ -54,19 +54,19 @@ function ActionCard({
   return (
     <Link
       to={href}
-      className={`block p-3 lg:p-4 rounded-lg border transition-all duration-200 hover:shadow-md hover:scale-[1.02] ${colorClasses[color]}`}
+      className={`block p-2 sm:p-3 lg:p-4 rounded-lg border transition-all duration-200 hover:shadow-md hover:scale-[1.02] ${colorClasses[color]}`}
     >
-      <div className="flex items-start gap-2 lg:gap-3">
+      <div className="flex items-start gap-2 sm:gap-2.5 lg:gap-3">
         <div
-          className={`p-1.5 lg:p-2 rounded-md bg-white shadow-sm ${iconColorClasses[color]} flex-shrink-0`}
+          className={`p-1 sm:p-1.5 lg:p-2 rounded-md bg-white shadow-sm ${iconColorClasses[color]} flex-shrink-0`}
         >
           {icon}
         </div>
         <div className="flex-1 min-w-0">
-          <h3 className="text-base lg:text-lg font-semibold text-dashboard-dark mb-1 font-poppins">
+          <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-dashboard-dark mb-0.5 sm:mb-1 font-poppins">
             {title}
           </h3>
-          <p className="text-xs lg:text-sm text-dashboard-muted font-inter">
+          <p className="text-xs sm:text-xs lg:text-sm text-dashboard-muted font-inter">
             {description}
           </p>
         </div>
@@ -83,14 +83,14 @@ interface FeatureCardProps {
 
 function FeatureCard({ title, description, icon }: FeatureCardProps) {
   return (
-    <div className="text-center p-3 lg:p-4 bg-white rounded-lg shadow-sm border border-gray-100">
-      <div className="inline-flex items-center justify-center w-8 h-8 lg:w-10 lg:h-10 bg-dashboard-yellow rounded-md mb-2 lg:mb-3 text-white">
+    <div className="text-center p-2 sm:p-3 lg:p-4 bg-white rounded-lg shadow-sm border border-gray-100">
+      <div className="inline-flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 bg-dashboard-yellow rounded-md mb-1.5 sm:mb-2 lg:mb-3 text-white">
         {icon}
       </div>
-      <h3 className="text-base lg:text-lg font-semibold text-dashboard-dark mb-1 lg:mb-2 font-poppins">
+      <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-dashboard-dark mb-0.5 sm:mb-1 lg:mb-2 font-poppins">
         {title}
       </h3>
-      <p className="text-xs lg:text-sm text-dashboard-muted font-inter">
+      <p className="text-xs sm:text-xs lg:text-sm text-dashboard-muted font-inter">
         {description}
       </p>
     </div>
@@ -119,13 +119,16 @@ export default function Index() {
     <div className="min-h-screen bg-dashboard-gray flex flex-col">
       {/* Header */}
       <header className="bg-white shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 lg:px-6 py-3">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-            <h1 className="text-xl lg:text-2xl font-bold text-dashboard-dark font-leckerli">
+        <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 py-2 sm:py-3">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-3">
+            <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-dashboard-dark font-leckerli">
               Lounge Bar Le Cuivre
             </h1>
-            <div className="flex items-center gap-3">
-              <Badge variant="outline" className="px-2 py-0.5 text-xs">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <Badge
+                variant="outline"
+                className="px-1.5 sm:px-2 py-0.5 text-xs"
+              >
                 Version 1.0
               </Badge>
             </div>
@@ -134,13 +137,13 @@ export default function Index() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 max-w-6xl mx-auto px-4 lg:px-6 py-4 lg:py-6">
+      <main className="flex-1 max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 py-3 sm:py-4 lg:py-6">
         {/* Hero Section */}
-        <div className="text-center mb-6 lg:mb-8">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dashboard-dark mb-3 lg:mb-4 font-poppins">
+        <div className="text-center mb-4 sm:mb-6 lg:mb-8">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-dashboard-dark mb-2 sm:mb-3 lg:mb-4 font-poppins">
             Système de Gestion Restaurant
           </h2>
-          <p className="text-sm lg:text-base text-dashboard-muted max-w-2xl mx-auto font-inter mb-3">
+          <p className="text-sm sm:text-sm lg:text-base text-dashboard-muted max-w-2xl mx-auto font-inter mb-2 sm:mb-3">
             Une solution complète pour gérer les commandes, suivre les ventes et
             optimiser le service de votre restaurant.
           </p>
@@ -152,34 +155,34 @@ export default function Index() {
         </div>
 
         {/* Quick Actions */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6 lg:mb-8">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center mb-4 sm:mb-6 lg:mb-8">
           <Link to="/dashboard">
             <Button
-              size="default"
-              className="w-full sm:w-auto bg-dashboard-yellow hover:bg-dashboard-yellow/90 text-white font-medium px-4 lg:px-6 py-2 rounded-md"
+              size="sm"
+              className="w-full sm:w-auto bg-dashboard-yellow hover:bg-dashboard-yellow/90 text-white font-medium px-3 sm:px-4 lg:px-6 py-1.5 sm:py-2 rounded-md text-sm"
             >
-              <BarChart3 className="w-4 h-4 mr-2" />
+              <BarChart3 className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />
               Dashboard Serveur
             </Button>
           </Link>
           <Link to="/new-order">
             <Button
-              size="default"
+              size="sm"
               variant="outline"
-              className="w-full sm:w-auto border-dashboard-yellow text-dashboard-yellow hover:bg-dashboard-yellow hover:text-white font-medium px-4 lg:px-6 py-2 rounded-md"
+              className="w-full sm:w-auto border-dashboard-yellow text-dashboard-yellow hover:bg-dashboard-yellow hover:text-white font-medium px-3 sm:px-4 lg:px-6 py-1.5 sm:py-2 rounded-md text-sm"
             >
-              <Plus className="w-4 h-4 mr-2" />
+              <Plus className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />
               Nouvelle Commande
             </Button>
           </Link>
         </div>
 
         {/* Action Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5 mb-6 lg:mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-5 mb-4 sm:mb-6 lg:mb-8">
           <ActionCard
             title="Dashboard Serveur"
             description="Accédez au tableau de bord principal pour gérer les commandes et suivre l'activité."
-            icon={<BarChart3 className="w-5 h-5 lg:w-6 lg:h-6" />}
+            icon={<BarChart3 className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />}
             href="/dashboard"
             color="blue"
           />
@@ -187,7 +190,7 @@ export default function Index() {
           <ActionCard
             title="Nouvelle Commande"
             description="Créez rapidement une nouvelle commande pour vos clients."
-            icon={<Plus className="w-5 h-5 lg:w-6 lg:h-6" />}
+            icon={<Plus className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />}
             href="/new-order"
             color="green"
           />
@@ -195,7 +198,7 @@ export default function Index() {
           <ActionCard
             title="Historique"
             description="Consultez l'historique complet de toutes les commandes."
-            icon={<Clock className="w-5 h-5 lg:w-6 lg:h-6" />}
+            icon={<Clock className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />}
             href="/orders"
             color="purple"
           />
@@ -203,7 +206,7 @@ export default function Index() {
           <ActionCard
             title="Dashboard Manager"
             description="Interface de gestion avancée pour les responsables."
-            icon={<Shield className="w-5 h-5 lg:w-6 lg:h-6" />}
+            icon={<Shield className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />}
             href="/manager-dashboard"
             color="orange"
           />
@@ -211,7 +214,9 @@ export default function Index() {
           <ActionCard
             title="Commandes Manager"
             description="Gérer toutes les commandes en tant que responsable."
-            icon={<ShoppingCart className="w-5 h-5 lg:w-6 lg:h-6" />}
+            icon={
+              <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
+            }
             href="/manager-orders"
             color="purple"
           />
@@ -219,7 +224,9 @@ export default function Index() {
           <ActionCard
             title="Statistiques"
             description="Analysez les performances et les tendances de vente."
-            icon={<TrendingUp className="w-5 h-5 lg:w-6 lg:h-6" />}
+            icon={
+              <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
+            }
             href="/manager-dashboard"
             color="indigo"
           />
@@ -227,35 +234,35 @@ export default function Index() {
           <ActionCard
             title="Configuration"
             description="Paramètres et configuration du système."
-            icon={<Settings className="w-5 h-5 lg:w-6 lg:h-6" />}
+            icon={<Settings className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />}
             href="#"
             color="gray"
           />
         </div>
 
         {/* Features Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 lg:gap-5">
           <FeatureCard
             title="Interface Intuitive"
             description="Design moderne et facile à utiliser pour tous les membres de l'équipe."
-            icon={<Zap className="w-4 h-4 lg:w-5 lg:h-5" />}
+            icon={<Zap className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />}
           />
           <FeatureCard
             title="Gestion en Temps Réel"
             description="Suivi instantané des commandes et mise à jour automatique des statuts."
-            icon={<Clock className="w-4 h-4 lg:w-5 lg:h-5" />}
+            icon={<Clock className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />}
           />
           <FeatureCard
             title="Rapports Détaillés"
             description="Analytics avancés pour optimiser les performances de votre restaurant."
-            icon={<BarChart3 className="w-4 h-4 lg:w-5 lg:h-5" />}
+            icon={<BarChart3 className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />}
           />
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 py-4">
-        <div className="max-w-6xl mx-auto px-4 lg:px-6 text-center">
+      <footer className="bg-white border-t border-gray-200 py-3 sm:py-4">
+        <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 text-center">
           <p className="text-xs text-dashboard-muted font-inter">
             © 2024 Lounge Bar Le Cuivre. Système de gestion restaurant.
           </p>
