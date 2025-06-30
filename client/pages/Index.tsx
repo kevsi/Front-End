@@ -178,11 +178,11 @@ export default function Index() {
         </div>
 
         {/* Action Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5 mb-6 lg:mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-5 mb-4 sm:mb-6 lg:mb-8">
           <ActionCard
             title="Dashboard Serveur"
             description="Accédez au tableau de bord principal pour gérer les commandes et suivre l'activité."
-            icon={<BarChart3 className="w-5 h-5 lg:w-6 lg:h-6" />}
+            icon={<BarChart3 className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />}
             href="/dashboard"
             color="blue"
           />
@@ -190,7 +190,7 @@ export default function Index() {
           <ActionCard
             title="Nouvelle Commande"
             description="Créez rapidement une nouvelle commande pour vos clients."
-            icon={<Plus className="w-5 h-5 lg:w-6 lg:h-6" />}
+            icon={<Plus className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />}
             href="/new-order"
             color="green"
           />
@@ -198,7 +198,7 @@ export default function Index() {
           <ActionCard
             title="Historique"
             description="Consultez l'historique complet de toutes les commandes."
-            icon={<Clock className="w-5 h-5 lg:w-6 lg:h-6" />}
+            icon={<Clock className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />}
             href="/orders"
             color="purple"
           />
@@ -206,7 +206,7 @@ export default function Index() {
           <ActionCard
             title="Dashboard Manager"
             description="Interface de gestion avancée pour les responsables."
-            icon={<Shield className="w-5 h-5 lg:w-6 lg:h-6" />}
+            icon={<Shield className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />}
             href="/manager-dashboard"
             color="orange"
           />
@@ -214,7 +214,9 @@ export default function Index() {
           <ActionCard
             title="Commandes Manager"
             description="Gérer toutes les commandes en tant que responsable."
-            icon={<ShoppingCart className="w-5 h-5 lg:w-6 lg:h-6" />}
+            icon={
+              <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
+            }
             href="/manager-orders"
             color="purple"
           />
@@ -222,7 +224,9 @@ export default function Index() {
           <ActionCard
             title="Statistiques"
             description="Analysez les performances et les tendances de vente."
-            icon={<TrendingUp className="w-5 h-5 lg:w-6 lg:h-6" />}
+            icon={
+              <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
+            }
             href="/manager-dashboard"
             color="indigo"
           />
@@ -230,35 +234,35 @@ export default function Index() {
           <ActionCard
             title="Configuration"
             description="Paramètres et configuration du système."
-            icon={<Settings className="w-5 h-5 lg:w-6 lg:h-6" />}
+            icon={<Settings className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />}
             href="#"
             color="gray"
           />
         </div>
 
         {/* Features Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 lg:gap-5">
           <FeatureCard
             title="Interface Intuitive"
             description="Design moderne et facile à utiliser pour tous les membres de l'équipe."
-            icon={<Zap className="w-4 h-4 lg:w-5 lg:h-5" />}
+            icon={<Zap className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />}
           />
           <FeatureCard
             title="Gestion en Temps Réel"
             description="Suivi instantané des commandes et mise à jour automatique des statuts."
-            icon={<Clock className="w-4 h-4 lg:w-5 lg:h-5" />}
+            icon={<Clock className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />}
           />
           <FeatureCard
             title="Rapports Détaillés"
             description="Analytics avancés pour optimiser les performances de votre restaurant."
-            icon={<BarChart3 className="w-4 h-4 lg:w-5 lg:h-5" />}
+            icon={<BarChart3 className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />}
           />
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 py-4">
-        <div className="max-w-6xl mx-auto px-4 lg:px-6 text-center">
+      <footer className="bg-white border-t border-gray-200 py-3 sm:py-4">
+        <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 text-center">
           <p className="text-xs text-dashboard-muted font-inter">
             © 2024 Lounge Bar Le Cuivre. Système de gestion restaurant.
           </p>
