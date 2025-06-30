@@ -17,6 +17,7 @@ interface UsersFiltersProps {
   onSearch: (query: string) => void;
   onRoleFilter: (role: string) => void;
   onAgeFilter: (age: string) => void;
+  onNewUser: () => void;
 }
 
 export function UsersFilters({
@@ -27,6 +28,7 @@ export function UsersFilters({
   onSearch,
   onRoleFilter,
   onAgeFilter,
+  onNewUser,
 }: UsersFiltersProps) {
   return (
     <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl p-6 flex items-center gap-4 flex-wrap">
@@ -83,7 +85,10 @@ export function UsersFilters({
       </div>
 
       {/* New User Button */}
-      <Button className="bg-dashboard-yellow hover:bg-dashboard-yellow/90 text-black font-inter px-5 py-3 h-auto rounded-lg">
+      <Button
+        onClick={onNewUser}
+        className="bg-dashboard-yellow hover:bg-dashboard-yellow/90 text-black font-inter px-5 py-3 h-auto rounded-lg"
+      >
         Nouveau Utilisateur
       </Button>
 

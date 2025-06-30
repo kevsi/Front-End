@@ -3,6 +3,7 @@ import { UsersSidebar } from "@/components/users/UsersSidebar";
 import { UsersHeader } from "@/components/users/UsersHeader";
 import { UsersFilters } from "@/components/users/UsersFilters";
 import { UsersTable } from "@/components/users/UsersTable";
+import { AddUserModal, UserFormData } from "@/components/users/AddUserModal";
 
 export interface User {
   id: string;
@@ -54,11 +55,12 @@ const mockUsers: User[] = [
 ];
 
 export default function Users() {
-  const [users] = useState<User[]>(mockUsers);
+  const [users, setUsers] = useState<User[]>(mockUsers);
   const [filteredUsers, setFilteredUsers] = useState<User[]>(mockUsers);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedRole, setSelectedRole] = useState<string>("all");
   const [selectedAge, setSelectedAge] = useState<string>("all");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
@@ -75,8 +77,13 @@ export default function Users() {
     filterUsers(searchQuery, selectedRole, age);
   };
 
-  const filterUsers = (query: string, role: string, age: string) => {
-    let filtered = users;
+  const filterUsers = (
+    query: string,
+    role: string,
+    age: string,
+    usersList = users,
+  ) => {
+    let filtered = usersList;
 
     if (query) {
       filtered = filtered.filter(
@@ -108,6 +115,23 @@ export default function Users() {
     // Implement action handlers here
   };
 
+  const handleNewUser = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleAddUser = (userData: UserFormData) => {
+    const newUser: User = {
+      id: (users.length + 1).toString(),
+      ...userData,
+    };
+
+    const updatedUsers = [...users, newUser];
+    setUsers(updatedUsers);
+
+    // Apply current filters to include new user if it matches
+    filterUsers(searchQuery, selectedRole, selectedAge, updatedUsers);
+  };
+
   return (
     <div className="min-h-screen bg-dashboard-gray flex">
       <UsersSidebar />
@@ -128,6 +152,7 @@ export default function Users() {
             onSearch={handleSearch}
             onRoleFilter={handleRoleFilter}
             onAgeFilter={handleAgeFilter}
+            onNewUser={handleNewUser}
           />
 
           <div className="mt-8">
@@ -135,6 +160,12 @@ export default function Users() {
           </div>
         </div>
       </main>
+
+      <AddUserModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onAddUser={handleAddUser}
+      />
     </div>
   );
 }
