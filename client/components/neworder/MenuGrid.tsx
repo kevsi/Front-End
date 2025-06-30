@@ -118,7 +118,7 @@ export function MenuGrid({
 
   // Desktop layout (existing)
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 pb-4">
       {filteredItems.map((item) => (
         <div
           key={item.id}
