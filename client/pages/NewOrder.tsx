@@ -150,24 +150,22 @@ export default function NewOrder() {
           />
         </div>
 
-        {/* Content Area - Fixed height container */}
-        <div className="flex-1 px-4 lg:px-6 pb-4 overflow-hidden">
+        {/* Content Area */}
+        <div className="flex-1 px-4 lg:px-6 pb-4">
           <div className="flex flex-col xl:flex-row gap-3 lg:gap-4 h-full">
-            {/* Menu Grid - Scrollable */}
-            <div className="flex-1 min-w-0 flex flex-col">
-              <h2 className="text-lg lg:text-xl font-semibold text-dashboard-dark mb-3 lg:mb-4 font-poppins flex-shrink-0">
+            {/* Menu Grid */}
+            <div className="flex-1 min-w-0">
+              <h2 className="text-lg lg:text-xl font-semibold text-dashboard-dark mb-3 lg:mb-4 font-poppins">
                 Liste des articles
               </h2>
-              <div className="flex-1 overflow-y-auto scrollbar-hide">
-                <MenuGrid
-                  searchQuery={searchQuery}
-                  selectedCategory={selectedCategory}
-                  onAddToCart={addToCart}
-                />
-              </div>
+              <MenuGrid
+                searchQuery={searchQuery}
+                selectedCategory={selectedCategory}
+                onAddToCart={addToCart}
+              />
             </div>
 
-            {/* Order Cart - Fixed width with internal scroll */}
+            {/* Order Cart */}
             <div className="w-full xl:w-80 flex-shrink-0">
               <OrderCart
                 items={cartItems}
