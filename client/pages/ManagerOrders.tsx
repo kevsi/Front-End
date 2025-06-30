@@ -179,8 +179,8 @@ const ManagerOrders: React.FC = () => {
 
   return (
     <ResponsiveLayout navItems={navItems} header={<ManagerOrdersHeader />}>
-      <div className="p-4 lg:p-6">
-        <h2 className="text-xl lg:text-2xl font-bold text-dashboard-dark font-poppins mb-6">
+      <div className="p-3 lg:p-4">
+        <h2 className="text-lg lg:text-xl font-semibold text-dashboard-dark font-poppins mb-4">
           Commandes
         </h2>
 
@@ -201,7 +201,7 @@ const ManagerOrders: React.FC = () => {
           onStatusFilterChange={setStatusFilter}
         />
 
-        <div className="mt-6">
+        <div className="mt-4">
           <ManagerOrdersTable orders={filteredOrders} />
         </div>
       </div>

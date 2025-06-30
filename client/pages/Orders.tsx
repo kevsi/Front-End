@@ -160,14 +160,14 @@ const Orders: React.FC = () => {
   return (
     <ResponsiveLayout navItems={navItems} header={<OrdersHeader />}>
       <div className="flex flex-1 overflow-hidden">
-        <div className="flex-1 p-4 lg:p-6 overflow-auto">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-            <h2 className="text-xl lg:text-2xl font-bold text-dashboard-dark font-poppins">
+        <div className="flex-1 p-3 lg:p-4 overflow-auto">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4">
+            <h2 className="text-lg lg:text-xl font-semibold text-dashboard-dark font-poppins">
               Mes commandes
             </h2>
             <button
               onClick={() => notifications.dataExported("commandes")}
-              className="bg-dashboard-yellow text-white px-4 py-2 rounded-lg font-inter text-sm font-medium hover:bg-dashboard-yellow/90 transition-colors whitespace-nowrap"
+              className="bg-dashboard-yellow text-white px-3 py-1.5 rounded-md font-inter text-xs font-medium hover:bg-dashboard-yellow/90 transition-colors whitespace-nowrap"
             >
               📊 Exporter
             </button>
@@ -190,13 +190,13 @@ const Orders: React.FC = () => {
             onStatusFilterChange={setStatusFilter}
           />
 
-          <div className="mt-6">
+          <div className="mt-4">
             <OrdersTable orders={filteredOrders} />
           </div>
         </div>
 
         {/* History Sidebar for desktop */}
-        <div className="hidden xl:block xl:w-80 flex-shrink-0">
+        <div className="hidden xl:block xl:w-72 flex-shrink-0">
           <OrdersHistorySidebar />
         </div>
       </div>
