@@ -80,22 +80,22 @@ const sampleManagerOrders: ManagerOrder[] = [
 const ManagerDashboard: React.FC = () => {
   return (
     <ResponsiveLayout navItems={navItems} header={<ManagerHeader />}>
-      <div className="p-3 lg:p-4">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-4 mb-4 lg:mb-6">
+      <div className="p-2 sm:p-3 lg:p-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 sm:gap-3 lg:gap-4 mb-2 sm:mb-3 lg:mb-4 xl:mb-6">
           {/* Statistics Chart */}
           <div className="lg:col-span-2 order-2 lg:order-1">
             <StatisticsChart />
           </div>
 
           {/* Stats Cards */}
-          <div className="space-y-3 order-1 lg:order-2">
+          <div className="space-y-2 sm:space-y-3 order-1 lg:order-2">
             <StatsCards />
           </div>
         </div>
 
         {/* Recent Orders Section */}
-        <div className="mb-4">
-          <h2 className="text-lg lg:text-xl font-semibold text-dashboard-dark font-poppins mb-3 lg:mb-4">
+        <div className="mb-2 sm:mb-3 lg:mb-4">
+          <h2 className="text-sm sm:text-base lg:text-lg xl:text-xl font-semibold text-dashboard-dark font-poppins mb-2 sm:mb-3 lg:mb-4">
             Commandes récentes
           </h2>
           <ManagerOrdersTable orders={sampleManagerOrders} />
