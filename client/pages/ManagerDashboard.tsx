@@ -81,25 +81,49 @@ const sampleManagerOrders: ManagerOrder[] = [
 const ManagerDashboard: React.FC = () => {
   return (
     <ResponsiveLayout navItems={navItems} header={<ManagerHeader />}>
-      <div className="p-2 sm:p-3 lg:p-4">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 sm:gap-3 lg:gap-4 mb-2 sm:mb-3 lg:mb-4 xl:mb-6">
-          {/* Statistics Chart */}
-          <div className="lg:col-span-2 order-2 lg:order-1">
-            <StatisticsChart />
-          </div>
+      {/* Stats Cards */}
+      <div className="px-2 sm:px-3 py-1 sm:py-2">
+        <StatsCards />
+      </div>
 
-          {/* Stats Cards */}
-          <div className="space-y-2 sm:space-y-3 order-1 lg:order-2">
-            <StatsCards />
+      {/* Dashboard Section */}
+      <div className="flex-1 px-2 sm:px-3 pb-2 sm:pb-3">
+        {/* Section Headers */}
+        <div className="flex flex-col xl:flex-row gap-2 sm:gap-3 mb-4 sm:mb-5 lg:mb-6 pt-2 sm:pt-3">
+          <div className="flex-1">
+            <h2 className="text-sm sm:text-base font-semibold text-dashboard-dark font-poppins mb-1 sm:mb-2">
+              Dashboard Manager
+            </h2>
+          </div>
+          <div className="w-full xl:w-56 flex-shrink-0">
+            <h2 className="text-sm sm:text-base font-semibold text-dashboard-dark font-poppins text-center xl:text-left mb-1 sm:mb-2">
+              Historique
+            </h2>
           </div>
         </div>
 
-        {/* Recent Orders Section */}
-        <div className="mb-2 sm:mb-3 lg:mb-4">
-          <h2 className="text-sm sm:text-base lg:text-lg xl:text-xl font-semibold text-dashboard-dark font-poppins mb-4 sm:mb-5 lg:mb-6 pt-2 sm:pt-3">
-            Commandes récentes
-          </h2>
-          <ManagerOrdersTable orders={sampleManagerOrders} />
+        {/* Content */}
+        <div className="flex flex-col xl:flex-row gap-2 sm:gap-3 h-full">
+          {/* Main Content */}
+          <div className="flex-1 min-w-0">
+            {/* Statistics Chart */}
+            <div className="mb-4">
+              <StatisticsChart />
+            </div>
+
+            {/* Recent Orders Section */}
+            <div className="mb-2 sm:mb-3 lg:mb-4">
+              <h3 className="text-sm sm:text-base font-semibold text-dashboard-dark font-poppins mb-3 sm:mb-4">
+                Commandes récentes
+              </h3>
+              <ManagerOrdersTable orders={sampleManagerOrders} />
+            </div>
+          </div>
+
+          {/* History Sidebar - Stack below on smaller screens */}
+          <div className="w-full xl:w-56 flex-shrink-0">
+            <HistorySidebar />
+          </div>
         </div>
       </div>
     </ResponsiveLayout>
