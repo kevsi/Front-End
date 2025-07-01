@@ -383,6 +383,7 @@ export function OrderTable() {
                   <Button
                     variant="outline"
                     size="sm"
+                    onClick={() => handleViewDetails(order.id)}
                     className="bg-blue-100 text-blue-600 border-blue-200 hover:bg-blue-200 font-poppins text-xs px-2 py-1"
                   >
                     Voir
