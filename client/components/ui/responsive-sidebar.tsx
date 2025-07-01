@@ -122,7 +122,7 @@ export function ResponsiveSidebar({
         {/* Mobile sidebar */}
         <div
           className={cn(
-            "fixed inset-y-0 left-0 z-50 w-64 sm:w-72 lg:w-80 transform transition-transform duration-300 ease-in-out lg:hidden",
+            "fixed inset-y-0 left-0 z-50 w-56 sm:w-64 transform transition-transform duration-300 ease-in-out lg:hidden",
             isOpen ? "translate-x-0" : "-translate-x-full",
           )}
         >
