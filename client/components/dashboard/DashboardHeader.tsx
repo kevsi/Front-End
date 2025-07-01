@@ -9,6 +9,22 @@ interface DashboardHeaderProps {
 }
 
 export function DashboardHeader({ leftAction }: DashboardHeaderProps) {
+  const [showNotifications, setShowNotifications] = useState(false);
+
+  const handleNotificationClick = () => {
+    setShowNotifications(true);
+  };
+
+  const handleMarkAsRead = (notificationId: string) => {
+    console.log("Marqué comme lu:", notificationId);
+    // Ici vous mettriez à jour l'état des notifications
+  };
+
+  const handleMarkAllAsRead = () => {
+    console.log("Tout marqué comme lu");
+    // Ici vous mettriez à jour l'état de toutes les notifications
+  };
+
   return (
     <div className="flex flex-col lg:flex-row items-start lg:items-center gap-2 sm:gap-3 lg:gap-0 lg:justify-between p-2 sm:p-3 bg-dashboard-gray">
       {/* Mobile layout: Toggle + Greeting */}
