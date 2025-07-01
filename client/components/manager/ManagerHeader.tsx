@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Bell, User, LogOut, ChevronDown } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { NotificationsModal } from "@/components/ui/notifications-modal";
 import { Button } from "@/components/ui/button";
+import { useNotificationContext } from "@/main";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,40 +17,10 @@ interface ManagerHeaderProps {
 }
 
 export const ManagerHeader: React.FC<ManagerHeaderProps> = ({ leftAction }) => {
-  const [showNotifications, setShowNotifications] = useState(false);
-
-  // Notifications d'exemple - À remplacer par des vraies données
-  const sampleNotifications = [
-    {
-      id: "1",
-      title: "Rapport quotidien",
-      message: "Rapport des ventes prêt à consulter",
-      type: "info" as const,
-      timestamp: "Il y a 1 heure",
-      isRead: false,
-      category: "system" as const,
-    },
-    {
-      id: "2",
-      title: "Alerte stock",
-      message: "Stock faible pour plusieurs articles",
-      type: "warning" as const,
-      timestamp: "Il y a 2 heures",
-      isRead: false,
-      category: "system" as const,
-    },
-  ];
+  const { showNotifications, setShowNotifications } = useNotificationContext();
 
   const handleNotificationClick = () => {
-    setShowNotifications(true);
-  };
-
-  const handleMarkAsRead = (notificationId: string) => {
-    console.log("Marqué comme lu:", notificationId);
-  };
-
-  const handleMarkAllAsRead = () => {
-    console.log("Tout marqué comme lu");
+    setShowNotifications(!showNotifications);
   };
 
   const handleLogout = () => {
@@ -128,15 +98,6 @@ export const ManagerHeader: React.FC<ManagerHeaderProps> = ({ leftAction }) => {
           </div>
         </div>
       </header>
-
-      {/* Notifications Modal */}
-      <NotificationsModal
-        isOpen={showNotifications}
-        onClose={() => setShowNotifications(false)}
-        notifications={sampleNotifications}
-        onMarkAsRead={handleMarkAsRead}
-        onMarkAllAsRead={handleMarkAllAsRead}
-      />
     </>
   );
 };
