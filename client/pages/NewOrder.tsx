@@ -44,6 +44,7 @@ export default function NewOrder() {
   const { notifications } = useNotifications();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [tableNumber, setTableNumber] = useState("T12");
+  const [tip, setTip] = useState(500);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -91,12 +92,12 @@ export default function NewOrder() {
     );
   };
 
-  const calculateTip = () => {
-    return 500; // Fixed tip amount as shown in design
+  const calculateTotal = () => {
+    return calculateSubtotal() + tip;
   };
 
-  const calculateTotal = () => {
-    return calculateSubtotal() + calculateTip();
+  const handleTipChange = (newTip: number) => {
+    setTip(newTip);
   };
 
   const handleSaveOrder = () => {
@@ -105,7 +106,7 @@ export default function NewOrder() {
         tableNumber,
         items: cartItems,
         subtotal: calculateSubtotal(),
-        tip: calculateTip(),
+        tip: tip,
         total: calculateTotal(),
       });
 
@@ -171,9 +172,12 @@ export default function NewOrder() {
                 items={cartItems}
                 onUpdateQuantity={updateQuantity}
                 subtotal={calculateSubtotal()}
-                tip={calculateTip()}
+                tip={tip}
                 total={calculateTotal()}
                 onSaveOrder={handleSaveOrder}
+                tableNumber={tableNumber}
+                onTableNumberChange={setTableNumber}
+                onTipChange={handleTipChange}
               />
             </div>
           </div>
