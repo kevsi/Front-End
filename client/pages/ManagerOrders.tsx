@@ -190,7 +190,7 @@ const ManagerOrders: React.FC = () => {
             </h2>
           </div>
           <div className="w-full xl:w-56 flex-shrink-0">
-            <h2 className="text-sm sm:text-base font-semibold text-dashboard-dark font-poppins text-center xl:text-left mb-1 sm:mb-2">
+            <h2 className="text-sm sm:text-base font-semibold text-dashboard-dark font-poppins text-center xl:text-left mb-1 sm:mb-2 xl:pl-0">
               Historique
             </h2>
           </div>
