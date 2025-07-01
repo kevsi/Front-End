@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import {
   X,
   Check,
-  Reply,
-  Eye,
-  UserPlus,
-  FileText,
-  MessageCircle,
-  Settings,
+  ChefHat,
+  Clock,
+  ShoppingCart,
+  Users,
+  AlertCircle,
+  CheckCircle,
   Trash2,
+  Bell,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -31,7 +32,7 @@ interface NotificationAction {
 
 interface Notification {
   id: string;
-  type: "comment" | "follow" | "assignment" | "like" | "file" | "system";
+  type: "order" | "kitchen" | "table" | "staff" | "alert" | "system";
   user: NotificationUser;
   action: string;
   target?: string;
@@ -39,9 +40,9 @@ interface Notification {
   isRead: boolean;
   hasActions?: boolean;
   actions?: NotificationAction[];
-  fileInfo?: {
-    name: string;
-    size: string;
+  orderInfo?: {
+    number: string;
+    table: string;
   };
 }
 
@@ -53,129 +54,125 @@ interface NotificationsPanelProps {
 const sampleNotifications: Notification[] = [
   {
     id: "1",
-    type: "comment",
+    type: "order",
     user: {
       id: "1",
-      name: "Tina Hernandez",
-      initials: "TH",
-      avatar:
-        "https://images.unsplash.com/photo-1494790108755-2616b332c5cd?w=32&h=32&fit=crop&crop=face",
+      name: "Chef Marcus",
+      initials: "CM",
+      avatar: "/placeholder.svg",
     },
-    action: "replied to your comment in",
-    target: "Design",
-    timestamp: "3 min ago",
+    action: "a terminé la commande",
+    target: "C142",
+    timestamp: "2 min",
     isRead: false,
     hasActions: true,
     actions: [
       {
-        id: "reply",
-        label: "Reply",
-        type: "secondary",
-        icon: <Reply className="w-4 h-4" />,
+        id: "serve",
+        label: "Servir",
+        type: "success",
+        icon: <Check className="w-4 h-4" />,
       },
+    ],
+    orderInfo: {
+      number: "C142",
+      table: "T05",
+    },
+  },
+  {
+    id: "2",
+    type: "table",
+    user: {
+      id: "2",
+      name: "Maria Gonzalez",
+      initials: "MG",
+      avatar: "/placeholder.svg",
+    },
+    action: "a demandé l'addition pour",
+    target: "Table 8",
+    timestamp: "5 min",
+    isRead: false,
+    hasActions: true,
+    actions: [
       {
-        id: "view",
-        label: "View",
-        type: "secondary",
-        icon: <Eye className="w-4 h-4" />,
+        id: "print-bill",
+        label: "Imprimer",
+        type: "primary",
+        icon: <ShoppingCart className="w-4 h-4" />,
       },
     ],
   },
   {
-    id: "2",
-    type: "follow",
-    user: {
-      id: "2",
-      name: "Alyssa Sherman",
-      initials: "AS",
-      avatar:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face",
-    },
-    action: "followed you",
-    timestamp: "5 min ago",
-    isRead: false,
-    hasActions: true,
-    actions: [{ id: "follow-back", label: "Follow Back", type: "primary" }],
-  },
-  {
     id: "3",
-    type: "assignment",
+    type: "kitchen",
     user: {
       id: "3",
-      name: "Kelvin Hill",
-      initials: "KH",
-      avatar:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face",
+      name: "Système",
+      initials: "SY",
+      avatar: "/placeholder.svg",
     },
-    action: "assigned you a task",
-    target: "#BE3627",
-    timestamp: "28 March, 2024, 5:42 PM",
+    action: "temps de préparation dépassé pour",
+    target: "C138",
+    timestamp: "8 min",
     isRead: false,
   },
   {
     id: "4",
-    type: "like",
+    type: "staff",
     user: {
       id: "4",
-      name: "Vanessa Lee",
-      initials: "VL",
-      avatar:
-        "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=32&h=32&fit=crop&crop=face",
+      name: "Julie Martin",
+      initials: "JM",
+      avatar: "/placeholder.svg",
     },
-    action: "liked your comment",
-    timestamp: "28 March, 2024, 5:40 PM",
+    action: "a commencé son service",
+    timestamp: "15 min",
     isRead: true,
   },
   {
     id: "5",
-    type: "file",
+    type: "alert",
     user: {
       id: "5",
-      name: "Blanche Phillips",
-      initials: "BP",
-      avatar:
-        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=32&h=32&fit=crop&crop=face",
+      name: "Système",
+      initials: "SY",
+      avatar: "/placeholder.svg",
     },
-    action: "added file to",
-    target: "Beyond UI",
-    timestamp: "22 March, 2024, 7:20 AM",
+    action: "stock faible : Mojito",
+    timestamp: "1h",
     isRead: true,
-    fileInfo: {
-      name: "FinalFinalFinal123.psd",
-      size: "1.7 MB",
-    },
   },
 ];
 
 const getNotificationIcon = (type: Notification["type"]) => {
   switch (type) {
-    case "comment":
-      return <MessageCircle className="w-3 h-3" />;
-    case "follow":
-      return <UserPlus className="w-3 h-3" />;
-    case "assignment":
-      return <Settings className="w-3 h-3" />;
-    case "like":
-      return <Check className="w-3 h-3" />;
-    case "file":
-      return <FileText className="w-3 h-3" />;
+    case "order":
+      return <ShoppingCart className="w-3 h-3 text-dashboard-yellow" />;
+    case "kitchen":
+      return <ChefHat className="w-3 h-3 text-orange-500" />;
+    case "table":
+      return <Users className="w-3 h-3 text-blue-500" />;
+    case "staff":
+      return <CheckCircle className="w-3 h-3 text-green-500" />;
+    case "alert":
+      return <AlertCircle className="w-3 h-3 text-red-500" />;
     default:
-      return <Settings className="w-3 h-3" />;
+      return <Bell className="w-3 h-3 text-gray-500" />;
   }
 };
 
 const getActionButtonClass = (type: NotificationAction["type"]) => {
   switch (type) {
     case "primary":
-      return "bg-blue-600 text-white hover:bg-blue-700";
+      return "bg-dashboard-yellow text-white hover:bg-dashboard-yellow/90 font-medium";
     case "secondary":
-      return "bg-gray-100 text-gray-700 hover:bg-gray-200";
+      return "bg-gray-100 text-gray-700 hover:bg-gray-200 font-medium";
     case "success":
-      return "bg-green-600 text-white hover:bg-green-700";
+      return "bg-green-600 text-white hover:bg-green-700 font-medium";
     case "warning":
-      return "bg-yellow-600 text-white hover:bg-yellow-700";
+      return "bg-orange-500 text-white hover:bg-orange-600 font-medium";
     default:
-      return "bg-gray-100 text-gray-700 hover:bg-gray-200";
+      return "bg-gray-100 text-gray-700 hover:bg-gray-200 font-medium";
   }
 };
 
@@ -210,13 +207,19 @@ export function NotificationsPanel({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed top-0 right-0 w-80 h-screen bg-white shadow-xl border-l border-gray-200 z-50">
+    <div className="fixed top-0 right-0 w-80 h-screen bg-white shadow-2xl border-l border-gray-200 z-50">
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-200">
-        <div className="flex items-center gap-2">
-          <h2 className="text-lg font-semibold text-gray-900">Notifications</h2>
+      <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-dashboard-gray">
+        <div className="flex items-center gap-3">
+          <Bell className="w-5 h-5 text-dashboard-yellow" />
+          <h2 className="text-lg font-bold text-dashboard-dark font-poppins">
+            Notifications
+          </h2>
           {unreadCount > 0 && (
-            <Badge variant="secondary" className="bg-blue-100 text-blue-700">
+            <Badge
+              variant="secondary"
+              className="bg-dashboard-yellow text-white font-semibold"
+            >
               {unreadCount}
             </Badge>
           )}
@@ -224,43 +227,43 @@ export function NotificationsPanel({
         <div className="flex items-center gap-2">
           <button
             onClick={markAllAsRead}
-            className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+            className="text-sm text-dashboard-yellow hover:text-dashboard-yellow/80 font-medium font-inter flex items-center gap-1"
+            title="Marquer tout comme lu"
           >
             <Check className="w-4 h-4" />
-            Mark all as read
           </button>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-gray-100 rounded-md transition-colors"
+            className="p-1.5 hover:bg-gray-200 rounded-lg transition-colors"
           >
-            <X className="w-4 h-4 text-gray-500" />
+            <X className="w-4 h-4 text-gray-600" />
           </button>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-gray-200">
+      <div className="flex border-b border-gray-200 bg-gray-50">
         <button
           onClick={() => setActiveTab("all")}
           className={cn(
-            "flex-1 px-4 py-3 text-sm font-medium border-b-2 transition-colors",
+            "flex-1 px-4 py-3 text-sm font-medium border-b-2 transition-colors font-inter",
             activeTab === "all"
-              ? "border-blue-600 text-blue-600"
-              : "border-transparent text-gray-500 hover:text-gray-700",
+              ? "border-dashboard-yellow text-dashboard-yellow bg-white"
+              : "border-transparent text-gray-600 hover:text-dashboard-dark",
           )}
         >
-          All Notifications
+          Toutes
         </button>
         <button
           onClick={() => setActiveTab("unread")}
           className={cn(
-            "flex-1 px-4 py-3 text-sm font-medium border-b-2 transition-colors",
+            "flex-1 px-4 py-3 text-sm font-medium border-b-2 transition-colors font-inter",
             activeTab === "unread"
-              ? "border-blue-600 text-blue-600"
-              : "border-transparent text-gray-500 hover:text-gray-700",
+              ? "border-dashboard-yellow text-dashboard-yellow bg-white"
+              : "border-transparent text-gray-600 hover:text-dashboard-dark",
           )}
         >
-          Unread
+          Non lues ({unreadCount})
         </button>
       </div>
 
@@ -282,7 +285,8 @@ export function NotificationsPanel({
                 key={notification.id}
                 className={cn(
                   "relative p-4 hover:bg-gray-50 transition-colors group",
-                  !notification.isRead && "bg-blue-50/30",
+                  !notification.isRead &&
+                    "bg-dashboard-yellow/5 border-l-4 border-dashboard-yellow",
                 )}
               >
                 {/* Delete button */}
@@ -310,22 +314,22 @@ export function NotificationsPanel({
                   {/* Content */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-1 mb-1">
-                      <span className="font-medium text-gray-900 text-sm">
+                      <span className="font-semibold text-dashboard-dark text-sm font-poppins">
                         {notification.user.name}
                       </span>
-                      <div className="flex items-center text-sm text-gray-600">
+                      <div className="flex items-center text-sm text-gray-700 font-inter">
                         <span>{notification.action}</span>
                         {notification.target && (
                           <>
-                            <span className="mx-1">in</span>
-                            <span className="font-medium text-blue-600">
+                            <span className="mx-1"></span>
+                            <span className="font-semibold text-dashboard-yellow">
                               {notification.target}
                             </span>
                           </>
                         )}
                       </div>
                       {!notification.isRead && (
-                        <div className="w-2 h-2 bg-blue-500 rounded-full ml-auto flex-shrink-0"></div>
+                        <div className="w-2 h-2 bg-dashboard-yellow rounded-full ml-auto flex-shrink-0"></div>
                       )}
                     </div>
 
@@ -333,16 +337,16 @@ export function NotificationsPanel({
                       {notification.timestamp}
                     </p>
 
-                    {/* File info */}
-                    {notification.fileInfo && (
-                      <div className="flex items-center gap-2 p-2 bg-gray-50 rounded-md mb-2">
-                        <FileText className="w-4 h-4 text-gray-400" />
+                    {/* Order info */}
+                    {notification.orderInfo && (
+                      <div className="flex items-center gap-2 p-2 bg-dashboard-yellow/10 rounded-lg mb-2 border border-dashboard-yellow/20">
+                        <ShoppingCart className="w-4 h-4 text-dashboard-yellow" />
                         <div className="flex-1 min-w-0">
-                          <p className="text-xs font-medium text-gray-900 truncate">
-                            {notification.fileInfo.name}
+                          <p className="text-xs font-semibold text-dashboard-dark truncate">
+                            Commande {notification.orderInfo.number}
                           </p>
-                          <p className="text-xs text-gray-500">
-                            {notification.fileInfo.size}
+                          <p className="text-xs text-gray-600">
+                            {notification.orderInfo.table}
                           </p>
                         </div>
                       </div>

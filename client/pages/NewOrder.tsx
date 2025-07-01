@@ -44,6 +44,7 @@ export default function NewOrder() {
   const { notifications } = useNotifications();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [tableNumber, setTableNumber] = useState("T12");
+  const [tip, setTip] = useState(500);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -91,12 +92,12 @@ export default function NewOrder() {
     );
   };
 
-  const calculateTip = () => {
-    return 500; // Fixed tip amount as shown in design
+  const calculateTotal = () => {
+    return calculateSubtotal() + tip;
   };
 
-  const calculateTotal = () => {
-    return calculateSubtotal() + calculateTip();
+  const handleTipChange = (newTip: number) => {
+    setTip(newTip);
   };
 
   const handleSaveOrder = () => {
@@ -105,7 +106,7 @@ export default function NewOrder() {
         tableNumber,
         items: cartItems,
         subtotal: calculateSubtotal(),
-        tip: calculateTip(),
+        tip: tip,
         total: calculateTotal(),
       });
 
@@ -126,20 +127,7 @@ export default function NewOrder() {
 
   return (
     <>
-      <ResponsiveLayout
-        navItems={navItems}
-        header={
-          <NewOrderHeader
-            tableNumber={tableNumber}
-            onTableNumberChange={(newTableNumber) => {
-              if (newTableNumber !== tableNumber) {
-                notifications.tableNumberChanged(tableNumber, newTableNumber);
-              }
-              setTableNumber(newTableNumber);
-            }}
-          />
-        }
-      >
+      <ResponsiveLayout navItems={navItems} header={<NewOrderHeader />}>
         {/* Filters */}
         <div className="px-4 lg:px-6 py-3">
           <MenuFilters
@@ -155,7 +143,7 @@ export default function NewOrder() {
           <div className="flex flex-col xl:flex-row gap-3 lg:gap-4 h-full">
             {/* Menu Grid */}
             <div className="flex-1 min-w-0">
-              <h2 className="text-lg lg:text-xl font-semibold text-dashboard-dark mb-5 sm:mb-6 lg:mb-7 pt-2 sm:pt-3 font-poppins">
+              <h2 className="text-xl lg:text-2xl font-bold text-dashboard-dark mb-5 sm:mb-6 lg:mb-7 pt-2 sm:pt-3 font-poppins">
                 Liste des articles
               </h2>
               <MenuGrid
@@ -171,9 +159,12 @@ export default function NewOrder() {
                 items={cartItems}
                 onUpdateQuantity={updateQuantity}
                 subtotal={calculateSubtotal()}
-                tip={calculateTip()}
+                tip={tip}
                 total={calculateTotal()}
                 onSaveOrder={handleSaveOrder}
+                tableNumber={tableNumber}
+                onTableNumberChange={setTableNumber}
+                onTipChange={handleTipChange}
               />
             </div>
           </div>

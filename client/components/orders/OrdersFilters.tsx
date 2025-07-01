@@ -54,7 +54,7 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
   };
 
   return (
-    <div className="bg-gray-50 rounded-xl border border-gray-200 p-4 lg:p-6">
+    <div className="bg-white rounded-xl border border-gray-200 p-4 lg:p-6 shadow-sm">
       {/* Mobile: Stack filters vertically */}
       <div className="flex flex-col lg:flex-row lg:items-center gap-4">
         {/* Filter buttons row */}
@@ -62,19 +62,19 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
           {/* Time Filter */}
           <div className="relative">
             <div className="flex items-center">
-              <div className="bg-gray-300 rounded-lg px-3 py-2 lg:px-4 lg:py-3 font-inter text-xs lg:text-sm">
+              <div className="bg-dashboard-yellow/10 border border-dashboard-yellow/30 rounded-lg px-4 py-2.5 lg:px-5 lg:py-3 font-inter text-sm font-medium text-dashboard-dark">
                 {getCurrentTimeLabel()}
               </div>
               <button
                 onClick={() => setShowTimeDropdown(!showTimeDropdown)}
-                className="ml-2 bg-gray-100 border border-gray-300 rounded-lg p-2 lg:p-3 shadow-sm hover:bg-gray-200 transition-colors"
+                className="ml-2 bg-dashboard-yellow text-white border border-dashboard-yellow rounded-lg p-2.5 lg:p-3 shadow-sm hover:bg-dashboard-yellow/90 transition-all"
               >
-                <ChevronDown className="w-3 h-3 lg:w-4 lg:h-4 text-gray-600" />
+                <ChevronDown className="w-4 h-4 lg:w-4 lg:h-4" />
               </button>
             </div>
 
             {showTimeDropdown && (
-              <div className="absolute top-full left-0 mt-1 w-48 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+              <div className="absolute top-full left-0 mt-2 w-52 bg-white border border-gray-200 rounded-xl shadow-xl z-10 backdrop-blur-sm">
                 {timeRanges.map((range) => (
                   <button
                     key={range.value}
@@ -82,9 +82,9 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
                       onTimeFilterChange(range.value);
                       setShowTimeDropdown(false);
                     }}
-                    className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-100 transition-colors first:rounded-t-lg last:rounded-b-lg ${
+                    className={`w-full text-left px-4 py-3 text-sm font-medium hover:bg-dashboard-yellow/10 transition-all first:rounded-t-xl last:rounded-b-xl ${
                       timeFilter === range.value
-                        ? "bg-blue-50 text-blue-600"
+                        ? "bg-dashboard-yellow/20 text-dashboard-dark border-l-4 border-dashboard-yellow"
                         : "text-gray-700"
                     }`}
                   >
@@ -97,30 +97,30 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
 
           {/* Date Filter */}
           <div className="flex items-center">
-            <div className="bg-gray-300 rounded-lg px-3 py-2 lg:px-4 lg:py-3 font-inter text-xs lg:text-sm">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 lg:px-5 lg:py-3 font-inter text-sm font-medium text-blue-700">
               Date
             </div>
-            <button className="ml-2 bg-gray-100 border border-gray-300 rounded-lg p-2 lg:p-3 shadow-sm hover:bg-gray-200 transition-colors">
-              <Calendar className="w-4 h-4 lg:w-5 lg:h-5 text-black" />
+            <button className="ml-2 bg-blue-500 text-white border border-blue-500 rounded-lg p-2.5 lg:p-3 shadow-sm hover:bg-blue-600 transition-all">
+              <Calendar className="w-4 h-4 lg:w-4 lg:h-4" />
             </button>
           </div>
 
           {/* Status Filter */}
           <div className="relative">
             <div className="flex items-center">
-              <div className="bg-gray-300 rounded-lg px-3 py-2 lg:px-4 lg:py-3 font-inter text-xs lg:text-sm">
+              <div className="bg-green-50 border border-green-200 rounded-lg px-4 py-2.5 lg:px-5 lg:py-3 font-inter text-sm font-medium text-green-700">
                 {getCurrentStatusLabel()}
               </div>
               <button
                 onClick={() => setShowStatusDropdown(!showStatusDropdown)}
-                className="ml-2 bg-gray-100 border border-gray-300 rounded-lg p-2 lg:p-3 shadow-sm hover:bg-gray-200 transition-colors"
+                className="ml-2 bg-green-500 text-white border border-green-500 rounded-lg p-2.5 lg:p-3 shadow-sm hover:bg-green-600 transition-all"
               >
-                <Filter className="w-4 h-4 lg:w-5 lg:h-5 text-black" />
+                <Filter className="w-4 h-4 lg:w-4 lg:h-4" />
               </button>
             </div>
 
             {showStatusDropdown && (
-              <div className="absolute top-full left-0 mt-1 w-48 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+              <div className="absolute top-full left-0 mt-2 w-52 bg-white border border-gray-200 rounded-xl shadow-xl z-10 backdrop-blur-sm">
                 {statusOptions.map((option) => (
                   <button
                     key={option.value}
@@ -128,9 +128,9 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
                       onStatusFilterChange(option.value);
                       setShowStatusDropdown(false);
                     }}
-                    className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-100 transition-colors first:rounded-t-lg last:rounded-b-lg ${
+                    className={`w-full text-left px-4 py-3 text-sm font-medium hover:bg-green-50 transition-all first:rounded-t-xl last:rounded-b-xl ${
                       statusFilter === option.value
-                        ? "bg-blue-50 text-blue-600"
+                        ? "bg-green-50 text-green-700 border-l-4 border-green-500"
                         : "text-gray-700"
                     }`}
                   >
@@ -144,25 +144,25 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
 
         {/* Search Bar */}
         <div className="flex-1 min-w-0">
-          <div className="flex items-center bg-white border border-gray-300 rounded-lg px-3 py-2 lg:px-4 lg:py-3 shadow-sm">
-            <Search className="w-4 h-4 lg:w-5 lg:h-5 text-black mr-2 lg:mr-3 flex-shrink-0" />
+          <div className="flex items-center bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 lg:px-5 lg:py-3.5 shadow-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-dashboard-yellow/20 focus-within:border-dashboard-yellow/40 transition-all">
+            <Search className="w-5 h-5 text-gray-400 mr-3 flex-shrink-0" />
             <input
               type="text"
-              placeholder="Rechercher par numéro, table, article"
+              placeholder="Rechercher par numéro, table, article..."
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
-              className="flex-1 outline-none text-black font-inter text-sm"
+              className="flex-1 outline-none text-dashboard-dark font-inter text-sm bg-transparent placeholder:text-gray-400"
             />
           </div>
         </div>
 
         {/* Advanced Search - Hide on small screens */}
-        <div className="hidden lg:flex items-center min-w-0 lg:max-w-md">
-          <div className="bg-gray-300 rounded-lg px-4 py-3 font-inter text-sm flex-1 min-w-0">
+        <div className="hidden lg:flex items-center min-w-0">
+          <div className="bg-purple-50 border border-purple-200 rounded-lg px-4 py-3 font-inter text-sm font-medium text-purple-700 min-w-0">
             <span className="truncate">Recherche efficace</span>
           </div>
-          <button className="ml-2 bg-gray-100 border border-gray-300 rounded-lg p-3 shadow-sm hover:bg-gray-200 transition-colors">
-            <Search className="w-5 h-5 text-black" />
+          <button className="ml-2 bg-purple-500 text-white border border-purple-500 rounded-lg p-3 shadow-sm hover:bg-purple-600 transition-all">
+            <Search className="w-4 h-4" />
           </button>
         </div>
       </div>
