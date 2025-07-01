@@ -84,43 +84,49 @@ export function MenuGrid({
     );
   }
 
-  // Desktop layout (existing)
+  // Desktop layout (existing) - Optimized for 4 cards
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
       {filteredItems.map((item) => (
         <div
           key={item.id}
-          className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition-shadow min-w-0"
+          className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:scale-105 min-w-0"
         >
           {/* Image */}
-          <div className="relative mb-4">
-            <div className="w-full h-24 bg-gray-200 rounded-2xl mb-4 overflow-hidden">
+          <div className="relative mb-6">
+            <div className="w-full h-40 bg-gray-200 rounded-2xl mb-4 overflow-hidden">
               <img
                 src={item.image}
                 alt={item.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
               />
             </div>
           </div>
 
           {/* Product Info */}
-          <div className="space-y-2 min-w-0 overflow-hidden">
-            <h3 className="font-medium text-dashboard-dark font-poppins truncate">
+          <div className="space-y-3 min-w-0 overflow-hidden">
+            <h3 className="font-semibold text-dashboard-dark font-poppins text-lg truncate">
               {item.name}
             </h3>
-            <p className="text-dashboard-yellow font-bold text-lg font-poppins truncate">
+            <p className="text-dashboard-yellow font-bold text-xl font-poppins truncate">
               {item.price}F
             </p>
+            {item.description && (
+              <p className="text-gray-600 text-sm line-clamp-2 font-inter">
+                {item.description}
+              </p>
+            )}
           </div>
 
           {/* Add Button */}
-          <div className="flex justify-end mt-4">
+          <div className="flex justify-end mt-6">
             <Button
-              size="icon"
-              className="bg-dashboard-yellow hover:bg-dashboard-yellow/90 rounded-lg p-2"
+              size="lg"
+              className="bg-dashboard-yellow hover:bg-dashboard-yellow/90 rounded-xl px-6 py-3 shadow-md hover:shadow-lg transition-all duration-200"
               onClick={() => onAddToCart(item)}
             >
-              <Plus className="w-4 h-4 text-white" />
+              <Plus className="w-5 h-5 text-white mr-2" />
+              <span className="text-white font-medium">Ajouter</span>
             </Button>
           </div>
         </div>
