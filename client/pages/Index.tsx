@@ -157,21 +157,17 @@ export default function Index() {
         {/* Quick Actions */}
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center mb-4 sm:mb-6 lg:mb-8">
           <Link to="/dashboard">
-            <Button
-              size="sm"
-              className="w-full sm:w-auto bg-dashboard-yellow hover:bg-dashboard-yellow/90 text-white font-medium px-3 sm:px-4 lg:px-6 py-1.5 sm:py-2 rounded-md text-sm"
-            >
-              <BarChart3 className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />
+            <Button className="w-full sm:w-auto bg-dashboard-yellow hover:bg-dashboard-yellow/90 text-white font-medium rounded-md">
+              <BarChart3 className="w-4 h-4 mr-2" />
               Dashboard Serveur
             </Button>
           </Link>
           <Link to="/new-order">
             <Button
-              size="sm"
               variant="outline"
-              className="w-full sm:w-auto border-dashboard-yellow text-dashboard-yellow hover:bg-dashboard-yellow hover:text-white font-medium px-3 sm:px-4 lg:px-6 py-1.5 sm:py-2 rounded-md text-sm"
+              className="w-full sm:w-auto border-dashboard-yellow text-dashboard-yellow hover:bg-dashboard-yellow hover:text-white font-medium rounded-md"
             >
-              <Plus className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />
+              <Plus className="w-4 h-4 mr-2" />
               Nouvelle Commande
             </Button>
           </Link>
