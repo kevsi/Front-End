@@ -114,13 +114,13 @@ export function OrderTable() {
           </div>
         </div>
 
-      {/* Table Body */}
-      <div className="space-y-2 sm:space-y-3 p-2 sm:p-3 lg:p-4 bg-gray-50 min-h-[200px] sm:min-h-[300px] lg:min-h-[400px]">
-        {orders.map((order, index) => (
-          <div
-            key={order.id}
-            className="flex flex-col lg:grid lg:grid-cols-6 gap-2 sm:gap-3 lg:gap-4 items-start lg:items-center p-2 sm:p-3 lg:p-4 bg-white rounded-lg lg:rounded-xl border border-gray-200 shadow-sm"
-          >
+        {/* Table Body */}
+        <div className="space-y-1 sm:space-y-2 p-2 sm:p-3 bg-gray-50 min-h-[150px] sm:min-h-[200px]">
+          {orders.map((order, index) => (
+            <div
+              key={order.id}
+              className="flex flex-col lg:grid lg:grid-cols-6 gap-1 sm:gap-2 items-start lg:items-center p-2 sm:p-3 bg-white rounded-lg border border-gray-200 shadow-sm min-w-[600px] lg:min-w-0"
+            >
             {/* Mobile Layout */}
             <div className="lg:hidden w-full space-y-2 sm:space-y-3">
               <div className="flex justify-between items-center">
