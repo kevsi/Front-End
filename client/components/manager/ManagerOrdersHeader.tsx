@@ -20,40 +20,10 @@ interface ManagerOrdersHeaderProps {
 export const ManagerOrdersHeader: React.FC<ManagerOrdersHeaderProps> = ({
   leftAction,
 }) => {
-  const [showNotifications, setShowNotifications] = useState(false);
-
-  // Notifications d'exemple - À remplacer par des vraies données
-  const sampleNotifications = [
-    {
-      id: "1",
-      title: "Rapport quotidien",
-      message: "Rapport des ventes prêt à consulter",
-      type: "info" as const,
-      timestamp: "Il y a 1 heure",
-      isRead: false,
-      category: "system" as const,
-    },
-    {
-      id: "2",
-      title: "Alerte stock",
-      message: "Stock faible pour plusieurs articles",
-      type: "warning" as const,
-      timestamp: "Il y a 2 heures",
-      isRead: false,
-      category: "system" as const,
-    },
-  ];
+  const { showNotifications, setShowNotifications } = useNotificationContext();
 
   const handleNotificationClick = () => {
-    setShowNotifications(true);
-  };
-
-  const handleMarkAsRead = (notificationId: string) => {
-    console.log("Marqué comme lu:", notificationId);
-  };
-
-  const handleMarkAllAsRead = () => {
-    console.log("Tout marqué comme lu");
+    setShowNotifications(!showNotifications);
   };
 
   const handleLogout = () => {
