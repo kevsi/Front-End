@@ -113,14 +113,6 @@ export const ManagerOrdersHeader: React.FC<ManagerOrdersHeaderProps> = ({
         </div>
       </header>
 
-      {/* Notifications Modal */}
-      <NotificationsModal
-        isOpen={showNotifications}
-        onClose={() => setShowNotifications(false)}
-        notifications={sampleNotifications}
-        onMarkAsRead={handleMarkAsRead}
-        onMarkAllAsRead={handleMarkAllAsRead}
-      />
-    </>
+      </header>
   );
 };
