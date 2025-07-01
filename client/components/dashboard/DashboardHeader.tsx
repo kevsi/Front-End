@@ -38,13 +38,13 @@ export function DashboardHeader({ leftAction }: DashboardHeaderProps) {
           </h1>
         </div>
 
-        {/* Search Bar - Closer to buttons */}
-        <div className="flex-1 w-full lg:max-w-md lg:mx-2">
+        {/* Search Bar - Agrandie */}
+        <div className="flex-1 w-full lg:max-w-2xl lg:mx-4">
           <div className="relative flex items-center">
-            <Search className="absolute left-2 sm:left-3 w-3 h-3 sm:w-4 sm:h-4 text-dashboard-yellow z-10" />
+            <Search className="absolute left-3 sm:left-4 w-4 h-4 sm:w-5 sm:h-5 text-dashboard-yellow z-10" />
             <Input
               placeholder="What do you want eat today..."
-              className="pl-6 sm:pl-8 pr-2 sm:pr-3 py-1.5 sm:py-2 h-7 sm:h-8 bg-white border-0 rounded-lg text-xs sm:text-sm placeholder:text-dashboard-muted font-poppins"
+              className="pl-8 sm:pl-12 pr-3 sm:pr-4 py-2 sm:py-3 h-9 sm:h-10 bg-white border-0 rounded-lg text-sm sm:text-base placeholder:text-dashboard-muted font-poppins shadow-sm"
             />
           </div>
         </div>
