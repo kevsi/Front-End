@@ -51,19 +51,19 @@ export const ManagerArticlesFilters: React.FC<ManagerArticlesFiltersProps> = ({
   };
 
   return (
-    <div className="bg-gray-50 rounded-xl border border-gray-200 p-4 lg:p-6">
+    <div className="bg-white rounded-xl border border-gray-200 p-4 lg:p-6 shadow-sm">
       <div className="flex flex-col lg:flex-row lg:items-center gap-4">
         {/* Filter buttons row */}
         <div className="flex flex-wrap items-center gap-3 lg:gap-4">
           {/* Category Filter */}
           <div className="relative">
             <div className="flex items-center">
-              <div className="bg-gray-300 rounded-lg px-3 py-2 lg:px-4 lg:py-3 font-inter text-xs lg:text-sm">
+              <div className="bg-gray-100 border border-gray-200 rounded-lg px-3 py-2 lg:px-4 lg:py-2.5 font-inter text-xs lg:text-sm text-gray-700">
                 {getCurrentCategoryLabel()}
               </div>
               <button
                 onClick={() => setShowCategoryDropdown(!showCategoryDropdown)}
-                className="ml-2 bg-gray-100 border border-gray-300 rounded-lg p-2 lg:p-3 shadow-sm hover:bg-gray-200 transition-colors"
+                className="ml-2 bg-white border border-gray-200 rounded-lg p-2 lg:p-2.5 shadow-sm hover:bg-gray-50 transition-colors"
               >
                 <ChevronDown className="w-3 h-3 lg:w-4 lg:h-4 text-gray-600" />
               </button>
@@ -94,12 +94,12 @@ export const ManagerArticlesFilters: React.FC<ManagerArticlesFiltersProps> = ({
           {/* Price Filter */}
           <div className="relative">
             <div className="flex items-center">
-              <div className="bg-gray-300 rounded-lg px-3 py-2 lg:px-4 lg:py-3 font-inter text-xs lg:text-sm">
+              <div className="bg-gray-100 border border-gray-200 rounded-lg px-3 py-2 lg:px-4 lg:py-2.5 font-inter text-xs lg:text-sm text-gray-700">
                 {getCurrentPriceLabel()}
               </div>
               <button
                 onClick={() => setShowPriceDropdown(!showPriceDropdown)}
-                className="ml-2 bg-gray-100 border border-gray-300 rounded-lg p-2 lg:p-3 shadow-sm hover:bg-gray-200 transition-colors"
+                className="ml-2 bg-white border border-gray-200 rounded-lg p-2 lg:p-2.5 shadow-sm hover:bg-gray-50 transition-colors"
               >
                 <ChevronDown className="w-3 h-3 lg:w-4 lg:h-4 text-gray-600" />
               </button>
@@ -130,26 +130,26 @@ export const ManagerArticlesFilters: React.FC<ManagerArticlesFiltersProps> = ({
 
         {/* Search Bar */}
         <div className="flex-1 min-w-0">
-          <div className="flex items-center bg-white border border-gray-300 rounded-lg px-3 py-2 lg:px-4 lg:py-3 shadow-sm">
-            <Search className="w-4 h-4 lg:w-5 lg:h-5 text-black mr-2 lg:mr-3 flex-shrink-0" />
+          <div className="flex items-center bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 lg:px-4 lg:py-2.5 shadow-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-dashboard-yellow/20 transition-all">
+            <Search className="w-4 h-4 lg:w-5 lg:h-5 text-gray-400 mr-2 lg:mr-3 flex-shrink-0" />
             <input
               type="text"
               placeholder="Rechercher par nom"
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
-              className="flex-1 outline-none text-black font-inter text-sm"
+              className="flex-1 outline-none text-gray-900 font-inter text-sm bg-transparent placeholder:text-gray-400"
             />
           </div>
         </div>
 
         {/* Buttons Row */}
         <div className="flex items-center gap-3">
-          <button className="bg-gray-300 text-black px-6 py-3 rounded-lg font-inter text-sm font-medium hover:bg-gray-400 transition-colors whitespace-nowrap">
+          <button className="bg-gray-100 text-gray-700 px-4 py-2.5 lg:px-6 lg:py-3 rounded-lg font-inter text-sm font-medium hover:bg-gray-200 hover:shadow-sm transition-all whitespace-nowrap border border-gray-200">
             Selectionner pour ajouter au menu
           </button>
           <button
             onClick={onNewArticleClick}
-            className="bg-[#F8B602] text-white px-6 py-3 rounded-lg font-inter text-sm font-medium hover:bg-[#F8B602]/90 transition-colors whitespace-nowrap"
+            className="bg-dashboard-yellow text-white px-4 py-2.5 lg:px-6 lg:py-3 rounded-lg font-inter text-sm font-medium hover:bg-dashboard-yellow/90 hover:shadow-lg transition-all whitespace-nowrap transform hover:scale-105 active:scale-95"
           >
             Nouvelle article
           </button>
