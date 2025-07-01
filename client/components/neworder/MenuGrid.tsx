@@ -43,40 +43,8 @@ const menuItems: (MenuItem & { isPopular?: boolean; description?: string })[] =
     },
     {
       id: "4",
-      name: "Mojito",
-      price: 4000,
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
-      category: "cocktails",
-    },
-    {
-      id: "5",
       name: "Margarita",
       price: 4500,
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
-      category: "cocktails",
-    },
-    {
-      id: "6",
-      name: "Mojito",
-      price: 4000,
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
-      category: "cocktails",
-    },
-    {
-      id: "7",
-      name: "Daiquiri",
-      price: 4000,
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
-      category: "cocktails",
-    },
-    {
-      id: "8",
-      name: "Cuba Libre",
-      price: 3500,
       image:
         "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
       category: "cocktails",
