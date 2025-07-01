@@ -174,7 +174,7 @@ const ManagerArticles: React.FC = () => {
   return (
     <ResponsiveLayout navItems={navItems} header={<ManagerOrdersHeader />}>
       <div className="p-3 lg:p-4">
-        <h2 className="text-lg lg:text-xl font-semibold text-dashboard-dark font-poppins mb-4">
+        <h2 className="text-lg lg:text-xl font-semibold text-dashboard-dark font-poppins mb-6 sm:mb-7 lg:mb-8 pt-2 sm:pt-3">
           Articles
         </h2>
 
