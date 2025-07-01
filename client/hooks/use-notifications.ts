@@ -14,27 +14,14 @@ export const useNotifications = () => {
     title,
     description,
     type,
-    duration = 4000,
+    duration = 3000,
   }: NotificationConfig) => {
-    const getVariant = (type: NotificationType) => {
-      switch (type) {
-        case "error":
-          return "destructive";
-        case "success":
-          return "success";
-        case "warning":
-          return "warning";
-        case "info":
-          return "info";
-        default:
-          return "default";
-      }
-    };
+    const variant = type === "error" ? "destructive" : "default";
 
     toast({
       title,
       description,
-      variant: getVariant(type) as "default" | "destructive",
+      variant,
       duration,
     });
   };

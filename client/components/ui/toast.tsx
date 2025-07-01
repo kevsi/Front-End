@@ -23,19 +23,13 @@ const ToastViewport = React.forwardRef<
 ToastViewport.displayName = ToastPrimitives.Viewport.displayName;
 
 const toastVariants = cva(
-  "group pointer-events-auto relative flex w-full items-center justify-between space-x-4 overflow-hidden rounded-xl border p-4 shadow-lg transition-all data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-[var(--radix-toast-swipe-end-x)] data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=move]:transition-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[swipe=end]:animate-out data-[state=closed]:fade-out-80 data-[state=closed]:slide-out-to-right-full data-[state=open]:slide-in-from-top-full data-[state=open]:sm:slide-in-from-bottom-full",
+  "group pointer-events-auto relative flex w-full items-center justify-between space-x-3 overflow-hidden rounded-xl border p-4 shadow-xl backdrop-blur-sm transition-all data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-[var(--radix-toast-swipe-end-x)] data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=move]:transition-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[swipe=end]:animate-out data-[state=closed]:fade-out-80 data-[state=closed]:slide-out-to-right-full data-[state=open]:slide-in-from-top-full data-[state=open]:sm:slide-in-from-bottom-full",
   {
     variants: {
       variant: {
         default:
-          "border-dashboard-yellow/20 bg-white text-dashboard-dark shadow-xl backdrop-blur-sm",
-        destructive:
-          "border-red-200 bg-red-50 text-red-900 shadow-xl backdrop-blur-sm",
-        success:
-          "border-green-200 bg-green-50 text-green-900 shadow-xl backdrop-blur-sm",
-        warning:
-          "border-orange-200 bg-orange-50 text-orange-900 shadow-xl backdrop-blur-sm",
-        info: "border-blue-200 bg-blue-50 text-blue-900 shadow-xl backdrop-blur-sm",
+          "border-dashboard-yellow/30 bg-dashboard-yellow/10 text-dashboard-dark",
+        destructive: "border-red-300 bg-red-50 text-red-800",
       },
     },
     defaultVariants: {
