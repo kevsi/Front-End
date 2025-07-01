@@ -40,33 +40,34 @@ export const ManagerOrdersTable: React.FC<ManagerOrdersTableProps> = ({
   orders,
 }) => {
   return (
-    <div className="bg-white rounded-lg lg:rounded-xl shadow-sm lg:shadow-lg overflow-hidden">
-      {/* Desktop Table Header - Hidden on mobile */}
-      <div className="hidden lg:block p-2 sm:p-3 lg:p-4 xl:p-6">
-        <div className="grid grid-cols-7 gap-2 sm:gap-3 lg:gap-4">
-          <div className="text-center font-poppins font-bold text-xs sm:text-sm lg:text-base text-black">
-            N° de commande
-          </div>
-          <div className="text-center font-poppins font-bold text-xs sm:text-sm lg:text-base text-black">
-            N° de table
-          </div>
-          <div className="text-center font-poppins font-bold text-xs sm:text-sm lg:text-base text-black">
-            Nombres d'articles
-          </div>
-          <div className="text-center font-poppins font-bold text-xs sm:text-sm lg:text-base text-black">
-            Prix total
-          </div>
-          <div className="text-center font-poppins font-bold text-xs sm:text-sm lg:text-base text-black">
-            Statut
-          </div>
-          <div className="text-center font-poppins font-bold text-xs sm:text-sm lg:text-base text-black">
-            Serveur
-          </div>
-          <div className="text-center font-poppins font-bold text-xs sm:text-sm lg:text-base text-black">
-            Actions
+    <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+      <div className="overflow-x-auto">
+        {/* Desktop Table Header - Hidden on mobile */}
+        <div className="hidden lg:block p-2 sm:p-3">
+          <div className="grid grid-cols-7 gap-1 sm:gap-2 min-w-[800px]">
+            <div className="text-center font-poppins font-semibold text-xs text-black">
+              N° commande
+            </div>
+            <div className="text-center font-poppins font-semibold text-xs text-black">
+              N° table
+            </div>
+            <div className="text-center font-poppins font-semibold text-xs text-black">
+              Articles
+            </div>
+            <div className="text-center font-poppins font-semibold text-xs text-black">
+              Prix total
+            </div>
+            <div className="text-center font-poppins font-semibold text-xs text-black">
+              Statut
+            </div>
+            <div className="text-center font-poppins font-semibold text-xs text-black">
+              Serveur
+            </div>
+            <div className="text-center font-poppins font-semibold text-xs text-black">
+              Actions
+            </div>
           </div>
         </div>
-      </div>
 
       {/* Table Body */}
       <div className="bg-gray-50 p-2 sm:p-3 lg:p-4 space-y-2 sm:space-y-3">
