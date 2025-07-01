@@ -122,7 +122,7 @@ export function MenuGrid({
       {filteredItems.map((item) => (
         <div
           key={item.id}
-          className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+          className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition-shadow min-w-0"
         >
           {/* Image */}
           <div className="relative mb-4">
@@ -136,11 +136,11 @@ export function MenuGrid({
           </div>
 
           {/* Product Info */}
-          <div className="space-y-2">
-            <h3 className="font-medium text-dashboard-dark font-poppins">
+          <div className="space-y-2 min-w-0 overflow-hidden">
+            <h3 className="font-medium text-dashboard-dark font-poppins truncate">
               {item.name}
             </h3>
-            <p className="text-dashboard-yellow font-bold text-lg font-poppins">
+            <p className="text-dashboard-yellow font-bold text-lg font-poppins truncate">
               {item.price}F
             </p>
           </div>
