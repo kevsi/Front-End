@@ -4,6 +4,7 @@ import { X, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useBreakpoint } from "@/hooks/use-mobile";
 import { useNotifications } from "@/hooks/use-notifications";
+import { ThemeToggle } from "./theme-toggle";
 
 export interface NavItem {
   href: string;
