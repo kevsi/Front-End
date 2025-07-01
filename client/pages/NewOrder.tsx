@@ -127,20 +127,7 @@ export default function NewOrder() {
 
   return (
     <>
-      <ResponsiveLayout
-        navItems={navItems}
-        header={
-          <NewOrderHeader
-            tableNumber={tableNumber}
-            onTableNumberChange={(newTableNumber) => {
-              if (newTableNumber !== tableNumber) {
-                notifications.tableNumberChanged(tableNumber, newTableNumber);
-              }
-              setTableNumber(newTableNumber);
-            }}
-          />
-        }
-      >
+      <ResponsiveLayout navItems={navItems} header={<NewOrderHeader />}>
         {/* Filters */}
         <div className="px-4 lg:px-6 py-3">
           <MenuFilters
