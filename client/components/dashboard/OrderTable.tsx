@@ -9,6 +9,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { OrderDetailsModal } from "@/components/ui/order-details-modal";
+import { EditOrderModal } from "@/components/ui/edit-order-modal";
+import { DeleteConfirmationModal } from "@/components/ui/delete-confirmation-modal";
+import { useState } from "react";
 
 interface Order {
   id: string;
