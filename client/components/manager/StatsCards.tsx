@@ -37,18 +37,18 @@ export const StatsCards: React.FC = () => {
       {stats.map((stat, index) => (
         <div
           key={index}
-          className={`${stat.bgColor} rounded-lg lg:rounded-xl xl:rounded-2xl p-2 sm:p-3 lg:p-4 xl:p-6 shadow-sm lg:shadow-lg border border-gray-100`}
+          className={`${stat.bgColor} rounded-lg lg:rounded-xl xl:rounded-2xl p-2 sm:p-3 lg:p-4 xl:p-6 shadow-sm lg:shadow-lg border border-gray-100 min-w-0`}
         >
-          <div className="flex justify-between items-start mb-2 sm:mb-3 lg:mb-4 xl:mb-6">
-            <div>
-              <p className="text-xs sm:text-xs lg:text-sm text-blue-800 font-medium mb-1 sm:mb-2 font-inter">
+          <div className="flex justify-between items-start mb-2 sm:mb-3 lg:mb-4 xl:mb-6 min-w-0">
+            <div className="min-w-0 flex-1 overflow-hidden">
+              <p className="text-xs sm:text-xs lg:text-sm text-blue-800 font-medium mb-1 sm:mb-2 font-inter truncate">
                 {stat.title}
               </p>
-              <p className="text-sm sm:text-base lg:text-lg xl:text-2xl font-bold text-blue-900 font-inter">
+              <p className="text-sm sm:text-base lg:text-lg xl:text-2xl font-bold text-blue-900 font-inter truncate">
                 {stat.value}
               </p>
             </div>
-            <div className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 xl:w-12 xl:h-12 bg-blue-500 rounded-lg lg:rounded-xl flex items-center justify-center shadow-sm lg:shadow-lg">
+            <div className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 xl:w-12 xl:h-12 bg-blue-500 rounded-lg lg:rounded-xl flex items-center justify-center shadow-sm lg:shadow-lg flex-shrink-0">
               <img
                 src={`https://cdn.builder.io/api/v1/image/assets/TEMP/${
                   index === 0
@@ -64,9 +64,9 @@ export const StatsCards: React.FC = () => {
               />
             </div>
           </div>
-          <div className="flex items-center gap-1 sm:gap-2">
-            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full"></div>
-            <span className="text-xs text-blue-800 font-medium font-inter">
+          <div className="flex items-center gap-1 sm:gap-2 min-w-0 overflow-hidden">
+            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full flex-shrink-0"></div>
+            <span className="text-xs text-blue-800 font-medium font-inter truncate min-w-0">
               {stat.change}
             </span>
           </div>
