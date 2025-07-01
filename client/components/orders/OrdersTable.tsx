@@ -38,30 +38,31 @@ const getStatusText = (status: string) => {
 
 export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
   return (
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-      {/* Desktop Table Header - Hidden on mobile */}
-      <div className="hidden lg:block bg-gradient-to-r from-dashboard-yellow/0 to-dashboard-yellow/0 p-4 lg:p-6">
-        <div className="grid grid-cols-6 gap-4">
-          <div className="bg-dashboard-yellow text-white rounded-lg p-3 lg:p-4 text-center font-poppins font-bold text-sm lg:text-base">
-            N° de commande
-          </div>
-          <div className="bg-dashboard-yellow text-white rounded-lg p-3 lg:p-4 text-center font-poppins font-bold text-sm lg:text-base">
-            N° de table
-          </div>
-          <div className="bg-dashboard-yellow text-white rounded-lg p-3 lg:p-4 text-center font-poppins font-bold text-sm lg:text-base">
-            Nombres d'articles
-          </div>
-          <div className="bg-dashboard-yellow text-white rounded-lg p-3 lg:p-4 text-center font-poppins font-bold text-sm lg:text-base">
-            Prix total
-          </div>
-          <div className="bg-dashboard-yellow text-white rounded-lg p-3 lg:p-4 text-center font-poppins font-bold text-sm lg:text-base">
-            Statut
-          </div>
-          <div className="bg-dashboard-yellow text-white rounded-lg p-3 lg:p-4 text-center font-poppins font-bold text-sm lg:text-base">
-            Actions
+    <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+      <div className="overflow-x-auto">
+        {/* Desktop Table Header - Hidden on mobile */}
+        <div className="hidden lg:block bg-gradient-to-r from-dashboard-yellow/0 to-dashboard-yellow/0 p-2 sm:p-3">
+          <div className="grid grid-cols-6 gap-1 sm:gap-2 min-w-[700px]">
+            <div className="bg-dashboard-yellow text-white rounded-lg p-2 text-center font-poppins font-semibold text-xs">
+              N° commande
+            </div>
+            <div className="bg-dashboard-yellow text-white rounded-lg p-2 text-center font-poppins font-semibold text-xs">
+              N° table
+            </div>
+            <div className="bg-dashboard-yellow text-white rounded-lg p-2 text-center font-poppins font-semibold text-xs">
+              Articles
+            </div>
+            <div className="bg-dashboard-yellow text-white rounded-lg p-2 text-center font-poppins font-semibold text-xs">
+              Prix total
+            </div>
+            <div className="bg-dashboard-yellow text-white rounded-lg p-2 text-center font-poppins font-semibold text-xs">
+              Statut
+            </div>
+            <div className="bg-dashboard-yellow text-white rounded-lg p-2 text-center font-poppins font-semibold text-xs">
+              Actions
+            </div>
           </div>
         </div>
-      </div>
 
       {/* Table Body */}
       <div className="bg-gray-50 p-3 lg:p-4 space-y-3">
