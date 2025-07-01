@@ -90,28 +90,29 @@ function getStatusText(status: Order["status"]) {
 
 export function OrderTable() {
   return (
-    <div className="bg-white rounded-lg lg:rounded-xl shadow-sm overflow-hidden">
-      {/* Desktop Table Header */}
-      <div className="hidden lg:grid lg:grid-cols-6 gap-2 sm:gap-3 lg:gap-4 p-3 sm:p-4 lg:p-6 bg-gray-50 border-b">
-        <div className="font-bold text-black text-center font-poppins text-xs sm:text-sm lg:text-base">
-          N° de commande
+    <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+      <div className="overflow-x-auto">
+        {/* Desktop Table Header */}
+        <div className="hidden lg:grid lg:grid-cols-6 gap-1 sm:gap-2 p-2 sm:p-3 bg-gray-50 border-b min-w-[600px]">
+          <div className="font-semibold text-black text-center font-poppins text-xs">
+            N° commande
+          </div>
+          <div className="font-semibold text-black text-center font-poppins text-xs">
+            N° table
+          </div>
+          <div className="font-semibold text-black text-center font-poppins text-xs">
+            Articles
+          </div>
+          <div className="font-semibold text-black text-center font-poppins text-xs">
+            Prix total
+          </div>
+          <div className="font-semibold text-black text-center font-poppins text-xs">
+            Statut
+          </div>
+          <div className="font-semibold text-black text-center font-poppins text-xs">
+            Actions
+          </div>
         </div>
-        <div className="font-bold text-black text-center font-poppins text-xs sm:text-sm lg:text-base">
-          N° de table
-        </div>
-        <div className="font-bold text-black text-center font-poppins text-xs sm:text-sm lg:text-base">
-          Nombres d'articles
-        </div>
-        <div className="font-bold text-black text-center font-poppins text-xs sm:text-sm lg:text-base">
-          Prix total
-        </div>
-        <div className="font-bold text-black text-center font-poppins text-xs sm:text-sm lg:text-base">
-          Statut
-        </div>
-        <div className="font-bold text-black text-center font-poppins text-xs sm:text-sm lg:text-base">
-          Actions
-        </div>
-      </div>
 
       {/* Table Body */}
       <div className="space-y-2 sm:space-y-3 p-2 sm:p-3 lg:p-4 bg-gray-50 min-h-[200px] sm:min-h-[300px] lg:min-h-[400px]">
