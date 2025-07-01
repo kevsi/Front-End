@@ -170,7 +170,7 @@ const Orders: React.FC = () => {
               </h2>
               <button
                 onClick={() => notifications.dataExported("commandes")}
-                className="bg-dashboard-yellow text-white px-3 py-1.5 rounded-md font-inter text-xs font-medium hover:bg-dashboard-yellow/90 transition-colors whitespace-nowrap"
+                className="bg-dashboard-yellow text-white px-6 py-3 rounded-md font-inter text-sm font-medium hover:bg-dashboard-yellow/90 transition-colors whitespace-nowrap"
               >
                 📊 Exporter
               </button>
