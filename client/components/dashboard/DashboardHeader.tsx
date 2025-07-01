@@ -20,6 +20,37 @@ interface DashboardHeaderProps {
 export function DashboardHeader({ leftAction }: DashboardHeaderProps) {
   const [showNotifications, setShowNotifications] = useState(false);
 
+  // Notifications d'exemple - À remplacer par des vraies données
+  const sampleNotifications = [
+    {
+      id: "1",
+      title: "Nouvelle commande",
+      message: "Commande #123 reçue pour la table 5",
+      type: "success" as const,
+      timestamp: "Il y a 2 minutes",
+      isRead: false,
+      category: "order" as const,
+    },
+    {
+      id: "2",
+      title: "Table en attente",
+      message: "Table 3 attend depuis 15 minutes",
+      type: "warning" as const,
+      timestamp: "Il y a 15 minutes",
+      isRead: false,
+      category: "order" as const,
+    },
+    {
+      id: "3",
+      title: "Système",
+      message: "Mise à jour disponible",
+      type: "info" as const,
+      timestamp: "Il y a 1 heure",
+      isRead: true,
+      category: "system" as const,
+    },
+  ];
+
   const handleNotificationClick = () => {
     setShowNotifications(true);
   };
