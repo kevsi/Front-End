@@ -212,9 +212,14 @@ export function NotificationsPanel({
       <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-dashboard-gray">
         <div className="flex items-center gap-3">
           <Bell className="w-5 h-5 text-dashboard-yellow" />
-          <h2 className="text-lg font-bold text-dashboard-dark font-poppins">Notifications</h2>
+          <h2 className="text-lg font-bold text-dashboard-dark font-poppins">
+            Notifications
+          </h2>
           {unreadCount > 0 && (
-            <Badge variant="secondary" className="bg-dashboard-yellow text-white font-semibold">
+            <Badge
+              variant="secondary"
+              className="bg-dashboard-yellow text-white font-semibold"
+            >
               {unreadCount}
             </Badge>
           )}
@@ -280,7 +285,8 @@ export function NotificationsPanel({
                 key={notification.id}
                 className={cn(
                   "relative p-4 hover:bg-gray-50 transition-colors group",
-                  !notification.isRead && "bg-dashboard-yellow/5 border-l-4 border-dashboard-yellow",
+                  !notification.isRead &&
+                    "bg-dashboard-yellow/5 border-l-4 border-dashboard-yellow",
                 )}
               >
                 {/* Delete button */}
@@ -325,7 +331,7 @@ export function NotificationsPanel({
                       {!notification.isRead && (
                         <div className="w-2 h-2 bg-dashboard-yellow rounded-full ml-auto flex-shrink-0"></div>
                       )}
-                    </div></div>
+                    </div>
 
                     <p className="text-xs text-gray-500 mb-2">
                       {notification.timestamp}
