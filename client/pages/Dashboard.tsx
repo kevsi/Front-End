@@ -42,14 +42,14 @@ export default function Dashboard() {
       {/* Orders Section */}
       <div className="flex-1 px-2 sm:px-3 pb-2 sm:pb-3">
         {/* Section Headers */}
-        <div className="flex flex-col xl:flex-row gap-2 sm:gap-3 mb-2">
+        <div className="flex flex-col xl:flex-row gap-2 sm:gap-3 mb-4 sm:mb-5 lg:mb-6 pt-2 sm:pt-3">
           <div className="flex-1">
-            <h2 className="text-sm sm:text-base font-semibold text-dashboard-dark font-poppins">
+            <h2 className="text-sm sm:text-base font-semibold text-dashboard-dark font-poppins mb-1 sm:mb-2">
               Commandes récentes
             </h2>
           </div>
           <div className="w-full xl:w-56 flex-shrink-0">
-            <h2 className="text-sm sm:text-base font-semibold text-dashboard-dark font-poppins text-center xl:text-left">
+            <h2 className="text-sm sm:text-base font-semibold text-dashboard-dark font-poppins text-center xl:text-left mb-1 sm:mb-2">
               Historique
             </h2>
           </div>
