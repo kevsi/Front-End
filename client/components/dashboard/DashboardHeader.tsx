@@ -50,9 +50,12 @@ export function DashboardHeader({ leftAction }: DashboardHeaderProps) {
       <div className="flex items-center gap-1 sm:gap-2">
         {/* Notifications */}
         <div className="relative">
-          <div className="w-7 h-7 sm:w-8 sm:h-8 bg-white rounded-lg flex items-center justify-center">
+          <button
+            onClick={handleNotificationClick}
+            className="w-7 h-7 sm:w-8 sm:h-8 bg-white rounded-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+          >
             <Bell className="w-3 h-3 sm:w-4 sm:h-4 text-dashboard-dark" />
-          </div>
+          </button>
           {/* Notification dot */}
           <div className="absolute -top-0.5 -right-0.5 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-dashboard-yellow rounded-full"></div>
         </div>
