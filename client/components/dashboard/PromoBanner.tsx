@@ -43,16 +43,16 @@ export function PromoBanner() {
           </div>
 
           {/* Content */}
-          <div className="relative z-10 flex flex-col items-center justify-center h-full p-3 sm:p-4 lg:p-6 text-center">
-            <div className="text-white mb-2 sm:mb-3 lg:mb-4">
-              <h3 className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold mb-1 sm:mb-2">
+          <div className="relative z-10 flex flex-col items-center justify-center h-full p-3 sm:p-4 lg:p-6 text-center min-w-0">
+            <div className="text-white mb-2 sm:mb-3 lg:mb-4 min-w-0 w-full overflow-hidden">
+              <h3 className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold mb-1 sm:mb-2 truncate">
                 Pourquoi pas
               </h3>
-              <h3 className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold">
+              <h3 className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold truncate">
                 celui ci aussi ?
               </h3>
             </div>
-            <div className="mt-2 sm:mt-3 lg:mt-4">
+            <div className="mt-2 sm:mt-3 lg:mt-4 flex-shrink-0">
               <img
                 src="/placeholder.svg"
                 alt="Suggested item"
