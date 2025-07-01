@@ -1,8 +1,8 @@
 import { Search, Bell, User, LogOut, ChevronDown } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { NotificationsModal } from "@/components/ui/notifications-modal";
 import { Button } from "@/components/ui/button";
+import { useNotificationContext } from "@/main";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,73 +11,30 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useState } from "react";
 
 interface DashboardHeaderProps {
   leftAction?: React.ReactNode;
 }
 
 export function DashboardHeader({ leftAction }: DashboardHeaderProps) {
-  const [showNotifications, setShowNotifications] = useState(false);
-
-  // Notifications d'exemple - À remplacer par des vraies données
-  const sampleNotifications = [
-    {
-      id: "1",
-      title: "Nouvelle commande",
-      message: "Commande #123 reçue pour la table 5",
-      type: "success" as const,
-      timestamp: "Il y a 2 minutes",
-      isRead: false,
-      category: "order" as const,
-    },
-    {
-      id: "2",
-      title: "Table en attente",
-      message: "Table 3 attend depuis 15 minutes",
-      type: "warning" as const,
-      timestamp: "Il y a 15 minutes",
-      isRead: false,
-      category: "order" as const,
-    },
-    {
-      id: "3",
-      title: "Système",
-      message: "Mise à jour disponible",
-      type: "info" as const,
-      timestamp: "Il y a 1 heure",
-      isRead: true,
-      category: "system" as const,
-    },
-  ];
+  const { showNotifications, setShowNotifications } = useNotificationContext();
 
   const handleNotificationClick = () => {
-    setShowNotifications(true);
-  };
-
-  const handleMarkAsRead = (notificationId: string) => {
-    console.log("Marqué comme lu:", notificationId);
-    // Ici vous mettriez à jour l'état des notifications
-  };
-
-  const handleMarkAllAsRead = () => {
-    console.log("Tout marqué comme lu");
-    // Ici vous mettriez à jour l'état de toutes les notifications
+    setShowNotifications(!showNotifications);
   };
 
   const handleLogout = () => {
     console.log("Déconnexion");
-    // Ici vous implémenteriez la logique de déconnexion
   };
 
   return (
-    <>
-      <div className="flex flex-col lg:flex-row items-start lg:items-center gap-2 sm:gap-3 lg:gap-2 lg:justify-between p-2 sm:p-3 bg-dashboard-gray">
+    <header className="bg-dashboard-gray border-b border-gray-100 p-2 sm:p-3">
+      <div className="flex flex-col lg:flex-row lg:items-center gap-2 sm:gap-3 lg:gap-2 lg:justify-between">
         {/* Mobile layout: Toggle + Greeting */}
         <div className="flex items-center gap-2 sm:gap-3 w-full lg:w-auto flex-shrink-0">
           {leftAction}
-          <h1 className="text-sm sm:text-base lg:text-lg font-semibold text-dashboard-dark font-poppins">
-            Hello, serveur 1
+          <h1 className="text-sm sm:text-base lg:text-lg font-semibold text-dashboard-dark font-poppins truncate">
+            Hello, serveur
           </h1>
         </div>
 
@@ -127,9 +84,9 @@ export function DashboardHeader({ leftAction }: DashboardHeaderProps) {
             <DropdownMenuContent align="end" className="w-56">
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">Serveur 1</p>
+                  <p className="text-sm font-medium leading-none">Serveur</p>
                   <p className="text-xs leading-none text-muted-foreground">
-                    serveur1@restaurant.com
+                    serveur@restaurant.com
                   </p>
                 </div>
               </DropdownMenuLabel>
@@ -147,15 +104,6 @@ export function DashboardHeader({ leftAction }: DashboardHeaderProps) {
           </DropdownMenu>
         </div>
       </div>
-
-      {/* Notifications Modal */}
-      <NotificationsModal
-        isOpen={showNotifications}
-        onClose={() => setShowNotifications(false)}
-        notifications={sampleNotifications}
-        onMarkAsRead={handleMarkAsRead}
-        onMarkAllAsRead={handleMarkAllAsRead}
-      />
-    </>
+    </header>
   );
 }

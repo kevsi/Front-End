@@ -1,8 +1,8 @@
 import { Search, Bell, User, LogOut, ChevronDown } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { NotificationsModal } from "@/components/ui/notifications-modal";
 import { Button } from "@/components/ui/button";
+import { useNotificationContext } from "@/main";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,7 +11,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useState } from "react";
 
 interface NewOrderHeaderProps {
   tableNumber: string;
@@ -24,40 +23,10 @@ export function NewOrderHeader({
   onTableNumberChange,
   leftAction,
 }: NewOrderHeaderProps) {
-  const [showNotifications, setShowNotifications] = useState(false);
-
-  // Notifications d'exemple - À remplacer par des vraies données
-  const sampleNotifications = [
-    {
-      id: "1",
-      title: "Nouvelle commande",
-      message: "Commande #123 reçue pour la table 5",
-      type: "success" as const,
-      timestamp: "Il y a 2 minutes",
-      isRead: false,
-      category: "order" as const,
-    },
-    {
-      id: "2",
-      title: "Cuisine",
-      message: "Plat prêt pour la table 2",
-      type: "info" as const,
-      timestamp: "Il y a 5 minutes",
-      isRead: false,
-      category: "order" as const,
-    },
-  ];
+  const { showNotifications, setShowNotifications } = useNotificationContext();
 
   const handleNotificationClick = () => {
-    setShowNotifications(true);
-  };
-
-  const handleMarkAsRead = (notificationId: string) => {
-    console.log("Marqué comme lu:", notificationId);
-  };
-
-  const handleMarkAllAsRead = () => {
-    console.log("Tout marqué comme lu");
+    setShowNotifications(!showNotifications);
   };
 
   const handleLogout = () => {
@@ -65,13 +34,13 @@ export function NewOrderHeader({
   };
 
   return (
-    <>
-      <div className="flex flex-col lg:flex-row items-start lg:items-center gap-2 sm:gap-3 lg:gap-2 lg:justify-between p-2 sm:p-3 bg-dashboard-gray">
+    <header className="bg-dashboard-gray border-b border-gray-100 p-2 sm:p-3">
+      <div className="flex flex-col lg:flex-row lg:items-center gap-2 sm:gap-3 lg:gap-2 lg:justify-between">
         {/* Mobile layout: Toggle + Greeting */}
         <div className="flex items-center gap-2 sm:gap-3 w-full lg:w-auto flex-shrink-0">
           {leftAction}
           <h1 className="text-sm sm:text-base lg:text-lg font-semibold text-dashboard-dark font-poppins truncate">
-            Hello, serveur 1
+            Nouvelle commande
           </h1>
         </div>
 
@@ -80,21 +49,25 @@ export function NewOrderHeader({
           <div className="relative flex items-center">
             <Search className="absolute left-2 sm:left-3 w-3 h-3 sm:w-4 sm:h-4 text-dashboard-yellow z-10" />
             <Input
-              placeholder="Rechercher dans la liste"
+              placeholder="What do you want eat today..."
               className="pl-6 sm:pl-8 pr-2 sm:pr-3 py-1.5 sm:py-2 h-7 sm:h-8 bg-white border-0 rounded-lg text-xs sm:text-sm placeholder:text-dashboard-muted font-poppins"
             />
           </div>
         </div>
 
+        {/* Table Number Display */}
+        <div className="flex items-center gap-2">
+          <span className="text-sm text-dashboard-muted">Table:</span>
+          <Input
+            value={tableNumber}
+            onChange={(e) => onTableNumberChange(e.target.value)}
+            className="w-16 h-8 text-center bg-white border border-gray-200 rounded-lg"
+            placeholder="N°"
+          />
+        </div>
+
         {/* Right Actions - Larger buttons */}
         <div className="flex items-center gap-2 flex-shrink-0">
-          {/* Table Number */}
-          <div className="bg-gray-300 rounded-md px-2 sm:px-3 py-1 sm:py-1.5">
-            <span className="text-black font-semibold text-xs sm:text-sm font-poppins">
-              {tableNumber}
-            </span>
-          </div>
-
           {/* Notifications - Larger button */}
           <div className="relative">
             <Button
@@ -128,9 +101,9 @@ export function NewOrderHeader({
             <DropdownMenuContent align="end" className="w-56">
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">Serveur 1</p>
+                  <p className="text-sm font-medium leading-none">Serveur</p>
                   <p className="text-xs leading-none text-muted-foreground">
-                    serveur1@restaurant.com
+                    serveur@restaurant.com
                   </p>
                 </div>
               </DropdownMenuLabel>
@@ -148,15 +121,6 @@ export function NewOrderHeader({
           </DropdownMenu>
         </div>
       </div>
-
-      {/* Notifications Modal */}
-      <NotificationsModal
-        isOpen={showNotifications}
-        onClose={() => setShowNotifications(false)}
-        notifications={sampleNotifications}
-        onMarkAsRead={handleMarkAsRead}
-        onMarkAllAsRead={handleMarkAllAsRead}
-      />
-    </>
+    </header>
   );
 }
