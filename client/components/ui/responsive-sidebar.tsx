@@ -161,6 +161,13 @@ export function ResponsiveSidebar({
               </button>
             </div>
 
+            {/* Theme Toggle for collapsed state */}
+            <div className="p-2 border-b border-gray-100">
+              <div className="flex justify-center">
+                <ThemeToggle />
+              </div>
+            </div>
+
             {/* Collapsed nav items */}
             <nav className="flex-1 px-2 py-6">
               <ul className="space-y-4">
