@@ -189,9 +189,7 @@ export function ResponsiveSidebar({
 
   // Desktop: Always open
   return (
-    <div className="w-56 sm:w-64 lg:w-72 xl:w-80 flex-shrink-0">
-      {sidebarContent}
-    </div>
+    <div className="w-48 sm:w-52 lg:w-56 flex-shrink-0">{sidebarContent}</div>
   );
 }
 
