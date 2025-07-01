@@ -61,15 +61,15 @@ export function UsersTable({ users, onUserAction }: UsersTableProps) {
           </div>
         </div>
 
-      {/* Table Body */}
-      <div className="bg-[#FAFAFA] p-4">
-        <div className="space-y-4">
-          {users.map((user, index) => (
-            <div
-              key={user.id}
-              className="bg-white rounded-xl border border-[#E5E7EB] shadow-[0px_2px_4px_rgba(0,0,0,0.05)] p-4"
-            >
-              <div className="grid grid-cols-7 gap-4 items-center">
+        {/* Table Body */}
+        <div className="bg-[#FAFAFA] p-2 sm:p-3">
+          <div className="space-y-2 sm:space-y-3">
+            {users.map((user, index) => (
+              <div
+                key={user.id}
+                className="bg-white rounded-lg border border-[#E5E7EB] shadow-sm p-2 sm:p-3"
+              >
+                <div className="grid grid-cols-7 gap-1 sm:gap-2 items-center min-w-[800px]">
                 {/* Number */}
                 <div className="flex justify-center">
                   <div className="bg-white border border-[#E5E7EB] rounded-lg px-4 py-2">
