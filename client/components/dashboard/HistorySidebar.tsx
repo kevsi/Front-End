@@ -43,27 +43,23 @@ function getHistoryIcon(type: HistoryItem["type"]) {
 
 export function HistorySidebar() {
   return (
-    <div className="bg-slate-50 h-full rounded-lg">
-      <div className="p-2 sm:p-3 lg:p-4">
-        <h3 className="text-center font-bold text-black text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 lg:mb-6">
-          Historique
-        </h3>
-
-        <div className="space-y-3 sm:space-y-4 lg:space-y-6">
+    <div className="bg-white h-full rounded-lg shadow-sm border border-gray-100">
+      <div className="p-2 sm:p-3">
+        <div className="space-y-2 sm:space-y-3">
           {historyItems.map((item, index) => (
             <div key={item.id} className="relative">
               <div className="flex items-center gap-2 sm:gap-3">
                 {/* Icon */}
-                <div className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 bg-dashboard-yellow rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-4 h-4 sm:w-5 sm:h-5 bg-dashboard-yellow rounded-full flex items-center justify-center flex-shrink-0">
                   {getHistoryIcon(item.type)}
                 </div>
 
                 {/* Content */}
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs sm:text-sm font-medium text-black leading-tight">
+                  <p className="text-xs font-medium text-black leading-tight truncate">
                     {item.title}
                   </p>
-                  <p className="text-xs sm:text-sm font-semibold text-black mt-0.5 sm:mt-1">
+                  <p className="text-xs font-semibold text-gray-600 mt-0.5">
                     {item.time}
                   </p>
                 </div>
@@ -71,7 +67,7 @@ export function HistorySidebar() {
 
               {/* Connector line */}
               {index < historyItems.length - 1 && (
-                <div className="absolute left-2.5 sm:left-3 lg:left-3.5 top-5 sm:top-6 lg:top-7 w-px h-3 sm:h-4 lg:h-6 bg-black"></div>
+                <div className="absolute left-2 sm:left-2.5 top-4 sm:top-5 w-px h-2 sm:h-3 bg-gray-300"></div>
               )}
             </div>
           ))}
