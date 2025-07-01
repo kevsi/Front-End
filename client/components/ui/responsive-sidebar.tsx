@@ -202,7 +202,6 @@ export function SidebarToggle({
   const { notifications } = useNotifications();
 
   const handleToggle = () => {
-    notifications.sidebarToggled(true);
     onToggle();
   };
 
