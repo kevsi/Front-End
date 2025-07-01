@@ -23,6 +23,25 @@ interface Order {
   status: "validée" | "en-attente" | "servie";
 }
 
+interface OrderItem {
+  id: string;
+  name: string;
+  quantity: number;
+  price: number;
+  image: string;
+  category: string;
+}
+
+interface OrderDetails {
+  id: string;
+  orderNumber: string;
+  tableNumber: string;
+  status: "validated" | "pending" | "served" | "cancelled";
+  totalPrice: number;
+  createdAt: string;
+  items: OrderItem[];
+}
+
 const orders: Order[] = [
   {
     id: "1",
