@@ -98,8 +98,5 @@ export const ManagerHeader: React.FC<ManagerHeaderProps> = ({ leftAction }) => {
           </div>
         </div>
       </header>
-
-
-    </header>
   );
 };
