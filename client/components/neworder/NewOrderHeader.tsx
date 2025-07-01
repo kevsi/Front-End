@@ -1,8 +1,8 @@
 import { Search, Bell, User, LogOut, ChevronDown } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { NotificationsModal } from "@/components/ui/notifications-modal";
 import { Button } from "@/components/ui/button";
+import { useNotificationContext } from "@/main";
 import {
   DropdownMenu,
   DropdownMenuContent,
