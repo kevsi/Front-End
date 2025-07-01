@@ -409,6 +409,7 @@ export function OrderTable() {
                   <Button
                     variant="outline"
                     size="icon"
+                    onClick={() => handleViewDetails(order.id)}
                     className="bg-blue-50 text-blue-600 border-blue-200 hover:bg-blue-100 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8"
                   >
                     <Eye className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
@@ -416,6 +417,7 @@ export function OrderTable() {
                   <Button
                     variant="outline"
                     size="icon"
+                    onClick={() => handleEditOrder(order.id)}
                     className="bg-yellow-50 text-yellow-600 border-yellow-200 hover:bg-yellow-100 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8"
                   >
                     <Edit className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
@@ -423,6 +425,7 @@ export function OrderTable() {
                   <Button
                     variant="outline"
                     size="icon"
+                    onClick={() => handleDeleteOrder(order.id)}
                     className="bg-red-50 text-red-600 border-red-200 hover:bg-red-100 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8"
                   >
                     <Trash2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
