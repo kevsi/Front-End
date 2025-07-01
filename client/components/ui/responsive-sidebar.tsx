@@ -137,8 +137,8 @@ export function ResponsiveSidebar({
     return (
       <div
         className={cn(
-          "transition-all duration-300 ease-in-out bg-white border-r border-gray-200",
-          isOpen ? "w-64 sm:w-72" : "w-16 sm:w-20",
+          "transition-all duration-300 ease-in-out bg-white border-r border-gray-100",
+          isOpen ? "w-56 sm:w-64" : "w-14 sm:w-16",
         )}
       >
         {isOpen ? (
