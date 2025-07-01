@@ -4,6 +4,7 @@ import { ManagerHeader } from "../components/manager/ManagerHeader";
 import { StatisticsChart } from "../components/manager/StatisticsChart";
 import { StatsCards } from "../components/manager/StatsCards";
 import { ManagerOrdersTable } from "../components/manager/ManagerOrdersTable";
+import { HistorySidebar } from "@/components/dashboard/HistorySidebar";
 import { ResponsiveLayout } from "@/components/ui/responsive-layout";
 import { NavItem } from "@/components/ui/responsive-sidebar";
 
