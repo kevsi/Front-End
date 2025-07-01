@@ -13,16 +13,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 interface NewOrderHeaderProps {
-  tableNumber: string;
-  onTableNumberChange: (tableNumber: string) => void;
   leftAction?: React.ReactNode;
 }
 
-export function NewOrderHeader({
-  tableNumber,
-  onTableNumberChange,
-  leftAction,
-}: NewOrderHeaderProps) {
+export function NewOrderHeader({ leftAction }: NewOrderHeaderProps) {
   const { showNotifications, setShowNotifications } = useNotificationContext();
 
   const handleNotificationClick = () => {
