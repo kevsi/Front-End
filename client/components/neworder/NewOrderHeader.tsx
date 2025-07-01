@@ -33,7 +33,7 @@ export function NewOrderHeader({ leftAction }: NewOrderHeaderProps) {
         {/* Mobile layout: Toggle + Greeting */}
         <div className="flex items-center gap-2 sm:gap-3 w-full lg:w-auto flex-shrink-0">
           {leftAction}
-          <h1 className="text-sm sm:text-base lg:text-lg font-semibold text-dashboard-dark font-poppins truncate">
+          <h1 className="text-base sm:text-lg lg:text-xl font-bold text-dashboard-dark font-poppins truncate">
             Nouvelle commande
           </h1>
         </div>

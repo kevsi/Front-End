@@ -30,7 +30,7 @@ export function OrderCart({
     <div className="bg-white rounded-lg p-4 sm:p-6 h-fit min-w-0">
       {/* Header */}
       <div className="mb-4 sm:mb-6">
-        <h2 className="text-lg sm:text-2xl font-bold text-dashboard-dark font-poppins mb-3 sm:mb-4 truncate">
+        <h2 className="text-xl sm:text-3xl font-bold text-dashboard-dark font-poppins mb-3 sm:mb-4 truncate">
           Commande
         </h2>
 
