@@ -113,9 +113,9 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
               </div>
               <button
                 onClick={() => setShowStatusDropdown(!showStatusDropdown)}
-                className="ml-2 bg-green-500 text-white border border-green-500 rounded-lg p-2.5 lg:p-3 shadow-sm hover:bg-green-600 transition-all"
+                className="ml-2 bg-green-500 text-white border border-green-500 rounded-lg p-4 lg:p-5 shadow-sm hover:bg-green-600 transition-all"
               >
-                <Filter className="w-4 h-4 lg:w-4 lg:h-4" />
+                <Filter className="w-5 h-5 lg:w-6 lg:h-6" />
               </button>
             </div>
 
