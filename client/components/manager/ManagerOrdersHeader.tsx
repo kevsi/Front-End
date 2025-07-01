@@ -112,7 +112,5 @@ export const ManagerOrdersHeader: React.FC<ManagerOrdersHeaderProps> = ({
           </div>
         </div>
       </header>
-
-      </header>
   );
 };
