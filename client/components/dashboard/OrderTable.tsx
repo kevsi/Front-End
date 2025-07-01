@@ -440,6 +440,30 @@ export function OrderTable() {
           ))}
         </div>
       </div>
+
+      {/* Modales */}
+      <OrderDetailsModal
+        isOpen={showDetailsModal}
+        onClose={closeModals}
+        orderDetails={selectedOrder}
+      />
+
+      <EditOrderModal
+        isOpen={showEditModal}
+        onClose={closeModals}
+        onSave={handleSaveEdit}
+        orderDetails={selectedOrder}
+        isLoading={isLoading}
+      />
+
+      <DeleteConfirmationModal
+        isOpen={showDeleteModal}
+        onClose={closeModals}
+        onConfirm={handleConfirmDelete}
+        itemType="commande"
+        itemName={selectedOrder ? `Commande ${selectedOrder.orderNumber}` : ""}
+        isLoading={isLoading}
+      />
     </div>
   );
 }
