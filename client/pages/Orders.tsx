@@ -4,7 +4,7 @@ import { LayoutDashboard, Plus, ShoppingCart } from "lucide-react";
 import { OrdersHeader } from "../components/orders/OrdersHeader";
 import { OrdersFilters } from "../components/orders/OrdersFilters";
 import { OrdersTable } from "../components/orders/OrdersTable";
-import { OrdersHistorySidebar } from "../components/orders/OrdersHistorySidebar";
+import { HistorySidebar } from "@/components/dashboard/HistorySidebar";
 import { ResponsiveLayout } from "@/components/ui/responsive-layout";
 import { NavItem } from "@/components/ui/responsive-sidebar";
 
