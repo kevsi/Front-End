@@ -161,8 +161,8 @@ const Orders: React.FC = () => {
     <ResponsiveLayout navItems={navItems} header={<OrdersHeader />}>
       <div className="flex flex-1 overflow-hidden">
         <div className="flex-1 p-3 lg:p-4 overflow-auto">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4">
-            <h2 className="text-lg lg:text-xl font-semibold text-dashboard-dark font-poppins">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6 sm:mb-7 lg:mb-8 pt-2 sm:pt-3">
+            <h2 className="text-lg lg:text-xl font-semibold text-dashboard-dark font-poppins mb-2 sm:mb-0">
               Mes commandes
             </h2>
             <button
