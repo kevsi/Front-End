@@ -47,15 +47,11 @@ export const OrdersTableWithNotifications: React.FC<OrdersTableProps> = ({
   const { notifications } = useNotifications();
 
   const handleView = (order: Order) => {
-    notifications.actionSuccess(
-      `Affichage des détails de la commande ${order.orderNumber}`,
-    );
+    // Vue des détails de la commande
   };
 
   const handleEdit = (order: Order) => {
-    notifications.actionSuccess(
-      `Modification de la commande ${order.orderNumber}`,
-    );
+    // Modification de la commande
   };
 
   const handleDelete = (order: Order) => {
