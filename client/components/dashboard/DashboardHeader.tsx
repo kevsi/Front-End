@@ -1,6 +1,8 @@
 import { Search, Bell } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { NotificationsModal } from "@/components/ui/notifications-modal";
+import { useState } from "react";
 
 interface DashboardHeaderProps {
   leftAction?: React.ReactNode;
