@@ -32,7 +32,6 @@ export function ResponsiveSidebar({
   const location = useLocation();
 
   const handleToggle = () => {
-    notifications.sidebarToggled(!isOpen);
     onToggle();
   };
 
