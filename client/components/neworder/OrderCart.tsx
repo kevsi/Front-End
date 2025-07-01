@@ -39,9 +39,12 @@ export function OrderCart({
           </p>
         ) : (
           items.map((item) => (
-            <div key={item.id} className="flex items-center gap-4">
+            <div
+              key={item.id}
+              className="flex items-center gap-3 sm:gap-4 min-w-0"
+            >
               {/* Product Image */}
-              <div className="w-20 h-20 bg-white rounded-lg overflow-hidden flex-shrink-0">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-lg overflow-hidden flex-shrink-0">
                 <img
                   src={item.image}
                   alt={item.name}
@@ -50,8 +53,8 @@ export function OrderCart({
               </div>
 
               {/* Product Details */}
-              <div className="flex-1">
-                <h4 className="font-bold text-dashboard-dark font-poppins">
+              <div className="flex-1 min-w-0 overflow-hidden">
+                <h4 className="font-bold text-dashboard-dark font-poppins text-sm sm:text-base truncate">
                   {item.name}
                 </h4>
 
