@@ -21,46 +21,44 @@ export function UsersSidebar() {
   ];
 
   return (
-    <div className="w-[345px] bg-white h-screen flex-shrink-0">
-      <div className="flex flex-col items-center gap-16 pt-10 px-12">
+    <div className="w-48 sm:w-52 lg:w-56 bg-white h-screen flex-shrink-0 border-r border-gray-100 shadow-sm">
+      <div className="p-3 sm:p-4">
         {/* Logo */}
-        <h1 className="text-[40px] font-normal text-dashboard-dark text-center leading-normal font-leckerli">
+        <h1 className="text-sm sm:text-base font-semibold text-dashboard-dark text-center leading-normal font-leckerli mb-6 sm:mb-8">
           Lounge Bar Le Cuivre
         </h1>
 
         {/* Menu Items */}
-        <div className="flex flex-col gap-4 w-full">
-          {menuItems.map((item) => {
-            const IconComponent = item.icon;
-            return (
-              <Link
-                key={item.href}
-                to={item.href}
-                className={cn(
-                  "flex items-center gap-6 px-6 py-4 rounded-2xl transition-all duration-200",
-                  item.active
-                    ? "bg-dashboard-yellow shadow-[0px_20px_50px_rgba(46,46,46,0.05)]"
-                    : "hover:bg-gray-50",
-                )}
-              >
-                <IconComponent
-                  className={cn(
-                    "w-10 h-10",
-                    item.active ? "text-white" : "text-black",
-                  )}
-                />
-                <span
-                  className={cn(
-                    "text-lg font-medium font-poppins",
-                    item.active ? "text-white" : "text-dashboard-muted",
-                  )}
-                >
-                  {item.label}
-                </span>
-              </Link>
-            );
-          })}
-        </div>
+        <nav>
+          <ul className="space-y-1">
+            {menuItems.map((item) => {
+              const IconComponent = item.icon;
+              return (
+                <li key={item.href}>
+                  <Link
+                    to={item.href}
+                    className={cn(
+                      "flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-2 rounded-md transition-all duration-200 font-medium text-xs sm:text-sm",
+                      item.active
+                        ? "bg-dashboard-yellow text-white shadow-sm"
+                        : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 group",
+                    )}
+                  >
+                    <IconComponent
+                      className={cn(
+                        "w-4 h-4 transition-colors",
+                        item.active
+                          ? "text-white"
+                          : "text-gray-500 group-hover:text-gray-700",
+                      )}
+                    />
+                    <span>{item.label}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
       </div>
     </div>
   );

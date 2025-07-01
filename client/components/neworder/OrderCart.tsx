@@ -20,13 +20,13 @@ export function OrderCart({
   onSaveOrder,
 }: OrderCartProps) {
   return (
-    <div className="bg-white rounded-lg p-6 h-fit">
+    <div className="bg-white rounded-lg p-4 sm:p-6 h-fit min-w-0">
       {/* Header */}
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold text-dashboard-dark font-poppins mb-4">
+      <div className="mb-4 sm:mb-6">
+        <h2 className="text-lg sm:text-2xl font-bold text-dashboard-dark font-poppins mb-2 sm:mb-4 truncate">
           Commande
         </h2>
-        <p className="text-dashboard-dark font-roboto text-xl">
+        <p className="text-dashboard-dark font-roboto text-base sm:text-xl truncate">
           Numéro de table :
         </p>
       </div>
@@ -39,9 +39,12 @@ export function OrderCart({
           </p>
         ) : (
           items.map((item) => (
-            <div key={item.id} className="flex items-center gap-4">
+            <div
+              key={item.id}
+              className="flex items-center gap-3 sm:gap-4 min-w-0"
+            >
               {/* Product Image */}
-              <div className="w-20 h-20 bg-white rounded-lg overflow-hidden flex-shrink-0">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-lg overflow-hidden flex-shrink-0">
                 <img
                   src={item.image}
                   alt={item.name}
@@ -50,8 +53,8 @@ export function OrderCart({
               </div>
 
               {/* Product Details */}
-              <div className="flex-1">
-                <h4 className="font-bold text-dashboard-dark font-poppins">
+              <div className="flex-1 min-w-0 overflow-hidden">
+                <h4 className="font-bold text-dashboard-dark font-poppins text-sm sm:text-base truncate">
                   {item.name}
                 </h4>
 
@@ -80,7 +83,7 @@ export function OrderCart({
               </div>
 
               {/* Price */}
-              <div className="text-dashboard-dark font-bold font-poppins">
+              <div className="text-dashboard-dark font-bold font-poppins text-sm sm:text-base flex-shrink-0">
                 {item.price * item.quantity}F
               </div>
             </div>

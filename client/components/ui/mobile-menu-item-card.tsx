@@ -29,7 +29,6 @@ export const MobileMenuItemCard: React.FC<MenuItemCardProps> = ({
 
   const handleShowDetails = () => {
     setShowDetails(true);
-    notifications.actionSuccess(`Affichage des détails de ${item.name}`);
   };
 
   const productWithDescription = {
@@ -43,7 +42,7 @@ export const MobileMenuItemCard: React.FC<MenuItemCardProps> = ({
     <>
       <div
         onClick={handleShowDetails}
-        className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+        className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer min-w-0"
       >
         {/* Article Image */}
         <div className="relative mb-4">
@@ -60,12 +59,12 @@ export const MobileMenuItemCard: React.FC<MenuItemCardProps> = ({
         </div>
 
         {/* Article Info */}
-        <div className="flex items-center justify-between">
-          <div className="flex-1">
-            <h3 className="text-sm lg:text-base font-bold text-gray-800 font-poppins mb-1">
+        <div className="flex items-center justify-between min-w-0">
+          <div className="flex-1 min-w-0 overflow-hidden">
+            <h3 className="text-sm lg:text-base font-bold text-gray-800 font-poppins mb-1 truncate">
               {item.name}
             </h3>
-            <p className="text-sm lg:text-base font-bold text-dashboard-yellow">
+            <p className="text-sm lg:text-base font-bold text-dashboard-yellow truncate">
               {item.price}F
             </p>
           </div>

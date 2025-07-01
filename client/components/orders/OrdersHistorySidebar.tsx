@@ -57,24 +57,24 @@ const getEventText = (type: string, orderNumber: string) => {
 
 export const OrdersHistorySidebar: React.FC = () => {
   return (
-    <div className="w-50 min-h-screen bg-gray-50 border-l border-gray-200">
-      <div className="p-6">
-        <h3 className="text-lg font-bold text-black font-inter mb-6 text-center">
+    <div className="w-48 sm:w-52 lg:w-56 min-h-screen bg-white border-l border-gray-100 shadow-sm">
+      <div className="p-3 sm:p-4">
+        <h3 className="text-sm sm:text-base font-semibold text-black font-inter mb-3 sm:mb-4 text-center">
           Historique
         </h3>
 
-        <div className="space-y-5 relative">
+        <div className="space-y-3 sm:space-y-4 relative">
           {historyEvents.map((event, index) => (
             <div key={event.id} className="relative">
-              <div className="flex items-center gap-3">
-                <div className="bg-dashboard-yellow rounded-full p-2 relative z-10">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="bg-dashboard-yellow rounded-full p-1.5 sm:p-2 relative z-10">
                   {getEventIcon(event.type)}
                 </div>
                 <div className="flex-1">
-                  <p className="text-xs text-black font-inter mb-1">
+                  <p className="text-xs text-black font-inter mb-0.5 sm:mb-1">
                     {getEventText(event.type, event.orderNumber)}
                   </p>
-                  <p className="text-xs text-black font-inter font-bold">
+                  <p className="text-xs text-black font-inter font-semibold">
                     {event.timestamp}
                   </p>
                 </div>
@@ -82,7 +82,7 @@ export const OrdersHistorySidebar: React.FC = () => {
 
               {/* Vertical line connecting events */}
               {index < historyEvents.length - 1 && (
-                <div className="absolute left-5 top-10 w-px h-8 bg-black"></div>
+                <div className="absolute left-4 sm:left-5 top-8 sm:top-10 w-px h-6 sm:h-8 bg-gray-300"></div>
               )}
             </div>
           ))}

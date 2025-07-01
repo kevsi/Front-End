@@ -30,28 +30,40 @@ export default function Dashboard() {
   return (
     <ResponsiveLayout navItems={navItems} header={<DashboardHeader />}>
       {/* Stats Cards */}
-      <div className="px-3 sm:px-4 lg:px-6 py-2 sm:py-3">
+      <div className="px-2 sm:px-3 py-1 sm:py-2">
         <StatsCards />
       </div>
 
       {/* Promo Banners */}
-      <div className="px-3 sm:px-4 lg:px-6 py-1 sm:py-2">
+      <div className="px-2 sm:px-3 py-1">
         <PromoBanner />
       </div>
 
       {/* Orders Section */}
-      <div className="flex-1 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4">
-        <div className="flex flex-col xl:flex-row gap-2 sm:gap-3 lg:gap-4 h-full">
-          {/* Orders Table */}
-          <div className="flex-1 min-w-0">
-            <h2 className="text-base sm:text-lg lg:text-xl font-semibold text-dashboard-dark mb-2 sm:mb-3 lg:mb-4 font-poppins">
+      <div className="flex-1 px-2 sm:px-3 pb-2 sm:pb-3">
+        {/* Section Headers */}
+        <div className="flex flex-col xl:flex-row gap-2 sm:gap-3 mb-4 sm:mb-5 lg:mb-6 pt-2 sm:pt-3">
+          <div className="flex-1">
+            <h2 className="text-sm sm:text-base font-semibold text-dashboard-dark font-poppins mb-1 sm:mb-2">
               Commandes récentes
             </h2>
+          </div>
+          <div className="w-full xl:w-56 flex-shrink-0">
+            <h2 className="text-sm sm:text-base font-semibold text-dashboard-dark font-poppins text-center xl:text-left mb-1 sm:mb-2">
+              Historique
+            </h2>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="flex flex-col xl:flex-row gap-2 sm:gap-3 h-full">
+          {/* Orders Table */}
+          <div className="flex-1 min-w-0">
             <OrderTable />
           </div>
 
           {/* History Sidebar - Stack below on smaller screens */}
-          <div className="w-full xl:w-64 flex-shrink-0">
+          <div className="w-full xl:w-56 flex-shrink-0">
             <HistorySidebar />
           </div>
         </div>

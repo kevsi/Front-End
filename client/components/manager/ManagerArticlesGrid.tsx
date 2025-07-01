@@ -14,7 +14,7 @@ interface ArticleCardProps {
 
 const ArticleCard: React.FC<ArticleCardProps> = ({ article, onAddToMenu }) => {
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm hover:shadow-md transition-shadow min-w-0">
       {/* Article Image */}
       <div className="relative mb-4">
         <img
@@ -25,12 +25,12 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, onAddToMenu }) => {
       </div>
 
       {/* Article Info */}
-      <div className="flex items-center justify-between">
-        <div className="flex-1">
-          <h3 className="text-sm lg:text-base font-bold text-gray-800 font-poppins mb-1">
+      <div className="flex items-center justify-between min-w-0">
+        <div className="flex-1 min-w-0 overflow-hidden">
+          <h3 className="text-sm lg:text-base font-bold text-gray-800 font-poppins mb-1 truncate">
             {article.name}
           </h3>
-          <p className="text-sm lg:text-base font-bold text-dashboard-yellow">
+          <p className="text-sm lg:text-base font-bold text-dashboard-yellow truncate">
             {article.price}F
           </p>
         </div>

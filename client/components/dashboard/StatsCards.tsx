@@ -21,14 +21,14 @@ function StatCard({
   iconBg,
 }: StatCardProps) {
   return (
-    <Card className={`${bgGradient} border-0 shadow-sm font-inter`}>
+    <Card className={`${bgGradient} border-0 shadow-sm font-inter min-w-0`}>
       <CardContent className="p-2 sm:p-3 lg:p-4">
-        <div className="flex items-start justify-between mb-2 sm:mb-3 lg:mb-4">
-          <div className="space-y-0.5 sm:space-y-1 min-w-0 flex-1">
+        <div className="flex items-start justify-between mb-2 sm:mb-3 lg:mb-4 min-w-0">
+          <div className="space-y-0.5 sm:space-y-1 min-w-0 flex-1 overflow-hidden">
             <p className="text-xs sm:text-xs lg:text-sm font-medium opacity-70 leading-3 sm:leading-4 tracking-wide truncate">
               {title}
             </p>
-            <p className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-4 sm:leading-5 lg:leading-6">
+            <p className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-4 sm:leading-5 lg:leading-6 truncate">
               {value}
             </p>
           </div>
@@ -38,11 +38,11 @@ function StatCard({
             {icon}
           </div>
         </div>
-        <div className="flex items-center gap-1 sm:gap-2">
+        <div className="flex items-center gap-1 sm:gap-2 min-w-0 overflow-hidden">
           <div
-            className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full ${trendColor}`}
+            className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full ${trendColor} flex-shrink-0`}
           ></div>
-          <span className="text-xs font-medium leading-3 sm:leading-4 truncate">
+          <span className="text-xs font-medium leading-3 sm:leading-4 truncate min-w-0">
             {trend}
           </span>
         </div>
