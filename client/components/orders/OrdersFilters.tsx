@@ -161,8 +161,8 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
           <div className="bg-purple-50 border border-purple-200 rounded-lg px-4 py-3 font-inter text-sm font-medium text-purple-700 min-w-0">
             <span className="truncate">Recherche efficace</span>
           </div>
-          <button className="ml-2 bg-purple-500 text-white border border-purple-500 rounded-lg p-3 shadow-sm hover:bg-purple-600 transition-all">
-            <Search className="w-4 h-4" />
+          <button className="ml-2 bg-purple-500 text-white border border-purple-500 rounded-lg p-5 shadow-sm hover:bg-purple-600 transition-all">
+            <Search className="w-6 h-6" />
           </button>
         </div>
       </div>
