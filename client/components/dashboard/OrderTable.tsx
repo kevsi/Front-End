@@ -85,6 +85,76 @@ const orders: Order[] = [
   },
 ];
 
+// Données détaillées d'exemple pour les modales
+const detailedOrders: Record<string, OrderDetails> = {
+  "1": {
+    id: "1",
+    orderNumber: "C01",
+    tableNumber: "T01",
+    status: "validated",
+    totalPrice: 32000,
+    createdAt: "2024-05-14T08:20:00Z",
+    items: [
+      {
+        id: "item1",
+        name: "Café Expresso",
+        quantity: 2,
+        price: 1500,
+        image:
+          "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=200",
+        category: "boisson",
+      },
+      {
+        id: "item2",
+        name: "Croissant au Beurre",
+        quantity: 1,
+        price: 2000,
+        image:
+          "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=200",
+        category: "pâtisserie",
+      },
+      {
+        id: "item3",
+        name: "Jus d'Orange Frais",
+        quantity: 1,
+        price: 27000,
+        image:
+          "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=200",
+        category: "boisson",
+      },
+    ],
+  },
+  "2": {
+    id: "2",
+    orderNumber: "C02",
+    tableNumber: "T02",
+    status: "pending",
+    totalPrice: 18000,
+    createdAt: "2024-05-14T08:15:00Z",
+    items: [
+      {
+        id: "item4",
+        name: "Thé Vert",
+        quantity: 1,
+        price: 1200,
+        image:
+          "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=200",
+        category: "boisson",
+      },
+      {
+        id: "item5",
+        name: "Sandwich Club",
+        quantity: 1,
+        price: 16800,
+        image:
+          "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=200",
+        category: "plat",
+      },
+    ],
+  },
+  // Ajoutez d'autres commandes détaillées selon besoin
+};
+
 function getStatusVariant(status: Order["status"]) {
   switch (status) {
     case "validée":
