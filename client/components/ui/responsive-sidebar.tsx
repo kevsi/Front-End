@@ -46,31 +46,31 @@ export function ResponsiveSidebar({
   const sidebarContent = (
     <div
       className={cn(
-        "flex flex-col h-full bg-white border-r border-gray-200",
+        "flex flex-col h-full bg-white border-r border-gray-100 shadow-sm",
         className,
       )}
     >
       {/* Header */}
-      <div className="p-4 sm:p-5 lg:p-6 text-center border-b border-gray-100">
+      <div className="p-3 sm:p-4 text-center border-b border-gray-50">
         <div className="flex items-center justify-between">
-          <h1 className="text-dashboard-dark text-lg sm:text-xl lg:text-2xl xl:text-3xl font-normal font-leckerli">
+          <h1 className="text-dashboard-dark text-sm sm:text-base font-semibold font-leckerli truncate">
             Lounge Bar Le Cuivre
           </h1>
           {breakpoint === "mobile" && (
             <button
               onClick={handleToggle}
-              className="p-1.5 sm:p-2 hover:bg-gray-100 rounded-lg transition-colors lg:hidden"
+              className="p-1 hover:bg-gray-100 rounded-md transition-colors lg:hidden"
               aria-label="Close sidebar"
             >
-              <X className="w-5 h-5 sm:w-6 sm:h-6" />
+              <X className="w-4 h-4" />
             </button>
           )}
         </div>
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 px-3 sm:px-4 lg:px-6 py-4 sm:py-5 lg:py-6">
-        <ul className="space-y-2 sm:space-y-3 lg:space-y-4">
+      <nav className="flex-1 px-2 sm:px-3 py-3 sm:py-4">
+        <ul className="space-y-1">
           {navItems.map((item) => {
             const isActive = location.pathname === item.href || item.isActive;
             return (
@@ -78,16 +78,18 @@ export function ResponsiveSidebar({
                 <Link
                   to={item.href}
                   className={cn(
-                    "flex items-center gap-3 sm:gap-4 lg:gap-6 px-3 sm:px-4 lg:px-6 py-2.5 sm:py-3 lg:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl transition-colors font-medium text-sm sm:text-base lg:text-lg",
+                    "flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-2 rounded-md transition-all duration-200 font-medium text-xs sm:text-sm group",
                     isActive
                       ? "bg-dashboard-yellow text-white shadow-sm"
-                      : "text-dashboard-muted hover:bg-gray-50 hover:text-dashboard-dark",
+                      : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
                   )}
                 >
                   <item.icon
                     className={cn(
-                      "w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 xl:w-10 xl:h-10 flex-shrink-0",
-                      isActive ? "text-white" : "text-dashboard-muted",
+                      "w-4 h-4 flex-shrink-0 transition-colors",
+                      isActive
+                        ? "text-white"
+                        : "text-gray-500 group-hover:text-gray-700",
                     )}
                   />
                   <span className="truncate">{item.label}</span>
