@@ -20,13 +20,13 @@ export function OrderCart({
   onSaveOrder,
 }: OrderCartProps) {
   return (
-    <div className="bg-white rounded-lg p-6 h-fit">
+    <div className="bg-white rounded-lg p-4 sm:p-6 h-fit min-w-0">
       {/* Header */}
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold text-dashboard-dark font-poppins mb-4">
+      <div className="mb-4 sm:mb-6">
+        <h2 className="text-lg sm:text-2xl font-bold text-dashboard-dark font-poppins mb-2 sm:mb-4 truncate">
           Commande
         </h2>
-        <p className="text-dashboard-dark font-roboto text-xl">
+        <p className="text-dashboard-dark font-roboto text-base sm:text-xl truncate">
           Numéro de table :
         </p>
       </div>
