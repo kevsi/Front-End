@@ -13,16 +13,16 @@ export function PromoBanner() {
           </div>
 
           {/* Content */}
-          <div className="relative z-10 flex items-center justify-between h-full p-3 sm:p-4 lg:p-6 xl:p-8">
-            <div className="text-white">
-              <h3 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold mb-1 sm:mb-2">
+          <div className="relative z-10 flex items-center justify-between h-full p-3 sm:p-4 lg:p-6 xl:p-8 min-w-0">
+            <div className="text-white min-w-0 flex-1 overflow-hidden">
+              <h3 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold mb-1 sm:mb-2 truncate">
                 Conseillez le client en lui proposant
               </h3>
-              <h3 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold">
+              <h3 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold truncate">
                 cet article populaire
               </h3>
             </div>
-            <div className="hidden lg:block">
+            <div className="hidden lg:block flex-shrink-0">
               <img
                 src="/placeholder.svg"
                 alt="Featured item"
