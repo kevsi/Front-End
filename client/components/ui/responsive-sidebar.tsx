@@ -68,6 +68,11 @@ export function ResponsiveSidebar({
         </div>
       </div>
 
+      {/* Theme Toggle */}
+      <div className="p-2 sm:p-3 border-b border-gray-50">
+        <ThemeToggle />
+      </div>
+
       {/* Navigation */}
       <nav className="flex-1 px-2 sm:px-3 py-3 sm:py-4">
         <ul className="space-y-1">
