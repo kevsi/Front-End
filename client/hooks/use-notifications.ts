@@ -163,13 +163,11 @@ export const useNotifications = () => {
         type: "error",
       }),
 
-    // Actions génériques
-    actionSuccess: (action: string) =>
-      showNotification({
-        title: "Action réussie",
-        description: `${action} effectuée avec succès`,
-        type: "success",
-      }),
+    // Actions génériques - désactivées pour éviter le spam
+    actionSuccess: (action: string) => {
+      // Notification désactivée pour éviter les notifications inutiles
+      // console.log(`Action réussie: ${action}`);
+    },
 
     actionError: (action: string, error?: string) =>
       showNotification({
@@ -178,13 +176,11 @@ export const useNotifications = () => {
         type: "error",
       }),
 
-    // Sidebar et navigation
-    sidebarToggled: (isOpen: boolean) =>
-      showNotification({
-        title: isOpen ? "Menu ouvert" : "Menu fermé",
-        type: "info",
-        duration: 1000,
-      }),
+    // Sidebar et navigation - notifications désactivées
+    sidebarToggled: (isOpen: boolean) => {
+      // Notification désactivée pour éviter les notifications inutiles
+      // console.log(`Menu ${isOpen ? "ouvert" : "fermé"}`);
+    },
   };
 
   return {
