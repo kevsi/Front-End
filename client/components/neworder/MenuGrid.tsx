@@ -43,40 +43,8 @@ const menuItems: (MenuItem & { isPopular?: boolean; description?: string })[] =
     },
     {
       id: "4",
-      name: "Mojito",
-      price: 4000,
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
-      category: "cocktails",
-    },
-    {
-      id: "5",
       name: "Margarita",
       price: 4500,
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
-      category: "cocktails",
-    },
-    {
-      id: "6",
-      name: "Mojito",
-      price: 4000,
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
-      category: "cocktails",
-    },
-    {
-      id: "7",
-      name: "Daiquiri",
-      price: 4000,
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
-      category: "cocktails",
-    },
-    {
-      id: "8",
-      name: "Cuba Libre",
-      price: 3500,
       image:
         "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
       category: "cocktails",
@@ -116,28 +84,28 @@ export function MenuGrid({
     );
   }
 
-  // Desktop layout (existing)
+  // Desktop layout (existing) - Optimized for 4 cards
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
       {filteredItems.map((item) => (
         <div
           key={item.id}
-          className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition-shadow min-w-0"
+          className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:scale-105 min-w-0"
         >
           {/* Image */}
           <div className="relative mb-4">
-            <div className="w-full h-24 bg-gray-200 rounded-2xl mb-4 overflow-hidden">
+            <div className="w-full h-32 bg-gray-200 rounded-xl mb-3 overflow-hidden">
               <img
                 src={item.image}
                 alt={item.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
               />
             </div>
           </div>
 
           {/* Product Info */}
           <div className="space-y-2 min-w-0 overflow-hidden">
-            <h3 className="font-medium text-dashboard-dark font-poppins truncate">
+            <h3 className="font-semibold text-dashboard-dark font-poppins text-base truncate">
               {item.name}
             </h3>
             <p className="text-dashboard-yellow font-bold text-lg font-poppins truncate">
@@ -148,11 +116,12 @@ export function MenuGrid({
           {/* Add Button */}
           <div className="flex justify-end mt-4">
             <Button
-              size="icon"
-              className="bg-dashboard-yellow hover:bg-dashboard-yellow/90 rounded-lg p-2"
+              size="sm"
+              className="bg-dashboard-yellow hover:bg-dashboard-yellow/90 rounded-lg px-4 py-2 shadow-md hover:shadow-lg transition-all duration-200"
               onClick={() => onAddToCart(item)}
             >
-              <Plus className="w-4 h-4 text-white" />
+              <Plus className="w-4 h-4 text-white mr-1" />
+              <span className="text-white font-medium text-sm">Ajouter</span>
             </Button>
           </div>
         </div>

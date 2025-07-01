@@ -1,5 +1,17 @@
-import React from "react";
-import { Search, Bell } from "lucide-react";
+import React, { useState } from "react";
+import { Search, Bell, User, LogOut, ChevronDown } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { NotificationsModal } from "@/components/ui/notifications-modal";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface ManagerOrdersHeaderProps {
   leftAction?: React.ReactNode;
@@ -8,50 +20,137 @@ interface ManagerOrdersHeaderProps {
 export const ManagerOrdersHeader: React.FC<ManagerOrdersHeaderProps> = ({
   leftAction,
 }) => {
+  const [showNotifications, setShowNotifications] = useState(false);
+
+  // Notifications d'exemple - À remplacer par des vraies données
+  const sampleNotifications = [
+    {
+      id: "1",
+      title: "Rapport quotidien",
+      message: "Rapport des ventes prêt à consulter",
+      type: "info" as const,
+      timestamp: "Il y a 1 heure",
+      isRead: false,
+      category: "system" as const,
+    },
+    {
+      id: "2",
+      title: "Alerte stock",
+      message: "Stock faible pour plusieurs articles",
+      type: "warning" as const,
+      timestamp: "Il y a 2 heures",
+      isRead: false,
+      category: "system" as const,
+    },
+  ];
+
+  const handleNotificationClick = () => {
+    setShowNotifications(true);
+  };
+
+  const handleMarkAsRead = (notificationId: string) => {
+    console.log("Marqué comme lu:", notificationId);
+  };
+
+  const handleMarkAllAsRead = () => {
+    console.log("Tout marqué comme lu");
+  };
+
+  const handleLogout = () => {
+    console.log("Déconnexion");
+  };
+
   return (
-    <header className="bg-dashboard-gray p-2 sm:p-3">
-      <div className="flex flex-col lg:flex-row lg:items-center gap-2 sm:gap-3 lg:gap-0 lg:justify-between">
-        {/* Mobile layout: Toggle + Greeting */}
-        <div className="flex items-center gap-2 sm:gap-3 w-full lg:w-auto">
-          {leftAction}
-          <h1 className="text-sm sm:text-base lg:text-lg font-semibold text-dashboard-dark font-poppins truncate">
-            Hello, gérant
-          </h1>
-        </div>
+    <>
+      <header className="bg-dashboard-gray p-2 sm:p-3">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-2 sm:gap-3 lg:gap-2 lg:justify-between">
+          {/* Mobile layout: Toggle + Greeting */}
+          <div className="flex items-center gap-2 sm:gap-3 w-full lg:w-auto flex-shrink-0">
+            {leftAction}
+            <h1 className="text-sm sm:text-base lg:text-lg font-semibold text-dashboard-dark font-poppins truncate">
+              Hello, gérant
+            </h1>
+          </div>
 
-        <div className="flex flex-col lg:flex-row lg:items-center gap-2 sm:gap-3 lg:gap-4 w-full lg:w-auto">
-          {/* Search Bar */}
-          <div className="flex-1 lg:max-w-xl">
-            <div className="flex items-center bg-white rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 shadow-sm">
-              <Search className="w-3 h-3 sm:w-4 sm:h-4 text-dashboard-yellow mr-2 flex-shrink-0" />
-              <input
-                type="text"
+          {/* Search Bar - Closer to buttons */}
+          <div className="flex-1 w-full lg:max-w-md lg:mx-2">
+            <div className="relative flex items-center">
+              <Search className="absolute left-2 sm:left-3 w-3 h-3 sm:w-4 sm:h-4 text-dashboard-yellow z-10" />
+              <Input
                 placeholder="What do you want eat today..."
-                className="flex-1 outline-none text-dashboard-muted font-poppins text-xs sm:text-sm"
+                className="pl-6 sm:pl-8 pr-2 sm:pr-3 py-1.5 sm:py-2 h-7 sm:h-8 bg-white border-0 rounded-lg text-xs sm:text-sm placeholder:text-dashboard-muted font-poppins"
               />
             </div>
           </div>
 
-          <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
-            {/* Notifications */}
+          {/* Right Actions - Larger buttons */}
+          <div className="flex items-center gap-2 flex-shrink-0">
+            {/* Notifications - Larger button */}
             <div className="relative">
-              <div className="bg-white p-1.5 sm:p-2 rounded-lg shadow-sm">
-                <Bell className="w-3 h-3 sm:w-4 sm:h-4 text-dashboard-dark" />
-                <div className="absolute -top-0.5 -right-0.5 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-dashboard-yellow rounded-full"></div>
-              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleNotificationClick}
+                className="w-10 h-10 bg-white rounded-lg flex items-center justify-center hover:bg-gray-50 transition-colors border-gray-200"
+              >
+                <Bell className="w-5 h-5 text-dashboard-dark" />
+              </Button>
+              {/* Notification dot */}
+              <div className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-dashboard-yellow rounded-full"></div>
             </div>
 
-            {/* Profile Avatar */}
-            <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gray-300 rounded-lg overflow-hidden">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/6fb539ebc7ed643642e042113049e79bd48f1c04?width=120"
-                alt="Profile"
-                className="w-full h-full object-cover"
-              />
-            </div>
+            {/* Profile Dropdown - Larger */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="flex items-center gap-2 h-10 px-3 bg-white rounded-lg border-gray-200 hover:bg-gray-50 transition-colors"
+                >
+                  <Avatar className="w-6 h-6 rounded-md">
+                    <AvatarImage src="/placeholder.svg" alt="Profile" />
+                    <AvatarFallback className="rounded-md text-xs bg-dashboard-yellow text-white">
+                      G1
+                    </AvatarFallback>
+                  </Avatar>
+                  <ChevronDown className="w-4 h-4 text-dashboard-dark" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuLabel className="font-normal">
+                  <div className="flex flex-col space-y-1">
+                    <p className="text-sm font-medium leading-none">Gérant</p>
+                    <p className="text-xs leading-none text-muted-foreground">
+                      gerant@restaurant.com
+                    </p>
+                  </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <User className="mr-2 h-4 w-4" />
+                  <span>Profil</span>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={handleLogout}
+                  className="text-red-600"
+                >
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Se déconnecter</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      {/* Notifications Modal */}
+      <NotificationsModal
+        isOpen={showNotifications}
+        onClose={() => setShowNotifications(false)}
+        notifications={sampleNotifications}
+        onMarkAsRead={handleMarkAsRead}
+        onMarkAllAsRead={handleMarkAllAsRead}
+      />
+    </>
   );
 };

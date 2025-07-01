@@ -6,6 +6,7 @@ import { NavItem } from "@/components/ui/responsive-sidebar";
 import { ManagerOrdersHeader } from "@/components/manager/ManagerOrdersHeader";
 import { ManagerOrdersFilters } from "@/components/manager/ManagerOrdersFilters";
 import { ManagerOrdersTable } from "@/components/manager/ManagerOrdersTable";
+import { HistorySidebar } from "@/components/dashboard/HistorySidebar";
 
 export interface ManagerOrder {
   id: string;
@@ -179,30 +180,52 @@ const ManagerOrders: React.FC = () => {
 
   return (
     <ResponsiveLayout navItems={navItems} header={<ManagerOrdersHeader />}>
-      <div className="p-3 lg:p-4">
-        <h2 className="text-lg lg:text-xl font-semibold text-dashboard-dark font-poppins mb-6 sm:mb-7 lg:mb-8 pt-2 sm:pt-3">
-          Commandes
-        </h2>
+      {/* Orders Section */}
+      <div className="flex-1 px-2 sm:px-3 pb-2 sm:pb-3">
+        {/* Section Headers */}
+        <div className="flex flex-col xl:flex-row gap-2 sm:gap-3 mb-4 sm:mb-5 lg:mb-6 pt-2 sm:pt-3">
+          <div className="flex-1">
+            <h2 className="text-sm sm:text-base font-semibold text-dashboard-dark font-poppins mb-1 sm:mb-2">
+              Commandes
+            </h2>
+          </div>
+          <div className="w-full xl:w-56 flex-shrink-0">
+            <h2 className="text-sm sm:text-base font-semibold text-dashboard-dark font-poppins text-center xl:text-left mb-1 sm:mb-2">
+              Historique
+            </h2>
+          </div>
+        </div>
 
-        <ManagerOrdersFilters
-          searchQuery={searchQuery}
-          onSearchChange={(query) => {
-            setSearchQuery(query);
-            if (query.length > 2) {
-              const results = filteredOrders.length;
-              notifications.searchPerformed(query, results);
-            }
-          }}
-          timeFilter={timeFilter}
-          onTimeFilterChange={setTimeFilter}
-          dateFilter={dateFilter}
-          onDateFilterChange={setDateFilter}
-          statusFilter={statusFilter}
-          onStatusFilterChange={setStatusFilter}
-        />
+        {/* Content */}
+        <div className="flex flex-col xl:flex-row gap-2 sm:gap-3 h-full">
+          {/* Orders Table */}
+          <div className="flex-1 min-w-0">
+            <ManagerOrdersFilters
+              searchQuery={searchQuery}
+              onSearchChange={(query) => {
+                setSearchQuery(query);
+                if (query.length > 2) {
+                  const results = filteredOrders.length;
+                  notifications.searchPerformed(query, results);
+                }
+              }}
+              timeFilter={timeFilter}
+              onTimeFilterChange={setTimeFilter}
+              dateFilter={dateFilter}
+              onDateFilterChange={setDateFilter}
+              statusFilter={statusFilter}
+              onStatusFilterChange={setStatusFilter}
+            />
 
-        <div className="mt-4">
-          <ManagerOrdersTable orders={filteredOrders} />
+            <div className="mt-4">
+              <ManagerOrdersTable orders={filteredOrders} />
+            </div>
+          </div>
+
+          {/* History Sidebar - Stack below on smaller screens */}
+          <div className="w-full xl:w-56 flex-shrink-0">
+            <HistorySidebar />
+          </div>
         </div>
       </div>
     </ResponsiveLayout>
