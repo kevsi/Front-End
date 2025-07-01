@@ -6,6 +6,7 @@ import { NavItem } from "@/components/ui/responsive-sidebar";
 import { ManagerOrdersHeader } from "@/components/manager/ManagerOrdersHeader";
 import { ManagerOrdersFilters } from "@/components/manager/ManagerOrdersFilters";
 import { ManagerOrdersTable } from "@/components/manager/ManagerOrdersTable";
+import { HistorySidebar } from "@/components/dashboard/HistorySidebar";
 
 export interface ManagerOrder {
   id: string;
