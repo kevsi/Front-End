@@ -67,9 +67,9 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
               </div>
               <button
                 onClick={() => setShowTimeDropdown(!showTimeDropdown)}
-                className="ml-2 bg-dashboard-yellow text-white border border-dashboard-yellow rounded-lg p-2.5 lg:p-3 shadow-sm hover:bg-dashboard-yellow/90 transition-all"
+                className="ml-2 bg-dashboard-yellow text-white border border-dashboard-yellow rounded-lg p-4 lg:p-5 shadow-sm hover:bg-dashboard-yellow/90 transition-all"
               >
-                <ChevronDown className="w-4 h-4 lg:w-4 lg:h-4" />
+                <ChevronDown className="w-5 h-5 lg:w-6 lg:h-6" />
               </button>
             </div>
 
