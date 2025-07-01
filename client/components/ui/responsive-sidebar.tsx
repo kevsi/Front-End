@@ -164,7 +164,7 @@ export function ResponsiveSidebar({
             {/* Theme Toggle for collapsed state */}
             <div className="p-2 border-b border-gray-100">
               <div className="flex justify-center">
-                <ThemeToggle />
+                <ThemeToggle compact />
               </div>
             </div>
 
