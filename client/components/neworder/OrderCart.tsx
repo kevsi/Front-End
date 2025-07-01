@@ -1,5 +1,6 @@
 import { Minus, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import type { CartItem } from "@/pages/NewOrder";
 
 interface OrderCartProps {
@@ -9,6 +10,9 @@ interface OrderCartProps {
   tip: number;
   total: number;
   onSaveOrder: () => void;
+  tableNumber: string;
+  onTableNumberChange: (value: string) => void;
+  onTipChange: (value: number) => void;
 }
 
 export function OrderCart({
@@ -18,17 +22,30 @@ export function OrderCart({
   tip,
   total,
   onSaveOrder,
+  tableNumber,
+  onTableNumberChange,
+  onTipChange,
 }: OrderCartProps) {
   return (
     <div className="bg-white rounded-lg p-4 sm:p-6 h-fit min-w-0">
       {/* Header */}
       <div className="mb-4 sm:mb-6">
-        <h2 className="text-lg sm:text-2xl font-bold text-dashboard-dark font-poppins mb-2 sm:mb-4 truncate">
+        <h2 className="text-lg sm:text-2xl font-bold text-dashboard-dark font-poppins mb-3 sm:mb-4 truncate">
           Commande
         </h2>
-        <p className="text-dashboard-dark font-roboto text-base sm:text-xl truncate">
-          Numéro de table :
-        </p>
+
+        {/* Table Number Input */}
+        <div className="flex items-center gap-3 mb-3">
+          <span className="text-dashboard-dark font-roboto text-sm font-medium min-w-0">
+            Numéro de table :
+          </span>
+          <Input
+            value={tableNumber}
+            onChange={(e) => onTableNumberChange(e.target.value)}
+            className="w-20 h-8 text-center bg-white border border-gray-200 rounded-lg text-sm font-semibold"
+            placeholder="N°"
+          />
+        </div>
       </div>
 
       {/* Cart Items */}
@@ -93,17 +110,34 @@ export function OrderCart({
 
       {/* Summary */}
       <div className="space-y-4 pt-4 border-t border-gray-200">
+        {/* Subtotal */}
+        <div className="flex justify-between items-center">
+          <span className="text-dashboard-muted font-poppins">Sous-total</span>
+          <span className="text-dashboard-dark font-poppins">{subtotal}F</span>
+        </div>
+
         {/* Tip */}
         <div className="flex justify-between items-center">
           <span className="text-dashboard-muted font-poppins">Pourboire</span>
-          <span className="text-dashboard-dark font-poppins">{tip}F</span>
+          <div className="flex items-center gap-2">
+            <Input
+              type="number"
+              value={tip}
+              onChange={(e) => onTipChange(Number(e.target.value) || 0)}
+              className="w-16 h-7 text-right bg-white border border-gray-200 rounded text-sm"
+              min="0"
+            />
+            <span className="text-dashboard-dark font-poppins text-sm">F</span>
+          </div>
         </div>
 
         {/* Total */}
         <div className="flex justify-between items-center">
-          <span className="text-dashboard-dark font-poppins">Total</span>
+          <span className="text-dashboard-dark font-poppins font-semibold">
+            Total
+          </span>
           <span className="text-dashboard-dark font-bold text-xl font-poppins">
-            {total}.00F
+            {total}F
           </span>
         </div>
       </div>

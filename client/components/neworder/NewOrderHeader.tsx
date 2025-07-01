@@ -55,17 +55,6 @@ export function NewOrderHeader({
           </div>
         </div>
 
-        {/* Table Number Display */}
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-dashboard-muted">Table:</span>
-          <Input
-            value={tableNumber}
-            onChange={(e) => onTableNumberChange(e.target.value)}
-            className="w-16 h-8 text-center bg-white border border-gray-200 rounded-lg"
-            placeholder="N°"
-          />
-        </div>
-
         {/* Right Actions - Larger buttons */}
         <div className="flex items-center gap-2 flex-shrink-0">
           {/* Notifications - Larger button */}
