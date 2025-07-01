@@ -173,39 +173,53 @@ const ManagerArticles: React.FC = () => {
 
   return (
     <ResponsiveLayout navItems={navItems} header={<ManagerOrdersHeader />}>
-      <div className="p-3 lg:p-4">
-        <h2 className="text-lg lg:text-xl font-semibold text-dashboard-dark font-poppins mb-6 sm:mb-7 lg:mb-8 pt-2 sm:pt-3">
-          Articles
-        </h2>
+      <div className="p-4 lg:p-6 bg-gray-50/50 min-h-screen">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-6 lg:mb-8">
+            <h2 className="text-xl lg:text-2xl font-bold text-dashboard-dark font-poppins">
+              Gestion des Articles
+            </h2>
+            <p className="text-sm lg:text-base text-gray-600 mt-1">
+              Gérez vos articles et ajoutez-les au menu
+            </p>
+          </div>
 
-        <ManagerArticlesFilters
-          searchQuery={searchQuery}
-          onSearchChange={(query) => {
-            setSearchQuery(query);
-            if (query.length > 2) {
-              const results = filteredArticles.length;
-              notifications.searchPerformed(query, results);
-            }
-          }}
-          selectedCategory={selectedCategory}
-          onCategoryChange={setSelectedCategory}
-          priceFilter={priceFilter}
-          onPriceFilterChange={setPriceFilter}
-          onNewArticleClick={() => setIsNewArticleModalOpen(true)}
-        />
+          <ManagerArticlesFilters
+            searchQuery={searchQuery}
+            onSearchChange={(query) => {
+              setSearchQuery(query);
+              if (query.length > 2) {
+                const results = filteredArticles.length;
+                notifications.searchPerformed(query, results);
+              }
+            }}
+            selectedCategory={selectedCategory}
+            onCategoryChange={setSelectedCategory}
+            priceFilter={priceFilter}
+            onPriceFilterChange={setPriceFilter}
+            onNewArticleClick={() => setIsNewArticleModalOpen(true)}
+          />
 
-        <div className="mt-4">
-          <ManagerArticlesGrid
-            articles={filteredArticles}
-            onAddToMenu={handleAddToMenu}
+          <div className="mt-6 lg:mt-8">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold text-gray-900">
+                {filteredArticles.length} article
+                {filteredArticles.length !== 1 ? "s" : ""} trouvé
+                {filteredArticles.length !== 1 ? "s" : ""}
+              </h3>
+            </div>
+            <ManagerArticlesGrid
+              articles={filteredArticles}
+              onAddToMenu={handleAddToMenu}
+            />
+          </div>
+
+          <NewArticleModal
+            isOpen={isNewArticleModalOpen}
+            onClose={() => setIsNewArticleModalOpen(false)}
+            onSubmit={handleCreateArticle}
           />
         </div>
-
-        <NewArticleModal
-          isOpen={isNewArticleModalOpen}
-          onClose={() => setIsNewArticleModalOpen(false)}
-          onSubmit={handleCreateArticle}
-        />
       </div>
     </ResponsiveLayout>
   );
