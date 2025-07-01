@@ -2,30 +2,30 @@ import React from "react";
 
 export const StatisticsChart: React.FC = () => {
   return (
-    <div className="bg-white rounded-lg lg:rounded-xl xl:rounded-2xl shadow-sm lg:shadow-lg p-2 sm:p-3 lg:p-4 xl:p-6 h-48 sm:h-56 lg:h-64 xl:h-96">
+    <div className="bg-white rounded-lg lg:rounded-xl xl:rounded-2xl shadow-sm lg:shadow-lg p-2 sm:p-3 lg:p-4 xl:p-6 h-48 sm:h-56 lg:h-64 xl:h-96 min-w-0">
       <div className="mb-2 sm:mb-3 lg:mb-4 xl:mb-6">
-        <h3 className="text-sm sm:text-base lg:text-lg xl:text-2xl font-medium text-gray-700 font-inter mb-1 sm:mb-2">
+        <h3 className="text-sm sm:text-base lg:text-lg xl:text-2xl font-medium text-gray-700 font-inter mb-1 sm:mb-2 truncate">
           Statistics
         </h3>
-        <p className="text-xs sm:text-xs lg:text-sm text-gray-400 font-inter">
+        <p className="text-xs sm:text-xs lg:text-sm text-gray-400 font-inter truncate">
           Suivez les statistiques de votre boite
         </p>
       </div>
 
       <div className="mb-2 sm:mb-3 lg:mb-4 xl:mb-6">
-        <h4 className="text-sm sm:text-sm lg:text-base xl:text-lg font-medium text-gray-600 font-inter mb-2 sm:mb-3 lg:mb-4">
+        <h4 className="text-sm sm:text-sm lg:text-base xl:text-lg font-medium text-gray-600 font-inter mb-2 sm:mb-3 lg:mb-4 truncate">
           Suivi des ventes
         </h4>
 
         {/* Filter buttons */}
-        <div className="flex gap-1 sm:gap-2 lg:gap-3 xl:gap-4 mb-2 sm:mb-3 lg:mb-4 xl:mb-6">
-          <button className="px-2 py-1 sm:px-3 sm:py-1.5 lg:px-4 lg:py-2 text-xs sm:text-xs lg:text-sm font-bold text-black bg-gray-200 rounded-lg border border-gray-300">
+        <div className="flex gap-1 sm:gap-2 lg:gap-3 xl:gap-4 mb-2 sm:mb-3 lg:mb-4 xl:mb-6 overflow-x-auto scrollbar-hide">
+          <button className="px-2 py-1 sm:px-3 sm:py-1.5 lg:px-4 lg:py-2 text-xs sm:text-xs lg:text-sm font-bold text-black bg-gray-200 rounded-lg border border-gray-300 whitespace-nowrap">
             Par produit
           </button>
-          <button className="px-2 py-1 sm:px-3 sm:py-1.5 lg:px-4 lg:py-2 text-xs sm:text-xs lg:text-sm font-bold text-black hover:bg-gray-100 rounded-lg">
+          <button className="px-2 py-1 sm:px-3 sm:py-1.5 lg:px-4 lg:py-2 text-xs sm:text-xs lg:text-sm font-bold text-black hover:bg-gray-100 rounded-lg whitespace-nowrap">
             Par serveur
           </button>
-          <button className="px-2 py-1 sm:px-3 sm:py-1.5 lg:px-4 lg:py-2 text-xs sm:text-xs lg:text-sm font-bold text-black hover:bg-gray-100 rounded-lg">
+          <button className="px-2 py-1 sm:px-3 sm:py-1.5 lg:px-4 lg:py-2 text-xs sm:text-xs lg:text-sm font-bold text-black hover:bg-gray-100 rounded-lg whitespace-nowrap">
             Par période
           </button>
         </div>
