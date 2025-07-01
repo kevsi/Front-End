@@ -95,7 +95,7 @@ const ManagerDashboard: React.FC = () => {
 
         {/* Recent Orders Section */}
         <div className="mb-2 sm:mb-3 lg:mb-4">
-          <h2 className="text-sm sm:text-base lg:text-lg xl:text-xl font-semibold text-dashboard-dark font-poppins mb-2 sm:mb-3 lg:mb-4">
+          <h2 className="text-sm sm:text-base lg:text-lg xl:text-xl font-semibold text-dashboard-dark font-poppins mb-4 sm:mb-5 lg:mb-6 pt-2 sm:pt-3">
             Commandes récentes
           </h2>
           <ManagerOrdersTable orders={sampleManagerOrders} />
