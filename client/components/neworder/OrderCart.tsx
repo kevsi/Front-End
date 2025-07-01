@@ -83,7 +83,7 @@ export function OrderCart({
               </div>
 
               {/* Price */}
-              <div className="text-dashboard-dark font-bold font-poppins">
+              <div className="text-dashboard-dark font-bold font-poppins text-sm sm:text-base flex-shrink-0">
                 {item.price * item.quantity}F
               </div>
             </div>
