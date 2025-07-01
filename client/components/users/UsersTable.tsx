@@ -18,47 +18,48 @@ interface UsersTableProps {
 
 export function UsersTable({ users, onUserAction }: UsersTableProps) {
   return (
-    <div className="bg-white rounded-2xl shadow-[0px_4px_20px_rgba(0,0,0,0.08)] overflow-hidden">
-      {/* Table Header */}
-      <div className="bg-gradient-to-r from-[rgba(230,165,2,0)] to-[rgba(248,182,2,0)] px-6 py-6">
-        <div className="grid grid-cols-7 gap-4 items-center">
-          <div className="text-center">
-            <span className="text-base font-bold text-black font-poppins">
-              N°
-            </span>
-          </div>
-          <div className="text-center">
-            <span className="text-base font-bold text-black font-poppins">
-              Nom
-            </span>
-          </div>
-          <div className="text-center">
-            <span className="text-base font-bold text-black font-poppins">
-              Prénoms
-            </span>
-          </div>
-          <div className="text-center">
-            <span className="text-base font-bold text-black font-poppins">
-              Age
-            </span>
-          </div>
-          <div className="text-center">
-            <span className="text-base font-bold text-black font-poppins">
-              Telephone
-            </span>
-          </div>
-          <div className="text-center">
-            <span className="text-base font-bold text-black font-poppins">
-              Adresse Email
-            </span>
-          </div>
-          <div className="text-center">
-            <span className="text-base font-bold text-black font-poppins">
-              Actions
-            </span>
+    <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+      <div className="overflow-x-auto">
+        {/* Table Header */}
+        <div className="bg-gradient-to-r from-[rgba(230,165,2,0)] to-[rgba(248,182,2,0)] px-2 sm:px-3 py-2 sm:py-3">
+          <div className="grid grid-cols-7 gap-1 sm:gap-2 items-center min-w-[800px]">
+            <div className="text-center">
+              <span className="text-xs font-semibold text-black font-poppins">
+                N°
+              </span>
+            </div>
+            <div className="text-center">
+              <span className="text-xs font-semibold text-black font-poppins">
+                Nom
+              </span>
+            </div>
+            <div className="text-center">
+              <span className="text-xs font-semibold text-black font-poppins">
+                Prénoms
+              </span>
+            </div>
+            <div className="text-center">
+              <span className="text-xs font-semibold text-black font-poppins">
+                Age
+              </span>
+            </div>
+            <div className="text-center">
+              <span className="text-xs font-semibold text-black font-poppins">
+                Telephone
+              </span>
+            </div>
+            <div className="text-center">
+              <span className="text-xs font-semibold text-black font-poppins">
+                Adresse Email
+              </span>
+            </div>
+            <div className="text-center">
+              <span className="text-xs font-semibold text-black font-poppins">
+                Actions
+              </span>
+            </div>
           </div>
         </div>
-      </div>
 
       {/* Table Body */}
       <div className="bg-[#FAFAFA] p-4">
