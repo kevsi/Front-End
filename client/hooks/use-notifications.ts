@@ -14,14 +14,27 @@ export const useNotifications = () => {
     title,
     description,
     type,
-    duration = 3000,
+    duration = 4000,
   }: NotificationConfig) => {
-    const variant = type === "error" ? "destructive" : "default";
+    const getVariant = (type: NotificationType) => {
+      switch (type) {
+        case "error":
+          return "destructive";
+        case "success":
+          return "success";
+        case "warning":
+          return "warning";
+        case "info":
+          return "info";
+        default:
+          return "default";
+      }
+    };
 
     toast({
       title,
       description,
-      variant,
+      variant: getVariant(type) as "default" | "destructive",
       duration,
     });
   };
@@ -31,82 +44,86 @@ export const useNotifications = () => {
     // Commandes
     orderCreated: (orderNumber: string) =>
       showNotification({
-        title: "Commande créée avec succès",
-        description: `La commande ${orderNumber} a été créée`,
+        title: "🎉 Commande enregistrée",
+        description: `Commande ${orderNumber} transmise en cuisine`,
         type: "success",
       }),
 
     orderValidated: (orderNumber: string) =>
       showNotification({
-        title: "Commande validée",
-        description: `La commande ${orderNumber} a été validée`,
+        title: "✅ Commande confirmée",
+        description: `Commande ${orderNumber} prise en charge`,
         type: "success",
       }),
 
     orderServed: (orderNumber: string) =>
       showNotification({
-        title: "Commande servie",
-        description: `La commande ${orderNumber} a été marquée comme servie`,
+        title: "🍽️ Service terminé",
+        description: `Commande ${orderNumber} servie à table`,
         type: "success",
       }),
 
     orderCancelled: (orderNumber: string) =>
       showNotification({
-        title: "Commande annulée",
-        description: `La commande ${orderNumber} a été annulée`,
+        title: "⚠️ Commande annulée",
+        description: `Commande ${orderNumber} retirée du système`,
         type: "warning",
       }),
 
     orderDeleted: (orderNumber: string) =>
       showNotification({
-        title: "Commande supprimée",
-        description: `La commande ${orderNumber} a été supprimée`,
+        title: "🗑️ Commande supprimée",
+        description: `Commande ${orderNumber} effacée définitivement`,
         type: "error",
       }),
 
     // Articles/Menu
     articleAdded: (articleName: string) =>
       showNotification({
-        title: "Article ajouté au panier",
-        description: `${articleName} a été ajouté à votre commande`,
+        title: "🍽️ Article ajouté",
+        description: `${articleName} ajouté à la commande`,
         type: "success",
+        duration: 2500,
       }),
 
     articleRemoved: (articleName: string) =>
       showNotification({
-        title: "Article retiré",
-        description: `${articleName} a été retiré de votre commande`,
+        title: "🗑️ Article retiré",
+        description: `${articleName} retiré de la commande`,
         type: "info",
+        duration: 2500,
       }),
 
     articleAddedToMenu: (articleName: string) =>
       showNotification({
-        title: "Article ajouté au menu",
-        description: `${articleName} a été ajouté au menu du restaurant`,
+        title: "📋 Ajouté au menu",
+        description: `${articleName} disponible en cuisine`,
         type: "success",
       }),
 
     articleCreated: (articleName: string) =>
       showNotification({
-        title: "Article créé avec succès",
-        description: `${articleName} a été ajouté au catalogue`,
+        title: "✨ Nouvel article créé",
+        description: `${articleName} ajouté au catalogue`,
         type: "success",
       }),
 
     // Quantités
     quantityUpdated: (articleName: string, quantity: number) =>
       showNotification({
-        title: "Quantité mise à jour",
-        description: `${articleName} - Quantité: ${quantity}`,
+        title: "📊 Quantité ajustée",
+        description: `${articleName} × ${quantity}`,
         type: "info",
+        duration: 2000,
       }),
 
     // Gestion des tables
     tableNumberChanged: (oldTable: string, newTable: string) =>
       showNotification({
-        title: "Table modifiée",
-        description: `Table changée de ${oldTable} à ${newTable}`,
+        title: "🪑 Table modifiée",
+        description: `${oldTable} → ${newTable}`,
         type: "info",
+        duration: 2500,
       }),
 
     // Recherche et filtres
