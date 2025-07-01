@@ -100,8 +100,8 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
             <div className="bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 lg:px-5 lg:py-3 font-inter text-sm font-medium text-blue-700">
               Date
             </div>
-            <button className="ml-2 bg-blue-500 text-white border border-blue-500 rounded-lg p-2.5 lg:p-3 shadow-sm hover:bg-blue-600 transition-all">
-              <Calendar className="w-4 h-4 lg:w-4 lg:h-4" />
+            <button className="ml-2 bg-blue-500 text-white border border-blue-500 rounded-lg p-4 lg:p-5 shadow-sm hover:bg-blue-600 transition-all">
+              <Calendar className="w-5 h-5 lg:w-6 lg:h-6" />
             </button>
           </div>
 
