@@ -152,6 +152,7 @@ export function DashboardHeader({ leftAction }: DashboardHeaderProps) {
       <NotificationsModal
         isOpen={showNotifications}
         onClose={() => setShowNotifications(false)}
+        notifications={sampleNotifications}
         onMarkAsRead={handleMarkAsRead}
         onMarkAllAsRead={handleMarkAllAsRead}
       />
