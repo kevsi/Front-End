@@ -29,7 +29,6 @@ export const MobileMenuItemCard: React.FC<MenuItemCardProps> = ({
 
   const handleShowDetails = () => {
     setShowDetails(true);
-    notifications.actionSuccess(`Affichage des détails de ${item.name}`);
   };
 
   const productWithDescription = {
