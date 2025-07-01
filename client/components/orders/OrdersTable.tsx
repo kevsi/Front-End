@@ -64,13 +64,13 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
           </div>
         </div>
 
-      {/* Table Body */}
-      <div className="bg-gray-50 p-3 lg:p-4 space-y-3">
-        {orders.map((order, index) => (
-          <div
-            key={order.id}
-            className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm hover:shadow-md transition-shadow"
-          >
+        {/* Table Body */}
+        <div className="bg-gray-50 p-2 sm:p-3 space-y-2 sm:space-y-3">
+          {orders.map((order, index) => (
+            <div
+              key={order.id}
+              className="bg-white rounded-lg border border-gray-200 p-2 sm:p-3 shadow-sm hover:shadow-md transition-shadow min-w-[700px] lg:min-w-0"
+            >
             {/* Mobile Layout */}
             <div className="lg:hidden space-y-4">
               {/* Header Row */}
