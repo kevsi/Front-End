@@ -91,20 +91,18 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
                   </Badge>
                 </div>
 
-                {/* Info Row */}
-                <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <span className="text-gray-500">Table:</span>
-                    <span className="ml-2 font-bold text-gray-700">
-                      {order.tableNumber}
-                    </span>
-                  </div>
-                  <div>
-                    <span className="text-gray-500">Articles:</span>
-                    <span className="ml-2 font-bold text-gray-700">
-                      {order.articleCount}
-                    </span>
-                  </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-xs sm:text-sm text-gray-600">
+                    Table:{" "}
+                    <span className="font-bold">{order.tableNumber}</span>
+                  </span>
+                  <span className="text-xs sm:text-sm text-gray-600">
+                    Articles:{" "}
+                    <span className="font-bold">{order.articleCount}</span>
+                  </span>
+                  <span className="font-bold text-gray-800 text-sm">
+                    {order.totalPrice}F
+                  </span>
                 </div>
 
                 {/* Price and Actions Row */}
