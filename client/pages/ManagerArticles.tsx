@@ -155,10 +155,33 @@ const ManagerArticles: React.FC = () => {
                 {filteredArticles.length !== 1 ? "s" : ""}
               </h3>
             </div>
-            <ManagerArticlesGrid
-              articles={filteredArticles}
-              onAddToMenu={handleAddToMenu}
-            />
+            {isLoading ? (
+              <div className="flex items-center justify-center py-12">
+                <div className="text-center">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-dashboard-yellow mx-auto mb-4"></div>
+                  <p className="text-gray-500">Chargement des articles...</p>
+                </div>
+              </div>
+            ) : error ? (
+              <div className="flex items-center justify-center py-12">
+                <div className="text-center">
+                  <p className="text-red-500 mb-4">
+                    Erreur lors du chargement des articles
+                  </p>
+                  <button
+                    onClick={() => refetch()}
+                    className="bg-dashboard-yellow text-white px-4 py-2 rounded hover:bg-dashboard-yellow/90"
+                  >
+                    Réessayer
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <ManagerArticlesGrid
+                articles={filteredArticles}
+                onAddToMenu={handleAddToMenu}
+              />
+            )}
           </div>
 
           <NewArticleModal
