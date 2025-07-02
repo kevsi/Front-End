@@ -150,6 +150,27 @@ class ApiService {
   async getArticles(
     filters?: ArticleFilters,
   ): Promise<ApiResponse<PaginatedResponse<Article>>> {
+    if (USE_FALLBACK) {
+      await new Promise((resolve) => setTimeout(resolve, 300));
+
+      const filteredArticles = filterArticlesLocally(
+        fallbackArticles,
+        filters || {},
+      );
+
+      return {
+        success: true,
+        message: "Articles retrieved successfully (fallback)",
+        data: {
+          data: filteredArticles,
+          current_page: 1,
+          last_page: 1,
+          per_page: 20,
+          total: filteredArticles.length,
+        },
+      };
+    }
+
     const params = new URLSearchParams();
     if (filters?.category) params.append("category", filters.category);
     if (filters?.priceMin)
@@ -161,9 +182,30 @@ class ApiService {
     if (filters?.search) params.append("search", filters.search);
 
     const query = params.toString() ? `?${params.toString()}` : "";
-    return this.request<ApiResponse<PaginatedResponse<Article>>>(
-      `/articles${query}`,
-    );
+
+    try {
+      return await this.request<ApiResponse<PaginatedResponse<Article>>>(
+        `/articles${query}`,
+      );
+    } catch (error) {
+      console.warn("API failed, using fallback data for articles:", error);
+      const filteredArticles = filterArticlesLocally(
+        fallbackArticles,
+        filters || {},
+      );
+
+      return {
+        success: true,
+        message: "Articles retrieved successfully (fallback after error)",
+        data: {
+          data: filteredArticles,
+          current_page: 1,
+          last_page: 1,
+          per_page: 20,
+          total: filteredArticles.length,
+        },
+      };
+    }
   }
 
   async getArticle(id: string): Promise<ApiResponse<Article>> {
