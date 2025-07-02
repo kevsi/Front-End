@@ -108,14 +108,14 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
           {/* Status Filter */}
           <div className="relative">
             <div className="flex items-center">
-              <div className="bg-green-50 border border-green-200 rounded-lg px-4 py-2.5 lg:px-5 lg:py-3 font-inter text-sm font-medium text-green-700">
+              <div className="bg-green-50 border border-green-200 rounded-lg px-4 py-3 font-inter text-sm font-medium text-green-700 h-12 flex items-center">
                 {getCurrentStatusLabel()}
               </div>
               <button
                 onClick={() => setShowStatusDropdown(!showStatusDropdown)}
-                className="ml-2 bg-green-500 text-white border border-green-500 rounded-lg p-4 lg:p-5 shadow-sm hover:bg-green-600 transition-all"
+                className="ml-2 bg-green-500 text-white border border-green-500 rounded-lg p-3 shadow-sm hover:bg-green-600 transition-all h-12 w-12 flex items-center justify-center"
               >
-                <Filter className="w-5 h-5 lg:w-6 lg:h-6" />
+                <Filter className="w-4 h-4" />
               </button>
             </div>
 
