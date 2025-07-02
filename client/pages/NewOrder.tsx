@@ -1,5 +1,5 @@
 import { Grid3x3, Plus, ShoppingCart } from "lucide-react";
-import { NewOrderHeader } from "@/components/neworder/NewOrderHeader";
+import { AppHeader } from "@/components/ui/app-header";
 import { MenuGrid } from "@/components/neworder/MenuGrid";
 import { OrderCart } from "@/components/neworder/OrderCart";
 import { OrderSuccessModal } from "@/components/neworder/OrderSuccessModal";
@@ -114,7 +114,10 @@ export default function NewOrder() {
 
   return (
     <>
-      <ResponsiveLayout navItems={navItems} header={<NewOrderHeader />}>
+      <ResponsiveLayout
+        navItems={navItems}
+        header={<AppHeader title="Nouvelle Commande" />}
+      >
         {/* Content Area */}
         <div className="flex-1 px-4 lg:px-6 pb-4">
           <div className="flex flex-col xl:flex-row gap-3 lg:gap-4 h-full">

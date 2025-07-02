@@ -1,5 +1,5 @@
 import { Grid3x3, Plus, ShoppingCart, Zap } from "lucide-react";
-import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
+import { AppHeader } from "@/components/ui/app-header";
 import { StatsCards } from "@/components/dashboard/StatsCards";
 import { OrderTable } from "@/components/dashboard/OrderTable";
 import { HistorySidebar } from "@/components/dashboard/HistorySidebar";
@@ -36,7 +36,10 @@ export default function Dashboard() {
 
   return (
     <>
-      <ResponsiveLayout navItems={navItems} header={<DashboardHeader />}>
+      <ResponsiveLayout
+        navItems={navItems}
+        header={<AppHeader title="Dashboard Serveur" />}
+      >
         {/* Laravel Setup Banner */}
         <div className="px-2 sm:px-3 py-1">
           <LaravelSetupBanner />

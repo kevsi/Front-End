@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNotifications } from "@/hooks/use-notifications";
 import { LayoutDashboard, Plus, ShoppingCart } from "lucide-react";
-import { OrdersHeader } from "../components/orders/OrdersHeader";
+import { AppHeader } from "@/components/ui/app-header";
 import { OrdersFilters } from "../components/orders/OrdersFilters";
 import { OrdersTable } from "../components/orders/OrdersTable";
 import { HistorySidebar } from "@/components/dashboard/HistorySidebar";
