@@ -305,42 +305,20 @@ export function OrderTable() {
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <Button
-                    variant="outline"
-                    size="sm"
+                  <ViewAction
                     onClick={() => handleViewDetails(order)}
-                    className="bg-blue-100 text-blue-600 border-blue-200 hover:bg-blue-200 text-xs px-2 py-1"
-                  >
-                    Voir détails
-                  </Button>
-                  <div className="flex gap-1 sm:gap-2">
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      onClick={() => handleViewDetails(order)}
-                      className="bg-blue-50 text-blue-600 border-blue-200 hover:bg-blue-100 w-6 h-6 sm:w-8 sm:h-8"
-                    >
-                      <Eye className="w-3 h-3 sm:w-4 sm:h-4" />
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      onClick={() => handleEditOrder(order)}
-                      className="bg-yellow-50 text-yellow-600 border-yellow-200 hover:bg-yellow-100 w-6 h-6 sm:w-8 sm:h-8"
-                      disabled={isUpdating}
-                    >
-                      <Edit className="w-3 h-3 sm:w-4 sm:h-4" />
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      onClick={() => handleDeleteOrder(order)}
-                      className="bg-red-50 text-red-600 border-red-200 hover:bg-red-100 w-6 h-6 sm:w-8 sm:h-8"
-                      disabled={isDeleting}
-                    >
-                      <Trash2 className="w-3 h-3 sm:w-4 sm:h-4" />
-                    </Button>
-                  </div>
+                    variant="button"
+                    size="sm"
+                    label="Voir détails"
+                  />
+                  <ActionGroup
+                    onView={() => handleViewDetails(order)}
+                    onEdit={() => handleEditOrder(order)}
+                    onDelete={() => handleDeleteOrder(order)}
+                    editDisabled={isUpdating}
+                    deleteDisabled={isDeleting}
+                    size="sm"
+                  />
                 </div>
               </div>
 
