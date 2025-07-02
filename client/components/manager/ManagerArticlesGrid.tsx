@@ -14,7 +14,7 @@ interface ArticleCardProps {
 
 const ArticleCard: React.FC<ArticleCardProps> = ({ article, onAddToMenu }) => {
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-3 lg:p-4 shadow-sm hover:shadow-lg transition-all duration-200 hover:scale-[1.02] min-w-0 group">
+    <div className="bg-white rounded-lg border border-gray-200 p-2 shadow-sm hover:shadow-md transition-all duration-200 min-w-0 group">
       {/* Article Image */}
       <div className="relative mb-3 overflow-hidden rounded-lg">
         <img
