@@ -105,20 +105,19 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
                   </span>
                 </div>
 
-                {/* Price and Actions Row */}
                 <div className="flex justify-between items-center">
-                  <div className="text-lg font-bold text-gray-700">
-                    {order.totalPrice}F
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <button className="bg-blue-100 text-blue-600 p-2 rounded-lg hover:bg-blue-200 transition-colors">
-                      <Eye size={16} />
+                  <button className="bg-blue-100 text-blue-600 border-blue-200 hover:bg-blue-200 text-xs px-2 py-1 rounded-lg font-poppins font-bold transition-colors">
+                    Voir détails
+                  </button>
+                  <div className="flex gap-1 sm:gap-2">
+                    <button className="bg-blue-50 text-blue-600 border-blue-200 hover:bg-blue-100 w-6 h-6 sm:w-8 sm:h-8 p-1 rounded-lg transition-colors">
+                      <Eye className="w-3 h-3 sm:w-4 sm:h-4" />
                     </button>
-                    <button className="bg-yellow-100 text-yellow-600 p-2 rounded-lg hover:bg-yellow-200 transition-colors">
-                      <Edit size={16} />
+                    <button className="bg-yellow-50 text-yellow-600 border-yellow-200 hover:bg-yellow-100 w-6 h-6 sm:w-8 sm:h-8 p-1 rounded-lg transition-colors">
+                      <Edit className="w-3 h-3 sm:w-4 sm:h-4" />
                     </button>
-                    <button className="bg-red-100 text-red-600 p-2 rounded-lg hover:bg-red-200 transition-colors">
-                      <Trash2 size={16} />
+                    <button className="bg-red-50 text-red-600 border-red-200 hover:bg-red-100 w-6 h-6 sm:w-8 sm:h-8 p-1 rounded-lg transition-colors">
+                      <Trash2 className="w-3 h-3 sm:w-4 sm:h-4" />
                     </button>
                   </div>
                 </div>
