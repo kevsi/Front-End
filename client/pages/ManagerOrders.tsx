@@ -3,7 +3,7 @@ import { useNotifications } from "@/hooks/use-notifications";
 import { LayoutDashboard, ShoppingCart, Box } from "lucide-react";
 import { ResponsiveLayout } from "@/components/ui/responsive-layout";
 import { NavItem } from "@/components/ui/responsive-sidebar";
-import { ManagerOrdersHeader } from "@/components/manager/ManagerOrdersHeader";
+import { AppHeader } from "@/components/ui/app-header";
 import { ManagerOrdersFilters } from "@/components/manager/ManagerOrdersFilters";
 import { ManagerOrdersTable } from "@/components/manager/ManagerOrdersTable";
 import { HistorySidebar } from "@/components/dashboard/HistorySidebar";
@@ -179,7 +179,10 @@ const ManagerOrders: React.FC = () => {
   });
 
   return (
-    <ResponsiveLayout navItems={navItems} header={<ManagerOrdersHeader />}>
+    <ResponsiveLayout
+      navItems={navItems}
+      header={<AppHeader title="Gestion des Commandes - Manager" />}
+    >
       {/* Orders Section */}
       <div className="flex-1 px-2 sm:px-3 pb-2 sm:pb-3">
         {/* Section Headers */}
