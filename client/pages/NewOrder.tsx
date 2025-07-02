@@ -53,7 +53,6 @@ export default function NewOrder() {
     const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
 
     if (existingItem) {
-      notifications.quantityUpdated(item.name, existingItem.quantity + 1);
       setCartItems((prev) =>
         prev.map((cartItem) =>
           cartItem.id === item.id
@@ -62,23 +61,14 @@ export default function NewOrder() {
         ),
       );
     } else {
-      notifications.articleAdded(item.name);
       setCartItems((prev) => [...prev, { ...item, quantity: 1 }]);
     }
   };
 
   const updateQuantity = (id: string, quantity: number) => {
-    const item = cartItems.find((item) => item.id === id);
-
     if (quantity <= 0) {
-      if (item) {
-        notifications.articleRemoved(item.name);
-      }
       setCartItems((prev) => prev.filter((item) => item.id !== id));
     } else {
-      if (item) {
-        notifications.quantityUpdated(item.name, quantity);
-      }
       setCartItems((prev) =>
         prev.map((item) => (item.id === id ? { ...item, quantity } : item)),
       );
