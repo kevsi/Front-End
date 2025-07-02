@@ -409,7 +409,7 @@ export function OrderTable() {
         onClose={closeModals}
         onSave={handleSaveEdit}
         orderDetails={selectedOrder}
-        isLoading={isLoading}
+        isLoading={isUpdating}
       />
 
       <DeleteConfirmationModal
@@ -417,8 +417,8 @@ export function OrderTable() {
         onClose={closeModals}
         onConfirm={handleConfirmDelete}
         itemType="commande"
-        itemName={selectedOrder ? `Commande ${selectedOrder.orderNumber}` : ""}
-        isLoading={isLoading}
+        itemName={selectedOrder ? `Commande ${selectedOrder.order_number}` : ""}
+        isLoading={isDeleting}
       />
     </div>
   );
