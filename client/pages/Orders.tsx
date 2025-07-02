@@ -204,7 +204,9 @@ const Orders: React.FC = () => {
             />
 
             <div className="mt-4">
-              <OrdersTable orders={filteredOrders} />
+              <ErrorBoundary>
+                <OrdersTable orders={filteredOrders} />
+              </ErrorBoundary>
             </div>
           </div>
 
