@@ -334,10 +334,38 @@ class ApiService {
   async createArticle(
     data: CreateArticleRequest,
   ): Promise<ApiResponse<Article>> {
-    return this.request<ApiResponse<Article>>("/articles", {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
+    if (USE_FALLBACK) {
+      await new Promise((resolve) => setTimeout(resolve, 800));
+
+      const newArticle: Article = {
+        id: Date.now().toString(),
+        name: data.name,
+        price: data.price,
+        category: data.category,
+        description: data.description,
+        image:
+          data.image ||
+          "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
+        inStock: true,
+        createdAt: new Date().toISOString(),
+      };
+
+      return {
+        success: true,
+        message: "Article created successfully (fallback)",
+        data: newArticle,
+      };
+    }
+
+    try {
+      return await this.request<ApiResponse<Article>>("/articles", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+    } catch (error) {
+      console.warn("API failed for create article, using fallback simulation");
+      throw error;
+    }
   }
 
   async updateArticle(
