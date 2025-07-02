@@ -7,6 +7,8 @@ import { ManagerOrdersHeader } from "@/components/manager/ManagerOrdersHeader";
 import { ManagerArticlesFilters } from "@/components/manager/ManagerArticlesFilters";
 import { ManagerArticlesGrid } from "@/components/manager/ManagerArticlesGrid";
 import { NewArticleModal } from "@/components/manager/NewArticleModal";
+import { useArticles, useCreateArticle } from "@/hooks/api";
+import { ArticleFilters } from "@/types/api";
 
 export interface Article {
   id: string;
