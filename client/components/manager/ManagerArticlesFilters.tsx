@@ -130,14 +130,14 @@ export const ManagerArticlesFilters: React.FC<ManagerArticlesFiltersProps> = ({
 
         {/* Search Bar */}
         <div className="flex-1 min-w-0">
-          <div className="flex items-center bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 lg:px-4 lg:py-2.5 shadow-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-dashboard-yellow/20 transition-all">
-            <Search className="w-4 h-4 lg:w-5 lg:h-5 text-gray-400 mr-2 lg:mr-3 flex-shrink-0" />
+          <div className="flex items-center bg-gray-50 border border-gray-200 rounded-md px-2.5 py-1.5 shadow-sm focus-within:bg-white focus-within:ring-1 focus-within:ring-dashboard-yellow/20 transition-all">
+            <Search className="w-3.5 h-3.5 text-gray-400 mr-2 flex-shrink-0" />
             <input
               type="text"
               placeholder="Rechercher par nom"
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
-              className="flex-1 outline-none text-gray-900 font-inter text-sm bg-transparent placeholder:text-gray-400"
+              className="flex-1 outline-none text-gray-900 font-inter text-xs bg-transparent placeholder:text-gray-400"
             />
           </div>
         </div>
