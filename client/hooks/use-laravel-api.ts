@@ -227,16 +227,48 @@ export const useCreateOrder = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (orderData: CreateOrderRequest) =>
-      apiService.createOrder(orderData),
+    mutationFn: async (orderData: CreateOrderRequest) => {
+      if (import.meta.env.DEV) {
+        // Simuler la création en mode développement
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        return {
+          data: {
+            id: Math.random(),
+            order_number: `C${String(Math.floor(Math.random() * 1000)).padStart(3, "0")}`,
+            table_number: orderData.table_number,
+            customer_name: orderData.customer_name || null,
+            status: "pending" as const,
+            total_price: orderData.items.reduce(
+              (sum, item) => sum + item.quantity * 1500,
+              0,
+            ),
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+            items: [],
+            user_id: 1,
+          },
+        };
+      }
+      return apiService.createOrder(orderData);
+    },
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.ORDERS });
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.DASHBOARD_STATS });
-      toast.success(`Commande ${data.data.order_number} créée avec succès!`);
+      if (import.meta.env.DEV) {
+        toast.success(`Commande ${data.data.order_number} simulée créée!`);
+      } else {
+        toast.success(`Commande ${data.data.order_number} créée avec succès!`);
+      }
     },
     onError: (error) => {
       console.error("Erreur lors de la création de la commande:", error);
-      toast.error("Erreur lors de la création de la commande");
+      if (import.meta.env.DEV) {
+        toast.error(
+          "Mode développement - Configurez Laravel pour les vraies mutations",
+        );
+      } else {
+        toast.error("Erreur lors de la création de la commande");
+      }
     },
   });
 };
