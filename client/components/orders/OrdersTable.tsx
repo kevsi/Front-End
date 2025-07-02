@@ -158,7 +158,10 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
                 </div>
 
                 {/* View Details Button */}
-                <button className="w-full bg-blue-100 text-blue-600 py-4 rounded-lg text-base font-poppins font-bold hover:bg-blue-200 transition-colors">
+                <button
+                  onClick={() => handleViewOrder(order)}
+                  className="w-full bg-blue-100 text-blue-600 py-4 rounded-lg text-base font-poppins font-bold hover:bg-blue-200 transition-colors"
+                >
                   Voir détails
                 </button>
               </div>
