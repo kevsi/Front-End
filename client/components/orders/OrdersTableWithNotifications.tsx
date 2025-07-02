@@ -65,6 +65,7 @@ export const OrdersTableWithNotifications: React.FC<OrdersTableProps> = ({
     if (onOrderUpdate) {
       onOrderUpdate(order.id, newStatus);
 
+      // Only notify for important status changes
       switch (newStatus) {
         case "validated":
           notifications.orderValidated(order.orderNumber);
