@@ -79,11 +79,7 @@ export function OrderTable() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   // Système de notifications unifié
-  const { notifications } = useUnifiedNotifications();
-  const crudNotifications = useCRUDNotifications<Order>(
-    "commande",
-    (order) => order.order_number,
-  );
+  const { notifications } = useNotifications();
 
   // Utiliser les hooks appropriés selon l'environnement
   const onlineOrdersQuery = useOrders();
