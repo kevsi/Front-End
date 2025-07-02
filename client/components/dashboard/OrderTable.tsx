@@ -78,14 +78,23 @@ export function OrderTable() {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-  // Utiliser l'API Laravel pour récupérer les commandes
+  // Utiliser les hooks appropriés selon l'environnement
+  const onlineOrdersQuery = useOrders();
+  const offlineOrdersQuery = useOfflineOrders();
+  const onlineActions = useOrderActions();
+  const offlineActions = useOfflineOrderActions();
+
+  // Choisir la source de données selon l'environnement
   const {
     data: ordersResponse,
     isLoading: isLoadingOrders,
     error,
-  } = useOrders();
-  const { updateOrder, deleteOrder, isUpdating, isDeleting } =
-    useOrderActions();
+  } = import.meta.env.DEV ? offlineOrdersQuery : onlineOrdersQuery;
+
+  const { updateOrder, deleteOrder, isUpdating, isDeleting } = import.meta.env
+    .DEV
+    ? offlineActions
+    : onlineActions;
 
   // Extraire les données des commandes
   const orders = ordersResponse?.data || [];
