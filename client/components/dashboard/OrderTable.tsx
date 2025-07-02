@@ -12,10 +12,7 @@ import { OrderDetailsModal } from "@/components/ui/order-details-modal";
 import { EditOrderModal } from "@/components/ui/edit-order-modal";
 import { DeleteConfirmationModal } from "@/components/ui/delete-confirmation-modal";
 import { ViewAction, ActionGroup } from "@/components/ui/action-buttons";
-import {
-  useUnifiedNotifications,
-  useCRUDNotifications,
-} from "@/hooks/use-unified-notifications";
+import { useNotifications } from "@/hooks/use-notifications";
 import { useState } from "react";
 import { useOrders, useOrderActions } from "@/hooks/use-laravel-api";
 import {
