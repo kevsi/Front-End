@@ -37,32 +37,6 @@ const getStatusText = (status: string) => {
 };
 
 export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
-  // Système de notifications unifié
-  const { notifications } = useUnifiedNotifications();
-  const crudNotifications = useCRUDNotifications<Order>(
-    "commande",
-    (order) => order.orderNumber,
-  );
-
-  const handleViewOrder = (order: Order) => {
-    // Action de visualisation
-    crudNotifications.onView(order);
-    // Ici vous pourriez ouvrir une modale ou naviguer vers une page de détails
-  };
-
-  const handleEditOrder = (order: Order) => {
-    // Action d'édition
-    console.log("Edit order:", order);
-    // Ici vous pourriez ouvrir une modale d'édition
-  };
-
-  const handleDeleteOrder = (order: Order) => {
-    // Action de suppression avec confirmation
-    if (window.confirm(`Supprimer la commande ${order.orderNumber} ?`)) {
-      crudNotifications.onDelete(order);
-    }
-  };
-
   return (
     <div className="bg-white rounded-lg shadow-sm overflow-hidden">
       <div className="overflow-x-auto">
