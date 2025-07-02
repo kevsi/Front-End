@@ -80,7 +80,10 @@ const sampleManagerOrders: ManagerOrder[] = [
 
 const ManagerDashboard: React.FC = () => {
   return (
-    <ResponsiveLayout navItems={navItems} header={<ManagerHeader />}>
+    <ResponsiveLayout
+      navItems={navItems}
+      header={<AppHeader title="Dashboard Manager" />}
+    >
       {/* Stats Cards */}
       <div className="px-2 sm:px-3 py-1 sm:py-2">
         <StatsCards />
