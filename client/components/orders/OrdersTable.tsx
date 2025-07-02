@@ -40,32 +40,30 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
   return (
     <div className="bg-white rounded-lg shadow-sm overflow-hidden">
       <div className="overflow-x-auto">
-        {/* Desktop Table Header - Hidden on mobile */}
-        <div className="hidden lg:block bg-gradient-to-r from-dashboard-yellow/0 to-dashboard-yellow/0 p-2 sm:p-3">
-          <div className="grid grid-cols-6 gap-1 sm:gap-2 min-w-[700px]">
-            <div className="bg-dashboard-yellow text-white rounded-lg p-2 text-center font-poppins font-semibold text-xs">
-              N° commande
-            </div>
-            <div className="bg-dashboard-yellow text-white rounded-lg p-2 text-center font-poppins font-semibold text-xs">
-              N° table
-            </div>
-            <div className="bg-dashboard-yellow text-white rounded-lg p-2 text-center font-poppins font-semibold text-xs">
-              Articles
-            </div>
-            <div className="bg-dashboard-yellow text-white rounded-lg p-2 text-center font-poppins font-semibold text-xs">
-              Prix total
-            </div>
-            <div className="bg-dashboard-yellow text-white rounded-lg p-2 text-center font-poppins font-semibold text-xs">
-              Statut
-            </div>
-            <div className="bg-dashboard-yellow text-white rounded-lg p-2 text-center font-poppins font-semibold text-xs">
-              Actions
-            </div>
+        {/* Desktop Table Header */}
+        <div className="hidden lg:grid lg:grid-cols-6 gap-1 sm:gap-2 p-2 sm:p-3 bg-gray-50 border-b min-w-[600px]">
+          <div className="font-semibold text-black text-center font-poppins text-xs">
+            N° commande
+          </div>
+          <div className="font-semibold text-black text-center font-poppins text-xs">
+            N° table
+          </div>
+          <div className="font-semibold text-black text-center font-poppins text-xs">
+            Articles
+          </div>
+          <div className="font-semibold text-black text-center font-poppins text-xs">
+            Prix total
+          </div>
+          <div className="font-semibold text-black text-center font-poppins text-xs">
+            Statut
+          </div>
+          <div className="font-semibold text-black text-center font-poppins text-xs">
+            Actions
           </div>
         </div>
 
         {/* Table Body */}
-        <div className="bg-gray-50 p-2 sm:p-3 space-y-2 sm:space-y-3">
+        <div className="space-y-1 sm:space-y-2 p-2 sm:p-3 bg-gray-50 min-h-[150px] sm:min-h-[200px]">
           {orders.map((order, index) => (
             <div
               key={order.id}
