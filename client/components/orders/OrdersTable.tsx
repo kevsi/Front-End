@@ -363,7 +363,7 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
           {orders.map((order, index) => (
             <div
               key={order.id}
-              className="bg-white rounded-lg border border-gray-200 p-2 sm:p-3 shadow-sm hover:shadow-md transition-shadow min-w-[700px] lg:min-w-0"
+              className="bg-white rounded border border-gray-200 p-2 shadow-sm hover:shadow-md transition-shadow min-w-[700px] lg:min-w-0"
             >
               {/* Mobile Layout */}
               <div className="lg:hidden space-y-2">
