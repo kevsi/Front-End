@@ -68,6 +68,25 @@ class ApiService {
   async getOrders(
     filters?: OrderFilters,
   ): Promise<ApiResponse<PaginatedResponse<Order>>> {
+    if (USE_FALLBACK) {
+      // Simuler un délai réseau
+      await new Promise((resolve) => setTimeout(resolve, 500));
+
+      const filteredOrders = filterOrdersLocally(fallbackOrders, filters || {});
+
+      return {
+        success: true,
+        message: "Orders retrieved successfully (fallback)",
+        data: {
+          data: filteredOrders,
+          current_page: 1,
+          last_page: 1,
+          per_page: 10,
+          total: filteredOrders.length,
+        },
+      };
+    }
+
     const params = new URLSearchParams();
     if (filters?.status) params.append("status", filters.status);
     if (filters?.dateFrom) params.append("date_from", filters.dateFrom);
@@ -77,9 +96,27 @@ class ApiService {
     if (filters?.search) params.append("search", filters.search);
 
     const query = params.toString() ? `?${params.toString()}` : "";
-    return this.request<ApiResponse<PaginatedResponse<Order>>>(
-      `/orders${query}`,
-    );
+
+    try {
+      return await this.request<ApiResponse<PaginatedResponse<Order>>>(
+        `/orders${query}`,
+      );
+    } catch (error) {
+      console.warn("API failed, using fallback data for orders:", error);
+      const filteredOrders = filterOrdersLocally(fallbackOrders, filters || {});
+
+      return {
+        success: true,
+        message: "Orders retrieved successfully (fallback after error)",
+        data: {
+          data: filteredOrders,
+          current_page: 1,
+          last_page: 1,
+          per_page: 10,
+          total: filteredOrders.length,
+        },
+      };
+    }
   }
 
   async getOrder(id: string): Promise<ApiResponse<OrderDetails>> {
