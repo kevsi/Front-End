@@ -144,14 +144,14 @@ export const ManagerOrdersFilters: React.FC<ManagerOrdersFiltersProps> = ({
 
         {/* Search Bar */}
         <div className="flex-1 min-w-0">
-          <div className="flex items-center bg-white border border-gray-300 rounded-lg px-3 py-2 lg:px-4 lg:py-3 shadow-sm">
+          <div className="flex items-center bg-white border border-gray-300 rounded-lg px-3 py-2 lg:px-4 lg:py-3 shadow-sm focus-within:border-dashboard-yellow focus-within:ring-2 focus-within:ring-dashboard-yellow/20 transition-all">
             <Search className="w-4 h-4 lg:w-5 lg:h-5 text-black mr-2 lg:mr-3 flex-shrink-0" />
             <input
               type="text"
               placeholder="Rechercher par numéro de commande, table, article, serveur"
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
-              className="flex-1 outline-none text-black font-inter text-sm"
+              className="flex-1 outline-none text-black font-inter text-sm focus:outline-none"
             />
           </div>
         </div>
