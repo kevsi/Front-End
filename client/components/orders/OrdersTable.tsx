@@ -409,19 +409,19 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
                   </div>
                   <div className="flex items-center gap-2">
                     <button
-                      onClick={() => handleViewOrder(order)}
+                      onClick={() => handleViewOrder(order.id)}
                       className="bg-blue-100 text-blue-600 p-4 rounded-lg hover:bg-blue-200 transition-colors"
                     >
                       <Eye size={20} />
                     </button>
                     <button
-                      onClick={() => handleEditOrder(order)}
+                      onClick={() => handleEditOrder(order.id)}
                       className="bg-yellow-100 text-yellow-600 p-4 rounded-lg hover:bg-yellow-200 transition-colors"
                     >
                       <Edit size={20} />
                     </button>
                     <button
-                      onClick={() => handleDeleteOrder(order)}
+                      onClick={() => handleDeleteOrder(order.id)}
                       className="bg-red-100 text-red-600 p-4 rounded-lg hover:bg-red-200 transition-colors"
                     >
                       <Trash2 size={20} />
