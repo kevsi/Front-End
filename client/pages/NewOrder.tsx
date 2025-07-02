@@ -120,7 +120,7 @@ export default function NewOrder() {
           <div className="flex flex-col xl:flex-row gap-3 lg:gap-4 h-full">
             {/* Menu Grid */}
             <div className="flex-1 min-w-0">
-              <h2 className="text-xl lg:text-2xl font-bold text-dashboard-dark mb-5 sm:mb-6 lg:mb-7 pt-2 sm:pt-3 font-poppins">
+              <h2 className="text-base sm:text-lg lg:text-xl font-bold text-dashboard-dark mb-3 sm:mb-4 lg:mb-5 pt-2 sm:pt-3 font-poppins">
                 Liste des articles
               </h2>
               <MenuGrid onAddToCart={addToCart} />
