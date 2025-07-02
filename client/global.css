@@ -120,6 +120,11 @@
 
   body {
     @apply bg-background text-foreground;
+    overflow: hidden;
+  }
+
+  html {
+    overflow: hidden;
   }
 
   /* Responsive text utilities */
