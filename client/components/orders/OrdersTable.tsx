@@ -67,7 +67,7 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
           {orders.map((order, index) => (
             <div
               key={order.id}
-              className="bg-white rounded-lg border border-gray-200 p-2 sm:p-3 shadow-sm hover:shadow-md transition-shadow min-w-[700px] lg:min-w-0"
+              className="flex flex-col lg:grid lg:grid-cols-6 gap-1 sm:gap-2 items-start lg:items-center p-2 sm:p-3 bg-white rounded-lg border border-gray-200 shadow-sm min-w-[600px] lg:min-w-0"
             >
               {/* Mobile Layout */}
               <div className="lg:hidden space-y-4">
