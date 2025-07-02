@@ -211,8 +211,9 @@ export const useOrders = (filters?: OrderFilters) => {
       }
     },
     select: (data) => data,
-    refetchInterval: import.meta.env.DEV ? false : 10000, // Pas de refetch en mode dev avec fallback
-    retry: import.meta.env.DEV ? false : 3, // Pas de retry en mode dev
+    refetchInterval: import.meta.env.DEV ? false : 10000,
+    retry: import.meta.env.DEV ? false : 3,
+    staleTime: import.meta.env.DEV ? Infinity : 10000, // Cache infini en dev
   });
 };
 
