@@ -32,8 +32,11 @@ const navItems: NavItem[] = [
 ];
 
 export default function Dashboard() {
+  const [showImprovements, setShowImprovements] = useState(false);
+
   return (
-    <ResponsiveLayout navItems={navItems} header={<DashboardHeader />}>
+    <>
+      <ResponsiveLayout navItems={navItems} header={<DashboardHeader />}>
       {/* Laravel Setup Banner */}
       <div className="px-2 sm:px-3 py-1">
         <LaravelSetupBanner />
