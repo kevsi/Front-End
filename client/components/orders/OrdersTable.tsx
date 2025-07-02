@@ -466,7 +466,7 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
                   </span>
                   <button
                     onClick={() => handleViewOrder(order.id)}
-                    className="bg-blue-100 text-blue-600 px-5 py-3 rounded-lg text-base font-poppins font-bold hover:bg-blue-200 transition-colors"
+                    className="bg-blue-100 text-blue-600 px-3 py-1.5 rounded text-xs font-poppins font-bold hover:bg-blue-200 transition-colors"
                   >
                     Voir
                   </button>
