@@ -258,26 +258,77 @@ const getStatusText = (status: string) => {
 };
 
 export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
-  const handleViewOrder = (order: Order) => {
-    alert(
-      `Voir les détails de la commande ${order.orderNumber} (Table ${order.tableNumber})\n\nArticles: ${order.articleCount}\nTotal: ${order.totalPrice}F\nStatut: ${order.status}`,
-    );
-  };
+  const [selectedOrder, setSelectedOrder] = useState<OrderDetails | null>(null);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleEditOrder = (order: Order) => {
-    if (confirm(`Modifier la commande ${order.orderNumber} ?`)) {
-      alert(`Redirection vers l'édition de la commande ${order.orderNumber}`);
+  const handleViewOrder = (orderId: string) => {
+    const orderDetails = detailedOrders[orderId];
+    if (orderDetails) {
+      setSelectedOrder(orderDetails);
+      setShowDetailsModal(true);
     }
   };
 
-  const handleDeleteOrder = (order: Order) => {
-    if (
-      confirm(
-        `Êtes-vous sûr de vouloir supprimer la commande ${order.orderNumber} ?`,
-      )
-    ) {
-      alert(`Commande ${order.orderNumber} supprimée avec succès !`);
+  const handleEditOrder = (orderId: string) => {
+    const orderDetails = detailedOrders[orderId];
+    if (orderDetails) {
+      setSelectedOrder(orderDetails);
+      setShowEditModal(true);
     }
+  };
+
+  const handleDeleteOrder = (orderId: string) => {
+    const orderDetails = detailedOrders[orderId];
+    if (orderDetails) {
+      setSelectedOrder(orderDetails);
+      setShowDeleteModal(true);
+    }
+  };
+
+  const handleSaveEdit = async (updatedOrder: OrderDetails) => {
+    setIsLoading(true);
+    try {
+      // Simuler l'enregistrement
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      // Ici vous mettriez à jour vos données
+      console.log("Commande mise à jour:", updatedOrder);
+
+      setShowEditModal(false);
+      setSelectedOrder(null);
+    } catch (error) {
+      console.error("Erreur lors de la mise à jour:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleConfirmDelete = async () => {
+    setIsLoading(true);
+    try {
+      // Simuler la suppression
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      // Ici vous supprimeriez la commande de vos données
+      console.log("Commande supprimée:", selectedOrder?.orderNumber);
+
+      setShowDeleteModal(false);
+      setSelectedOrder(null);
+    } catch (error) {
+      console.error("Erreur lors de la suppression:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const closeModals = () => {
+    setShowDetailsModal(false);
+    setShowEditModal(false);
+    setShowDeleteModal(false);
+    setSelectedOrder(null);
   };
 
   return (
