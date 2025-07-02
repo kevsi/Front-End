@@ -425,7 +425,33 @@ class ApiService {
 
   // Dashboard API
   async getDashboardStats(): Promise<ApiResponse<DashboardStats>> {
-    return this.request<ApiResponse<DashboardStats>>("/dashboard/stats");
+    if (USE_FALLBACK) {
+      await new Promise((resolve) => setTimeout(resolve, 400));
+
+      return {
+        success: true,
+        message: "Dashboard stats retrieved successfully (fallback)",
+        data: fallbackStats,
+      };
+    }
+
+    try {
+      return await this.request<ApiResponse<DashboardStats>>(
+        "/dashboard/stats",
+      );
+    } catch (error) {
+      console.warn(
+        "API failed, using fallback data for dashboard stats:",
+        error,
+      );
+
+      return {
+        success: true,
+        message:
+          "Dashboard stats retrieved successfully (fallback after error)",
+        data: fallbackStats,
+      };
+    }
   }
 
   // Upload API
