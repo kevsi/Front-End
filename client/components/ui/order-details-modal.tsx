@@ -1,30 +1,12 @@
 import React from "react";
 import { X, Clock, CheckCircle2, XCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-
-interface OrderItem {
-  id: string;
-  name: string;
-  quantity: number;
-  price: number;
-  image: string;
-  category: string;
-}
-
-interface OrderDetails {
-  id: string;
-  orderNumber: string;
-  tableNumber: string;
-  status: "validated" | "pending" | "served" | "cancelled";
-  totalPrice: number;
-  createdAt: string;
-  items: OrderItem[];
-}
+import { Order } from "@shared/laravel-api";
 
 interface OrderDetailsModalProps {
   isOpen: boolean;
   onClose: () => void;
-  orderDetails: OrderDetails | null;
+  orderDetails: Order | null;
 }
 
 const getStatusConfig = (status: string) => {
