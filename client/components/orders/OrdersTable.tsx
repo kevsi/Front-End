@@ -37,6 +37,28 @@ const getStatusText = (status: string) => {
 };
 
 export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
+  const handleViewOrder = (order: Order) => {
+    alert(
+      `Voir les détails de la commande ${order.orderNumber} (Table ${order.tableNumber})\n\nArticles: ${order.articleCount}\nTotal: ${order.totalPrice}F\nStatut: ${order.status}`,
+    );
+  };
+
+  const handleEditOrder = (order: Order) => {
+    if (confirm(`Modifier la commande ${order.orderNumber} ?`)) {
+      alert(`Redirection vers l'édition de la commande ${order.orderNumber}`);
+    }
+  };
+
+  const handleDeleteOrder = (order: Order) => {
+    if (
+      confirm(
+        `Êtes-vous sûr de vouloir supprimer la commande ${order.orderNumber} ?`,
+      )
+    ) {
+      alert(`Commande ${order.orderNumber} supprimée avec succès !`);
+    }
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-sm overflow-hidden">
       <div className="overflow-x-auto">
