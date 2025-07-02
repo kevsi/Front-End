@@ -1,4 +1,4 @@
-import { Grid3x3, Plus, ShoppingCart } from "lucide-react";
+import { Grid3x3, Plus, ShoppingCart, Zap } from "lucide-react";
 import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
 import { StatsCards } from "@/components/dashboard/StatsCards";
 import { OrderTable } from "@/components/dashboard/OrderTable";
@@ -8,6 +8,9 @@ import { ResponsiveLayout } from "@/components/ui/responsive-layout";
 import { NavItem } from "@/components/ui/responsive-sidebar";
 import { LaravelSetupBanner } from "@/components/ui/laravel-setup-banner";
 import { ErrorBoundary } from "@/components/ui/error-boundary";
+import { ImprovementsSummary } from "@/components/ui/improvements-summary";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 const navItems: NavItem[] = [
   {
