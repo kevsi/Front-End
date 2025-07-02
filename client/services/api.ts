@@ -30,6 +30,9 @@ import {
 const API_BASE_URL =
   import.meta.env.VITE_API_URL || "http://localhost:8000/api";
 
+// Mode fallback pour le développement
+const USE_FALLBACK = import.meta.env.VITE_USE_FALLBACK === "true";
+
 class ApiService {
   private async request<T>(
     endpoint: string,
