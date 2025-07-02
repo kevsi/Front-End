@@ -206,6 +206,15 @@ export function OrderTable() {
 
   return (
     <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+      {/* Indicateur de mode développement */}
+      {import.meta.env.DEV && orders.length > 0 && !error && (
+        <div className="bg-blue-50 border-b border-blue-200 p-2 text-center">
+          <p className="text-xs text-blue-700">
+            🔧 Données de test - Configurez Laravel pour les données réelles
+          </p>
+        </div>
+      )}
+
       <div className="overflow-x-auto">
         {/* Desktop Table Header */}
         <div className="hidden lg:grid lg:grid-cols-6 gap-1 sm:gap-2 p-2 sm:p-3 bg-gray-50 border-b min-w-[600px]">
