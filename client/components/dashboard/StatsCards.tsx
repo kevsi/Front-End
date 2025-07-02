@@ -1,6 +1,7 @@
 import { ClipboardList, DollarSign, Clock, CheckCircle } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useDashboardStats } from "@/hooks/use-laravel-api";
+import { useOfflineDashboardStats } from "@/hooks/use-offline-api";
 import { Skeleton } from "@/components/ui/skeleton";
 
 interface StatCardProps {
