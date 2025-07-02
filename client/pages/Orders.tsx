@@ -166,7 +166,7 @@ const Orders: React.FC = () => {
           <div className="flex-1">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4">
               <h2 className="text-sm sm:text-base font-semibold text-dashboard-dark font-poppins mb-1 sm:mb-2">
-                Mes commandes
+                Historique
               </h2>
               <button
                 onClick={() => notifications.dataExported("commandes")}
@@ -175,11 +175,6 @@ const Orders: React.FC = () => {
                 📊 Exporter
               </button>
             </div>
-          </div>
-          <div className="w-full xl:w-56 flex-shrink-0">
-            <h2 className="text-sm sm:text-base font-semibold text-dashboard-dark font-poppins text-center xl:text-left mb-1 sm:mb-2 xl:pl-0">
-              Historique
-            </h2>
           </div>
         </div>
 

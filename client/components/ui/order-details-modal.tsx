@@ -1,30 +1,12 @@
 import React from "react";
 import { X, Clock, CheckCircle2, XCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-
-interface OrderItem {
-  id: string;
-  name: string;
-  quantity: number;
-  price: number;
-  image: string;
-  category: string;
-}
-
-interface OrderDetails {
-  id: string;
-  orderNumber: string;
-  tableNumber: string;
-  status: "validated" | "pending" | "served" | "cancelled";
-  totalPrice: number;
-  createdAt: string;
-  items: OrderItem[];
-}
+import { Order } from "@shared/laravel-api";
 
 interface OrderDetailsModalProps {
   isOpen: boolean;
   onClose: () => void;
-  orderDetails: OrderDetails | null;
+  orderDetails: Order | null;
 }
 
 const getStatusConfig = (status: string) => {
@@ -80,7 +62,7 @@ export function OrderDetailsModal({
   if (!isOpen || !orderDetails) return null;
 
   const statusConfig = getStatusConfig(orderDetails.status);
-  const formattedDate = new Date(orderDetails.createdAt).toLocaleDateString(
+  const formattedDate = new Date(orderDetails.created_at).toLocaleDateString(
     "fr-FR",
     {
       day: "2-digit",
@@ -90,6 +72,14 @@ export function OrderDetailsModal({
       minute: "2-digit",
     },
   );
+
+  // Fonction pour formater le prix Laravel (centimes vers euros)
+  const formatPrice = (price: number) => {
+    return (price / 100).toLocaleString("fr-FR", {
+      style: "currency",
+      currency: "EUR",
+    });
+  };
 
   return (
     <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
@@ -110,11 +100,11 @@ export function OrderDetailsModal({
 
             <div className="flex-1">
               <h2 className="text-xl font-bold text-gray-900 mb-2">
-                Commande {orderDetails.orderNumber}
+                Commande {orderDetails.order_number}
               </h2>
               <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600">
                 <span className="flex items-center gap-1">
-                  📍 Table {orderDetails.tableNumber}
+                  📍 Table {orderDetails.table_number}
                 </span>
                 <span>•</span>
                 <span>{formattedDate}</span>
@@ -133,45 +123,60 @@ export function OrderDetailsModal({
         <div className="p-6 overflow-y-auto max-h-[60vh]">
           <div className="mb-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">
-              Articles commandés ({orderDetails.items.length})
+              Articles commandés ({orderDetails.items?.length || 0})
             </h3>
 
             <div className="space-y-3">
-              {orderDetails.items.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
-                >
-                  <div className="w-16 h-16 bg-white rounded-lg overflow-hidden flex-shrink-0">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-
-                  <div className="flex-1 min-w-0">
-                    <h4 className="font-semibold text-gray-900 truncate">
-                      {item.name}
-                    </h4>
-                    <p className="text-sm text-gray-600 capitalize">
-                      {item.category}
-                    </p>
-                  </div>
-
-                  <div className="text-right">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm text-gray-600">Qté:</span>
-                      <span className="bg-white px-2 py-1 rounded-md text-sm font-semibold">
-                        {item.quantity}
-                      </span>
+              {orderDetails.items?.length > 0 ? (
+                orderDetails.items.map((item) => (
+                  <div
+                    key={item.id}
+                    className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
+                  >
+                    <div className="w-16 h-16 bg-white rounded-lg overflow-hidden flex-shrink-0">
+                      <img
+                        src={item.product?.image_url || "/placeholder.svg"}
+                        alt={item.product?.name || "Article"}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = "/placeholder.svg";
+                        }}
+                      />
                     </div>
-                    <div className="font-bold text-gray-900">
-                      {(item.price * item.quantity).toLocaleString()}F
+
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-semibold text-gray-900 truncate">
+                        {item.product?.name || "Article inconnu"}
+                      </h4>
+                      <p className="text-sm text-gray-600 capitalize">
+                        {item.product?.category?.name || "Non catégorisé"}
+                      </p>
+                      {item.notes && (
+                        <p className="text-xs text-gray-500 italic mt-1">
+                          Note: {item.notes}
+                        </p>
+                      )}
+                    </div>
+
+                    <div className="text-right">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-sm text-gray-600">Qté:</span>
+                        <span className="bg-white px-2 py-1 rounded-md text-sm font-semibold">
+                          {item.quantity}
+                        </span>
+                      </div>
+                      <div className="font-bold text-gray-900">
+                        {formatPrice(item.total_price)}
+                      </div>
                     </div>
                   </div>
+                ))
+              ) : (
+                <div className="text-center py-8 text-gray-500">
+                  <p>Aucun article dans cette commande</p>
                 </div>
-              ))}
+              )}
             </div>
           </div>
         </div>
@@ -181,7 +186,7 @@ export function OrderDetailsModal({
           <div className="flex justify-between items-center">
             <div className="text-sm text-gray-600">Total de la commande</div>
             <div className="text-2xl font-bold text-gray-900">
-              {orderDetails.totalPrice.toLocaleString()}F
+              {formatPrice(orderDetails.total_price)}
             </div>
           </div>
         </div>
