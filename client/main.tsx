@@ -52,6 +52,7 @@ const App = () => {
         >
           <Toaster />
           <Sonner />
+          <FallbackBanner />
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
