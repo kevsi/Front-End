@@ -232,7 +232,7 @@ export const NewArticleModal: React.FC<NewArticleModalProps> = ({
                   value={formData.quantity}
                   onChange={handleInputChange}
                   placeholder="14"
-                  className="w-full px-4 py-3 border-4 border-[#F1F1F1] rounded bg-[#FEFEFE] text-black font-inter text-xs font-light focus:outline-none focus:border-blue-300"
+                  className="w-full px-4 py-3 border-4 border-[#F1F1F1] rounded bg-[#FEFEFE] text-black font-inter text-xs font-light focus:outline-none focus:border-dashboard-yellow focus:ring-2 focus:ring-dashboard-yellow/20"
                   required
                 />
               </div>
