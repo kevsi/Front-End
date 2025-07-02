@@ -359,7 +359,7 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
         </div>
 
         {/* Table Body */}
-        <div className="bg-gray-50 p-2 sm:p-3 space-y-2 sm:space-y-3">
+        <div className="bg-gray-50 p-2 space-y-2">
           {orders.map((order, index) => (
             <div
               key={order.id}
