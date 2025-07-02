@@ -460,8 +460,8 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
                 </div>
 
                 {/* Article Count */}
-                <div className="flex flex-col items-center gap-2">
-                  <span className="text-gray-700 font-poppins font-bold">
+                <div className="flex flex-col items-center gap-1">
+                  <span className="text-gray-700 font-poppins font-bold text-xs">
                     {order.articleCount} articles
                   </span>
                   <button
