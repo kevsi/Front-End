@@ -2,31 +2,13 @@ import React, { useState } from "react";
 import { X, Plus, Minus, Save } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-
-interface OrderItem {
-  id: string;
-  name: string;
-  quantity: number;
-  price: number;
-  image: string;
-  category: string;
-}
-
-interface OrderDetails {
-  id: string;
-  orderNumber: string;
-  tableNumber: string;
-  status: "validated" | "pending" | "served" | "cancelled";
-  totalPrice: number;
-  createdAt: string;
-  items: OrderItem[];
-}
+import { Order } from "@shared/laravel-api";
 
 interface EditOrderModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (updatedOrder: OrderDetails) => void;
-  orderDetails: OrderDetails | null;
+  onSave: (updatedOrder: Order) => void;
+  orderDetails: Order | null;
   isLoading?: boolean;
 }
 
