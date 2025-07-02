@@ -19,7 +19,7 @@ export function EditOrderModal({
   orderDetails,
   isLoading = false,
 }: EditOrderModalProps) {
-  const [editedOrder, setEditedOrder] = useState<OrderDetails | null>(null);
+  const [editedOrder, setEditedOrder] = useState<Order | null>(null);
 
   React.useEffect(() => {
     if (orderDetails) {
@@ -28,6 +28,14 @@ export function EditOrderModal({
   }, [orderDetails]);
 
   if (!isOpen || !orderDetails || !editedOrder) return null;
+
+  // Fonction pour formater le prix Laravel (centimes vers euros)
+  const formatPrice = (price: number) => {
+    return (price / 100).toLocaleString("fr-FR", {
+      style: "currency",
+      currency: "EUR",
+    });
+  };
 
   const updateItemQuantity = (itemId: string, newQuantity: number) => {
     if (newQuantity < 1) return;
