@@ -143,15 +143,15 @@ export const ManagerArticlesFilters: React.FC<ManagerArticlesFiltersProps> = ({
         </div>
 
         {/* Buttons Row */}
-        <div className="flex items-center gap-3">
-          <button className="bg-gray-100 text-gray-700 px-4 py-2.5 lg:px-6 lg:py-3 rounded-lg font-inter text-sm font-medium hover:bg-gray-200 hover:shadow-sm transition-all whitespace-nowrap border border-gray-200">
-            Selectionner pour ajouter au menu
+        <div className="flex items-center gap-2">
+          <button className="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-md font-inter text-xs font-medium hover:bg-gray-200 transition-all whitespace-nowrap border border-gray-200">
+            Ajouter au menu
           </button>
           <button
             onClick={onNewArticleClick}
-            className="bg-dashboard-yellow text-white px-4 py-2.5 lg:px-6 lg:py-3 rounded-lg font-inter text-sm font-medium hover:bg-dashboard-yellow/90 hover:shadow-lg transition-all whitespace-nowrap transform hover:scale-105 active:scale-95"
+            className="bg-dashboard-yellow text-white px-3 py-1.5 rounded-md font-inter text-xs font-medium hover:bg-dashboard-yellow/90 transition-all whitespace-nowrap"
           >
-            Nouvelle article
+            Nouvel article
           </button>
         </div>
       </div>
