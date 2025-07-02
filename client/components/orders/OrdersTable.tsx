@@ -454,7 +454,7 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
 
                 {/* Table Number */}
                 <div className="text-center">
-                  <span className="text-gray-700 font-poppins font-bold">
+                  <span className="text-gray-700 font-poppins font-bold text-xs">
                     {order.tableNumber}
                   </span>
                 </div>
