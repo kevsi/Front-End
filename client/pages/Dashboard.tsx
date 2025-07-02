@@ -30,6 +30,11 @@ const navItems: NavItem[] = [
 export default function Dashboard() {
   return (
     <ResponsiveLayout navItems={navItems} header={<DashboardHeader />}>
+      {/* Laravel Setup Banner */}
+      <div className="px-2 sm:px-3 py-1">
+        <LaravelSetupBanner />
+      </div>
+
       {/* Stats Cards */}
       <div className="px-2 sm:px-3 py-1 sm:py-2">
         <StatsCards />
