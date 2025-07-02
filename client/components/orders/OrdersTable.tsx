@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Eye, Edit, Trash2 } from "lucide-react";
 import { Order } from "../../pages/Orders";
+import { OrderDetailsModal } from "@/components/ui/order-details-modal";
+import { EditOrderModal } from "@/components/ui/edit-order-modal";
+import { DeleteConfirmationModal } from "@/components/ui/delete-confirmation-modal";
 
 interface OrdersTableProps {
   orders: Order[];
