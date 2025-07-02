@@ -66,12 +66,16 @@ export default function Dashboard() {
         <div className="flex flex-col xl:flex-row gap-2 sm:gap-3 h-full">
           {/* Orders Table */}
           <div className="flex-1 min-w-0">
-            <OrderTable />
+            <ErrorBoundary>
+              <OrderTable />
+            </ErrorBoundary>
           </div>
 
           {/* History Sidebar - Stack below on smaller screens */}
           <div className="w-full xl:w-56 flex-shrink-0">
-            <HistorySidebar />
+            <ErrorBoundary>
+              <HistorySidebar />
+            </ErrorBoundary>
           </div>
         </div>
       </div>
