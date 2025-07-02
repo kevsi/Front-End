@@ -38,25 +38,31 @@ const formatPrice = (price: number) => {
 
 function getStatusVariant(status: Order["status"]) {
   switch (status) {
-    case "validée":
+    case "validated":
       return "bg-green-100 text-green-800 hover:bg-green-100";
-    case "en-attente":
+    case "pending":
+    case "in_progress":
       return "bg-red-100 text-red-800 hover:bg-red-100";
-    case "servie":
+    case "served":
       return "bg-blue-100 text-blue-800 hover:bg-blue-100";
+    case "cancelled":
+      return "bg-gray-100 text-gray-800 hover:bg-gray-100";
     default:
       return "bg-gray-100 text-gray-800 hover:bg-gray-100";
   }
 }
 
 function getStatusText(status: Order["status"]) {
-  switch (status) {
+  const displayStatus = statusMapping[status];
+  switch (displayStatus) {
     case "validée":
       return "Validée";
     case "en-attente":
       return "En attente";
     case "servie":
       return "Servie";
+    case "annulée":
+      return "Annulée";
     default:
       return status;
   }
