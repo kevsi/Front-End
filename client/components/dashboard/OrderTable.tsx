@@ -353,6 +353,7 @@ export function OrderTable() {
                     onClick={() => handleViewDetails(order)}
                     variant="compact"
                     size="sm"
+                    showIcon={false}
                   />
                 </div>
 
