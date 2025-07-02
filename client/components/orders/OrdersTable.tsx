@@ -387,16 +387,16 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
                 </div>
 
                 {/* Info Row */}
-                <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-2 gap-2 text-xs">
                   <div>
                     <span className="text-gray-500">Table:</span>
-                    <span className="ml-2 font-bold text-gray-700">
+                    <span className="ml-1 font-bold text-gray-700">
                       {order.tableNumber}
                     </span>
                   </div>
                   <div>
                     <span className="text-gray-500">Articles:</span>
-                    <span className="ml-2 font-bold text-gray-700">
+                    <span className="ml-1 font-bold text-gray-700">
                       {order.articleCount}
                     </span>
                   </div>
@@ -404,7 +404,7 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
 
                 {/* Price and Actions Row */}
                 <div className="flex justify-between items-center">
-                  <div className="text-lg font-bold text-gray-700">
+                  <div className="text-sm font-bold text-gray-700">
                     {order.totalPrice}F
                   </div>
                   <div className="flex items-center gap-1">
