@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Eye, Edit, Trash2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { OrderDetailsModal } from "@/components/ui/order-details-modal";
+import { EditOrderModal } from "@/components/ui/edit-order-modal";
+import { DeleteConfirmationModal } from "@/components/ui/delete-confirmation-modal";
 import { Order } from "../../pages/Orders";
 
 interface OrdersTableProps {
@@ -38,6 +41,49 @@ const getStatusText = (status: string) => {
 };
 
 export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
+  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+  const handleViewDetails = (order: Order) => {
+    setSelectedOrder(order);
+    setShowDetailsModal(true);
+  };
+
+  const handleEditOrder = (order: Order) => {
+    setSelectedOrder(order);
+    setShowEditModal(true);
+  };
+
+  const handleDeleteOrder = (order: Order) => {
+    setSelectedOrder(order);
+    setShowDeleteModal(true);
+  };
+
+  const handleSaveEdit = async (updatedOrder: Order) => {
+    if (!selectedOrder) return;
+    // TODO: Implement update logic
+    console.log("Updating order:", updatedOrder);
+    setShowEditModal(false);
+    setSelectedOrder(null);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (!selectedOrder) return;
+    // TODO: Implement delete logic
+    console.log("Deleting order:", selectedOrder);
+    setShowDeleteModal(false);
+    setSelectedOrder(null);
+  };
+
+  const closeModals = () => {
+    setShowDetailsModal(false);
+    setShowEditModal(false);
+    setShowDeleteModal(false);
+    setSelectedOrder(null);
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-sm overflow-hidden">
       <div className="overflow-x-auto">
@@ -106,17 +152,29 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
                 </div>
 
                 <div className="flex justify-between items-center">
-                  <button className="bg-blue-100 text-blue-600 border-blue-200 hover:bg-blue-200 text-xs px-2 py-1 rounded-lg font-poppins font-bold transition-colors">
+                  <button
+                    onClick={() => handleViewDetails(order)}
+                    className="bg-blue-100 text-blue-600 border-blue-200 hover:bg-blue-200 text-xs px-2 py-1 rounded-lg font-poppins font-bold transition-colors"
+                  >
                     Voir détails
                   </button>
                   <div className="flex gap-1 sm:gap-2">
-                    <button className="bg-blue-50 text-blue-600 border-blue-200 hover:bg-blue-100 w-6 h-6 sm:w-8 sm:h-8 p-1 rounded-lg transition-colors">
+                    <button
+                      onClick={() => handleViewDetails(order)}
+                      className="bg-blue-50 text-blue-600 border-blue-200 hover:bg-blue-100 w-6 h-6 sm:w-8 sm:h-8 p-1 rounded-lg transition-colors"
+                    >
                       <Eye className="w-3 h-3 sm:w-4 sm:h-4" />
                     </button>
-                    <button className="bg-yellow-50 text-yellow-600 border-yellow-200 hover:bg-yellow-100 w-6 h-6 sm:w-8 sm:h-8 p-1 rounded-lg transition-colors">
+                    <button
+                      onClick={() => handleEditOrder(order)}
+                      className="bg-yellow-50 text-yellow-600 border-yellow-200 hover:bg-yellow-100 w-6 h-6 sm:w-8 sm:h-8 p-1 rounded-lg transition-colors"
+                    >
                       <Edit className="w-3 h-3 sm:w-4 sm:h-4" />
                     </button>
-                    <button className="bg-red-50 text-red-600 border-red-200 hover:bg-red-100 w-6 h-6 sm:w-8 sm:h-8 p-1 rounded-lg transition-colors">
+                    <button
+                      onClick={() => handleDeleteOrder(order)}
+                      className="bg-red-50 text-red-600 border-red-200 hover:bg-red-100 w-6 h-6 sm:w-8 sm:h-8 p-1 rounded-lg transition-colors"
+                    >
                       <Trash2 className="w-3 h-3 sm:w-4 sm:h-4" />
                     </button>
                   </div>
@@ -150,7 +208,10 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
                   <span className="font-bold text-gray-800 font-poppins text-sm">
                     {order.articleCount} articles
                   </span>
-                  <button className="bg-blue-100 text-blue-600 border-blue-200 hover:bg-blue-200 font-poppins text-xs px-2 py-1 rounded-lg transition-colors">
+                  <button
+                    onClick={() => handleViewDetails(order)}
+                    className="bg-blue-100 text-blue-600 border-blue-200 hover:bg-blue-200 font-poppins text-xs px-2 py-1 rounded-lg transition-colors"
+                  >
                     Voir
                   </button>
                 </div>
@@ -171,13 +232,22 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
 
                 {/* Actions */}
                 <div className="flex justify-center gap-1 sm:gap-2 lg:gap-3">
-                  <button className="bg-blue-50 text-blue-600 border-blue-200 hover:bg-blue-100 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 p-1 rounded-lg transition-colors">
+                  <button
+                    onClick={() => handleViewDetails(order)}
+                    className="bg-blue-50 text-blue-600 border-blue-200 hover:bg-blue-100 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 p-1 rounded-lg transition-colors"
+                  >
                     <Eye className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
                   </button>
-                  <button className="bg-yellow-50 text-yellow-600 border-yellow-200 hover:bg-yellow-100 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 p-1 rounded-lg transition-colors">
+                  <button
+                    onClick={() => handleEditOrder(order)}
+                    className="bg-yellow-50 text-yellow-600 border-yellow-200 hover:bg-yellow-100 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 p-1 rounded-lg transition-colors"
+                  >
                     <Edit className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
                   </button>
-                  <button className="bg-red-50 text-red-600 border-red-200 hover:bg-red-100 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 p-1 rounded-lg transition-colors">
+                  <button
+                    onClick={() => handleDeleteOrder(order)}
+                    className="bg-red-50 text-red-600 border-red-200 hover:bg-red-100 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 p-1 rounded-lg transition-colors"
+                  >
                     <Trash2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
                   </button>
                 </div>
@@ -186,6 +256,30 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
           ))}
         </div>
       </div>
+
+      {/* Modales */}
+      <OrderDetailsModal
+        isOpen={showDetailsModal}
+        onClose={closeModals}
+        orderDetails={selectedOrder}
+      />
+
+      <EditOrderModal
+        isOpen={showEditModal}
+        onClose={closeModals}
+        onSave={handleSaveEdit}
+        orderDetails={selectedOrder}
+        isLoading={false}
+      />
+
+      <DeleteConfirmationModal
+        isOpen={showDeleteModal}
+        onClose={closeModals}
+        onConfirm={handleConfirmDelete}
+        itemType="commande"
+        itemName={selectedOrder ? `Commande ${selectedOrder.orderNumber}` : ""}
+        isLoading={false}
+      />
     </div>
   );
 };
