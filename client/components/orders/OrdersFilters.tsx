@@ -144,8 +144,8 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
 
         {/* Search Bar */}
         <div className="flex-1 min-w-0">
-          <div className="flex items-center bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 lg:px-5 lg:py-3.5 shadow-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-dashboard-yellow/20 focus-within:border-dashboard-yellow/40 transition-all">
-            <Search className="w-5 h-5 text-gray-400 mr-3 flex-shrink-0" />
+          <div className="flex items-center bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 shadow-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-dashboard-yellow/20 focus-within:border-dashboard-yellow/40 transition-all h-12">
+            <Search className="w-4 h-4 text-gray-400 mr-3 flex-shrink-0" />
             <input
               type="text"
               placeholder="Rechercher par numéro, table, article..."
