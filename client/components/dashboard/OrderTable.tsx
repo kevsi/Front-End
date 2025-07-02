@@ -371,33 +371,15 @@ export function OrderTable() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex justify-center gap-1 sm:gap-2 lg:gap-3">
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    onClick={() => handleViewDetails(order)}
-                    className="bg-blue-50 text-blue-600 border-blue-200 hover:bg-blue-100 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8"
-                  >
-                    <Eye className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    onClick={() => handleEditOrder(order)}
-                    className="bg-yellow-50 text-yellow-600 border-yellow-200 hover:bg-yellow-100 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8"
-                    disabled={isUpdating}
-                  >
-                    <Edit className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    onClick={() => handleDeleteOrder(order)}
-                    className="bg-red-50 text-red-600 border-red-200 hover:bg-red-100 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8"
-                    disabled={isDeleting}
-                  >
-                    <Trash2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
-                  </Button>
+                <div className="flex justify-center">
+                  <ActionGroup
+                    onView={() => handleViewDetails(order)}
+                    onEdit={() => handleEditOrder(order)}
+                    onDelete={() => handleDeleteOrder(order)}
+                    editDisabled={isUpdating}
+                    deleteDisabled={isDeleting}
+                    size="md"
+                  />
                 </div>
               </div>
             </div>
