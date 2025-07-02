@@ -36,9 +36,37 @@ export const QUERY_KEYS = {
 export const useDashboardStats = () => {
   return useQuery({
     queryKey: QUERY_KEYS.DASHBOARD_STATS,
-    queryFn: () => apiService.getDashboardStats(),
+    queryFn: async () => {
+      try {
+        return await apiService.getDashboardStats();
+      } catch (error) {
+        // En mode développement, utiliser les données de fallback
+        if (import.meta.env.DEV) {
+          console.warn(
+            "Using fallback dashboard stats - Laravel API not available",
+          );
+          return {
+            data: {
+              total_orders: 8,
+              total_revenue: 19620,
+              pending_orders: 1,
+              served_orders: 4,
+              validated_orders: 1,
+              today_orders: 5,
+              today_revenue: 12000,
+              monthly_growth: 12.5,
+              revenue_growth: 8.2,
+            },
+            success: true,
+            message: "Fallback data - Laravel API not available",
+          };
+        }
+        throw error;
+      }
+    },
     select: (data) => data.data,
-    refetchInterval: 30000, // Refetch every 30 seconds
+    refetchInterval: import.meta.env.DEV ? false : 30000, // Pas de refetch en mode dev avec fallback
+    retry: import.meta.env.DEV ? false : 3, // Pas de retry en mode dev
   });
 };
 
