@@ -482,7 +482,7 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
                 {/* Status */}
                 <div className="text-center">
                   <span
-                    className={`px-3 py-1 rounded-lg text-sm font-poppins font-bold ${getStatusColor(order.status)}`}
+                    className={`px-2 py-0.5 rounded text-xs font-poppins font-bold ${getStatusColor(order.status)}`}
                   >
                     {getStatusText(order.status)}
                   </span>
