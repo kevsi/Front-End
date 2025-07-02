@@ -69,15 +69,6 @@ class ApiService {
       return data;
     } catch (error) {
       console.error(`API Error for ${endpoint}:`, error);
-
-      // En mode développement, utiliser des données de fallback si Laravel n'est pas disponible
-      if (import.meta.env.DEV && this.shouldUseFallback(error, endpoint)) {
-        console.warn(
-          `Using fallback data for ${endpoint} - Laravel API not available`,
-        );
-        return this.getFallbackData(endpoint) as T;
-      }
-
       throw error;
     }
   }
