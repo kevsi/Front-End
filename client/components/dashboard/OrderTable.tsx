@@ -112,6 +112,7 @@ export function OrderTable() {
   const handleViewDetails = (order: Order) => {
     setSelectedOrder(order);
     setShowDetailsModal(true);
+    crudNotifications.onView(order);
   };
 
   const handleEditOrder = (order: Order) => {
