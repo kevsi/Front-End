@@ -38,6 +38,11 @@ class ApiService {
     endpoint: string,
     options: RequestInit = {},
   ): Promise<T> {
+    // Si le mode fallback est activé, on ne fait pas de requête
+    if (USE_FALLBACK) {
+      throw new Error("Fallback mode is enabled - skipping API request");
+    }
+
     const url = `${API_BASE_URL}${endpoint}`;
 
     const config: RequestInit = {
@@ -59,7 +64,12 @@ class ApiService {
       const data = await response.json();
       return data;
     } catch (error) {
-      console.error("API request failed:", error);
+      if (error instanceof TypeError && error.message.includes("fetch")) {
+        console.warn(`⚠️  Laravel API non disponible sur ${url}`);
+        console.info("💡 Utilisation des données de fallback");
+      } else {
+        console.error("API request failed:", error);
+      }
       throw error;
     }
   }
