@@ -176,10 +176,21 @@ export function StatsCards() {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2 sm:gap-3 lg:gap-4">
-      {statsConfig.map((stat, index) => (
-        <StatCard key={index} {...stat} isLoading={isLoading} />
-      ))}
+    <div className="space-y-2">
+      {/* Indicateur de mode développement */}
+      {import.meta.env.DEV && isUsingFallback && (
+        <div className="bg-amber-50 border border-amber-200 rounded-lg p-2 text-center">
+          <p className="text-xs text-amber-700">
+            🔧 Mode développement - Données de test (Laravel API non disponible)
+          </p>
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2 sm:gap-3 lg:gap-4">
+        {statsConfig.map((stat, index) => (
+          <StatCard key={index} {...stat} isLoading={isLoading} />
+        ))}
+      </div>
     </div>
   );
 }
