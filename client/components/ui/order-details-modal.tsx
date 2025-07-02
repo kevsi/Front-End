@@ -62,7 +62,7 @@ export function OrderDetailsModal({
   if (!isOpen || !orderDetails) return null;
 
   const statusConfig = getStatusConfig(orderDetails.status);
-  const formattedDate = new Date(orderDetails.createdAt).toLocaleDateString(
+  const formattedDate = new Date(orderDetails.created_at).toLocaleDateString(
     "fr-FR",
     {
       day: "2-digit",
@@ -72,6 +72,14 @@ export function OrderDetailsModal({
       minute: "2-digit",
     },
   );
+
+  // Fonction pour formater le prix Laravel (centimes vers euros)
+  const formatPrice = (price: number) => {
+    return (price / 100).toLocaleString("fr-FR", {
+      style: "currency",
+      currency: "EUR",
+    });
+  };
 
   return (
     <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
