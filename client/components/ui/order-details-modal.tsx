@@ -100,11 +100,11 @@ export function OrderDetailsModal({
 
             <div className="flex-1">
               <h2 className="text-xl font-bold text-gray-900 mb-2">
-                Commande {orderDetails.orderNumber}
+                Commande {orderDetails.order_number}
               </h2>
               <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600">
                 <span className="flex items-center gap-1">
-                  📍 Table {orderDetails.tableNumber}
+                  📍 Table {orderDetails.table_number}
                 </span>
                 <span>•</span>
                 <span>{formattedDate}</span>
