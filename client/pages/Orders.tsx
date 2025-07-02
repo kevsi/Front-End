@@ -7,6 +7,8 @@ import { OrdersTable } from "../components/orders/OrdersTable";
 import { HistorySidebar } from "@/components/dashboard/HistorySidebar";
 import { ResponsiveLayout } from "@/components/ui/responsive-layout";
 import { NavItem } from "@/components/ui/responsive-sidebar";
+import { useOrders } from "@/hooks/api";
+import { OrderFilters } from "@/types/api";
 
 export interface Order {
   id: string;
