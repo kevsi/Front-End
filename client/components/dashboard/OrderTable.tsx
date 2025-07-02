@@ -241,23 +241,23 @@ export function OrderTable() {
 
       <div className="overflow-x-auto">
         {/* Desktop Table Header */}
-        <div className="hidden lg:grid lg:grid-cols-6 gap-1 sm:gap-2 p-2 sm:p-3 bg-gray-50 border-b min-w-[600px]">
-          <div className="font-semibold text-black text-center font-poppins text-xs">
+        <div className="hidden lg:grid lg:grid-cols-6 gap-1 sm:gap-2 p-2 sm:p-3 bg-gradient-to-r from-orange-500 to-yellow-500 border-b min-w-[600px]">
+          <div className="font-semibold text-white text-center font-poppins text-xs">
             N° commande
           </div>
-          <div className="font-semibold text-black text-center font-poppins text-xs">
+          <div className="font-semibold text-white text-center font-poppins text-xs">
             N° table
           </div>
-          <div className="font-semibold text-black text-center font-poppins text-xs">
+          <div className="font-semibold text-white text-center font-poppins text-xs">
             Articles
           </div>
-          <div className="font-semibold text-black text-center font-poppins text-xs">
+          <div className="font-semibold text-white text-center font-poppins text-xs">
             Prix total
           </div>
-          <div className="font-semibold text-black text-center font-poppins text-xs">
+          <div className="font-semibold text-white text-center font-poppins text-xs">
             Statut
           </div>
-          <div className="font-semibold text-black text-center font-poppins text-xs">
+          <div className="font-semibold text-white text-center font-poppins text-xs">
             Actions
           </div>
         </div>
