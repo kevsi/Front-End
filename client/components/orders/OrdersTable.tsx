@@ -170,15 +170,15 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center gap-3 justify-center">
-                  <button className="bg-blue-100 text-blue-600 p-2 rounded-lg hover:bg-blue-200 transition-colors">
-                    <Eye size={20} />
+                <div className="flex justify-center gap-1 sm:gap-2 lg:gap-3">
+                  <button className="bg-blue-50 text-blue-600 border-blue-200 hover:bg-blue-100 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 p-1 rounded-lg transition-colors">
+                    <Eye className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
                   </button>
-                  <button className="bg-yellow-100 text-yellow-600 p-2 rounded-lg hover:bg-yellow-200 transition-colors">
-                    <Edit size={20} />
+                  <button className="bg-yellow-50 text-yellow-600 border-yellow-200 hover:bg-yellow-100 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 p-1 rounded-lg transition-colors">
+                    <Edit className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
                   </button>
-                  <button className="bg-red-100 text-red-600 p-2 rounded-lg hover:bg-red-200 transition-colors">
-                    <Trash2 size={20} />
+                  <button className="bg-red-50 text-red-600 border-red-200 hover:bg-red-100 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 p-1 rounded-lg transition-colors">
+                    <Trash2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
                   </button>
                 </div>
               </div>
