@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { ResponsiveLayout } from "../components/ui/responsive-layout";
 import { NavItem } from "../components/ui/responsive-sidebar";
 import { LayoutDashboard, ShoppingCart, Box } from "lucide-react";
-import { ManagerHeader } from "../components/manager/ManagerHeader";
+import { AppHeader } from "@/components/ui/app-header";
 import ManagerProductDetailsModal from "../components/manager/ManagerProductDetailsModal";
 
 const navItems: NavItem[] = [
@@ -80,7 +80,10 @@ export default function ManagerProductDetails() {
   }
 
   return (
-    <ResponsiveLayout navItems={navItems} header={<ManagerHeader />}>
+    <ResponsiveLayout
+      navItems={navItems}
+      header={<AppHeader title="Détails Produit" />}
+    >
       <ManagerProductDetailsModal
         isOpen={true}
         onClose={handleClose}

@@ -5,8 +5,6 @@ import { useBreakpoint } from "@/hooks/use-mobile";
 import type { MenuItem } from "@/pages/NewOrder";
 
 interface MenuGridProps {
-  searchQuery: string;
-  selectedCategory: string;
   onAddToCart: (item: MenuItem) => void;
 }
 
@@ -51,32 +49,19 @@ const menuItems: (MenuItem & { isPopular?: boolean; description?: string })[] =
     },
   ];
 
-export function MenuGrid({
-  searchQuery,
-  selectedCategory,
-  onAddToCart,
-}: MenuGridProps) {
+export function MenuGrid({ onAddToCart }: MenuGridProps) {
   const breakpoint = useBreakpoint();
-
-  const filteredItems = menuItems.filter((item) => {
-    const matchesSearch = item.name
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase());
-    const matchesCategory =
-      selectedCategory === "all" || item.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
 
   // Mobile layout with details modal
   if (breakpoint === "mobile") {
     return (
       <div className="grid grid-cols-2 gap-4">
-        {filteredItems.map((item, index) => (
+        {menuItems.map((item, index) => (
           <MobileMenuItemCard
             key={item.id}
             item={item}
             onAddToCart={onAddToCart}
-            onNext={index < filteredItems.length - 1 ? () => {} : undefined}
+            onNext={index < menuItems.length - 1 ? () => {} : undefined}
             onPrevious={index > 0 ? () => {} : undefined}
           />
         ))}
@@ -87,7 +72,7 @@ export function MenuGrid({
   // Desktop layout (existing) - Optimized for 4 cards
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-      {filteredItems.map((item) => (
+      {menuItems.map((item) => (
         <div
           key={item.id}
           className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:scale-105 min-w-0"

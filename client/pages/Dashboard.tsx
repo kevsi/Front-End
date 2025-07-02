@@ -1,5 +1,5 @@
 import { Grid3x3, Plus, ShoppingCart, Zap } from "lucide-react";
-import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
+import { AppHeader } from "@/components/ui/app-header";
 import { StatsCards } from "@/components/dashboard/StatsCards";
 import { OrderTable } from "@/components/dashboard/OrderTable";
 import { HistorySidebar } from "@/components/dashboard/HistorySidebar";
@@ -36,7 +36,10 @@ export default function Dashboard() {
 
   return (
     <>
-      <ResponsiveLayout navItems={navItems} header={<DashboardHeader />}>
+      <ResponsiveLayout
+        navItems={navItems}
+        header={<AppHeader title="Dashboard Serveur" />}
+      >
         {/* Laravel Setup Banner */}
         <div className="px-2 sm:px-3 py-1">
           <LaravelSetupBanner />
@@ -57,12 +60,12 @@ export default function Dashboard() {
           {/* Section Headers */}
           <div className="flex flex-col xl:flex-row gap-2 sm:gap-3 mb-4 sm:mb-5 lg:mb-6 pt-2 sm:pt-3">
             <div className="flex-1">
-              <h2 className="text-sm sm:text-base font-semibold text-dashboard-dark font-poppins mb-1 sm:mb-2">
+              <h2 className="text-base sm:text-lg lg:text-xl font-bold text-dashboard-dark font-poppins mb-1 sm:mb-2">
                 Commandes récentes
               </h2>
             </div>
             <div className="w-full xl:w-56 flex-shrink-0">
-              <h2 className="text-sm sm:text-base font-semibold text-dashboard-dark font-poppins text-center xl:text-left mb-1 sm:mb-2 xl:pl-0">
+              <h2 className="text-base sm:text-lg lg:text-xl font-bold text-dashboard-dark font-poppins text-center xl:text-left mb-1 sm:mb-2 xl:pl-0">
                 Historique
               </h2>
             </div>

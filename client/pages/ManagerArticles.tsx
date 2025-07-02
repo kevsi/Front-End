@@ -3,7 +3,7 @@ import { useNotifications } from "@/hooks/use-notifications";
 import { LayoutDashboard, ShoppingCart, Box } from "lucide-react";
 import { ResponsiveLayout } from "@/components/ui/responsive-layout";
 import { NavItem } from "@/components/ui/responsive-sidebar";
-import { ManagerOrdersHeader } from "@/components/manager/ManagerOrdersHeader";
+import { AppHeader } from "@/components/ui/app-header";
 import { ManagerArticlesFilters } from "@/components/manager/ManagerArticlesFilters";
 import { ManagerArticlesGrid } from "@/components/manager/ManagerArticlesGrid";
 import { NewArticleModal } from "@/components/manager/NewArticleModal";
@@ -172,7 +172,10 @@ const ManagerArticles: React.FC = () => {
   };
 
   return (
-    <ResponsiveLayout navItems={navItems} header={<ManagerOrdersHeader />}>
+    <ResponsiveLayout
+      navItems={navItems}
+      header={<AppHeader title="Gestion des Articles" />}
+    >
       <div className="p-4 lg:p-6 bg-gray-50/50 min-h-screen">
         <div className="max-w-7xl mx-auto">
           <div className="mb-6 lg:mb-8">

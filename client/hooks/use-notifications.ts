@@ -1,4 +1,4 @@
-import { toast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 
 export type NotificationType = "success" | "error" | "warning" | "info";
 
@@ -7,150 +7,168 @@ export interface NotificationConfig {
   description?: string;
   type: NotificationType;
   duration?: number;
+  action?: {
+    label: string;
+    onClick: () => void;
+  };
 }
+
+// Unified notification icons
+const ICONS = {
+  success: "✅",
+  error: "❌",
+  warning: "⚠️",
+  info: "ℹ️",
+} as const;
 
 export const useNotifications = () => {
   const showNotification = ({
     title,
     description,
     type,
-    duration = 3000,
+    duration = 4000,
+    action,
   }: NotificationConfig) => {
-    const variant = type === "error" ? "destructive" : "default";
+    const icon = ICONS[type];
+    const fullTitle = `${icon} ${title}`;
 
-    toast({
-      title,
-      description,
-      variant,
-      duration,
-    });
+    switch (type) {
+      case "error":
+        toast.error(fullTitle, {
+          description,
+          duration,
+          action: action
+            ? {
+                label: action.label,
+                onClick: action.onClick,
+              }
+            : undefined,
+        });
+        break;
+      case "success":
+        toast.success(fullTitle, {
+          description,
+          duration,
+          action: action
+            ? {
+                label: action.label,
+                onClick: action.onClick,
+              }
+            : undefined,
+        });
+        break;
+      case "warning":
+        toast.warning(fullTitle, {
+          description,
+          duration,
+          action: action
+            ? {
+                label: action.label,
+                onClick: action.onClick,
+              }
+            : undefined,
+        });
+        break;
+      default:
+        toast(fullTitle, {
+          description,
+          duration,
+          action: action
+            ? {
+                label: action.label,
+                onClick: action.onClick,
+              }
+            : undefined,
+        });
+    }
   };
 
-  // Notifications spécifiques pour les actions courantes
+  // Essential notifications only - removed noise
   const notifications = {
-    // Commandes
+    // === ORDERS ===
     orderCreated: (orderNumber: string) =>
       showNotification({
-        title: "🎉 Commande enregistrée",
+        title: "Commande enregistrée",
         description: `Commande ${orderNumber} transmise en cuisine`,
         type: "success",
       }),
 
     orderValidated: (orderNumber: string) =>
       showNotification({
-        title: "✅ Commande confirmée",
+        title: "Commande confirmée",
         description: `Commande ${orderNumber} prise en charge`,
         type: "success",
       }),
 
     orderServed: (orderNumber: string) =>
       showNotification({
-        title: "🍽️ Service terminé",
+        title: "Service terminé",
         description: `Commande ${orderNumber} servie à table`,
         type: "success",
       }),
 
     orderCancelled: (orderNumber: string) =>
       showNotification({
-        title: "⚠️ Commande annulée",
+        title: "Commande annulée",
         description: `Commande ${orderNumber} retirée du système`,
         type: "warning",
       }),
 
     orderDeleted: (orderNumber: string) =>
       showNotification({
-        title: "🗑️ Commande supprimée",
+        title: "Commande supprimée",
         description: `Commande ${orderNumber} effacée définitivement`,
         type: "error",
       }),
 
-    // Articles/Menu
-    articleAdded: (articleName: string) =>
-      showNotification({
-        title: "🍽️ Article ajouté",
-        description: `${articleName} ajouté à la commande`,
-        type: "success",
-        duration: 2500,
-      }),
-
-    articleRemoved: (articleName: string) =>
-      showNotification({
-        title: "🗑️ Article retiré",
-        description: `${articleName} retiré de la commande`,
-        type: "info",
-        duration: 2500,
-      }),
-
-    articleAddedToMenu: (articleName: string) =>
-      showNotification({
-        title: "📋 Ajouté au menu",
-        description: `${articleName} disponible en cuisine`,
-        type: "success",
-      }),
-
+    // === ARTICLES ===
     articleCreated: (articleName: string) =>
       showNotification({
-        title: "✨ Nouvel article créé",
+        title: "Article créé",
         description: `${articleName} ajouté au catalogue`,
         type: "success",
       }),
 
-    // Quantités
-    quantityUpdated: (articleName: string, quantity: number) =>
+    // === USERS ===
+    userCreated: (userName: string) =>
       showNotification({
-        title: "📊 Quantité ajustée",
-        description: `${articleName} × ${quantity}`,
-        type: "info",
-        duration: 2000,
+        title: "Utilisateur créé",
+        description: `${userName} ajouté au système`,
+        type: "success",
       }),
 
-    // Gestion des tables
-    tableNumberChanged: (oldTable: string, newTable: string) =>
+    userDeleted: (userName: string) =>
       showNotification({
-        title: "🪑 Table modifiée",
-        description: `${oldTable} → ${newTable}`,
-        type: "info",
-        duration: 2500,
+        title: "Utilisateur supprimé",
+        description: `${userName} retiré du système`,
+        type: "error",
       }),
 
-    // Recherche et filtres
-    searchPerformed: (query: string, results: number) =>
-      showNotification({
-        title: "Recherche effectuée",
-        description: `${results} résultat(s) trouvé(s) pour "${query}"`,
-        type: "info",
-        duration: 2000,
-      }),
-
-    filterApplied: (filterType: string, filterValue: string) =>
-      showNotification({
-        title: "Filtre appliqué",
-        description: `${filterType}: ${filterValue}`,
-        type: "info",
-        duration: 2000,
-      }),
-
-    // Actions administratives
+    // === SYSTEM ===
     dataExported: (type: string) =>
       showNotification({
-        title: "Données exportées",
-        description: `Export ${type} terminé avec succès`,
+        title: "Export terminé",
+        description: `Données ${type} exportées avec succès`,
         type: "success",
       }),
 
     settingsSaved: () =>
       showNotification({
         title: "Paramètres sauvegardés",
-        description: "Vos paramètres ont été enregistrés",
+        description: "Configuration mise à jour",
         type: "success",
       }),
 
-    // Erreurs communes
+    // === ERRORS ===
     networkError: () =>
       showNotification({
         title: "Erreur de connexion",
         description: "Vérifiez votre connexion internet",
         type: "error",
+        action: {
+          label: "Réessayer",
+          onClick: () => window.location.reload(),
+        },
       }),
 
     unauthorized: () =>
@@ -167,11 +185,21 @@ export const useNotifications = () => {
         type: "error",
       }),
 
-    // Actions génériques - désactivées pour éviter le spam
-    actionSuccess: (action: string) => {
-      // Notification désactivée pour éviter les notifications inutiles
-      // console.log(`Action réussie: ${action}`);
-    },
+    validationError: (field: string) =>
+      showNotification({
+        title: "Erreur de validation",
+        description: `Le champ "${field}" est requis ou invalide`,
+        type: "warning",
+      }),
+
+    // === GENERIC ===
+    actionSuccess: (action: string) =>
+      showNotification({
+        title: "Action réussie",
+        description: `${action} effectué avec succès`,
+        type: "success",
+        duration: 3000,
+      }),
 
     actionError: (action: string, error?: string) =>
       showNotification({
@@ -179,12 +207,6 @@ export const useNotifications = () => {
         description: error || `Impossible d'effectuer ${action}`,
         type: "error",
       }),
-
-    // Sidebar et navigation - notifications désactivées
-    sidebarToggled: (isOpen: boolean) => {
-      // Notification désactivée pour éviter les notifications inutiles
-      // console.log(`Menu ${isOpen ? "ouvert" : "fermé"}`);
-    },
   };
 
   return {

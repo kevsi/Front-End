@@ -12,7 +12,9 @@ import {
   Settings,
   Zap,
   ShoppingCart,
+  Bell,
 } from "lucide-react";
+import { useNotifications } from "@/hooks/use-notifications";
 
 interface ActionCardProps {
   title: string;
@@ -99,6 +101,7 @@ function FeatureCard({ title, description, icon }: FeatureCardProps) {
 
 export default function Index() {
   const [messageFromServer, setMessageFromServer] = useState("");
+  const { notifications } = useNotifications();
 
   // Fetch message from server on component mount
   useEffect(() => {
@@ -118,21 +121,17 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-dashboard-gray flex flex-col">
       {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 py-2 sm:py-3">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-3">
-            <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-dashboard-dark font-leckerli">
-              Lounge Bar Le Cuivre
-            </h1>
-            <div className="flex items-center gap-2 sm:gap-3">
-              <Badge
-                variant="outline"
-                className="px-1.5 sm:px-2 py-0.5 text-xs"
-              >
-                Version 1.0
-              </Badge>
-            </div>
-          </div>
+      <header className="bg-white border-b border-gray-100 px-4 py-3">
+        <div className="max-w-6xl mx-auto flex items-center justify-between">
+          <h1 className="text-lg font-bold text-gray-900 font-poppins">
+            Lounge Bar Le Cuivre
+          </h1>
+          <Badge
+            variant="outline"
+            className="px-2 py-0.5 text-xs border-dashboard-yellow text-dashboard-yellow"
+          >
+            v1.0
+          </Badge>
         </div>
       </header>
 
@@ -140,7 +139,7 @@ export default function Index() {
       <main className="flex-1 max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 py-3 sm:py-4 lg:py-6">
         {/* Hero Section */}
         <div className="text-center mb-4 sm:mb-6 lg:mb-8">
-          <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-dashboard-dark mb-2 sm:mb-3 lg:mb-4 font-poppins">
+          <h2 className="text-base sm:text-lg lg:text-xl font-bold text-dashboard-dark mb-2 sm:mb-3 lg:mb-4 font-poppins">
             Système de Gestion Restaurant
           </h2>
           <p className="text-sm sm:text-sm lg:text-base text-dashboard-muted max-w-2xl mx-auto font-inter mb-2 sm:mb-3">
@@ -175,6 +174,42 @@ export default function Index() {
               Nouvelle Commande
             </Button>
           </Link>
+        </div>
+
+        {/* Notification Demo */}
+        <div className="text-center mb-4 sm:mb-6 lg:mb-8">
+          <p className="text-xs text-dashboard-muted mb-2">
+            Test du système de notifications unifié :
+          </p>
+          <div className="flex flex-wrap gap-2 justify-center">
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => notifications.orderCreated("C123")}
+              className="text-xs"
+            >
+              <Bell className="w-3 h-3 mr-1" />
+              Commande créée
+            </Button>
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => notifications.actionSuccess("Sauvegarde")}
+              className="text-xs"
+            >
+              <Bell className="w-3 h-3 mr-1" />
+              Succès
+            </Button>
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => notifications.networkError()}
+              className="text-xs"
+            >
+              <Bell className="w-3 h-3 mr-1" />
+              Erreur réseau
+            </Button>
+          </div>
         </div>
 
         {/* Action Cards */}

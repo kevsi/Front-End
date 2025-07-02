@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNotifications } from "@/hooks/use-notifications";
 import { LayoutDashboard, Plus, ShoppingCart } from "lucide-react";
-import { OrdersHeader } from "../components/orders/OrdersHeader";
+import { AppHeader } from "@/components/ui/app-header";
 import { OrdersFilters } from "../components/orders/OrdersFilters";
 import { OrdersTable } from "../components/orders/OrdersTable";
 import { HistorySidebar } from "@/components/dashboard/HistorySidebar";
@@ -158,7 +158,10 @@ const Orders: React.FC = () => {
   });
 
   return (
-    <ResponsiveLayout navItems={navItems} header={<OrdersHeader />}>
+    <ResponsiveLayout
+      navItems={navItems}
+      header={<AppHeader title="Gestion des Commandes" />}
+    >
       {/* Orders Section */}
       <div className="flex-1 px-2 sm:px-3 pb-2 sm:pb-3">
         {/* Section Headers */}

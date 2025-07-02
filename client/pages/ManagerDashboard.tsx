@@ -1,6 +1,6 @@
 import React from "react";
 import { LayoutDashboard, ShoppingCart, Box } from "lucide-react";
-import { ManagerHeader } from "../components/manager/ManagerHeader";
+import { AppHeader } from "@/components/ui/app-header";
 import { StatisticsChart } from "../components/manager/StatisticsChart";
 import { StatsCards } from "../components/manager/StatsCards";
 import { ManagerOrdersTable } from "../components/manager/ManagerOrdersTable";
@@ -80,7 +80,10 @@ const sampleManagerOrders: ManagerOrder[] = [
 
 const ManagerDashboard: React.FC = () => {
   return (
-    <ResponsiveLayout navItems={navItems} header={<ManagerHeader />}>
+    <ResponsiveLayout
+      navItems={navItems}
+      header={<AppHeader title="Dashboard Manager" />}
+    >
       {/* Stats Cards */}
       <div className="px-2 sm:px-3 py-1 sm:py-2">
         <StatsCards />
