@@ -101,6 +101,7 @@ function FeatureCard({ title, description, icon }: FeatureCardProps) {
 
 export default function Index() {
   const [messageFromServer, setMessageFromServer] = useState("");
+  const { notifications } = useNotifications();
 
   // Fetch message from server on component mount
   useEffect(() => {
@@ -177,6 +178,42 @@ export default function Index() {
               Nouvelle Commande
             </Button>
           </Link>
+        </div>
+
+        {/* Notification Demo */}
+        <div className="text-center mb-4 sm:mb-6 lg:mb-8">
+          <p className="text-xs text-dashboard-muted mb-2">
+            Test du système de notifications unifié :
+          </p>
+          <div className="flex flex-wrap gap-2 justify-center">
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => notifications.orderCreated("C123")}
+              className="text-xs"
+            >
+              <Bell className="w-3 h-3 mr-1" />
+              Commande créée
+            </Button>
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => notifications.actionSuccess("Sauvegarde")}
+              className="text-xs"
+            >
+              <Bell className="w-3 h-3 mr-1" />
+              Succès
+            </Button>
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => notifications.networkError()}
+              className="text-xs"
+            >
+              <Bell className="w-3 h-3 mr-1" />
+              Erreur réseau
+            </Button>
+          </div>
         </div>
 
         {/* Action Cards */}
