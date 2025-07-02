@@ -277,19 +277,57 @@ export const useUpdateOrder = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ id, data }: { id: number; data: UpdateOrderRequest }) =>
-      apiService.updateOrder(id, data),
+    mutationFn: async ({
+      id,
+      data,
+    }: {
+      id: number;
+      data: UpdateOrderRequest;
+    }) => {
+      if (import.meta.env.DEV) {
+        // Simuler la mise à jour en mode développement
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        return {
+          data: {
+            id,
+            order_number: `C${String(id).padStart(3, "0")}`,
+            table_number:
+              data.table_number || `T${String(id).padStart(2, "0")}`,
+            customer_name: data.customer_name || null,
+            status: data.status || ("pending" as const),
+            total_price: 1500,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+            items: [],
+            user_id: 1,
+          },
+        };
+      }
+      return apiService.updateOrder(id, data);
+    },
     onSuccess: (data, variables) => {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.ORDERS });
       queryClient.invalidateQueries({
         queryKey: QUERY_KEYS.ORDER(variables.id),
       });
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.DASHBOARD_STATS });
-      toast.success(`Commande ${data.data.order_number} mise à jour!`);
+      if (import.meta.env.DEV) {
+        toast.success(
+          `Commande ${data.data.order_number} simulée mise à jour!`,
+        );
+      } else {
+        toast.success(`Commande ${data.data.order_number} mise à jour!`);
+      }
     },
     onError: (error) => {
       console.error("Erreur lors de la mise à jour de la commande:", error);
-      toast.error("Erreur lors de la mise à jour de la commande");
+      if (import.meta.env.DEV) {
+        toast.error(
+          "Mode développement - Configurez Laravel pour les vraies mutations",
+        );
+      } else {
+        toast.error("Erreur lors de la mise à jour de la commande");
+      }
     },
   });
 };
@@ -298,15 +336,32 @@ export const useDeleteOrder = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (id: number) => apiService.deleteOrder(id),
+    mutationFn: async (id: number) => {
+      if (import.meta.env.DEV) {
+        // Simuler la suppression en mode développement
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        return { success: true, message: "Commande supprimée (simulation)" };
+      }
+      return apiService.deleteOrder(id);
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.ORDERS });
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.DASHBOARD_STATS });
-      toast.success("Commande supprimée avec succès!");
+      if (import.meta.env.DEV) {
+        toast.success("Commande supprimée (simulation)!");
+      } else {
+        toast.success("Commande supprimée avec succès!");
+      }
     },
     onError: (error) => {
       console.error("Erreur lors de la suppression de la commande:", error);
-      toast.error("Erreur lors de la suppression de la commande");
+      if (import.meta.env.DEV) {
+        toast.error(
+          "Mode développement - Configurez Laravel pour les vraies mutations",
+        );
+      } else {
+        toast.error("Erreur lors de la suppression de la commande");
+      }
     },
   });
 };
