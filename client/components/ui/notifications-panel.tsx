@@ -81,29 +81,6 @@ const sampleNotifications: Notification[] = [
   },
   {
     id: "2",
-    type: "table",
-    user: {
-      id: "2",
-      name: "Maria Gonzalez",
-      initials: "MG",
-      avatar: "/placeholder.svg",
-    },
-    action: "a demandé l'addition pour",
-    target: "Table 8",
-    timestamp: "5 min",
-    isRead: false,
-    hasActions: true,
-    actions: [
-      {
-        id: "print-bill",
-        label: "Imprimer",
-        type: "primary",
-        icon: <ShoppingCart className="w-4 h-4" />,
-      },
-    ],
-  },
-  {
-    id: "3",
     type: "kitchen",
     user: {
       id: "3",
@@ -117,20 +94,7 @@ const sampleNotifications: Notification[] = [
     isRead: false,
   },
   {
-    id: "4",
-    type: "staff",
-    user: {
-      id: "4",
-      name: "Julie Martin",
-      initials: "JM",
-      avatar: "/placeholder.svg",
-    },
-    action: "a commencé son service",
-    timestamp: "15 min",
-    isRead: true,
-  },
-  {
-    id: "5",
+    id: "3",
     type: "alert",
     user: {
       id: "5",
