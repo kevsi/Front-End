@@ -39,8 +39,8 @@ export const useDashboardStats = () => {
     queryFn: async () => {
       try {
         return await apiService.getDashboardStats();
-      } catch (error) {
-        // En mode développement, utiliser les données de fallback
+      } catch (error: any) {
+        // En mode développement, toujours utiliser les données de fallback
         if (import.meta.env.DEV) {
           console.warn(
             "Using fallback dashboard stats - Laravel API not available",
@@ -61,12 +61,14 @@ export const useDashboardStats = () => {
             message: "Fallback data - Laravel API not available",
           };
         }
+        // En production, on peut lancer l'erreur
         throw error;
       }
     },
     select: (data) => data.data,
-    refetchInterval: import.meta.env.DEV ? false : 30000, // Pas de refetch en mode dev avec fallback
-    retry: import.meta.env.DEV ? false : 3, // Pas de retry en mode dev
+    refetchInterval: import.meta.env.DEV ? false : 30000,
+    retry: import.meta.env.DEV ? false : 3,
+    staleTime: import.meta.env.DEV ? Infinity : 30000, // Cache infini en dev
   });
 };
 
