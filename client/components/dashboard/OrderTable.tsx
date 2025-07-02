@@ -15,6 +15,10 @@ import { EditOrderModal } from "@/components/ui/edit-order-modal";
 import { DeleteConfirmationModal } from "@/components/ui/delete-confirmation-modal";
 import { useState } from "react";
 import { useOrders, useOrderActions } from "@/hooks/use-laravel-api";
+import {
+  useOfflineOrders,
+  useOfflineOrderActions,
+} from "@/hooks/use-offline-api";
 import { Order } from "@shared/laravel-api";
 
 // Mapping des statuts Laravel vers l'affichage français
