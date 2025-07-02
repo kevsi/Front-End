@@ -186,7 +186,7 @@ export function OrderDetailsModal({
           <div className="flex justify-between items-center">
             <div className="text-sm text-gray-600">Total de la commande</div>
             <div className="text-2xl font-bold text-gray-900">
-              {orderDetails.totalPrice.toLocaleString()}F
+              {formatPrice(orderDetails.total_price)}
             </div>
           </div>
         </div>
