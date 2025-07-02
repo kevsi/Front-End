@@ -51,8 +51,8 @@ export const ManagerArticlesFilters: React.FC<ManagerArticlesFiltersProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-4 lg:p-6 shadow-sm">
-      <div className="flex flex-col lg:flex-row lg:items-center gap-4">
+    <div className="bg-white rounded-lg border border-gray-200 p-3 shadow-sm">
+      <div className="flex flex-col lg:flex-row lg:items-center gap-3">
         {/* Filter buttons row */}
         <div className="flex flex-wrap items-center gap-3 lg:gap-4">
           {/* Category Filter */}
