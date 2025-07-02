@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { UsersSidebar } from "@/components/users/UsersSidebar";
-import { UsersHeader } from "@/components/users/UsersHeader";
+import { AppHeader } from "@/components/ui/app-header";
 import { UsersFilters } from "@/components/users/UsersFilters";
 import { UsersTable } from "@/components/users/UsersTable";
 import { AddUserModal, UserFormData } from "@/components/users/AddUserModal";

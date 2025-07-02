@@ -1,6 +1,6 @@
 import React from "react";
 import { LayoutDashboard, ShoppingCart, Box } from "lucide-react";
-import { ManagerHeader } from "../components/manager/ManagerHeader";
+import { AppHeader } from "@/components/ui/app-header";
 import { StatisticsChart } from "../components/manager/StatisticsChart";
 import { StatsCards } from "../components/manager/StatsCards";
 import { ManagerOrdersTable } from "../components/manager/ManagerOrdersTable";
