@@ -366,7 +366,7 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
               className="bg-white rounded-lg border border-gray-200 p-2 sm:p-3 shadow-sm hover:shadow-md transition-shadow min-w-[700px] lg:min-w-0"
             >
               {/* Mobile Layout */}
-              <div className="lg:hidden space-y-4">
+              <div className="lg:hidden space-y-2">
                 {/* Header Row */}
                 <div className="flex justify-between items-start">
                   <div className="flex items-center gap-3">
