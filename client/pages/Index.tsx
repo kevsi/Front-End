@@ -12,7 +12,9 @@ import {
   Settings,
   Zap,
   ShoppingCart,
+  Bell,
 } from "lucide-react";
+import { useNotifications } from "@/hooks/use-notifications";
 
 interface ActionCardProps {
   title: string;
