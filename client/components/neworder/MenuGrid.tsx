@@ -5,8 +5,6 @@ import { useBreakpoint } from "@/hooks/use-mobile";
 import type { MenuItem } from "@/pages/NewOrder";
 
 interface MenuGridProps {
-  searchQuery: string;
-  selectedCategory: string;
   onAddToCart: (item: MenuItem) => void;
 }
 
