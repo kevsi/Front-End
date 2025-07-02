@@ -349,14 +349,11 @@ export function OrderTable() {
                   <span className="font-bold text-gray-800 font-poppins text-sm">
                     {order.items?.length || 0} articles
                   </span>
-                  <Button
-                    variant="outline"
-                    size="sm"
+                  <ViewAction
                     onClick={() => handleViewDetails(order)}
-                    className="bg-blue-100 text-blue-600 border-blue-200 hover:bg-blue-200 font-poppins text-xs px-2 py-1"
-                  >
-                    Voir
-                  </Button>
+                    variant="compact"
+                    size="sm"
+                  />
                 </div>
 
                 {/* Total */}
