@@ -121,58 +121,52 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
                     </button>
                   </div>
                 </div>
-
-                {/* View Details Button */}
-                <button className="w-full bg-blue-100 text-blue-600 py-2 rounded-lg text-sm font-poppins font-bold hover:bg-blue-200 transition-colors">
-                  Voir détails
-                </button>
               </div>
 
               {/* Desktop Layout */}
-              <div className="hidden lg:grid lg:grid-cols-6 gap-4 items-center">
-                {/* Order Number */}
-                <div className="flex items-center gap-3">
-                  <div className="bg-white border border-gray-200 rounded-lg px-3 py-2">
-                    <span className="text-gray-700 font-poppins font-bold text-sm">
+              <div className="hidden lg:contents">
+                {/* Order Number Badge */}
+                <div className="flex justify-center">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <Badge
+                      variant="outline"
+                      className="bg-white border-gray-200 text-gray-800 font-bold text-xs"
+                    >
                       N°{index + 1}
+                    </Badge>
+                    <span className="font-bold text-gray-800 font-poppins text-sm">
+                      {order.orderNumber}
                     </span>
                   </div>
-                  <span className="text-gray-700 font-poppins font-bold">
-                    {order.orderNumber}
-                  </span>
                 </div>
 
                 {/* Table Number */}
-                <div className="text-center">
-                  <span className="text-gray-700 font-poppins font-bold">
-                    {order.tableNumber}
-                  </span>
+                <div className="text-center font-bold text-gray-800 font-poppins text-sm">
+                  {order.tableNumber}
                 </div>
 
-                {/* Article Count */}
-                <div className="flex flex-col items-center gap-2">
-                  <span className="text-gray-700 font-poppins font-bold">
+                {/* Items Count */}
+                <div className="flex flex-col items-center gap-1 sm:gap-2">
+                  <span className="font-bold text-gray-800 font-poppins text-sm">
                     {order.articleCount} articles
                   </span>
-                  <button className="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm font-poppins font-bold hover:bg-blue-200 transition-colors">
+                  <button className="bg-blue-100 text-blue-600 border-blue-200 hover:bg-blue-200 font-poppins text-xs px-2 py-1 rounded-lg transition-colors">
                     Voir
                   </button>
                 </div>
 
-                {/* Total Price */}
-                <div className="text-center">
-                  <span className="text-gray-700 font-poppins font-bold">
-                    {order.totalPrice}F
-                  </span>
+                {/* Total */}
+                <div className="text-center font-bold text-gray-800 font-poppins text-sm">
+                  {order.totalPrice}F
                 </div>
 
                 {/* Status */}
-                <div className="text-center">
-                  <span
-                    className={`px-3 py-1 rounded-lg text-sm font-poppins font-bold ${getStatusColor(order.status)}`}
+                <div className="flex justify-center">
+                  <Badge
+                    className={`${getStatusColor(order.status)} text-xs px-2 py-1`}
                   >
                     {getStatusText(order.status)}
-                  </span>
+                  </Badge>
                 </div>
 
                 {/* Actions */}
