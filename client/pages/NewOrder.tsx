@@ -46,8 +46,6 @@ export default function NewOrder() {
   const [tableNumber, setTableNumber] = useState("T12");
   const [tip, setTip] = useState(500);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const addToCart = (item: MenuItem) => {
     const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
@@ -118,16 +116,6 @@ export default function NewOrder() {
   return (
     <>
       <ResponsiveLayout navItems={navItems} header={<NewOrderHeader />}>
-        {/* Filters */}
-        <div className="px-4 lg:px-6 py-3">
-          <MenuFilters
-            searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
-            selectedCategory={selectedCategory}
-            onCategoryChange={setSelectedCategory}
-          />
-        </div>
-
         {/* Content Area */}
         <div className="flex-1 px-4 lg:px-6 pb-4">
           <div className="flex flex-col xl:flex-row gap-3 lg:gap-4 h-full">
@@ -136,11 +124,7 @@ export default function NewOrder() {
               <h2 className="text-xl lg:text-2xl font-bold text-dashboard-dark mb-5 sm:mb-6 lg:mb-7 pt-2 sm:pt-3 font-poppins">
                 Liste des articles
               </h2>
-              <MenuGrid
-                searchQuery={searchQuery}
-                selectedCategory={selectedCategory}
-                onAddToCart={addToCart}
-              />
+              <MenuGrid onAddToCart={addToCart} />
             </div>
 
             {/* Order Cart */}
