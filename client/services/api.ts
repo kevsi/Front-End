@@ -16,6 +16,15 @@ import {
   UserFilters,
   DashboardStats,
 } from "@/types/api";
+import {
+  fallbackOrders,
+  fallbackArticles,
+  fallbackUsers,
+  fallbackStats,
+  fallbackOrderItems,
+  filterOrdersLocally,
+  filterArticlesLocally,
+} from "./fallback-data";
 
 // Configuration de l'API
 const API_BASE_URL =
