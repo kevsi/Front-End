@@ -1,6 +1,7 @@
 import { Eye, Edit, Trash2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Table,
   TableBody,
@@ -13,6 +14,8 @@ import { OrderDetailsModal } from "@/components/ui/order-details-modal";
 import { EditOrderModal } from "@/components/ui/edit-order-modal";
 import { DeleteConfirmationModal } from "@/components/ui/delete-confirmation-modal";
 import { useState } from "react";
+import { useOrders, useOrderActions } from "@/hooks/use-laravel-api";
+import { Order } from "@shared/laravel-api";
 
 interface Order {
   id: string;
