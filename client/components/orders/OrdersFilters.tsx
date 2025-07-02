@@ -62,14 +62,14 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
           {/* Time Filter */}
           <div className="relative">
             <div className="flex items-center">
-              <div className="bg-dashboard-yellow/10 border border-dashboard-yellow/30 rounded-lg px-4 py-2.5 lg:px-5 lg:py-3 font-inter text-sm font-medium text-dashboard-dark">
+              <div className="bg-dashboard-yellow/10 border border-dashboard-yellow/30 rounded-lg px-4 py-3 font-inter text-sm font-medium text-dashboard-dark h-12">
                 {getCurrentTimeLabel()}
               </div>
               <button
                 onClick={() => setShowTimeDropdown(!showTimeDropdown)}
-                className="ml-2 bg-dashboard-yellow text-white border border-dashboard-yellow rounded-lg p-4 lg:p-5 shadow-sm hover:bg-dashboard-yellow/90 transition-all"
+                className="ml-2 bg-dashboard-yellow text-white border border-dashboard-yellow rounded-lg p-3 shadow-sm hover:bg-dashboard-yellow/90 transition-all h-12 w-12 flex items-center justify-center"
               >
-                <ChevronDown className="w-5 h-5 lg:w-6 lg:h-6" />
+                <ChevronDown className="w-4 h-4" />
               </button>
             </div>
 
