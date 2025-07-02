@@ -1,6 +1,5 @@
 import { Grid3x3, Plus, ShoppingCart } from "lucide-react";
 import { NewOrderHeader } from "@/components/neworder/NewOrderHeader";
-import { MenuFilters } from "@/components/neworder/MenuFilters";
 import { MenuGrid } from "@/components/neworder/MenuGrid";
 import { OrderCart } from "@/components/neworder/OrderCart";
 import { OrderSuccessModal } from "@/components/neworder/OrderSuccessModal";
