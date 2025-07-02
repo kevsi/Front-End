@@ -489,24 +489,24 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center gap-3 justify-center">
+                <div className="flex items-center gap-1 justify-center">
                   <button
                     onClick={() => handleViewOrder(order.id)}
-                    className="bg-blue-100 text-blue-600 p-4 rounded-lg hover:bg-blue-200 transition-colors"
+                    className="bg-blue-100 text-blue-600 p-2 rounded hover:bg-blue-200 transition-colors"
                   >
-                    <Eye size={24} />
+                    <Eye size={16} />
                   </button>
                   <button
                     onClick={() => handleEditOrder(order.id)}
-                    className="bg-yellow-100 text-yellow-600 p-4 rounded-lg hover:bg-yellow-200 transition-colors"
+                    className="bg-yellow-100 text-yellow-600 p-2 rounded hover:bg-yellow-200 transition-colors"
                   >
-                    <Edit size={24} />
+                    <Edit size={16} />
                   </button>
                   <button
                     onClick={() => handleDeleteOrder(order.id)}
-                    className="bg-red-100 text-red-600 p-4 rounded-lg hover:bg-red-200 transition-colors"
+                    className="bg-red-100 text-red-600 p-2 rounded hover:bg-red-200 transition-colors"
                   >
-                    <Trash2 size={24} />
+                    <Trash2 size={16} />
                   </button>
                 </div>
               </div>
