@@ -192,9 +192,11 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
                   <span className="text-gray-700 font-poppins font-bold">
                     {order.articleCount} articles
                   </span>
-                  <button className="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm font-poppins font-bold hover:bg-blue-200 transition-colors">
-                    Voir
-                  </button>
+                  <ViewAction
+                    onClick={() => handleViewOrder(order)}
+                    variant="compact"
+                    size="sm"
+                  />
                 </div>
 
                 {/* Total Price */}
