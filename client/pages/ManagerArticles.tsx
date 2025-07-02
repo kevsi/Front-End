@@ -37,72 +37,46 @@ const navItems: NavItem[] = [
   },
 ];
 
-const sampleArticles: Article[] = [
-  {
-    id: "1",
-    name: "Mojito",
-    price: 2000,
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
-    category: "cocktail",
-  },
-  {
-    id: "2",
-    name: "Daiquiri",
-    price: 2000,
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
-    category: "cocktail",
-  },
-  {
-    id: "3",
-    name: "Mojito",
-    price: 2800,
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
-    category: "cocktail",
-  },
-  {
-    id: "4",
-    name: "Margarita",
-    price: 2000,
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
-    category: "cocktail",
-  },
-  {
-    id: "5",
-    name: "Mojito",
-    price: 2000,
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
-    category: "cocktail",
-  },
-  {
-    id: "6",
-    name: "Mojito",
-    price: 2600,
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
-    category: "cocktail",
-  },
-  {
-    id: "7",
-    name: "Mojito",
-    price: 2000,
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
-    category: "cocktail",
-  },
-];
-
 const ManagerArticles: React.FC = () => {
   const { notifications } = useNotifications();
-  const [articles, setArticles] = useState<Article[]>(sampleArticles);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [priceFilter, setPriceFilter] = useState("");
   const [isNewArticleModalOpen, setIsNewArticleModalOpen] = useState(false);
+
+  // Construire les filtres pour l'API
+  const filters: ArticleFilters = {
+    search: searchQuery || undefined,
+    category: selectedCategory || undefined,
+    priceMin:
+      priceFilter === "0-1000"
+        ? 0
+        : priceFilter === "1000-3000"
+          ? 1000
+          : priceFilter === "3000-5000"
+            ? 3000
+            : undefined,
+    priceMax:
+      priceFilter === "0-1000"
+        ? 1000
+        : priceFilter === "1000-3000"
+          ? 3000
+          : priceFilter === "3000-5000"
+            ? 5000
+            : undefined,
+  };
+
+  // API hooks
+  const {
+    data: articlesResponse,
+    isLoading,
+    error,
+    refetch,
+  } = useArticles(filters);
+
+  const createArticleMutation = useCreateArticle();
+
+  const articles = articlesResponse?.data?.data || [];
 
   const filteredArticles = articles.filter((article) => {
     const matchesSearch =
