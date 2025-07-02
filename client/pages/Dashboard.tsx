@@ -6,6 +6,7 @@ import { HistorySidebar } from "@/components/dashboard/HistorySidebar";
 import { PromoBanner } from "@/components/dashboard/PromoBanner";
 import { ResponsiveLayout } from "@/components/ui/responsive-layout";
 import { NavItem } from "@/components/ui/responsive-sidebar";
+import { LaravelSetupBanner } from "@/components/ui/laravel-setup-banner";
 
 const navItems: NavItem[] = [
   {
