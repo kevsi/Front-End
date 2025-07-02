@@ -16,22 +16,22 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, onAddToMenu }) => {
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-2 shadow-sm hover:shadow-md transition-all duration-200 min-w-0 group">
       {/* Article Image */}
-      <div className="relative mb-3 overflow-hidden rounded-lg">
+      <div className="relative mb-2 overflow-hidden rounded-md">
         <img
           src={article.image}
           alt={article.name}
-          className="w-full h-28 lg:h-36 object-cover transition-transform duration-200 group-hover:scale-105"
+          className="w-full h-24 object-cover transition-transform duration-200 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
       </div>
 
       {/* Article Info */}
-      <div className="flex items-end justify-between min-w-0 gap-2">
+      <div className="flex items-end justify-between min-w-0 gap-1.5">
         <div className="flex-1 min-w-0 overflow-hidden">
-          <h3 className="text-sm lg:text-base font-bold text-gray-900 font-poppins mb-1 truncate leading-tight">
+          <h3 className="text-xs font-bold text-gray-900 font-poppins mb-0.5 truncate leading-tight">
             {article.name}
           </h3>
-          <p className="text-base lg:text-lg font-bold text-dashboard-yellow truncate">
+          <p className="text-sm font-bold text-dashboard-yellow truncate">
             {article.price}F
           </p>
         </div>
