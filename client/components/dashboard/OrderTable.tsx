@@ -69,70 +69,67 @@ function getStatusText(status: Order["status"]) {
 }
 
 export function OrderTable() {
-  const [selectedOrder, setSelectedOrder] = useState<OrderDetails | null>(null);
+  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
-  const handleViewDetails = (orderId: string) => {
-    const orderDetails = detailedOrders[orderId];
-    if (orderDetails) {
-      setSelectedOrder(orderDetails);
-      setShowDetailsModal(true);
-    }
+  // Utiliser l'API Laravel pour récupérer les commandes
+  const {
+    data: ordersResponse,
+    isLoading: isLoadingOrders,
+    error,
+  } = useOrders();
+  const { updateOrder, deleteOrder, isUpdating, isDeleting } =
+    useOrderActions();
+
+  // Extraire les données des commandes
+  const orders = ordersResponse?.data || [];
+
+  const handleViewDetails = (order: Order) => {
+    setSelectedOrder(order);
+    setShowDetailsModal(true);
   };
 
-  const handleEditOrder = (orderId: string) => {
-    const orderDetails = detailedOrders[orderId];
-    if (orderDetails) {
-      setSelectedOrder(orderDetails);
-      setShowEditModal(true);
-    }
+  const handleEditOrder = (order: Order) => {
+    setSelectedOrder(order);
+    setShowEditModal(true);
   };
 
-  const handleDeleteOrder = (orderId: string) => {
-    const orderDetails = detailedOrders[orderId];
-    if (orderDetails) {
-      setSelectedOrder(orderDetails);
-      setShowDeleteModal(true);
-    }
+  const handleDeleteOrder = (order: Order) => {
+    setSelectedOrder(order);
+    setShowDeleteModal(true);
   };
 
-  const handleSaveEdit = async (updatedOrder: OrderDetails) => {
-    setIsLoading(true);
-    try {
-      // Simuler l'enregistrement
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+  const handleSaveEdit = async (updatedOrder: Order) => {
+    if (!selectedOrder) return;
 
-      // Ici vous mettriez à jour vos données
-      console.log("Commande mise à jour:", updatedOrder);
+    const updateData = {
+      table_number: updatedOrder.table_number,
+      status: updatedOrder.status,
+      // Ajouter d'autres champs selon besoin
+    };
 
-      setShowEditModal(false);
-      setSelectedOrder(null);
-    } catch (error) {
-      console.error("Erreur lors de la mise à jour:", error);
-    } finally {
-      setIsLoading(false);
-    }
+    updateOrder(
+      { id: selectedOrder.id, data: updateData },
+      {
+        onSuccess: () => {
+          setShowEditModal(false);
+          setSelectedOrder(null);
+        },
+      },
+    );
   };
 
   const handleConfirmDelete = async () => {
-    setIsLoading(true);
-    try {
-      // Simuler la suppression
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+    if (!selectedOrder) return;
 
-      // Ici vous supprimeriez la commande de vos données
-      console.log("Commande supprimée:", selectedOrder?.orderNumber);
-
-      setShowDeleteModal(false);
-      setSelectedOrder(null);
-    } catch (error) {
-      console.error("Erreur lors de la suppression:", error);
-    } finally {
-      setIsLoading(false);
-    }
+    deleteOrder(selectedOrder.id, {
+      onSuccess: () => {
+        setShowDeleteModal(false);
+        setSelectedOrder(null);
+      },
+    });
   };
 
   const closeModals = () => {
@@ -141,6 +138,71 @@ export function OrderTable() {
     setShowDeleteModal(false);
     setSelectedOrder(null);
   };
+
+  // Composant de loading skeleton
+  const LoadingSkeleton = () => (
+    <div className="space-y-2 p-3">
+      {[...Array(5)].map((_, index) => (
+        <div key={index} className="p-3 bg-white rounded-lg border">
+          <div className="flex justify-between items-center mb-2">
+            <div className="flex items-center gap-2">
+              <Skeleton className="h-5 w-16" />
+              <Skeleton className="h-5 w-12" />
+            </div>
+            <Skeleton className="h-6 w-20" />
+          </div>
+          <div className="flex justify-between items-center mb-2">
+            <Skeleton className="h-4 w-24" />
+            <Skeleton className="h-4 w-20" />
+            <Skeleton className="h-4 w-16" />
+          </div>
+          <div className="flex justify-between items-center">
+            <Skeleton className="h-8 w-24" />
+            <div className="flex gap-1">
+              <Skeleton className="h-6 w-6" />
+              <Skeleton className="h-6 w-6" />
+              <Skeleton className="h-6 w-6" />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
+  // Afficher le loading skeleton
+  if (isLoadingOrders) {
+    return (
+      <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+        <LoadingSkeleton />
+      </div>
+    );
+  }
+
+  // Afficher un message d'erreur
+  if (error) {
+    return (
+      <div className="bg-white rounded-lg shadow-sm p-6 text-center">
+        <p className="text-red-600 mb-2">
+          Erreur lors du chargement des commandes
+        </p>
+        <p className="text-sm text-gray-500">
+          Veuillez vérifier votre connexion à l'API Laravel
+        </p>
+      </div>
+    );
+  }
+
+  // Afficher un message si aucune commande
+  if (orders.length === 0) {
+    return (
+      <div className="bg-white rounded-lg shadow-sm p-6 text-center">
+        <p className="text-gray-600 mb-2">Aucune commande trouvée</p>
+        <p className="text-sm text-gray-500">
+          Les nouvelles commandes apparaîtront ici automatiquement
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white rounded-lg shadow-sm overflow-hidden">
