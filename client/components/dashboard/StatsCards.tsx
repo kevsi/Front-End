@@ -78,6 +78,9 @@ function StatCard({
 export function StatsCards() {
   const { data: stats, isLoading, error } = useDashboardStats();
 
+  // Vérifier si on utilise des données de fallback
+  const isUsingFallback = import.meta.env.DEV && stats && !error;
+
   // Fonction pour formater le prix
   const formatPrice = (price: number) => {
     return (price / 100).toLocaleString("fr-FR", {
