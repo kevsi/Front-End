@@ -51,6 +51,11 @@ class ApiService {
     endpoint: string,
     options: RequestInit = {},
   ): Promise<T> {
+    // En mode développement, ne pas faire d'appels réseau
+    if (import.meta.env.DEV) {
+      throw new Error(`API calls disabled in development mode for ${endpoint}`);
+    }
+
     const url = `${this.baseUrl}${endpoint}`;
 
     const config: RequestInit = {
@@ -68,19 +73,7 @@ class ApiService {
       const data = await response.json();
       return data;
     } catch (error: any) {
-      // En mode développement, on réduit le bruit des erreurs de réseau attendues
-      if (
-        import.meta.env.DEV &&
-        (error.message.includes("NetworkError") ||
-          error.message.includes("Failed to fetch") ||
-          error.message.includes("ECONNREFUSED"))
-      ) {
-        console.debug(
-          `Laravel API not available for ${endpoint} (expected in dev mode)`,
-        );
-      } else {
-        console.error(`API Error for ${endpoint}:`, error);
-      }
+      console.error(`API Error for ${endpoint}:`, error);
       throw error;
     }
   }
