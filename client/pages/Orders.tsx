@@ -97,6 +97,7 @@ const sampleOrders: Order[] = [
 
 const Orders: React.FC = () => {
   const { notifications } = useNotifications();
+  const { exportData } = useExportActions("commandes");
   const [orders, setOrders] = useState<Order[]>(sampleOrders);
   const [searchQuery, setSearchQuery] = useState("");
   const [timeFilter, setTimeFilter] = useState("");
