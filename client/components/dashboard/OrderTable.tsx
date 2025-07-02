@@ -1,6 +1,4 @@
-import { Eye, Edit, Trash2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
   Table,
@@ -13,6 +11,11 @@ import {
 import { OrderDetailsModal } from "@/components/ui/order-details-modal";
 import { EditOrderModal } from "@/components/ui/edit-order-modal";
 import { DeleteConfirmationModal } from "@/components/ui/delete-confirmation-modal";
+import { ViewAction, ActionGroup } from "@/components/ui/action-buttons";
+import {
+  useUnifiedNotifications,
+  useCRUDNotifications,
+} from "@/hooks/use-unified-notifications";
 import { useState } from "react";
 import { useOrders, useOrderActions } from "@/hooks/use-laravel-api";
 import {
