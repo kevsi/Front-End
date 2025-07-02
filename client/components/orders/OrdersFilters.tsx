@@ -151,7 +151,7 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
               placeholder="Rechercher par numéro, table, article..."
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
-              className="flex-1 outline-none text-dashboard-dark font-inter text-sm bg-transparent placeholder:text-gray-400"
+              className="flex-1 outline-none text-dashboard-dark font-inter text-sm bg-transparent placeholder:text-gray-400 focus:outline-none"
             />
           </div>
         </div>
