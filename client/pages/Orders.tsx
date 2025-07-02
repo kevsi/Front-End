@@ -39,70 +39,28 @@ const navItems: NavItem[] = [
   },
 ];
 
-const sampleOrders: Order[] = [
-  {
-    id: "1",
-    orderNumber: "C01",
-    tableNumber: "T01",
-    articleCount: 3,
-    totalPrice: 32000,
-    status: "validated",
-    createdAt: "2024-05-14T08:20:00Z",
-  },
-  {
-    id: "2",
-    orderNumber: "C02",
-    tableNumber: "T02",
-    articleCount: 5,
-    totalPrice: 45000,
-    status: "pending",
-    createdAt: "2024-05-14T08:15:00Z",
-  },
-  {
-    id: "3",
-    orderNumber: "C03",
-    tableNumber: "T03",
-    articleCount: 2,
-    totalPrice: 18000,
-    status: "served",
-    createdAt: "2024-05-14T08:10:00Z",
-  },
-  {
-    id: "4",
-    orderNumber: "C04",
-    tableNumber: "T04",
-    articleCount: 4,
-    totalPrice: 38000,
-    status: "cancelled",
-    createdAt: "2024-05-14T08:05:00Z",
-  },
-  {
-    id: "5",
-    orderNumber: "C05",
-    tableNumber: "T05",
-    articleCount: 6,
-    totalPrice: 52000,
-    status: "validated",
-    createdAt: "2024-05-14T08:00:00Z",
-  },
-  {
-    id: "6",
-    orderNumber: "C06",
-    tableNumber: "T06",
-    articleCount: 1,
-    totalPrice: 12000,
-    status: "pending",
-    createdAt: "2024-05-14T07:55:00Z",
-  },
-];
-
 const Orders: React.FC = () => {
   const { notifications } = useNotifications();
-  const [orders, setOrders] = useState<Order[]>(sampleOrders);
   const [searchQuery, setSearchQuery] = useState("");
   const [timeFilter, setTimeFilter] = useState("");
   const [dateFilter, setDateFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
+
+  // Construire les filtres pour l'API
+  const filters: OrderFilters = {
+    search: searchQuery || undefined,
+    status: (statusFilter as any) || undefined,
+  };
+
+  // Récupérer les commandes via l'API
+  const {
+    data: ordersResponse,
+    isLoading,
+    error,
+    refetch,
+  } = useOrders(filters);
+
+  const orders = ordersResponse?.data?.data || [];
 
   const filteredOrders = orders.filter((order) => {
     const matchesSearch =
