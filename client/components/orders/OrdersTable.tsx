@@ -71,24 +71,24 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
               className="flex flex-col lg:grid lg:grid-cols-6 gap-1 sm:gap-2 items-start lg:items-center p-2 sm:p-3 bg-white rounded-lg border border-gray-200 shadow-sm min-w-[600px] lg:min-w-0"
             >
               {/* Mobile Layout */}
-              <div className="lg:hidden space-y-4">
-                {/* Header Row */}
-                <div className="flex justify-between items-start">
-                  <div className="flex items-center gap-3">
-                    <div className="bg-gray-100 border border-gray-200 rounded-lg px-3 py-1">
-                      <span className="text-gray-700 font-poppins font-bold text-xs">
-                        N°{index + 1}
-                      </span>
-                    </div>
-                    <span className="text-gray-700 font-poppins font-bold text-sm">
+              <div className="lg:hidden w-full space-y-2 sm:space-y-3">
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <Badge
+                      variant="outline"
+                      className="bg-white border-gray-200 text-gray-800 font-bold text-xs"
+                    >
+                      N°{index + 1}
+                    </Badge>
+                    <span className="font-bold text-gray-800 font-poppins text-sm">
                       {order.orderNumber}
                     </span>
                   </div>
-                  <span
-                    className={`px-2 py-1 rounded-lg text-xs font-poppins font-bold ${getStatusColor(order.status)}`}
+                  <Badge
+                    className={`${getStatusColor(order.status)} text-xs px-2 py-1`}
                   >
                     {getStatusText(order.status)}
-                  </span>
+                  </Badge>
                 </div>
 
                 {/* Info Row */}
