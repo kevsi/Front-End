@@ -7,6 +7,7 @@ import { PromoBanner } from "@/components/dashboard/PromoBanner";
 import { ResponsiveLayout } from "@/components/ui/responsive-layout";
 import { NavItem } from "@/components/ui/responsive-sidebar";
 import { LaravelSetupBanner } from "@/components/ui/laravel-setup-banner";
+import { ErrorBoundary } from "@/components/ui/error-boundary";
 
 const navItems: NavItem[] = [
   {
