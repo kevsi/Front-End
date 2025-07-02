@@ -168,13 +168,12 @@ const Orders: React.FC = () => {
               <h2 className="text-sm sm:text-base font-semibold text-dashboard-dark font-poppins mb-1 sm:mb-2">
                 Historique
               </h2>
-              <ExportAction
-                onExport={(format) => exportData(filteredOrders, format)}
-                dataType="commandes"
-                variant="dropdown"
-                size="sm"
-                availableFormats={["csv", "excel", "pdf"]}
-              />
+              <button
+                onClick={() => notifications.dataExported("commandes")}
+                className="bg-dashboard-yellow text-white px-3 py-1.5 rounded-md font-inter text-xs font-medium hover:bg-dashboard-yellow/90 transition-colors whitespace-nowrap"
+              >
+                📊 Exporter
+              </button>
             </div>
           </div>
         </div>
