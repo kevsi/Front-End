@@ -465,7 +465,7 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
                     {order.articleCount} articles
                   </span>
                   <button
-                    onClick={() => handleViewOrder(order)}
+                    onClick={() => handleViewOrder(order.id)}
                     className="bg-blue-100 text-blue-600 px-5 py-3 rounded-lg text-base font-poppins font-bold hover:bg-blue-200 transition-colors"
                   >
                     Voir
