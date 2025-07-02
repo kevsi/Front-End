@@ -174,26 +174,95 @@ class ApiService {
   }
 
   async createOrder(data: CreateOrderRequest): Promise<ApiResponse<Order>> {
-    return this.request<ApiResponse<Order>>("/orders", {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
+    if (USE_FALLBACK) {
+      await new Promise((resolve) => setTimeout(resolve, 800));
+
+      const newOrder: Order = {
+        id: Date.now().toString(),
+        orderNumber: `C${String(fallbackOrders.length + 1).padStart(2, "0")}`,
+        tableNumber: data.tableNumber,
+        articleCount: data.items.reduce((sum, item) => sum + item.quantity, 0),
+        totalPrice: data.items.reduce((sum, item) => {
+          const article = fallbackArticles.find((a) => a.id === item.articleId);
+          return sum + (article?.price || 0) * item.quantity;
+        }, 0),
+        status: "pending",
+        createdAt: new Date().toISOString(),
+      };
+
+      return {
+        success: true,
+        message: "Order created successfully (fallback)",
+        data: newOrder,
+      };
+    }
+
+    try {
+      return await this.request<ApiResponse<Order>>("/orders", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+    } catch (error) {
+      console.warn("API failed for create order, using fallback simulation");
+      throw error; // Pour les mutations, on préfère échouer plutôt que simuler
+    }
   }
 
   async updateOrder(
     id: string,
     data: UpdateOrderRequest,
   ): Promise<ApiResponse<Order>> {
-    return this.request<ApiResponse<Order>>(`/orders/${id}`, {
-      method: "PUT",
-      body: JSON.stringify(data),
-    });
+    if (USE_FALLBACK) {
+      await new Promise((resolve) => setTimeout(resolve, 500));
+
+      const existingOrder = fallbackOrders.find((o) => o.id === id);
+      if (!existingOrder) {
+        throw new Error("Order not found");
+      }
+
+      const updatedOrder: Order = {
+        ...existingOrder,
+        ...data,
+        updatedAt: new Date().toISOString(),
+      };
+
+      return {
+        success: true,
+        message: "Order updated successfully (fallback)",
+        data: updatedOrder,
+      };
+    }
+
+    try {
+      return await this.request<ApiResponse<Order>>(`/orders/${id}`, {
+        method: "PUT",
+        body: JSON.stringify(data),
+      });
+    } catch (error) {
+      console.warn("API failed for update order, using fallback simulation");
+      throw error;
+    }
   }
 
   async deleteOrder(id: string): Promise<ApiResponse<null>> {
-    return this.request<ApiResponse<null>>(`/orders/${id}`, {
-      method: "DELETE",
-    });
+    if (USE_FALLBACK) {
+      await new Promise((resolve) => setTimeout(resolve, 300));
+
+      return {
+        success: true,
+        message: "Order deleted successfully (fallback)",
+        data: null,
+      };
+    }
+
+    try {
+      return await this.request<ApiResponse<null>>(`/orders/${id}`, {
+        method: "DELETE",
+      });
+    } catch (error) {
+      console.warn("API failed for delete order, using fallback simulation");
+      throw error;
+    }
   }
 
   // Articles API
