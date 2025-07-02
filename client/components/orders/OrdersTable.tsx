@@ -5,10 +5,26 @@ import { OrderDetailsModal } from "@/components/ui/order-details-modal";
 import { EditOrderModal } from "@/components/ui/edit-order-modal";
 import { DeleteConfirmationModal } from "@/components/ui/delete-confirmation-modal";
 import { Order } from "../../pages/Orders";
+import { Order as LaravelOrder } from "@shared/laravel-api";
 
 interface OrdersTableProps {
   orders: Order[];
 }
+
+// Function to convert local Order type to Laravel Order type for modals
+const mapToLaravelOrder = (order: Order): LaravelOrder => {
+  return {
+    id: parseInt(order.id),
+    order_number: order.orderNumber,
+    table_number: order.tableNumber,
+    status: order.status as LaravelOrder["status"],
+    total_price: order.totalPrice, // Local format is already in centimes
+    created_at: order.createdAt,
+    updated_at: order.createdAt,
+    items: [], // No items data in local format
+    user_id: 1, // Default user
+  };
+};
 
 const getStatusColor = (status: string) => {
   switch (status) {
@@ -41,29 +57,32 @@ const getStatusText = (status: string) => {
 };
 
 export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
-  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
+  const [selectedOrder, setSelectedOrder] = useState<LaravelOrder | null>(null);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const handleViewDetails = (order: Order) => {
-    setSelectedOrder(order);
+    const laravelOrder = mapToLaravelOrder(order);
+    setSelectedOrder(laravelOrder);
     setShowDetailsModal(true);
   };
 
   const handleEditOrder = (order: Order) => {
-    setSelectedOrder(order);
+    const laravelOrder = mapToLaravelOrder(order);
+    setSelectedOrder(laravelOrder);
     setShowEditModal(true);
   };
 
   const handleDeleteOrder = (order: Order) => {
-    setSelectedOrder(order);
+    const laravelOrder = mapToLaravelOrder(order);
+    setSelectedOrder(laravelOrder);
     setShowDeleteModal(true);
   };
 
-  const handleSaveEdit = async (updatedOrder: Order) => {
+  const handleSaveEdit = async (updatedOrder: LaravelOrder) => {
     if (!selectedOrder) return;
-    // TODO: Implement update logic
+    // TODO: Implement update logic - convert back to local format and update
     console.log("Updating order:", updatedOrder);
     setShowEditModal(false);
     setSelectedOrder(null);
@@ -71,7 +90,7 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
 
   const handleConfirmDelete = async () => {
     if (!selectedOrder) return;
-    // TODO: Implement delete logic
+    // TODO: Implement delete logic - use selectedOrder.order_number to find and remove from local data
     console.log("Deleting order:", selectedOrder);
     setShowDeleteModal(false);
     setSelectedOrder(null);
@@ -277,7 +296,7 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
         onClose={closeModals}
         onConfirm={handleConfirmDelete}
         itemType="commande"
-        itemName={selectedOrder ? `Commande ${selectedOrder.orderNumber}` : ""}
+        itemName={selectedOrder ? `Commande ${selectedOrder.order_number}` : ""}
         isLoading={false}
       />
     </div>
