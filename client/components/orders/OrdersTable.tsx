@@ -127,13 +127,9 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
                 </div>
 
                 {/* View Details Button */}
-                <ViewAction
-                  onClick={() => handleViewOrder(order)}
-                  variant="button"
-                  size="md"
-                  label="Voir détails"
-                  className="w-full"
-                />
+                <button className="w-full bg-blue-100 text-blue-600 py-2 rounded-lg text-sm font-poppins font-bold hover:bg-blue-200 transition-colors">
+                  Voir détails
+                </button>
               </div>
 
               {/* Desktop Layout */}
