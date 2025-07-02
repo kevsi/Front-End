@@ -158,11 +158,11 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
 
         {/* Advanced Search - Hide on small screens */}
         <div className="hidden lg:flex items-center min-w-0">
-          <div className="bg-purple-50 border border-purple-200 rounded-lg px-4 py-3 font-inter text-sm font-medium text-purple-700 min-w-0">
+          <div className="bg-purple-50 border border-purple-200 rounded-lg px-4 py-3 font-inter text-sm font-medium text-purple-700 min-w-0 h-12 flex items-center">
             <span className="truncate">Recherche efficace</span>
           </div>
-          <button className="ml-2 bg-purple-500 text-white border border-purple-500 rounded-lg p-5 shadow-sm hover:bg-purple-600 transition-all">
-            <Search className="w-6 h-6" />
+          <button className="ml-2 bg-purple-500 text-white border border-purple-500 rounded-lg p-3 shadow-sm hover:bg-purple-600 transition-all h-12 w-12 flex items-center justify-center">
+            <Search className="w-4 h-4" />
           </button>
         </div>
       </div>
