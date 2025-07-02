@@ -123,45 +123,60 @@ export function OrderDetailsModal({
         <div className="p-6 overflow-y-auto max-h-[60vh]">
           <div className="mb-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">
-              Articles commandés ({orderDetails.items.length})
+              Articles commandés ({orderDetails.items?.length || 0})
             </h3>
 
             <div className="space-y-3">
-              {orderDetails.items.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
-                >
-                  <div className="w-16 h-16 bg-white rounded-lg overflow-hidden flex-shrink-0">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-
-                  <div className="flex-1 min-w-0">
-                    <h4 className="font-semibold text-gray-900 truncate">
-                      {item.name}
-                    </h4>
-                    <p className="text-sm text-gray-600 capitalize">
-                      {item.category}
-                    </p>
-                  </div>
-
-                  <div className="text-right">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm text-gray-600">Qté:</span>
-                      <span className="bg-white px-2 py-1 rounded-md text-sm font-semibold">
-                        {item.quantity}
-                      </span>
+              {orderDetails.items?.length > 0 ? (
+                orderDetails.items.map((item) => (
+                  <div
+                    key={item.id}
+                    className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
+                  >
+                    <div className="w-16 h-16 bg-white rounded-lg overflow-hidden flex-shrink-0">
+                      <img
+                        src={item.product?.image_url || "/placeholder.svg"}
+                        alt={item.product?.name || "Article"}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = "/placeholder.svg";
+                        }}
+                      />
                     </div>
-                    <div className="font-bold text-gray-900">
-                      {(item.price * item.quantity).toLocaleString()}F
+
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-semibold text-gray-900 truncate">
+                        {item.product?.name || "Article inconnu"}
+                      </h4>
+                      <p className="text-sm text-gray-600 capitalize">
+                        {item.product?.category?.name || "Non catégorisé"}
+                      </p>
+                      {item.notes && (
+                        <p className="text-xs text-gray-500 italic mt-1">
+                          Note: {item.notes}
+                        </p>
+                      )}
+                    </div>
+
+                    <div className="text-right">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-sm text-gray-600">Qté:</span>
+                        <span className="bg-white px-2 py-1 rounded-md text-sm font-semibold">
+                          {item.quantity}
+                        </span>
+                      </div>
+                      <div className="font-bold text-gray-900">
+                        {formatPrice(item.total_price)}
+                      </div>
                     </div>
                   </div>
+                ))
+              ) : (
+                <div className="text-center py-8 text-gray-500">
+                  <p>Aucun article dans cette commande</p>
                 </div>
-              ))}
+              )}
             </div>
           </div>
         </div>
