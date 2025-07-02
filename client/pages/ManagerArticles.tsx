@@ -94,7 +94,7 @@ const ManagerArticles: React.FC = () => {
     }
   };
 
-  const handleCreateArticle = (articleData: {
+  const handleCreateArticle = async (articleData: {
     name: string;
     category: string;
     price: number;
@@ -103,17 +103,14 @@ const ManagerArticles: React.FC = () => {
     image?: File;
   }) => {
     try {
-      const newArticle: Article = {
-        id: Date.now().toString(),
+      await createArticleMutation.mutateAsync({
         name: articleData.name,
         price: articleData.price,
-        image: articleData.image
-          ? URL.createObjectURL(articleData.image)
-          : "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=800",
         category: articleData.category.toLowerCase(),
-      };
+        description: articleData.description,
+        // L'image sera gérée séparément via l'API d'upload
+      });
 
-      setArticles((prev) => [newArticle, ...prev]);
       notifications.articleCreated(articleData.name);
       setIsNewArticleModalOpen(false);
     } catch (error) {
