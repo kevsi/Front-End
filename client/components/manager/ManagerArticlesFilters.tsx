@@ -58,14 +58,14 @@ export const ManagerArticlesFilters: React.FC<ManagerArticlesFiltersProps> = ({
           {/* Category Filter */}
           <div className="relative">
             <div className="flex items-center">
-              <div className="bg-gray-100 border border-gray-200 rounded-lg px-3 py-2 lg:px-4 lg:py-2.5 font-inter text-xs lg:text-sm text-gray-700">
+              <div className="bg-gray-100 border border-gray-200 rounded-md px-2 py-1.5 font-inter text-xs text-gray-700">
                 {getCurrentCategoryLabel()}
               </div>
               <button
                 onClick={() => setShowCategoryDropdown(!showCategoryDropdown)}
-                className="ml-2 bg-white border border-gray-200 rounded-lg p-2 lg:p-2.5 shadow-sm hover:bg-gray-50 transition-colors"
+                className="ml-1.5 bg-white border border-gray-200 rounded-md p-1.5 shadow-sm hover:bg-gray-50 transition-colors"
               >
-                <ChevronDown className="w-3 h-3 lg:w-4 lg:h-4 text-gray-600" />
+                <ChevronDown className="w-3 h-3 text-gray-600" />
               </button>
             </div>
 
