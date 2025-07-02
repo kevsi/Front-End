@@ -216,7 +216,7 @@ export const NewArticleModal: React.FC<NewArticleModalProps> = ({
                   value={formData.price}
                   onChange={handleInputChange}
                   placeholder="175"
-                  className="w-full px-4 py-3 border-4 border-[#F4F4F4] rounded bg-[#FEFEFE] text-black font-inter text-sm focus:outline-none focus:border-blue-300"
+                  className="w-full px-4 py-3 border-4 border-[#F4F4F4] rounded bg-[#FEFEFE] text-black font-inter text-sm focus:outline-none focus:border-dashboard-yellow focus:ring-2 focus:ring-dashboard-yellow/20"
                   required
                 />
               </div>
