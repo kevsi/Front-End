@@ -474,7 +474,7 @@ export const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
 
                 {/* Total Price */}
                 <div className="text-center">
-                  <span className="text-gray-700 font-poppins font-bold">
+                  <span className="text-gray-700 font-poppins font-bold text-xs">
                     {order.totalPrice}F
                   </span>
                 </div>
