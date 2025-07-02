@@ -8,6 +8,7 @@ import { HistorySidebar } from "@/components/dashboard/HistorySidebar";
 import { ResponsiveLayout } from "@/components/ui/responsive-layout";
 import { NavItem } from "@/components/ui/responsive-sidebar";
 import { ExportAction, useExportActions } from "@/components/ui/export-action";
+import { ErrorBoundary } from "@/components/ui/error-boundary";
 
 export interface Order {
   id: string;
