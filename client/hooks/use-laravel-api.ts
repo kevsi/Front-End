@@ -74,9 +74,143 @@ export const useDashboardStats = () => {
 export const useOrders = (filters?: OrderFilters) => {
   return useQuery({
     queryKey: [...QUERY_KEYS.ORDERS, filters],
-    queryFn: () => apiService.getOrders(filters),
+    queryFn: async () => {
+      try {
+        return await apiService.getOrders(filters);
+      } catch (error) {
+        // En mode développement, utiliser les données de fallback
+        if (import.meta.env.DEV) {
+          console.warn(
+            "Using fallback orders data - Laravel API not available",
+          );
+          return {
+            data: [
+              {
+                id: 1,
+                order_number: "C001",
+                table_number: "T01",
+                customer_name: null,
+                status: "validated" as const,
+                total_price: 3200,
+                created_at: "2024-05-14T08:20:00Z",
+                updated_at: "2024-05-14T08:20:00Z",
+                items: [
+                  {
+                    id: 1,
+                    order_id: 1,
+                    product_id: 1,
+                    quantity: 2,
+                    unit_price: 1500,
+                    total_price: 3000,
+                    notes: null,
+                    created_at: "2024-05-14T08:20:00Z",
+                    updated_at: "2024-05-14T08:20:00Z",
+                    product: {
+                      id: 1,
+                      name: "Café Expresso",
+                      price: 1500,
+                      description: "",
+                      category_id: 1,
+                      image_url: "",
+                      is_available: true,
+                      created_at: "",
+                      updated_at: "",
+                    },
+                  },
+                ],
+                user_id: 1,
+              },
+              {
+                id: 2,
+                order_number: "C002",
+                table_number: "T02",
+                customer_name: null,
+                status: "pending" as const,
+                total_price: 1800,
+                created_at: "2024-05-14T08:15:00Z",
+                updated_at: "2024-05-14T08:15:00Z",
+                items: [
+                  {
+                    id: 2,
+                    order_id: 2,
+                    product_id: 2,
+                    quantity: 1,
+                    unit_price: 1800,
+                    total_price: 1800,
+                    notes: null,
+                    created_at: "2024-05-14T08:15:00Z",
+                    updated_at: "2024-05-14T08:15:00Z",
+                    product: {
+                      id: 2,
+                      name: "Sandwich Club",
+                      price: 1800,
+                      description: "",
+                      category_id: 2,
+                      image_url: "",
+                      is_available: true,
+                      created_at: "",
+                      updated_at: "",
+                    },
+                  },
+                ],
+                user_id: 1,
+              },
+              {
+                id: 3,
+                order_number: "C003",
+                table_number: "T03",
+                customer_name: null,
+                status: "served" as const,
+                total_price: 4500,
+                created_at: "2024-05-14T08:10:00Z",
+                updated_at: "2024-05-14T08:10:00Z",
+                items: [
+                  {
+                    id: 3,
+                    order_id: 3,
+                    product_id: 3,
+                    quantity: 3,
+                    unit_price: 1500,
+                    total_price: 4500,
+                    notes: null,
+                    created_at: "2024-05-14T08:10:00Z",
+                    updated_at: "2024-05-14T08:10:00Z",
+                    product: {
+                      id: 3,
+                      name: "Thé Vert",
+                      price: 1500,
+                      description: "",
+                      category_id: 1,
+                      image_url: "",
+                      is_available: true,
+                      created_at: "",
+                      updated_at: "",
+                    },
+                  },
+                ],
+                user_id: 1,
+              },
+            ],
+            current_page: 1,
+            per_page: 15,
+            total: 3,
+            last_page: 1,
+            from: 1,
+            to: 3,
+            links: {
+              first: "/api/orders?page=1",
+              last: "/api/orders?page=1",
+              prev: null,
+              next: null,
+            },
+          };
+        }
+        throw error;
+      }
+    },
     select: (data) => data,
-    refetchInterval: 10000, // Refetch every 10 seconds for real-time updates
+    refetchInterval: import.meta.env.DEV ? false : 10000, // Pas de refetch en mode dev avec fallback
+    retry: import.meta.env.DEV ? false : 3, // Pas de retry en mode dev
   });
 };
 
