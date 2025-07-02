@@ -121,21 +121,17 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-dashboard-gray flex flex-col">
       {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 py-2 sm:py-3">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-3">
-            <h1 className="text-base sm:text-lg lg:text-xl font-bold text-dashboard-dark font-poppins">
-              Lounge Bar Le Cuivre
-            </h1>
-            <div className="flex items-center gap-2 sm:gap-3">
-              <Badge
-                variant="outline"
-                className="px-1.5 sm:px-2 py-0.5 text-xs"
-              >
-                Version 1.0
-              </Badge>
-            </div>
-          </div>
+      <header className="bg-white border-b border-gray-100 px-4 py-3">
+        <div className="max-w-6xl mx-auto flex items-center justify-between">
+          <h1 className="text-lg font-bold text-gray-900 font-poppins">
+            Lounge Bar Le Cuivre
+          </h1>
+          <Badge
+            variant="outline"
+            className="px-2 py-0.5 text-xs border-dashboard-yellow text-dashboard-yellow"
+          >
+            v1.0
+          </Badge>
         </div>
       </header>
 
