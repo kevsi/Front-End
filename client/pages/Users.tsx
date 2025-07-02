@@ -137,7 +137,7 @@ export default function Users() {
       <UsersSidebar />
 
       <main className="flex-1 flex flex-col">
-        <UsersHeader />
+        <AppHeader title="Gestion des Utilisateurs" />
 
         <div className="flex-1 px-4 lg:px-6 py-4 lg:py-6">
           <h1 className="text-lg lg:text-xl font-semibold text-dashboard-dark mb-6 sm:mb-7 lg:mb-8 pt-2 sm:pt-3 font-poppins">
