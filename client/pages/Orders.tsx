@@ -7,6 +7,7 @@ import { OrdersTable } from "../components/orders/OrdersTable";
 import { HistorySidebar } from "@/components/dashboard/HistorySidebar";
 import { ResponsiveLayout } from "@/components/ui/responsive-layout";
 import { NavItem } from "@/components/ui/responsive-sidebar";
+import { ExportAction, useExportActions } from "@/components/ui/export-action";
 
 export interface Order {
   id: string;
