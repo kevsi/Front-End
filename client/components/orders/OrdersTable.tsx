@@ -1,5 +1,6 @@
 import React from "react";
 import { Eye, Edit, Trash2 } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import { Order } from "../../pages/Orders";
 
 interface OrdersTableProps {
