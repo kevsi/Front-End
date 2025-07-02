@@ -247,7 +247,7 @@ export function OrderTable() {
                       N°{index + 1}
                     </Badge>
                     <span className="font-bold text-gray-800 font-poppins text-sm">
-                      {order.orderNumber}
+                      {order.order_number}
                     </span>
                   </div>
                   <Badge
@@ -259,20 +259,23 @@ export function OrderTable() {
                 <div className="flex justify-between items-center">
                   <span className="text-xs sm:text-sm text-gray-600">
                     Table:{" "}
-                    <span className="font-bold">{order.tableNumber}</span>
+                    <span className="font-bold">{order.table_number}</span>
                   </span>
                   <span className="text-xs sm:text-sm text-gray-600">
-                    Articles: <span className="font-bold">{order.items}</span>
+                    Articles:{" "}
+                    <span className="font-bold">
+                      {order.items?.length || 0}
+                    </span>
                   </span>
                   <span className="font-bold text-gray-800 text-sm">
-                    {order.total}
+                    {formatPrice(order.total_price)}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => handleViewDetails(order.id)}
+                    onClick={() => handleViewDetails(order)}
                     className="bg-blue-100 text-blue-600 border-blue-200 hover:bg-blue-200 text-xs px-2 py-1"
                   >
                     Voir détails
@@ -281,7 +284,7 @@ export function OrderTable() {
                     <Button
                       variant="outline"
                       size="icon"
-                      onClick={() => handleViewDetails(order.id)}
+                      onClick={() => handleViewDetails(order)}
                       className="bg-blue-50 text-blue-600 border-blue-200 hover:bg-blue-100 w-6 h-6 sm:w-8 sm:h-8"
                     >
                       <Eye className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -289,16 +292,18 @@ export function OrderTable() {
                     <Button
                       variant="outline"
                       size="icon"
-                      onClick={() => handleEditOrder(order.id)}
+                      onClick={() => handleEditOrder(order)}
                       className="bg-yellow-50 text-yellow-600 border-yellow-200 hover:bg-yellow-100 w-6 h-6 sm:w-8 sm:h-8"
+                      disabled={isUpdating}
                     >
                       <Edit className="w-3 h-3 sm:w-4 sm:h-4" />
                     </Button>
                     <Button
                       variant="outline"
                       size="icon"
-                      onClick={() => handleDeleteOrder(order.id)}
+                      onClick={() => handleDeleteOrder(order)}
                       className="bg-red-50 text-red-600 border-red-200 hover:bg-red-100 w-6 h-6 sm:w-8 sm:h-8"
+                      disabled={isDeleting}
                     >
                       <Trash2 className="w-3 h-3 sm:w-4 sm:h-4" />
                     </Button>
@@ -318,25 +323,25 @@ export function OrderTable() {
                       N°{index + 1}
                     </Badge>
                     <span className="font-bold text-gray-800 font-poppins text-sm">
-                      {order.orderNumber}
+                      {order.order_number}
                     </span>
                   </div>
                 </div>
 
                 {/* Table Number */}
                 <div className="text-center font-bold text-gray-800 font-poppins text-sm">
-                  {order.tableNumber}
+                  {order.table_number}
                 </div>
 
                 {/* Items Count */}
                 <div className="flex flex-col items-center gap-1 sm:gap-2">
                   <span className="font-bold text-gray-800 font-poppins text-sm">
-                    {order.items} articles
+                    {order.items?.length || 0} articles
                   </span>
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => handleViewDetails(order.id)}
+                    onClick={() => handleViewDetails(order)}
                     className="bg-blue-100 text-blue-600 border-blue-200 hover:bg-blue-200 font-poppins text-xs px-2 py-1"
                   >
                     Voir
@@ -345,7 +350,7 @@ export function OrderTable() {
 
                 {/* Total */}
                 <div className="text-center font-bold text-gray-800 font-poppins text-sm">
-                  {order.total}
+                  {formatPrice(order.total_price)}
                 </div>
 
                 {/* Status */}
@@ -362,7 +367,7 @@ export function OrderTable() {
                   <Button
                     variant="outline"
                     size="icon"
-                    onClick={() => handleViewDetails(order.id)}
+                    onClick={() => handleViewDetails(order)}
                     className="bg-blue-50 text-blue-600 border-blue-200 hover:bg-blue-100 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8"
                   >
                     <Eye className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
@@ -370,16 +375,18 @@ export function OrderTable() {
                   <Button
                     variant="outline"
                     size="icon"
-                    onClick={() => handleEditOrder(order.id)}
+                    onClick={() => handleEditOrder(order)}
                     className="bg-yellow-50 text-yellow-600 border-yellow-200 hover:bg-yellow-100 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8"
+                    disabled={isUpdating}
                   >
                     <Edit className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
                   </Button>
                   <Button
                     variant="outline"
                     size="icon"
-                    onClick={() => handleDeleteOrder(order.id)}
+                    onClick={() => handleDeleteOrder(order)}
                     className="bg-red-50 text-red-600 border-red-200 hover:bg-red-100 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8"
+                    disabled={isDeleting}
                   >
                     <Trash2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
                   </Button>
