@@ -78,34 +78,8 @@ const ManagerArticles: React.FC = () => {
 
   const articles = articlesResponse?.data?.data || [];
 
-  const filteredArticles = articles.filter((article) => {
-    const matchesSearch =
-      searchQuery === "" ||
-      article.name.toLowerCase().includes(searchQuery.toLowerCase());
-
-    const matchesCategory =
-      selectedCategory === "" || article.category === selectedCategory;
-
-    const matchesPrice = () => {
-      if (priceFilter === "") return true;
-
-      const price = article.price;
-      switch (priceFilter) {
-        case "0-1000":
-          return price >= 0 && price <= 1000;
-        case "1000-3000":
-          return price > 1000 && price <= 3000;
-        case "3000-5000":
-          return price > 3000 && price <= 5000;
-        case "5000+":
-          return price > 5000;
-        default:
-          return true;
-      }
-    };
-
-    return matchesSearch && matchesCategory && matchesPrice();
-  });
+  // Le filtrage est fait côté serveur
+  const filteredArticles = articles;
 
   const handleAddToMenu = (articleId: string) => {
     try {
