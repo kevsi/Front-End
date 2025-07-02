@@ -69,7 +69,122 @@ class ApiService {
       return data;
     } catch (error) {
       console.error(`API Error for ${endpoint}:`, error);
+
+      // En mode développement, utiliser des données de fallback si Laravel n'est pas disponible
+      if (import.meta.env.DEV && this.shouldUseFallback(error, endpoint)) {
+        console.warn(
+          `Using fallback data for ${endpoint} - Laravel API not available`,
+        );
+        return this.getFallbackData(endpoint) as T;
+      }
+
       throw error;
+    }
+  }
+
+  // Vérifier si on doit utiliser les données de fallback
+  private shouldUseFallback(error: any, endpoint: string): boolean {
+    const isNetworkError =
+      error.message.includes("NetworkError") ||
+      error.message.includes("Failed to fetch") ||
+      error.message.includes("ECONNREFUSED");
+
+    const isDevelopment = import.meta.env.DEV;
+    const hasAPIEndpoint = endpoint.startsWith("/api/");
+
+    return isNetworkError && isDevelopment && hasAPIEndpoint;
+  }
+
+  // Données de fallback pour le développement
+  private getFallbackData(endpoint: string): any {
+    switch (endpoint) {
+      case "/api/dashboard/stats":
+        return {
+          data: {
+            total_orders: 8,
+            total_revenue: 19620, // 196.20€ en centimes
+            pending_orders: 1,
+            served_orders: 4,
+            validated_orders: 1,
+            today_orders: 5,
+            today_revenue: 12000, // 120€ en centimes
+            monthly_growth: 12.5,
+            revenue_growth: 8.2,
+          },
+          success: true,
+          message: "Fallback data - Laravel API not available",
+        };
+
+      case "/api/orders":
+        return {
+          data: [
+            {
+              id: 1,
+              order_number: "C001",
+              table_number: "T01",
+              customer_name: null,
+              status: "validated",
+              total_price: 3200, // 32€ en centimes
+              created_at: "2024-05-14T08:20:00Z",
+              updated_at: "2024-05-14T08:20:00Z",
+              items: [
+                {
+                  id: 1,
+                  order_id: 1,
+                  product_id: 1,
+                  quantity: 2,
+                  unit_price: 1500,
+                  total_price: 3000,
+                  notes: null,
+                  product: { id: 1, name: "Café Expresso" },
+                },
+              ],
+              user_id: 1,
+            },
+            {
+              id: 2,
+              order_number: "C002",
+              table_number: "T02",
+              customer_name: null,
+              status: "pending",
+              total_price: 1800,
+              created_at: "2024-05-14T08:15:00Z",
+              updated_at: "2024-05-14T08:15:00Z",
+              items: [
+                {
+                  id: 2,
+                  order_id: 2,
+                  product_id: 2,
+                  quantity: 1,
+                  unit_price: 1800,
+                  total_price: 1800,
+                  notes: null,
+                  product: { id: 2, name: "Sandwich Club" },
+                },
+              ],
+              user_id: 1,
+            },
+          ],
+          current_page: 1,
+          per_page: 15,
+          total: 2,
+          last_page: 1,
+          from: 1,
+          to: 2,
+          links: {
+            first: "/api/orders?page=1",
+            last: "/api/orders?page=1",
+            prev: null,
+            next: null,
+          },
+        };
+
+      default:
+        return {
+          data: null,
+          success: false,
+          message: "No fallback data available for this endpoint",
+        };
     }
   }
 
