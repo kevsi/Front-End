@@ -158,7 +158,10 @@ const Orders: React.FC = () => {
   });
 
   return (
-    <ResponsiveLayout navItems={navItems} header={<OrdersHeader />}>
+    <ResponsiveLayout
+      navItems={navItems}
+      header={<AppHeader title="Gestion des Commandes" />}
+    >
       {/* Orders Section */}
       <div className="flex-1 px-2 sm:px-3 pb-2 sm:pb-3">
         {/* Section Headers */}
