@@ -39,10 +39,10 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, onAddToMenu }) => {
         {/* Add Button */}
         <button
           onClick={() => onAddToMenu(article.id)}
-          className="bg-dashboard-yellow text-white w-8 h-8 lg:w-9 lg:h-9 rounded-lg flex items-center justify-center hover:bg-dashboard-yellow/90 hover:shadow-lg transition-all duration-200 flex-shrink-0 transform hover:scale-105 active:scale-95"
+          className="bg-dashboard-yellow text-white w-6 h-6 rounded-md flex items-center justify-center hover:bg-dashboard-yellow/90 transition-all duration-200 flex-shrink-0"
           aria-label={`Ajouter ${article.name} au menu`}
         >
-          <Plus className="w-4 h-4 lg:w-5 lg:h-5 stroke-2" />
+          <Plus className="w-3.5 h-3.5 stroke-2" />
         </button>
       </div>
     </div>
