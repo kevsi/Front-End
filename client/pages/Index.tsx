@@ -124,7 +124,7 @@ export default function Index() {
       <header className="bg-white shadow-sm">
         <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 py-2 sm:py-3">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-3">
-            <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-dashboard-dark font-leckerli">
+            <h1 className="text-base sm:text-lg lg:text-xl font-bold text-dashboard-dark font-poppins">
               Lounge Bar Le Cuivre
             </h1>
             <div className="flex items-center gap-2 sm:gap-3">
@@ -143,7 +143,7 @@ export default function Index() {
       <main className="flex-1 max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 py-3 sm:py-4 lg:py-6">
         {/* Hero Section */}
         <div className="text-center mb-4 sm:mb-6 lg:mb-8">
-          <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-dashboard-dark mb-2 sm:mb-3 lg:mb-4 font-poppins">
+          <h2 className="text-base sm:text-lg lg:text-xl font-bold text-dashboard-dark mb-2 sm:mb-3 lg:mb-4 font-poppins">
             Système de Gestion Restaurant
           </h2>
           <p className="text-sm sm:text-sm lg:text-base text-dashboard-muted max-w-2xl mx-auto font-inter mb-2 sm:mb-3">
