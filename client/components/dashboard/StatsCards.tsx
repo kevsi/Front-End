@@ -77,10 +77,19 @@ function StatCard({
 }
 
 export function StatsCards() {
-  const { data: stats, isLoading, error } = useDashboardStats();
+  // Utiliser les hooks offline en mode développement
+  const onlineQuery = useDashboardStats();
+  const offlineQuery = useOfflineDashboardStats();
+
+  // Choisir la source de données selon l'environnement
+  const {
+    data: stats,
+    isLoading,
+    error,
+  } = import.meta.env.DEV ? offlineQuery : onlineQuery;
 
   // Vérifier si on utilise des données de fallback
-  const isUsingFallback = import.meta.env.DEV && stats && !error;
+  const isUsingFallback = import.meta.env.DEV;
 
   // Fonction pour formater le prix
   const formatPrice = (price: number) => {
