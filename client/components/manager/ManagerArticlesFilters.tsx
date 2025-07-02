@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ChevronDown, Search } from "lucide-react";
+import { ChevronDown, Search, Calendar, Filter } from "lucide-react";
 
 interface ManagerArticlesFiltersProps {
   searchQuery: string;
