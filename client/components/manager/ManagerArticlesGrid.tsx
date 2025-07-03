@@ -14,25 +14,38 @@ interface ArticleCardProps {
 }
 
 const ArticleCard: React.FC<ArticleCardProps> = ({ article, onAddToMenu }) => {
+  const { isMobile, getSpacing, getTextSize } = useResponsive();
+
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-2 shadow-sm hover:shadow-md transition-all duration-200 min-w-0 group">
+    <div
+      className={`bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200 min-w-0 group ${getSpacing({ mobile: "p-3", desktop: "p-2" })}`}
+    >
       {/* Article Image */}
-      <div className="relative mb-2 overflow-hidden rounded-md">
+      <div
+        className={`relative overflow-hidden rounded-md ${getSpacing({ mobile: "mb-3", desktop: "mb-2" })}`}
+      >
         <img
           src={article.image}
           alt={article.name}
-          className="w-full h-24 object-cover transition-transform duration-200 group-hover:scale-105"
+          className={`w-full object-cover transition-transform duration-200 group-hover:scale-105 ${isMobile ? "h-32" : "h-24"}`}
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
       </div>
 
       {/* Article Info */}
-      <div className="flex items-end justify-between min-w-0 gap-1.5">
+      <div
+        className={`flex items-end justify-between min-w-0 ${getSpacing({ mobile: "gap-2", desktop: "gap-1.5" })}`}
+      >
         <div className="flex-1 min-w-0 overflow-hidden">
-          <h3 className="text-xs font-bold text-gray-900 font-poppins mb-0.5 truncate leading-tight">
+          <h3
+            className={`font-bold text-gray-900 font-poppins mb-1 truncate leading-tight ${getTextSize({ mobile: "text-sm", desktop: "text-xs" })}`}
+          >
             {article.name}
           </h3>
-          <p className="text-sm font-bold text-dashboard-yellow truncate">
+          <p
+            className={`font-bold text-dashboard-yellow truncate ${getTextSize({ mobile: "text-base", desktop: "text-sm" })}`}
+          >
             {article.price}F
           </p>
         </div>
@@ -40,10 +53,12 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, onAddToMenu }) => {
         {/* Add Button */}
         <button
           onClick={() => onAddToMenu(article.id)}
-          className="bg-dashboard-yellow text-white w-6 h-6 rounded-md flex items-center justify-center hover:bg-dashboard-yellow/90 transition-all duration-200 flex-shrink-0"
+          className={`bg-dashboard-yellow text-white rounded-md flex items-center justify-center hover:bg-dashboard-yellow/90 transition-all duration-200 flex-shrink-0 ${isMobile ? "w-8 h-8" : "w-6 h-6"}`}
           aria-label={`Ajouter ${article.name} au menu`}
         >
-          <Plus className="w-3.5 h-3.5 stroke-2" />
+          <Plus
+            className={`stroke-2 ${isMobile ? "w-4 h-4" : "w-3.5 h-3.5"}`}
+          />
         </button>
       </div>
     </div>
