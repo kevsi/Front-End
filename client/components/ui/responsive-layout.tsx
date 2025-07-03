@@ -25,16 +25,17 @@ export function ResponsiveLayout({
 }: ResponsiveLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const breakpoint = useBreakpoint();
+  const { isMobile, getTextSize, getSpacing } = useResponsive();
 
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
   return (
     <div
       className={cn(
-        "min-h-screen bg-dashboard-gray text-sm leading-normal",
+        "min-h-screen bg-dashboard-gray leading-normal",
+        getTextSize({ mobile: "text-base", desktop: "text-sm" }),
         className,
       )}
-      style={{ fontSize: "13px" }}
     >
       <div className="flex h-screen">
         {/* Sidebar */}
@@ -64,8 +65,11 @@ export function ResponsiveLayout({
 
           {/* Main content area */}
           <main
-            className="flex-1 overflow-auto text-sm leading-normal"
-            style={{ fontSize: "13px" }}
+            className={cn(
+              "flex-1 overflow-auto leading-normal",
+              getTextSize({ mobile: "text-base", desktop: "text-sm" }),
+              getSpacing({ mobile: "p-1", desktop: "p-0" }),
+            )}
           >
             {children}
           </main>
