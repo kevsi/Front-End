@@ -9,6 +9,7 @@ import { ResponsiveLayout } from "@/components/ui/responsive-layout";
 import { NavItem } from "@/components/ui/responsive-sidebar";
 import { useOrders } from "@/hooks/api";
 import { OrderFilters } from "@/types/api";
+import { TableSkeleton } from "@/components/ui/loaders";
 
 export interface Order {
   id: string;
