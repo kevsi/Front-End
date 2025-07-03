@@ -150,7 +150,7 @@
     @apply text-3xl md:text-2xl lg:text-3xl;
   }
 
-  /* Mobile-specific utilities */
+  /* Mobile-specific utilities - safe responsive classes */
   .mobile-friendly-text {
     @apply text-base md:text-sm;
   }
@@ -165,6 +165,44 @@
 
   .mobile-friendly-gap {
     @apply gap-4 md:gap-2 lg:gap-4;
+  }
+
+  /* Safe responsive text classes */
+  .responsive-text-lg {
+    @apply text-xl md:text-lg lg:text-xl;
+  }
+
+  .responsive-text-base {
+    @apply text-lg md:text-base lg:text-lg;
+  }
+
+  .responsive-text-sm {
+    @apply text-base md:text-sm lg:text-base;
+  }
+
+  .responsive-text-xs {
+    @apply text-sm md:text-xs lg:text-sm;
+  }
+
+  /* Safe responsive spacing */
+  .responsive-p {
+    @apply p-4 md:p-2 lg:p-4;
+  }
+
+  .responsive-px {
+    @apply px-4 md:px-2 lg:px-4;
+  }
+
+  .responsive-py {
+    @apply py-3 md:py-2 lg:py-3;
+  }
+
+  .responsive-gap {
+    @apply gap-3 md:gap-2 lg:gap-4;
+  }
+
+  .responsive-mb {
+    @apply mb-4 md:mb-2 lg:mb-4;
   }
 
   /* Responsive padding utilities */
