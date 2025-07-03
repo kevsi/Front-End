@@ -69,24 +69,51 @@ export const ManagerArticlesGrid: React.FC<ManagerArticlesGridProps> = ({
   articles,
   onAddToMenu,
 }) => {
+  const { getGridCols, getSpacing, getTextSize, isMobile } = useResponsive();
+
   if (articles.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-12 text-center">
-        <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-          <Plus className="w-8 h-8 text-gray-400" />
+      <div
+        className={`flex flex-col items-center justify-center text-center ${getSpacing({ mobile: "py-16", desktop: "py-12" })}`}
+      >
+        <div
+          className={`bg-gray-100 rounded-full flex items-center justify-center mb-4 ${isMobile ? "w-20 h-20" : "w-16 h-16"}`}
+        >
+          <Plus
+            className={`text-gray-400 ${isMobile ? "w-10 h-10" : "w-8 h-8"}`}
+          />
         </div>
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+        <h3
+          className={`font-semibold text-gray-900 mb-2 ${getTextSize({ mobile: "text-xl", desktop: "text-lg" })}`}
+        >
           Aucun article trouvé
         </h3>
-        <p className="text-gray-500 text-sm">
+        <p
+          className={`text-gray-500 ${getTextSize({ mobile: "text-base", desktop: "text-sm" })}`}
+        >
           Essayez de modifier vos filtres ou ajoutez un nouvel article.
         </p>
       </div>
     );
   }
 
+  // Responsive grid columns configuration
+  const gridCols = getGridCols({
+    xs: 2,
+    sm: 2,
+    md: 3,
+    lg: 4,
+    xl: 5,
+    "2xl": 6,
+  });
+
+  const gridClass = `grid gap-${isMobile ? "3" : "2"}`;
+  const colsClass = `grid-cols-${gridCols}`;
+
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-2">
+    <div
+      className={`${gridClass} ${colsClass} sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6`}
+    >
       {articles.map((article) => (
         <ArticleCard
           key={article.id}
