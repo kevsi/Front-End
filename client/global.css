@@ -112,10 +112,10 @@
     --dashboard-muted: 220 9% 60%;
   }
 
-  /* Mobile-first responsive font sizes */
+  /* Slightly larger on mobile but still compact */
   @media (max-width: 768px) {
     :root {
-      font-size: 18px; /* Larger on mobile for better readability */
+      font-size: 15px; /* Slightly larger on mobile for readability */
     }
   }
 }
