@@ -33,53 +33,33 @@ export default function Dashboard() {
   return (
     <ResponsiveLayout navItems={navItems} header={<DashboardHeader />}>
       {/* Stats Cards */}
-      <div
-        className={getSpacing({
-          mobile: "px-4 py-3",
-          desktop: "px-2 sm:px-3 py-1 sm:py-2",
-        })}
-      >
+      <div className="px-2 sm:px-3 py-1 sm:py-2">
         <StatsCards />
       </div>
 
       {/* Promo Banners */}
-      <div
-        className={getSpacing({
-          mobile: "px-4 py-2",
-          desktop: "px-2 sm:px-3 py-1",
-        })}
-      >
+      <div className="px-2 sm:px-3 py-1">
         <PromoBanner />
       </div>
 
       {/* Orders Section */}
-      <div
-        className={`flex-1 ${getSpacing({ mobile: "px-4 pb-4", desktop: "px-2 sm:px-3 pb-2 sm:pb-3" })}`}
-      >
+      <div className="flex-1 px-2 sm:px-3 pb-2 sm:pb-3">
         {/* Section Headers */}
-        <div
-          className={`flex flex-col xl:flex-row gap-3 mb-6 ${getSpacing({ mobile: "pt-4", desktop: "pt-2 sm:pt-3" })}`}
-        >
+        <div className="flex flex-col xl:flex-row gap-2 sm:gap-3 mb-4 sm:mb-5 lg:mb-6 pt-2 sm:pt-3">
           <div className="flex-1">
-            <h2
-              className={`font-semibold text-dashboard-dark font-poppins mb-2 ${getTextSize({ mobile: "text-lg", desktop: "text-sm sm:text-base" })}`}
-            >
+            <h2 className="text-sm sm:text-base font-semibold text-dashboard-dark font-poppins mb-1 sm:mb-2">
               Commandes récentes
             </h2>
           </div>
           <div className="w-full xl:w-56 flex-shrink-0">
-            <h2
-              className={`font-semibold text-dashboard-dark font-poppins text-center xl:text-left mb-2 ${getTextSize({ mobile: "text-lg", desktop: "text-sm sm:text-base" })}`}
-            >
+            <h2 className="text-sm sm:text-base font-semibold text-dashboard-dark font-poppins text-center xl:text-left mb-1 sm:mb-2 xl:pl-0">
               Historique
             </h2>
           </div>
         </div>
 
         {/* Content */}
-        <div
-          className={`flex flex-col xl:flex-row gap-4 h-full ${isMobile ? "space-y-6" : ""}`}
-        >
+        <div className="flex flex-col xl:flex-row gap-2 sm:gap-3 h-full">
           {/* Orders Table */}
           <div className="flex-1 min-w-0">
             <OrderTable />
