@@ -92,7 +92,7 @@ export const ManagerArticlesFilters: React.FC<ManagerArticlesFiltersProps> = ({
             placeholder="Noms"
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="w-full bg-white border border-gray-300 rounded px-3 py-1.5 text-xs text-gray-700 placeholder-gray-500 focus:outline-none focus:border-dashboard-yellow focus:ring-2 focus:ring-dashboard-yellow/20"
+            className="w-full bg-white border border-gray-300 rounded px-3 py-2 text-base md:text-sm text-gray-700 placeholder-gray-500 focus:outline-none focus:border-dashboard-yellow focus:ring-2 focus:ring-dashboard-yellow/20"
           />
         </div>
 
