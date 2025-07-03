@@ -100,9 +100,9 @@ export const ManagerArticlesFilters: React.FC<ManagerArticlesFiltersProps> = ({
         <div className="relative">
           <button
             onClick={() => setShowPriceDropdown(!showPriceDropdown)}
-            className="flex items-center gap-1 bg-white border border-gray-300 rounded px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-50 transition-colors"
+            className="flex items-center gap-1 bg-white border border-gray-300 rounded px-3 py-2 text-base md:text-sm text-gray-700 hover:bg-gray-50 transition-colors"
           >
-            <Calendar className="w-3 h-3" />
+            <Calendar className="w-4 h-4 md:w-3 md:h-3" />
             <span>Prix</span>
           </button>
 
