@@ -32,8 +32,7 @@ export function ResponsiveLayout({
   return (
     <div
       className={cn(
-        "min-h-screen bg-dashboard-gray leading-normal",
-        getTextSize({ mobile: "text-base", desktop: "text-sm" }),
+        "min-h-screen bg-dashboard-gray leading-normal text-sm",
         className,
       )}
     >
