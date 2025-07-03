@@ -205,6 +205,30 @@
     @apply mb-4 md:mb-2 lg:mb-4;
   }
 
+  /* Very subtle scrollbar class */
+  .scrollbar-subtle {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(156, 163, 175, 0.2) transparent;
+  }
+
+  .scrollbar-subtle::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  .scrollbar-subtle::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-subtle::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.2);
+    border-radius: 2px;
+  }
+
+  .scrollbar-subtle::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(156, 163, 175, 0.4);
+  }
+
   /* Responsive padding utilities */
   .p-responsive {
     @apply p-4 lg:p-6;
