@@ -282,28 +282,28 @@
     @apply mt-2 md:mt-1.5 lg:mt-3;
   }
 
-  /* Compact heights */
+  /* Mobile-friendly heights */
   .h-16,
   .h-14,
   .h-12,
   .h-10 {
-    @apply h-7 lg:h-8;
+    @apply h-12 md:h-8 lg:h-10;
   }
 
   .h-8 {
-    @apply h-6 lg:h-7;
+    @apply h-10 md:h-6 lg:h-8;
   }
 
-  /* Compact widths */
+  /* Mobile-friendly widths */
   .w-16,
   .w-14,
   .w-12,
   .w-10 {
-    @apply w-7 lg:w-8;
+    @apply w-12 md:w-8 lg:w-10;
   }
 
   .w-8 {
-    @apply w-6 lg:w-7;
+    @apply w-10 md:w-6 lg:w-8;
   }
 
   /* Compact but visible icons */
