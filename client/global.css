@@ -306,14 +306,14 @@
     @apply w-10 md:w-6 lg:w-8;
   }
 
-  /* Compact but visible icons */
+  /* Mobile-friendly icons */
   svg {
-    @apply w-4 h-4 lg:w-5 lg:h-5 !important;
+    @apply w-5 h-5 md:w-4 md:h-4 lg:w-5 lg:h-5 !important;
   }
 
-  /* Compact buttons */
+  /* Mobile-friendly buttons */
   button {
-    @apply text-sm py-1 px-2 lg:py-1.5 lg:px-3;
+    @apply text-base py-2 px-3 md:text-sm md:py-1 md:px-2 lg:text-base lg:py-2 lg:px-3;
   }
 
   /* Minimal border radius */
