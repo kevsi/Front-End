@@ -18,6 +18,7 @@ interface UsersFiltersProps {
   onRoleFilter: (role: string) => void;
   onAgeFilter: (age: string) => void;
   onNewUser: () => void;
+  canAddUsers?: boolean;
 }
 
 export function UsersFilters({
@@ -29,6 +30,7 @@ export function UsersFilters({
   onRoleFilter,
   onAgeFilter,
   onNewUser,
+  canAddUsers = false,
 }: UsersFiltersProps) {
   return (
     <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl p-6 flex items-center gap-4 flex-wrap">
@@ -84,13 +86,15 @@ export function UsersFilters({
         </div>
       </div>
 
-      {/* New User Button */}
-      <Button
-        onClick={onNewUser}
-        className="bg-dashboard-yellow hover:bg-dashboard-yellow/90 text-black font-inter px-5 py-3 h-auto rounded-lg"
-      >
-        Nouveau Utilisateur
-      </Button>
+      {/* New User Button - Only for owners */}
+      {canAddUsers && (
+        <Button
+          onClick={onNewUser}
+          className="bg-dashboard-yellow hover:bg-dashboard-yellow/90 text-black font-inter px-5 py-3 h-auto rounded-lg"
+        >
+          Nouveau Utilisateur
+        </Button>
+      )}
 
       {/* Total Count */}
       <div className="bg-[#D9D9D9] rounded-lg px-5 py-3">
