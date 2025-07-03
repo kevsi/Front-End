@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ChevronDown, Search, Calendar, Filter } from "lucide-react";
+import { useResponsive } from "@/hooks/use-responsive";
 
 interface ManagerArticlesFiltersProps {
   searchQuery: string;
