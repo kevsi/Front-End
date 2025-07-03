@@ -4,6 +4,8 @@ import { UsersHeader } from "@/components/users/UsersHeader";
 import { UsersFilters } from "@/components/users/UsersFilters";
 import { UsersTable } from "@/components/users/UsersTable";
 import { AddUserModal, UserFormData } from "@/components/users/AddUserModal";
+import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
+import { useAuth } from "@/contexts/AuthContext";
 
 export interface User {
   id: string;
@@ -54,7 +56,8 @@ const mockUsers: User[] = [
   },
 ];
 
-export default function Users() {
+function UsersPage() {
+  const { canAddUsers } = useAuth();
   const [users, setUsers] = useState<User[]>(mockUsers);
   const [filteredUsers, setFilteredUsers] = useState<User[]>(mockUsers);
   const [searchQuery, setSearchQuery] = useState("");
@@ -116,6 +119,10 @@ export default function Users() {
   };
 
   const handleNewUser = () => {
+    if (!canAddUsers) {
+      alert("Seul le propriétaire peut ajouter des utilisateurs");
+      return;
+    }
     setIsModalOpen(true);
   };
 
@@ -153,6 +160,7 @@ export default function Users() {
             onRoleFilter={handleRoleFilter}
             onAgeFilter={handleAgeFilter}
             onNewUser={handleNewUser}
+            canAddUsers={canAddUsers}
           />
 
           <div className="mt-4 lg:mt-6">
@@ -161,11 +169,21 @@ export default function Users() {
         </div>
       </main>
 
-      <AddUserModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onAddUser={handleAddUser}
-      />
+      {canAddUsers && (
+        <AddUserModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onAddUser={handleAddUser}
+        />
+      )}
     </div>
+  );
+}
+
+export default function Users() {
+  return (
+    <ProtectedRoute>
+      <UsersPage />
+    </ProtectedRoute>
   );
 }
