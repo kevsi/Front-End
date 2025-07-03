@@ -129,25 +129,42 @@
     @apply bg-background text-foreground;
   }
 
-  /* Responsive text utilities */
+  /* Enhanced responsive text utilities */
   .text-responsive-sm {
-    @apply text-sm lg:text-base;
+    @apply text-base md:text-sm lg:text-base;
   }
 
   .text-responsive-base {
-    @apply text-base lg:text-lg;
+    @apply text-lg md:text-base lg:text-lg;
   }
 
   .text-responsive-lg {
-    @apply text-lg lg:text-xl;
+    @apply text-xl md:text-lg lg:text-xl;
   }
 
   .text-responsive-xl {
-    @apply text-xl lg:text-2xl;
+    @apply text-2xl md:text-xl lg:text-2xl;
   }
 
   .text-responsive-2xl {
-    @apply text-2xl lg:text-3xl;
+    @apply text-3xl md:text-2xl lg:text-3xl;
+  }
+
+  /* Mobile-specific utilities */
+  .mobile-friendly-text {
+    @apply text-base md:text-sm;
+  }
+
+  .mobile-friendly-button {
+    @apply py-3 px-4 text-base md:py-2 md:px-3 md:text-sm;
+  }
+
+  .mobile-friendly-card {
+    @apply p-4 md:p-3 lg:p-4;
+  }
+
+  .mobile-friendly-gap {
+    @apply gap-4 md:gap-2 lg:gap-4;
   }
 
   /* Responsive padding utilities */
