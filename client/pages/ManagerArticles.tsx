@@ -156,21 +156,16 @@ const ManagerArticles: React.FC = () => {
               </h3>
             </div>
             {isLoading ? (
-              <div className="flex items-center justify-center py-12">
-                <div className="text-center">
-                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-dashboard-yellow mx-auto mb-4"></div>
-                  <p className="text-gray-500">Chargement des articles...</p>
-                </div>
-              </div>
+              <ArticlesGridSkeleton count={12} />
             ) : error ? (
               <div className="flex items-center justify-center py-12">
                 <div className="text-center">
-                  <p className="text-red-500 mb-4">
+                  <p className="text-red-500 mb-4 text-base md:text-sm">
                     Erreur lors du chargement des articles
                   </p>
                   <button
                     onClick={() => refetch()}
-                    className="bg-dashboard-yellow text-white px-4 py-2 rounded hover:bg-dashboard-yellow/90"
+                    className="bg-dashboard-yellow text-white px-6 py-3 md:px-4 md:py-2 rounded text-base md:text-sm hover:bg-dashboard-yellow/90 transition-colors"
                   >
                     Réessayer
                   </button>
