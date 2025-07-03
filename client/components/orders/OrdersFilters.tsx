@@ -62,7 +62,7 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
           {/* Time Filter */}
           <div className="relative">
             <div className="flex items-center">
-              <div className="bg-dashboard-yellow/10 border border-dashboard-yellow/30 rounded-lg px-4 py-3 font-inter text-sm font-medium text-dashboard-dark h-12">
+              <div className="bg-dashboard-yellow/10 border border-dashboard-yellow/30 rounded-lg px-4 py-3 font-inter text-base md:text-sm font-medium text-dashboard-dark h-12">
                 {getCurrentTimeLabel()}
               </div>
               <button
