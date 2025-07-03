@@ -211,64 +211,7 @@
 
   /* Mobile-friendly spacing - avoiding redefinitions */
 
-  /* Mobile-friendly gaps */
-  .gap-8,
-  .gap-6,
-  .gap-5,
-  .gap-4 {
-    @apply gap-3 md:gap-2 lg:gap-4;
-  }
-
-  .gap-3 {
-    @apply gap-2 md:gap-1.5 lg:gap-3;
-  }
-
-  /* Mobile-friendly margins */
-  .mb-8,
-  .mb-6,
-  .mb-5,
-  .mb-4 {
-    @apply mb-3 md:mb-2 lg:mb-4;
-  }
-
-  .mt-8,
-  .mt-6,
-  .mt-5,
-  .mt-4 {
-    @apply mt-3 md:mt-2 lg:mt-4;
-  }
-
-  .mb-3 {
-    @apply mb-2 md:mb-1.5 lg:mb-3;
-  }
-
-  .mt-3 {
-    @apply mt-2 md:mt-1.5 lg:mt-3;
-  }
-
-  /* Mobile-friendly heights */
-  .h-16,
-  .h-14,
-  .h-12,
-  .h-10 {
-    @apply h-12 md:h-8 lg:h-10;
-  }
-
-  .h-8 {
-    @apply h-10 md:h-6 lg:h-8;
-  }
-
-  /* Mobile-friendly widths */
-  .w-16,
-  .w-14,
-  .w-12,
-  .w-10 {
-    @apply w-12 md:w-8 lg:w-10;
-  }
-
-  .w-8 {
-    @apply w-10 md:w-6 lg:w-8;
-  }
+  /* Removed problematic redefinitions to avoid circular dependencies */
 
   /* Mobile-friendly icons */
   svg {
