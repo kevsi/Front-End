@@ -332,13 +332,13 @@
     line-height: 1.4;
   }
 
-  /* Compact headers */
+  /* Mobile-friendly headers */
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    @apply text-sm lg:text-base leading-snug;
+    @apply text-lg md:text-sm lg:text-base leading-snug;
   }
 }
