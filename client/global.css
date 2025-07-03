@@ -342,9 +342,9 @@
 
   /* Builder.io-style ultra-compact sizes - extremely small like mobile */
 
-  /* Mobile-friendly body text */
+  /* Compact body text */
   body {
-    @apply text-base md:text-sm;
+    @apply text-sm;
   }
 
   /* Mobile-first responsive text sizes - using explicit values to avoid circular dependencies */
