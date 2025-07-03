@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NotificationsPanel } from "@/components/ui/notifications-panel";
 import { FallbackBanner } from "@/components/ui/fallback-banner";
 import { useState, createContext, useContext } from "react";
+import { AuthProvider } from "./contexts/AuthContext";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import NewOrder from "./pages/NewOrder";
@@ -47,35 +48,40 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <NotificationContext.Provider
-          value={{ showNotifications, setShowNotifications }}
-        >
-          <Toaster />
-          <Sonner />
-          <FallbackBanner />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/new-order" element={<NewOrder />} />
-              <Route path="/orders" element={<Orders />} />
-              <Route path="/users" element={<Users />} />
-              <Route path="/manager-dashboard" element={<ManagerDashboard />} />
-              <Route path="/manager-orders" element={<ManagerOrders />} />
-              <Route path="/manager-articles" element={<ManagerArticles />} />
-              <Route
-                path="/manager-product-details/:id"
-                element={<ManagerProductDetails />}
+        <AuthProvider>
+          <NotificationContext.Provider
+            value={{ showNotifications, setShowNotifications }}
+          >
+            <Toaster />
+            <Sonner />
+            <FallbackBanner />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/new-order" element={<NewOrder />} />
+                <Route path="/orders" element={<Orders />} />
+                <Route path="/users" element={<Users />} />
+                <Route
+                  path="/manager-dashboard"
+                  element={<ManagerDashboard />}
+                />
+                <Route path="/manager-orders" element={<ManagerOrders />} />
+                <Route path="/manager-articles" element={<ManagerArticles />} />
+                <Route
+                  path="/manager-product-details/:id"
+                  element={<ManagerProductDetails />}
+                />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+              <NotificationsPanel
+                isOpen={showNotifications}
+                onClose={() => setShowNotifications(false)}
               />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-            <NotificationsPanel
-              isOpen={showNotifications}
-              onClose={() => setShowNotifications(false)}
-            />
-          </BrowserRouter>
-        </NotificationContext.Provider>
+            </BrowserRouter>
+          </NotificationContext.Provider>
+        </AuthProvider>
       </TooltipProvider>
     </QueryClientProvider>
   );
