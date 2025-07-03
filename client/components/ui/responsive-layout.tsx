@@ -5,6 +5,7 @@ import {
   SidebarToggle,
 } from "./responsive-sidebar";
 import { useBreakpoint } from "@/hooks/use-mobile";
+import { useResponsive } from "@/hooks/use-responsive";
 import { cn } from "@/lib/utils";
 
 interface ResponsiveLayoutProps {
