@@ -66,7 +66,7 @@ export function ResponsiveLayout({
           {/* Main content area */}
           <main
             className={cn(
-              "flex-1 overflow-auto leading-normal",
+              "flex-1 overflow-auto leading-normal scrollbar-subtle",
               getTextSize({ mobile: "text-base", desktop: "text-sm" }),
               getSpacing({ mobile: "p-1", desktop: "p-0" }),
             )}
