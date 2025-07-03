@@ -75,23 +75,8 @@ export const ManagerArticlesGrid: React.FC<ManagerArticlesGridProps> = ({
     );
   }
 
-  // Responsive grid columns configuration
-  const gridCols = getGridCols({
-    xs: 2,
-    sm: 2,
-    md: 3,
-    lg: 4,
-    xl: 5,
-    "2xl": 6,
-  });
-
-  const gridClass = `grid gap-${isMobile ? "3" : "2"}`;
-  const colsClass = `grid-cols-${gridCols}`;
-
   return (
-    <div
-      className={`${gridClass} ${colsClass} sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6`}
-    >
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-2">
       {articles.map((article) => (
         <ArticleCard
           key={article.id}
