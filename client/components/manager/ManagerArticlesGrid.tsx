@@ -17,9 +17,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, onAddToMenu }) => {
   const { isMobile, getSpacing, getTextSize } = useResponsive();
 
   return (
-    <div
-      className={`bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200 min-w-0 group ${getSpacing({ mobile: "p-3", desktop: "p-2" })}`}
-    >
+    <div className="bg-white rounded-lg border border-gray-200 p-2 shadow-sm hover:shadow-md transition-all duration-200 min-w-0 group">
       {/* Article Image */}
       <div
         className={`relative overflow-hidden rounded-md ${getSpacing({ mobile: "mb-3", desktop: "mb-2" })}`}
