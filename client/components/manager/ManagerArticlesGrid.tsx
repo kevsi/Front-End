@@ -1,6 +1,7 @@
 import React from "react";
 import { Plus } from "lucide-react";
 import { Article } from "../../pages/ManagerArticles";
+import { useResponsive } from "@/hooks/use-responsive";
 
 interface ManagerArticlesGridProps {
   articles: Article[];
