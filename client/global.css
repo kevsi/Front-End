@@ -9,8 +9,15 @@
    * A different format will require also updating the theme in tailwind.config.ts.
   */
   :root {
-    /* Compact but readable base size */
-    font-size: 14px;
+    /* Mobile-first responsive font size */
+    font-size: 16px;
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      font-size: 18px; /* Larger on mobile for better readability */
+    }
+  }
 
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
