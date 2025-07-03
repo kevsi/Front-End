@@ -24,7 +24,7 @@ export function PromoBanner() {
             </div>
             <div className="hidden lg:block flex-shrink-0">
               <img
-                src="/placeholder.svg"
+                src="https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=400"
                 alt="Featured item"
                 className="w-32 h-24 lg:w-48 lg:h-36 xl:w-64 xl:h-48 object-cover rounded-lg"
               />
@@ -54,7 +54,7 @@ export function PromoBanner() {
             </div>
             <div className="mt-2 sm:mt-3 lg:mt-4 flex-shrink-0">
               <img
-                src="/placeholder.svg"
+                src="https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=200"
                 alt="Suggested item"
                 className="w-16 h-20 sm:w-20 sm:h-28 lg:w-24 lg:h-32 xl:w-32 xl:h-48 object-cover rounded-lg"
               />
