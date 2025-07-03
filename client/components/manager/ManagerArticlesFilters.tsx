@@ -150,7 +150,7 @@ export const ManagerArticlesFilters: React.FC<ManagerArticlesFiltersProps> = ({
         {/* Action Buttons */}
         <button
           onClick={onNewArticleClick}
-          className="bg-dashboard-yellow text-white px-3 py-1.5 rounded text-xs font-medium hover:bg-dashboard-yellow/90 transition-colors whitespace-nowrap"
+          className="bg-dashboard-yellow text-white px-4 py-2 rounded text-base md:text-sm font-medium hover:bg-dashboard-yellow/90 transition-colors whitespace-nowrap"
         >
           Nouvel article
         </button>
