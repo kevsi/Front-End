@@ -152,7 +152,99 @@ const detailedOrders: Record<string, OrderDetails> = {
       },
     ],
   },
-  // Ajoutez d'autres commandes détaillées selon besoin
+  "3": {
+    id: "3",
+    orderNumber: "C03",
+    tableNumber: "T03",
+    status: "served",
+    totalPrice: 45000,
+    createdAt: "2024-05-14T08:10:00Z",
+    items: [
+      {
+        id: "item6",
+        name: "Pizza Margherita",
+        quantity: 2,
+        price: 15000,
+        image:
+          "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=200",
+        category: "plat",
+      },
+      {
+        id: "item7",
+        name: "Salade César",
+        quantity: 1,
+        price: 8000,
+        image:
+          "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=200",
+        category: "entrée",
+      },
+      {
+        id: "item8",
+        name: "Coca-Cola",
+        quantity: 2,
+        price: 3500,
+        image:
+          "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=200",
+        category: "boisson",
+      },
+    ],
+  },
+  "4": {
+    id: "4",
+    orderNumber: "C04",
+    tableNumber: "T04",
+    status: "validated",
+    totalPrice: 12000,
+    createdAt: "2024-05-14T08:05:00Z",
+    items: [
+      {
+        id: "item9",
+        name: "Burger Classic",
+        quantity: 1,
+        price: 12000,
+        image:
+          "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=200",
+        category: "plat",
+      },
+    ],
+  },
+  "5": {
+    id: "5",
+    orderNumber: "C05",
+    tableNumber: "T05",
+    status: "pending",
+    totalPrice: 38000,
+    createdAt: "2024-05-14T08:00:00Z",
+    items: [
+      {
+        id: "item10",
+        name: "Pâtes Carbonara",
+        quantity: 1,
+        price: 14000,
+        image:
+          "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=200",
+        category: "plat",
+      },
+      {
+        id: "item11",
+        name: "Tiramisu",
+        quantity: 2,
+        price: 6000,
+        image:
+          "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=200",
+        category: "dessert",
+      },
+      {
+        id: "item12",
+        name: "Vin Rouge",
+        quantity: 1,
+        price: 18000,
+        image:
+          "https://cdn.builder.io/api/v1/image/assets%2F9598003611af423eab7c134af77a1af0%2F78661e7e35694c88aafdf6c26f62d581?format=webp&width=200",
+        category: "boisson",
+      },
+    ],
+  },
 };
 
 function getStatusVariant(status: Order["status"]) {
