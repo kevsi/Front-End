@@ -150,59 +150,59 @@
     @apply text-3xl md:text-2xl lg:text-3xl;
   }
 
-  /* Mobile-specific utilities - safe responsive classes */
+  /* Compact responsive utilities */
   .mobile-friendly-text {
-    @apply text-base md:text-sm;
+    @apply text-sm;
   }
 
   .mobile-friendly-button {
-    @apply py-3 px-4 text-base md:py-2 md:px-3 md:text-sm;
+    @apply py-2 px-3 text-sm;
   }
 
   .mobile-friendly-card {
-    @apply p-4 md:p-3 lg:p-4;
+    @apply p-3;
   }
 
   .mobile-friendly-gap {
-    @apply gap-4 md:gap-2 lg:gap-4;
+    @apply gap-2;
   }
 
-  /* Safe responsive text classes */
+  /* Compact responsive text classes */
   .responsive-text-lg {
-    @apply text-xl md:text-lg lg:text-xl;
+    @apply text-base md:text-sm;
   }
 
   .responsive-text-base {
-    @apply text-lg md:text-base lg:text-lg;
+    @apply text-sm;
   }
 
   .responsive-text-sm {
-    @apply text-base md:text-sm lg:text-base;
+    @apply text-sm md:text-xs;
   }
 
   .responsive-text-xs {
-    @apply text-sm md:text-xs lg:text-sm;
+    @apply text-xs;
   }
 
-  /* Safe responsive spacing */
+  /* Compact responsive spacing */
   .responsive-p {
-    @apply p-4 md:p-2 lg:p-4;
+    @apply p-2;
   }
 
   .responsive-px {
-    @apply px-4 md:px-2 lg:px-4;
+    @apply px-2;
   }
 
   .responsive-py {
-    @apply py-3 md:py-2 lg:py-3;
+    @apply py-2;
   }
 
   .responsive-gap {
-    @apply gap-3 md:gap-2 lg:gap-4;
+    @apply gap-2;
   }
 
   .responsive-mb {
-    @apply mb-4 md:mb-2 lg:mb-4;
+    @apply mb-2;
   }
 
   /* Very subtle scrollbar class */
