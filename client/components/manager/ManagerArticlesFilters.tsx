@@ -51,15 +51,9 @@ export const ManagerArticlesFilters: React.FC<ManagerArticlesFiltersProps> = ({
     return price ? price.label : "Prix";
   };
 
-  const { getSpacing, isMobile } = useResponsive();
-
   return (
-    <div
-      className={`bg-gray-50 border border-gray-200 rounded ${getSpacing({ mobile: "p-4", desktop: "p-2" })}`}
-    >
-      <div
-        className={`flex ${isMobile ? "flex-col" : "items-center"} ${getSpacing({ mobile: "gap-4", desktop: "gap-2" })}`}
-      >
+    <div className="bg-gray-50 border border-gray-200 rounded p-2">
+      <div className="flex items-center gap-2">
         {/* Category Dropdown */}
         <div className="relative">
           <button
