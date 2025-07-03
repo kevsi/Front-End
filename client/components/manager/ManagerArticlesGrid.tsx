@@ -61,24 +61,14 @@ export const ManagerArticlesGrid: React.FC<ManagerArticlesGridProps> = ({
 
   if (articles.length === 0) {
     return (
-      <div
-        className={`flex flex-col items-center justify-center text-center ${getSpacing({ mobile: "py-16", desktop: "py-12" })}`}
-      >
-        <div
-          className={`bg-gray-100 rounded-full flex items-center justify-center mb-4 ${isMobile ? "w-20 h-20" : "w-16 h-16"}`}
-        >
-          <Plus
-            className={`text-gray-400 ${isMobile ? "w-10 h-10" : "w-8 h-8"}`}
-          />
+      <div className="flex flex-col items-center justify-center py-12 text-center">
+        <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+          <Plus className="w-8 h-8 text-gray-400" />
         </div>
-        <h3
-          className={`font-semibold text-gray-900 mb-2 ${getTextSize({ mobile: "text-xl", desktop: "text-lg" })}`}
-        >
+        <h3 className="text-lg font-semibold text-gray-900 mb-2">
           Aucun article trouvé
         </h3>
-        <p
-          className={`text-gray-500 ${getTextSize({ mobile: "text-base", desktop: "text-sm" })}`}
-        >
+        <p className="text-gray-500 text-sm">
           Essayez de modifier vos filtres ou ajoutez un nouvel article.
         </p>
       </div>
