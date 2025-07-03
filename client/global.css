@@ -185,32 +185,40 @@
 
   /* Builder.io-style ultra-compact sizes - extremely small like mobile */
 
-  /* Force body to be compact but readable */
+  /* Mobile-friendly body text */
   body {
-    @apply text-sm;
+    @apply text-base md:text-sm;
   }
 
-  /* Compact text sizes */
+  /* Mobile-first responsive text sizes */
   .text-5xl,
   .text-4xl,
   .text-3xl {
-    @apply text-base lg:text-lg;
+    @apply text-xl md:text-lg lg:text-xl;
   }
 
   .text-2xl {
-    @apply text-sm lg:text-base;
+    @apply text-lg md:text-base lg:text-lg;
   }
 
   .text-xl {
-    @apply text-sm;
+    @apply text-base md:text-sm lg:text-base;
   }
 
   .text-lg {
-    @apply text-sm;
+    @apply text-base md:text-sm lg:text-base;
   }
 
   .text-base {
-    @apply text-sm;
+    @apply text-base md:text-sm;
+  }
+
+  .text-sm {
+    @apply text-sm md:text-xs lg:text-sm;
+  }
+
+  .text-xs {
+    @apply text-sm md:text-xs;
   }
 
   /* Compact padding */
