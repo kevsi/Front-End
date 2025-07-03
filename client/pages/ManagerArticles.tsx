@@ -9,6 +9,7 @@ import { ManagerArticlesGrid } from "@/components/manager/ManagerArticlesGrid";
 import { NewArticleModal } from "@/components/manager/NewArticleModal";
 import { useArticles, useCreateArticle } from "@/hooks/api";
 import { ArticleFilters } from "@/types/api";
+import { ArticlesGridSkeleton } from "@/components/ui/loaders";
 
 export interface Article {
   id: string;
