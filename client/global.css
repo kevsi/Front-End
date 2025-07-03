@@ -213,14 +213,24 @@
 
   /* Removed problematic redefinitions to avoid circular dependencies */
 
-  /* Mobile-friendly icons */
+  /* Base responsive improvements */
   svg {
-    @apply w-5 h-5 md:w-4 md:h-4 lg:w-5 lg:h-5 !important;
+    width: 1.25rem;
+    height: 1.25rem;
   }
 
-  /* Mobile-friendly buttons */
-  button {
-    @apply text-base py-2 px-3 md:text-sm md:py-1 md:px-2 lg:text-base lg:py-2 lg:px-3;
+  @media (min-width: 768px) {
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
   }
 
   /* Minimal border radius */
@@ -237,15 +247,5 @@
   /* Readable line heights */
   * {
     line-height: 1.4;
-  }
-
-  /* Mobile-friendly headers */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply text-lg md:text-sm lg:text-base leading-snug;
   }
 }
