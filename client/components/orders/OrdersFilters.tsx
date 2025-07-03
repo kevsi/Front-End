@@ -108,7 +108,7 @@ export const OrdersFilters: React.FC<OrdersFiltersProps> = ({
           {/* Status Filter */}
           <div className="relative">
             <div className="flex items-center">
-              <div className="bg-green-50 border border-green-200 rounded-lg px-4 py-3 font-inter text-sm font-medium text-green-700 h-12 flex items-center">
+              <div className="bg-green-50 border border-green-200 rounded-lg px-4 py-3 font-inter text-base md:text-sm font-medium text-green-700 h-12 flex items-center">
                 {getCurrentStatusLabel()}
               </div>
               <button
