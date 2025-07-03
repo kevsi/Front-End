@@ -247,39 +247,39 @@
     @apply p-3 md:p-1.5 lg:p-3;
   }
 
-  /* Compact gaps */
+  /* Mobile-friendly gaps */
   .gap-8,
   .gap-6,
   .gap-5,
   .gap-4 {
-    @apply gap-2 lg:gap-3;
+    @apply gap-3 md:gap-2 lg:gap-4;
   }
 
   .gap-3 {
-    @apply gap-1.5;
+    @apply gap-2 md:gap-1.5 lg:gap-3;
   }
 
-  /* Compact margins */
+  /* Mobile-friendly margins */
   .mb-8,
   .mb-6,
   .mb-5,
   .mb-4 {
-    @apply mb-2 lg:mb-3;
+    @apply mb-3 md:mb-2 lg:mb-4;
   }
 
   .mt-8,
   .mt-6,
   .mt-5,
   .mt-4 {
-    @apply mt-2 lg:mt-3;
+    @apply mt-3 md:mt-2 lg:mt-4;
   }
 
   .mb-3 {
-    @apply mb-1.5;
+    @apply mb-2 md:mb-1.5 lg:mb-3;
   }
 
   .mt-3 {
-    @apply mt-1.5;
+    @apply mt-2 md:mt-1.5 lg:mt-3;
   }
 
   /* Compact heights */
